@@ -81,6 +81,8 @@ body{background:#E8EBEE;font-family:'Lato',sans-serif;padding:40px;display:flex;
 .st-box .q{font-family:'Poppins';font-weight:700;font-size:46px;color:var(--navy);line-height:1.2}
 .st-box .r{font-size:38px;color:var(--texto);margin-top:16px;line-height:1.4}
 .kw{display:inline-block;background:var(--laranja);color:#fff;font-family:'Poppins';font-weight:800;font-size:110px;letter-spacing:4px;border-radius:20px;padding:6px 44px}
+.tag{display:inline-flex;align-items:center;gap:18px;background:var(--laranja);color:#fff;font-family:'Poppins';font-weight:800;font-size:54px;letter-spacing:3px;text-transform:uppercase;border-radius:16px;padding:14px 34px 10px;line-height:1.1}
+.tag small{font-family:'Lato';font-weight:700;font-size:26px;letter-spacing:1px;text-transform:none;color:#FFE7D6;border-left:3px solid #FFB89C;padding-left:18px}
 .st-marca{position:absolute;top:140px;left:84px;right:84px;display:flex;justify-content:space-between}
 """
 
@@ -92,12 +94,11 @@ def capa(n, tot, eyebrow, titulo, sub, selos, kw):
     return f'''<div class="slide dark pad" data-n="{n:02d}">
   <div style="display:flex;justify-content:space-between"><div class="marca">Auditor Discursivas</div><div class="contador">{n:02d} / {tot:02d}</div></div>
   <div>
-    <div class="eyebrow" style="margin-bottom:30px">{eyebrow}</div>
-    <div class="rule" style="margin-bottom:44px"></div>
+    <div class="tag" style="margin-bottom:46px">Aula gratuita<small>{eyebrow}</small></div>
     <div class="h1">{titulo}</div>
     <div class="sub" style="margin-top:36px">{sub}</div>
     <div class="selo" style="margin-top:40px">{s}</div>
-    <div class="cta" style="margin-top:54px"><div class="a">Comente <b>{kw}</b> que eu te mando a aula no direct.</div></div>
+    <div class="cta" style="margin-top:54px"><div class="a">Comente <b>{kw}</b> que eu te mando a aula grátis no direct.</div></div>
   </div>
   <div class="rodape"><div>@auditor_discursivas</div><div class="seta">Arraste →</div></div>
 </div>
@@ -116,10 +117,10 @@ def fecho(n, tot, frase, kw, linha_recurso):
     return f'''<div class="slide dark pad" data-n="{n:02d}">
   <div style="display:flex;justify-content:space-between"><div class="marca">Auditor Discursivas</div><div class="contador">{n:02d} / {tot:02d}</div></div>
   <div>
-    <div class="rule" style="margin-bottom:40px"></div>
+    <div class="tag" style="margin-bottom:44px">Aula gratuita<small>em PDF, no seu direct</small></div>
     <div class="h1" style="font-size:76px">{frase}</div>
     <div class="cta" style="margin-top:54px">
-      <div class="a">Comente <b>{kw}</b> aqui embaixo e a aula chega no seu direct.</div>
+      <div class="a">Comente <b>{kw}</b> aqui embaixo e a aula gratuita chega no seu direct.</div>
       <div class="b">{linha_recurso}</div>
     </div>
     <div style="display:flex;align-items:center;gap:28px;margin-top:54px">
@@ -143,7 +144,7 @@ def story(n, corpo):
 # =================== TCDF ===================
 T = 7
 tcdf = head('Campanha TCDF 2026 — carrossel') + capa(1, T,
-    'Aula gratuita · Cebraspe',
+    'PDF · Cebraspe',
     'Discursiva do <em>TCDF 2026</em>',
     'Analista Administrativo de Controle Externo. A questão de 20 linhas e a <b>Informação de 50 linhas</b>, no padrão do Manual do TCDF.',
     ['Prova 22/11', '40 páginas', '5 rodadas com espelho'], 'TCDF')
@@ -169,7 +170,7 @@ tcdf += conteudo(3, T, 'O que pouca gente aproveita', 'A forma da Informação v
 <div class="dica" style="margin-top:20px;border-top:none;padding-top:0"><div class="dica-rot">Fonte</div><div class="dica-txt">Padrão de resposta definitivo do Cebraspe, TCDF 2023, Analista. Mesmo cargo, mesma peça.</div></div>
 ''')
 
-tcdf += conteudo(4, T, 'Prévia da aula', 'A moldura da Informação, na ordem', '''
+tcdf += conteudo(4, T, 'Prévia da aula gratuita', 'A moldura da Informação, na ordem', '''
 <div class="folha">
   <div><span class="hl">Informação n.º ......./..... – (sigla)</span></div>
   <div class="r"><span class="hl">Brasília, 22 de novembro de 2026.</span></div>
@@ -186,7 +187,7 @@ tcdf += conteudo(4, T, 'Prévia da aula', 'A moldura da Informação, na ordem',
 <div class="txt" style="font-size:30px;margin-top:22px;color:var(--cinza)">Na aula, cada elemento vem explicado, com o que vale ponto no espelho.</div>
 ''')
 
-tcdf += conteudo(5, T, 'O que tem nas 40 páginas', 'Do edital ao checklist do dia', '''
+tcdf += conteudo(5, T, 'Na aula gratuita · 40 páginas', 'Do edital ao checklist do dia', '''
 <div class="lista">
   <div><span class="ok">✓</span><span class="q"><b>Raio-X do edital</b> e de como o Cebraspe corrige<small>Fórmula, descontos de língua e o que zera ou anula</small></span></div>
   <div><span class="ok">✓</span><span class="q">O que a banca <b>já cobrou no TCDF</b><small>Provas e padrões de 2021, 2023 e 2024</small></span></div>
@@ -212,24 +213,24 @@ tcdf += '</body>\n</html>\n'
 (OUT / 'carrossel_tcdf.html').write_text(tcdf, encoding='utf-8')
 
 st_tcdf = head('Campanha TCDF 2026 — stories')
-st_tcdf += story(1, '''<div class="eyebrow">Aula gratuita · TCDF 2026</div>
+st_tcdf += story(1, '''<div><span class="tag">Aula gratuita<small>TCDF 2026</small></span></div>
 <div class="st-h">Vai fazer a discursiva do <em>TCDF</em>?</div>
-<div class="st-p">Preparei uma aula de <b>40 páginas</b> para o Analista: a questão de 20 linhas, a <b>Informação de 50</b> e <b>5 rodadas</b> com espelho e resposta completa.</div>''')
+<div class="st-p">Preparei uma aula <b>grátis</b>, em PDF, de <b>40 páginas</b> para o Analista: a questão de 20 linhas, a <b>Informação de 50</b> e <b>5 rodadas</b> com espelho e resposta completa.</div>''')
 st_tcdf += story(2, '''<div class="st-h">É só comentar</div>
 <div><span class="kw">TCDF</span></div>
-<div class="st-p">no post mais recente do feed. A aula chega no seu <b>direct</b> na hora.</div>
+<div class="st-p">no post mais recente do feed. A <b>aula gratuita</b> chega no seu <b>direct</b> na hora.</div>
 <div class="st-box"><div class="q">Não chegou?</div><div class="r">Confira em <b>Solicitações de mensagem</b> no direct.</div></div>''')
 st_tcdf += story(3, '''<div class="eyebrow">Você sabia?</div>
 <div class="st-h">A forma da Informação <em>vale ponto</em>.</div>
 <div class="st-p">No espelho do TCDF 2023, os dados do processo tiveram um quesito de <b>0 a 6</b> só para eles. A moldura é fixa: dá para decorar.</div>
-<div class="st-box"><div class="q">Comente TCDF no post</div><div class="r">e receba a moldura completa, elemento por elemento.</div></div>''')
+<div class="st-box"><div class="q">Comente TCDF no post</div><div class="r">e receba grátis a aula com a moldura completa, elemento por elemento.</div></div>''')
 st_tcdf += '</body>\n</html>\n'
 (OUT / 'stories_tcdf.html').write_text(st_tcdf, encoding='utf-8')
 
 # =================== TCE-MA ===================
 T = 7
 ma = head('Campanha TCE-MA 2026 — carrossel') + capa(1, T,
-    'Aula gratuita · Cebraspe',
+    'PDF · Cebraspe',
     'Discursiva do <em style="white-space:nowrap">TCE&#8209;MA 2026</em>',
     'Auditor Estadual de Controle Externo. A <b>peça técnica de 60 linhas</b> e as duas situações-problema de 30 linhas.',
     ['Prova 29/11', '46 páginas', '6 rodadas com espelho'], 'TCEMA')
@@ -265,7 +266,7 @@ ma += conteudo(4, T, 'O que está quente no Maranhão', 'Seis temas no radar do 
 <div class="txt" style="font-size:28px;color:var(--cinza);margin-top:16px">Cada um vira uma rodada completa na aula.</div>
 ''')
 
-ma += conteudo(5, T, 'Prévia da aula', 'A peça de 60 linhas em quatro blocos', '''
+ma += conteudo(5, T, 'Prévia da aula gratuita', 'A peça de 60 linhas em quatro blocos', '''
 <div class="bloco"><div class="lado"></div><div class="c"><div class="h">1 · Introdução <span>“Trata-se de...”</span></div><div class="d">Objeto, fatos centrais e o que cumpre examinar · 4 a 7 linhas</div></div></div>
 <div class="bloco"><div class="lado"></div><div class="c"><div class="h">2 · Análise <span>“Quanto ao...”</span></div><div class="d">Um parágrafo por item, com veredito, norma, fato e consequência · cerca de 70%</div></div></div>
 <div class="bloco"><div class="lado"></div><div class="c"><div class="h">3 · Conclusão <span>“Em conclusão,...”</span></div><div class="d">Retoma cada análise em meia linha. Nada novo · 3 a 5 linhas</div></div></div>
@@ -273,7 +274,7 @@ ma += conteudo(5, T, 'Prévia da aula', 'A peça de 60 linhas em quatro blocos',
 <div class="dica" style="margin-top:14px"><div class="dica-rot">Regra</div><div class="dica-txt">Nunca invente prazo: <b>“no prazo a ser fixado pelo Tribunal”</b>.</div></div>
 ''')
 
-ma += conteudo(6, T, 'O que tem nas 46 páginas', 'Do edital ao checklist do dia', '''
+ma += conteudo(6, T, 'Na aula gratuita · 46 páginas', 'Do edital ao checklist do dia', '''
 <div class="lista">
   <div><span class="ok">✓</span><span class="q"><b>Raio-X do edital</b> e de como o Cebraspe corrige<small>Fórmula, descontos de língua e quem tem a prova corrigida</small></span></div>
   <div><span class="ok">✓</span><span class="q">O que a banca <b>já cobrou em controle</b><small>12 provas, de TCU 2015 a TCE-MS 2025</small></span></div>
@@ -289,17 +290,17 @@ ma += '</body>\n</html>\n'
 (OUT / 'carrossel_tcema.html').write_text(ma, encoding='utf-8')
 
 st_ma = head('Campanha TCE-MA 2026 — stories')
-st_ma += story(1, '''<div class="eyebrow">Aula gratuita · TCE-MA 2026</div>
+st_ma += story(1, '''<div><span class="tag">Aula gratuita<small>TCE-MA 2026</small></span></div>
 <div class="st-h">Vai fazer a discursiva do <em style="white-space:nowrap">TCE&#8209;MA</em>?</div>
-<div class="st-p">Preparei uma aula de <b>46 páginas</b> para o Auditor: a <b>peça de 60 linhas</b>, as duas situações-problema e <b>6 rodadas</b> com espelho e resposta completa.</div>''')
+<div class="st-p">Preparei uma aula <b>grátis</b>, em PDF, de <b>46 páginas</b> para o Auditor: a <b>peça de 60 linhas</b>, as duas situações-problema e <b>6 rodadas</b> com espelho e resposta completa.</div>''')
 st_ma += story(2, '''<div class="st-h">É só comentar</div>
 <div><span class="kw">TCEMA</span></div>
-<div class="st-p">no post mais recente do feed. A aula chega no seu <b>direct</b> na hora.</div>
+<div class="st-p">no post mais recente do feed. A <b>aula gratuita</b> chega no seu <b>direct</b> na hora.</div>
 <div class="st-box"><div class="q">Não chegou?</div><div class="r">Confira em <b>Solicitações de mensagem</b> no direct.</div></div>''')
 st_ma += story(3, '''<div class="eyebrow">Você sabia?</div>
 <div class="st-h">A peça vale <em>metade</em> da discursiva.</div>
 <div class="st-p">São <b>20 dos 40 pontos</b>, o mesmo que dez questões de conhecimentos específicos. E ela tem esqueleto: quatro blocos que dá para treinar.</div>
-<div class="st-box"><div class="q">Comente TCEMA no post</div><div class="r">e receba a aula com as 6 rodadas.</div></div>''')
+<div class="st-box"><div class="q">Comente TCEMA no post</div><div class="r">e receba grátis a aula com as 6 rodadas.</div></div>''')
 st_ma += '</body>\n</html>\n'
 (OUT / 'stories_tcema.html').write_text(st_ma, encoding='utf-8')
 print('ok')
