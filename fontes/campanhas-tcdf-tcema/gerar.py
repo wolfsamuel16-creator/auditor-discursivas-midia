@@ -216,14 +216,14 @@ st_tcdf = head('Campanha TCDF 2026 — stories')
 st_tcdf += story(1, '''<div><span class="tag">Aula gratuita<small>TCDF 2026</small></span></div>
 <div class="st-h">Vai fazer a discursiva do <em>TCDF</em>?</div>
 <div class="st-p">Preparei uma aula <b>grátis</b>, em PDF, de <b>40 páginas</b> para o Analista: a questão de 20 linhas, a <b>Informação de 50</b> e <b>5 rodadas</b> com espelho e resposta completa.</div>''')
-st_tcdf += story(2, '''<div class="st-h">É só comentar</div>
+st_tcdf += story(2, '''<div class="st-h">É só mandar no <em>direct</em></div>
 <div><span class="kw">TCDF</span></div>
-<div class="st-p">no post mais recente do feed. A <b>aula gratuita</b> chega no seu <b>direct</b> na hora.</div>
-<div class="st-box"><div class="q">Não chegou?</div><div class="r">Confira em <b>Solicitações de mensagem</b> no direct.</div></div>''')
+<div class="st-p">Manda <b>TCDF</b> numa mensagem para o <b>@auditor_discursivas</b> e a <b>aula gratuita</b> chega na hora.</div>
+<div class="st-box"><div class="q">Prefere comentar?</div><div class="r">Comente <b>TCDF</b> no post da aula do TCDF que eu também te mando.</div></div>''')
 st_tcdf += story(3, '''<div class="eyebrow">Você sabia?</div>
 <div class="st-h">A forma da Informação <em>vale ponto</em>.</div>
 <div class="st-p">No espelho do TCDF 2023, os dados do processo tiveram um quesito de <b>0 a 6</b> só para eles. A moldura é fixa: dá para decorar.</div>
-<div class="st-box"><div class="q">Comente TCDF no post</div><div class="r">e receba grátis a aula com a moldura completa, elemento por elemento.</div></div>''')
+<div class="st-box"><div class="q">Mande TCDF no direct</div><div class="r">e receba grátis a aula com a moldura completa, elemento por elemento.</div></div>''')
 st_tcdf += '</body>\n</html>\n'
 (OUT / 'stories_tcdf.html').write_text(st_tcdf, encoding='utf-8')
 
@@ -293,14 +293,14 @@ st_ma = head('Campanha TCE-MA 2026 — stories')
 st_ma += story(1, '''<div><span class="tag">Aula gratuita<small>TCE-MA 2026</small></span></div>
 <div class="st-h">Vai fazer a discursiva do <em style="white-space:nowrap">TCE&#8209;MA</em>?</div>
 <div class="st-p">Preparei uma aula <b>grátis</b>, em PDF, de <b>46 páginas</b> para o Auditor: a <b>peça de 60 linhas</b>, as duas situações-problema e <b>6 rodadas</b> com espelho e resposta completa.</div>''')
-st_ma += story(2, '''<div class="st-h">É só comentar</div>
+st_ma += story(2, '''<div class="st-h">É só mandar no <em>direct</em></div>
 <div><span class="kw">TCEMA</span></div>
-<div class="st-p">no post mais recente do feed. A <b>aula gratuita</b> chega no seu <b>direct</b> na hora.</div>
-<div class="st-box"><div class="q">Não chegou?</div><div class="r">Confira em <b>Solicitações de mensagem</b> no direct.</div></div>''')
+<div class="st-p">Manda <b>TCEMA</b> numa mensagem para o <b>@auditor_discursivas</b> e a <b>aula gratuita</b> chega na hora.</div>
+<div class="st-box"><div class="q">Prefere comentar?</div><div class="r">Comente <b>TCEMA</b> no post da aula do TCE-MA que eu também te mando.</div></div>''')
 st_ma += story(3, '''<div class="eyebrow">Você sabia?</div>
 <div class="st-h">A peça vale <em>metade</em> da discursiva.</div>
 <div class="st-p">São <b>20 dos 40 pontos</b>, o mesmo que dez questões de conhecimentos específicos. E ela tem esqueleto: quatro blocos que dá para treinar.</div>
-<div class="st-box"><div class="q">Comente TCEMA no post</div><div class="r">e receba grátis a aula com as 6 rodadas.</div></div>''')
+<div class="st-box"><div class="q">Mande TCEMA no direct</div><div class="r">e receba grátis a aula com as 6 rodadas.</div></div>''')
 st_ma += '</body>\n</html>\n'
 (OUT / 'stories_tcema.html').write_text(st_ma, encoding='utf-8')
 print('ok')
