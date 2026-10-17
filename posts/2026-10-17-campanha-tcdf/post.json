@@ -3,6 +3,7 @@
  "tipo": "carrossel",
  "origem": "Campanha",
  "primeiro_comentario": "📌 Comente TCDF aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
- "status": "agendado",
- "metricool_id": 398513879
+ "status": "publicado",
+ "metricool_id": 398513879,
+ "stories": "story_01 (11h00), story_02_v2 (11h22), story_03_v2 (11h24) publicados; story_02 e story_03 originais excluídos"
 }
