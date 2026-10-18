@@ -3,8 +3,9 @@
  "tipo": "carrossel",
  "origem": "Parágrafo da Semana (reposição 18/10)",
  "primeiro_comentario": "Qual banca você quer ver no próximo Parágrafo da Semana? Comenta FGV ou CEBRASPE 👇",
- "status": "aguardando_ok",
- "metricool_id": 399336145,
+ "status": "agendado",
+ "metricool_id": 399344360,
  "metricool_uuid": "1659186129291788638",
- "previa_enviada_em": "2026-10-18T15:31:00"
+ "previa_enviada_em": "2026-10-18T15:31:00",
+ "ok_em": "2026-10-18T15:43:00"
 }
