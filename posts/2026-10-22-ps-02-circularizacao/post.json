@@ -3,8 +3,9 @@
  "tipo": "carrossel",
  "origem": "Parágrafo da Semana",
  "primeiro_comentario": "Na sua prova, quem você circularizaria: a SEE, a empresa ou as escolas? Comenta a letra: A, B ou C 👇",
- "status": "aguardando_ok",
- "metricool_id": 399326376,
+ "status": "agendado",
+ "metricool_id": 399330124,
  "metricool_uuid": "1303718035955796185",
- "previa_enviada_em": "2026-10-18T15:12:00"
+ "previa_enviada_em": "2026-10-18T15:12:00",
+ "ok_em": "2026-10-18T15:20:00"
 }
