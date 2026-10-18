@@ -3,8 +3,17 @@
  "tipo": "stories",
  "origem": "Central (reforço de campanhas)",
  "primeiro_comentario": "",
- "status": "aguardando",
- "metricool_id": null,
- "stories_publicar_em": ["2026-10-18T18:00:00", "2026-10-18T18:02:00", "2026-10-18T18:04:00"],
- "stories": "story_01 CGU, story_02 TCDF, story_03 teaser TCE-MA (direct TCEMA já ativo)"
+ "status": "agendado",
+ "metricool_id": 399316221,
+ "stories_publicar_em": [
+  "2026-10-18T18:00:00",
+  "2026-10-18T18:02:00",
+  "2026-10-18T18:04:00"
+ ],
+ "stories": "story_01 CGU, story_02 TCDF, story_03 teaser TCE-MA (direct TCEMA já ativo)",
+ "stories_metricool": [
+  399316221,
+  399316239,
+  399316253
+ ]
 }
