@@ -1,5 +1,5 @@
 {
- "publicar_em": "2026-10-21T18:00:00",
+ "publicar_em": "2026-10-28T18:00:00",
  "tipo": "carrossel",
  "origem": "Série Semanal",
  "primeiro_comentario": "Na prova, você lê primeiro o texto-base ou as perguntas? Comenta TEXTO ou PERGUNTA 👇",
@@ -7,5 +7,6 @@
  "metricool_id": 399330007,
  "metricool_uuid": "-7006665191329674932",
  "previa_enviada_em": "2026-10-18T15:12:00",
- "ok_em": "2026-10-18T15:20:00"
+ "ok_em": "2026-10-18T15:20:00",
+ "publicar_em_original": "2026-10-21T18:00:00"
 }

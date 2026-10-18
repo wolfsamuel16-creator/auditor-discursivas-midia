@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Carrossel — Pare de fazer rascunho</title>
+<style>
+ :root{
+ --navy:#263445; --laranja:#F4511E; --texto:#2B3644; --verde:#00897B;
+ --cinza:#8A929B; --cinza-claro:#B8C2CC; --filete:#CFD6DD;
+ --cx-verde:#D9F0EC; --cx-azul:#F4FAFB; --cx-laranja:#FFE7D6;
+ }
+ *{box-sizing:border-box;margin:0;padding:0}
+ body{background:#E8EBEE;font-family:'Lato',sans-serif;padding:40px;display:flex;flex-direction:column;align-items:center;gap:40px}
+ .slide{width:1080px;height:1080px;position:relative;overflow:hidden;background:#fff;flex-shrink:0}
+ .pad{padding:76px 84px}
+ .dark{background:var(--navy);display:flex;flex-direction:column;justify-content:space-between}
+ .marca{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--laranja)}
+ .contador{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:2px;color:var(--cinza)}
+ .rule{width:120px;height:8px;background:var(--laranja)}
+ .h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:80px;line-height:1.08;color:#fff;letter-spacing:-1.5px}
+ .h1 em{font-style:normal;color:var(--laranja)}
+ .sub{font-size:31px;line-height:1.5;color:var(--cinza-claro);max-width:800px}
+ .rodape{display:flex;justify-content:space-between;align-items:flex-end;font-size:24px;letter-spacing:1.5px;color:var(--cinza)}
+ .rodape .seta{color:var(--laranja);font-family:'Poppins',sans-serif;font-weight:600}
+ .faixa-navy{background:var(--navy);padding:22px 84px;font-family:'Poppins',sans-serif;font-weight:600;
+ font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;display:flex;justify-content:space-between}
+ .faixa-navy .n{color:var(--cinza-claro)}
+ .faixa-laranja{background:var(--laranja);padding:26px 84px;font-family:'Poppins',sans-serif;font-weight:700;
+ font-size:42px;line-height:1.15;color:#fff;letter-spacing:-0.5px}
+ .corpo{display:block;width:100%;padding:60px 84px 0}
+ .cx{border-radius:12px;padding:34px 42px;margin-bottom:28px}
+ .cx-rot{font-family:'Poppins',sans-serif;font-weight:600;font-size:20px;letter-spacing:2.5px;
+ text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+ .cx-txt{font-size:36px;line-height:1.45;color:var(--texto)}
+ .cx-txt b{color:var(--navy)}
+ .errado{background:var(--cx-laranja)} .errado .cx-rot{color:var(--laranja)}
+ .certo{background:var(--cx-verde)} .certo .cx-rot{color:var(--verde)}
+ .dica{margin-top:14px;padding-top:32px;border-top:2px solid var(--filete);display:flex;gap:22px;align-items:flex-start}
+ .dica-rot{font-family:'Poppins',sans-serif;font-weight:700;font-size:21px;letter-spacing:2px;
+ color:var(--laranja);text-transform:uppercase;padding-top:5px;white-space:nowrap}
+ .dica-txt{font-size:31px;line-height:1.45;color:var(--texto)}
+ .dica-txt b{color:var(--navy)}
+ .rod-claro{position:absolute;bottom:0;left:0;right:0;padding:26px 84px;display:flex;justify-content:space-between;
+ font-size:21px;letter-spacing:1.5px;color:var(--cinza)}
+ .rod-claro .seta{color:var(--laranja);font-family:'Poppins',sans-serif;font-weight:700}
+ .lista{font-size:39px;line-height:1.42;color:var(--texto)}
+ .lista div{display:flex;gap:22px;margin-bottom:40px}
+ .lista .num{font-family:'Poppins',sans-serif;font-weight:700;color:var(--laranja);min-width:44px}
+ .lista b{color:var(--navy)}
+ .big{display:flex;gap:28px;margin-bottom:28px}
+ .big .card{flex:1;border-radius:12px;padding:30px 34px}
+ .big .valor{font-family:'Poppins',sans-serif;font-weight:700;font-size:76px;line-height:1;letter-spacing:-2px}
+ .big .leg{font-size:27px;line-height:1.35;color:var(--texto);margin-top:14px}
+ .big .errado .valor{color:var(--laranja)} .big .certo .valor{color:var(--verde)}
+ .folha{background:var(--cx-azul);border:2px dashed var(--cinza-claro);border-radius:12px;padding:30px 36px;margin-bottom:28px}
+ .folha .lin{font-size:29px;line-height:1.4;color:var(--texto);padding:14px 0;border-bottom:1px solid var(--filete)}
+ .folha .lin:last-child{border-bottom:none}
+ .folha .p{font-family:'Poppins',sans-serif;font-weight:700;color:var(--laranja);margin-right:10px}
+ .folha .tag{font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;letter-spacing:1.5px;color:var(--cinza);text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<div class="slide dark pad" data-n="01">
+ <div style="display:flex;justify-content:space-between;align-items:flex-start">
+ <div class="marca">Auditor Discursivas</div>
+ <div class="contador">01 / 08</div>
+ </div>
+ <div>
+ <div class="rule" style="margin-bottom:44px"></div>
+ <div class="h1">Pare de fazer<br>rascunho na<br><em>discursiva.</em></div>
+ <div class="sub" style="margin-top:40px">A conta do tempo não fecha. E o rascunho ainda piora o texto que vai para a folha definitiva.</div>
+ </div>
+ <div class="rodape"><div>@auditor_discursivas</div><div class="seta">Arraste →</div></div>
+</div>
+
+<div class="slide" data-n="02">
+ <div class="faixa-navy"><span>A conta · Tempo</span><span class="n">02 / 08</span></div>
+ <div class="faixa-laranja">Rascunho é escrever a prova duas vezes</div>
+ <div class="corpo">
+ <div class="cx-txt" style="margin-bottom:34px">Na prova, a média é de <b>1 linha por minuto</b>. Numa questão de 30 linhas:</div>
+ <div class="big">
+ <div class="card errado"><div class="cx-rot" style="color:var(--laranja)">✗&nbsp; Com rascunho</div><div class="valor">~60 min</div><div class="leg">escreve 30, depois copia 30</div></div>
+ <div class="card certo"><div class="cx-rot" style="color:var(--verde)">✓&nbsp; Com esquema</div><div class="valor">~35 min</div><div class="leg">planeja em minutos, escreve uma vez</div></div>
+ </div>
+ <div class="dica">
+ <div class="dica-rot">E mais</div>
+ <div class="dica-txt">Numa questão de 60 linhas, a diferença passa de <b>uma hora</b>.</div>
+ </div>
+ </div>
+ <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<div class="slide" data-n="03">
+ <div class="faixa-navy"><span>Na prova real · TCE/SC · FGV</span><span class="n">03 / 08</span></div>
+ <div class="faixa-laranja">180 linhas em 5 horas</div>
+ <div class="corpo">
+ <div class="cx-txt" style="margin-bottom:34px">1 peça técnica de 60 linhas + 4 questões de 30 linhas = <b>180 linhas</b> para redigir.</div>
+ <div class="cx errado">
+ <div class="cx-rot">✗&nbsp; Com rascunho</div>
+ <div class="cx-txt"><b>360 linhas</b> escritas. A 1 linha por minuto, são <b>6 horas</b>. Não cabe.</div>
+ </div>
+ <div class="cx certo">
+ <div class="cx-rot">✓&nbsp; Com esquema</div>
+ <div class="cx-txt">180 linhas + planejamento. <b>Sobra tempo para revisar.</b></div>
+ </div>
+ </div>
+ <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<div class="slide" data-n="04">
+ <div class="faixa-navy"><span>O custo escondido</span><span class="n">04 / 08</span></div>
+ <div class="faixa-laranja">Por que o rascunho piora a nota</div>
+ <div class="corpo">
+ <div class="lista">
+ <div><span class="num">01</span><span>Você passa a limpo <b>com pressa</b>. A letra piora e a revisão some.</span></div>
+ <div><span class="num">02</span><span>Mesmo com rascunho, você <b>muda o texto</b> na hora de copiar.</span></div>
+ <div><span class="num">03</span><span>A última questão fica pela metade, e ela <b>vale tanto quanto a primeira</b>.</span></div>
+ <div><span class="num">04</span><span>O espelho pontua <b>conteúdo e estrutura</b>, não frase bonita.</span></div>
+ </div>
+ </div>
+ <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<div class="slide" data-n="05">
+ <div class="faixa-navy"><span>No lugar do rascunho</span><span class="n">05 / 08</span></div>
+ <div class="faixa-laranja">Use a folha de rascunho para o esqueleto</div>
+ <div class="corpo">
+ <div class="cx-txt" style="margin-bottom:26px">Uma linha por parágrafo. Só o que vale ponto:</div>
+ <div class="folha">
+ <div class="tag" style="margin-bottom:6px">Exemplo · Contas do prefeito</div>
+ <div class="lin"><span class="p">P1</span>TC pode imputar débito ao prefeito · art. 71, II e VIII, CF · <b>cabível</b></div>
+ <div class="lin"><span class="p">P2</span>Execução compete ao ente credor · art. 71, § 3º, CF; Tema 642/STF · <b>não é o TC</b></div>
+ </div>
+ <div class="dica">
+ <div class="dica-rot">Dica</div>
+ <div class="dica-txt">Esqueleto pronto, <b>o texto “se escreve sozinho”</b>, direto na folha definitiva.</div>
+ </div>
+ </div>
+ <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<div class="slide" data-n="06">
+ <div class="faixa-navy"><span>Passo a passo</span><span class="n">06 / 08</span></div>
+ <div class="faixa-laranja">Monte o esquema em 4 passos</div>
+ <div class="corpo">
+ <div class="lista">
+ <div><span class="num">01</span><span>Conte os itens do comando. <b>Cada item, um parágrafo.</b></span></div>
+ <div><span class="num">02</span><span>Escreva o <b>tópico frasal</b> de cada um em poucas palavras.</span></div>
+ <div><span class="num">03</span><span>Anote a <b>âncora</b>: artigo, súmula, tema de repercussão geral.</span></div>
+ <div><span class="num">04</span><span>Marque a <b>conclusão parcial</b>: regular ou irregular, cabe ou não cabe.</span></div>
+ </div>
+ </div>
+ <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<div class="slide" data-n="07">
+ <div class="faixa-navy"><span>Atenção</span><span class="n">07 / 08</span></div>
+ <div class="faixa-laranja">Esquema só funciona se você treinou</div>
+ <div class="corpo">
+ <div class="cx errado">
+ <div class="cx-rot">✗&nbsp; Assim você perde</div>
+ <div class="cx-txt">Abandonar o rascunho <b>no dia da prova</b>, sem nunca ter testado.</div>
+ </div>
+ <div class="cx certo">
+ <div class="cx-rot">✓&nbsp; Assim você pontua</div>
+ <div class="cx-txt">Simular várias vezes antes, <b>com cronômetro</b>, usando só o esquema.</div>
+ </div>
+ <div class="dica">
+ <div class="dica-rot">Lembre</div>
+ <div class="dica-txt">Não é largar o planejamento. É <b>trocar o texto inteiro pelo esqueleto</b>.</div>
+ </div>
+ </div>
+ <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<div class="slide dark pad" data-n="08">
+ <div style="display:flex;justify-content:space-between;align-items:flex-start">
+ <div class="marca">Auditor Discursivas</div>
+ <div class="contador">08 / 08</div>
+ </div>
+ <div>
+ <div class="rule" style="margin-bottom:40px"></div>
+ <div class="h1" style="font-size:70px">Rascunho é insegurança.<br><em>Esquema é método.</em></div>
+ <div style="background:var(--laranja);border-radius:12px;padding:32px 38px;margin-top:48px">
+ <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:34px;color:#fff;line-height:1.3">
+ Salva para o próximo simulado.
+ </div>
+ <div style="font-size:27px;color:#FFE7D6;margin-top:14px;line-height:1.4">
+ Já fez a prova e a nota não veio? Manda <b style="color:#fff">RECURSO</b> no direct. A análise de viabilidade é gratuita.
+ </div>
+ </div>
+ </div>
+ <div class="rodape"><div>Samuel Wolf · Recursos de provas discursivas</div><div class="seta">↑ Salvar</div></div>
+</div>
+
+</body>
+</html>
