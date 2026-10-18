@@ -3,6 +3,8 @@
  "tipo": "carrossel",
  "origem": "Série Semanal",
  "primeiro_comentario": "Na prova, você lê primeiro o texto-base ou as perguntas? Comenta TEXTO ou PERGUNTA 👇",
- "status": "agendado",
- "metricool_id": 399316461
+ "status": "aguardando_ok",
+ "metricool_id": 399326279,
+ "metricool_uuid": "-7006665191329674932",
+ "previa_enviada_em": "2026-10-18T15:12:00"
 }
