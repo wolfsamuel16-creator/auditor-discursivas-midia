@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Campanha Recurso TCE-PE — carrossel e stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2A3544;--laranja:#F04E23;--texto:#2B3644;--verde:#00897B;--cinza:#8A929B;--cinza-claro:#B8C2CC;
+--filete:#CFD6DD;--cx-verde:#D9F0EC;--cx-azul:#F4FAFB;--cx-laranja:#FFE7D6;--cx-navy:#E6EAF0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8EBEE;font-family:'Lato',sans-serif;padding:40px;display:flex;flex-direction:column;align-items:center;gap:40px}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#fff;flex-shrink:0}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;flex-shrink:0;background:var(--navy)}
+.pad{padding:84px}
+.dark{background:var(--navy);display:flex;flex-direction:column;justify-content:space-between}
+.marca{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--laranja)}
+.contador{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:2px;color:var(--cinza)}
+.rule{width:120px;height:8px;background:var(--laranja)}
+.eyebrow{font-family:'Poppins';font-weight:600;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza-claro)}
+.h1{font-family:'Poppins';font-weight:800;font-size:96px;line-height:1.04;color:#fff;letter-spacing:-2px}
+.h1 em{font-style:normal;color:var(--laranja)}
+.sub{font-size:34px;line-height:1.45;color:var(--cinza-claro);max-width:880px}
+.sub b{color:#fff}
+.selo{display:flex;gap:14px;flex-wrap:wrap}
+.selo span{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;border:2px solid var(--cinza);border-radius:40px;padding:10px 22px}
+.selo span.on{background:var(--laranja);border-color:var(--laranja)}
+.rodape{display:flex;justify-content:space-between;align-items:flex-end;font-size:24px;letter-spacing:1.5px;color:var(--cinza)}
+.rodape .seta{color:var(--laranja);font-family:'Poppins';font-weight:600}
+.cta{background:var(--laranja);border-radius:16px;padding:34px 40px}
+.cta .a{font-family:'Poppins';font-weight:700;font-size:40px;color:#fff;line-height:1.25}
+.cta .a b{background:#fff;color:var(--laranja);padding:0 14px;border-radius:8px}
+.cta .b{font-size:28px;color:#FFE7D6;margin-top:12px;line-height:1.4}
+.faixa-navy{background:var(--navy);padding:24px 84px;font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;display:flex;justify-content:space-between}
+.faixa-navy .n{color:var(--cinza-claro)}
+.faixa-laranja{background:var(--laranja);padding:28px 84px;font-family:'Poppins';font-weight:700;font-size:46px;line-height:1.15;color:#fff;letter-spacing:-.5px}
+.corpo{padding:60px 84px 0}
+.txt{font-size:38px;line-height:1.45;color:var(--texto)}
+.txt b{color:var(--navy)}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:34px}
+.num{background:var(--cx-navy);border-radius:14px;padding:30px 34px}
+.num .v{font-family:'Poppins';font-weight:800;font-size:66px;line-height:1;color:var(--navy)}
+.num .v small{font-size:34px;font-weight:700}
+.num .l{font-size:28px;line-height:1.35;color:var(--texto);margin-top:10px}
+.num.dest{background:var(--cx-laranja)} .num.dest .v{color:var(--laranja)}
+.dica{margin-top:30px;padding-top:36px;border-top:2px solid var(--filete);display:flex;gap:22px;align-items:flex-start}
+.dica-rot{font-family:'Poppins';font-weight:700;font-size:21px;letter-spacing:2px;color:var(--laranja);text-transform:uppercase;padding-top:6px;white-space:nowrap}
+.dica-txt{font-size:35px;line-height:1.42;color:var(--texto)}
+.dica-txt b{color:var(--navy)}
+.lista div{display:flex;gap:24px;align-items:flex-start;padding:30px 0;border-bottom:1px solid var(--filete)}
+.lista div:last-child{border-bottom:none}
+.lista .ok{font-family:'Poppins';font-weight:800;color:var(--verde);font-size:34px;min-width:40px}
+.lista .q{font-size:35px;line-height:1.38;color:var(--texto)}
+.lista .q b{color:var(--navy)}
+.lista .q small{display:block;font-size:27px;color:var(--cinza);margin-top:4px}
+.rod{display:flex;gap:26px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--filete)}
+.rod:last-child{border-bottom:none}
+.rod .k{font-family:'Poppins';font-weight:800;font-size:28px;color:#fff;background:var(--laranja);min-width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rod .k.p{background:var(--navy)}
+.rod .t{font-size:34px;line-height:1.3;color:var(--texto)}
+.rod .t b{color:var(--navy)}
+.rod .t small{display:block;font-family:'Poppins';font-weight:600;font-size:20px;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:4px}
+.folha{background:#FFFDF8;border:2px solid var(--filete);border-radius:14px;padding:40px 44px;font-size:33px;line-height:1.62;color:var(--texto)}
+.folha .r{text-align:right} .folha .c{text-align:center} .folha .i{padding-left:56px}
+.folha .hl{background:var(--cx-laranja);box-shadow:inset 0 -4px 0 var(--laranja);padding:1px 0}
+.folha .g{color:var(--cinza)}
+.bloco{display:flex;gap:24px;align-items:stretch;margin-bottom:20px}
+.bloco .lado{min-width:12px;border-radius:6px;background:var(--laranja)}
+.bloco .c{flex:1;background:var(--cx-azul);border:2px solid var(--filete);border-radius:14px;padding:22px 30px}
+.bloco .c .h{font-family:'Poppins';font-weight:700;font-size:30px;color:var(--navy)}
+.bloco .c .h span{color:var(--laranja)}
+.bloco .c .d{font-size:29px;line-height:1.38;color:var(--texto);margin-top:4px}
+.rod-claro{position:absolute;bottom:0;left:0;right:0;padding:30px 84px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:1.5px;color:var(--cinza)}
+.rod-claro .seta{color:var(--laranja);font-family:'Poppins';font-weight:700}
+.foto{width:132px;height:132px;border-radius:50%;border:5px solid var(--laranja);background:#1c2735 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;font-size:44px;color:var(--laranja)}
+/* stories: 250px livres no topo, 340px na base */
+.st-in{position:absolute;top:250px;bottom:340px;left:84px;right:84px;display:flex;flex-direction:column;justify-content:center;gap:44px}
+.st-h{font-family:'Poppins';font-weight:800;font-size:92px;line-height:1.05;color:#fff;letter-spacing:-2px}
+.st-h em{font-style:normal;color:var(--laranja)}
+.st-p{font-size:48px;line-height:1.45;color:var(--cinza-claro)}
+.st-p b{color:#fff}
+.st-box{background:#fff;border-radius:22px;padding:44px 48px}
+.st-box .q{font-family:'Poppins';font-weight:700;font-size:46px;color:var(--navy);line-height:1.2}
+.st-box .r{font-size:38px;color:var(--texto);margin-top:16px;line-height:1.4}
+.kw{display:inline-block;background:var(--laranja);color:#fff;font-family:'Poppins';font-weight:800;font-size:110px;letter-spacing:4px;border-radius:20px;padding:6px 44px}
+.tag{display:inline-flex;align-items:center;gap:18px;background:var(--laranja);color:#fff;font-family:'Poppins';font-weight:800;font-size:54px;letter-spacing:3px;text-transform:uppercase;border-radius:16px;padding:14px 34px 10px;line-height:1.1}
+.tag small{font-family:'Lato';font-weight:700;font-size:26px;letter-spacing:1px;text-transform:none;color:#FFE7D6;border-left:3px solid #FFB89C;padding-left:18px}
+.st-marca{position:absolute;top:140px;left:84px;right:84px;display:flex;justify-content:space-between}
+
+.dt{min-width:150px;height:auto;border-radius:12px;padding:10px 0;font-family:'Poppins';font-weight:800;font-size:30px;color:#fff;background:var(--laranja);text-align:center;line-height:1.1}
+.dt small{display:block;font-family:'Lato';font-weight:700;font-size:20px;letter-spacing:1px;color:#FFE7D6;margin:2px 0 0}
+.dt.p{background:var(--navy)} .dt.p small{color:var(--cinza-claro)}
+.rod .k.w{min-width:96px;border-radius:28px;font-size:30px}
+.selo span{font-size:20px;padding:9px 18px}
+</style>
+</head>
+<body>
+<div class="slide dark pad" data-n="01">
+  <div style="display:flex;justify-content:space-between"><div class="marca">Auditor Discursivas</div><div class="contador">01 / 07</div></div>
+  <div>
+    <div class="tag" style="margin-bottom:46px">TCE-PE · FGV<small>cargos reaplicados</small></div>
+    <div class="h1" style="font-size:88px">Recurso da discursiva:<br><em>2 dias úteis.</em></div>
+    <div class="sub" style="margin-top:36px">Resultado preliminar previsto para <b>12/11</b>. Recurso de <b>13/11 (sexta) a 16/11 (segunda)</b>. Quem só abrir o espelho na sexta já perdeu metade do prazo.</div>
+    <div class="selo" style="margin-top:40px"><span class="on">Auditor CE · Contas Públicas</span><span>Auditor CE · TI</span><span>Analista CE · Contas Públicas</span><span>Analista de Gestão · Adm.</span></div>
+    <div class="cta" style="margin-top:50px"><div class="a">Salve este post: é o seu roteiro até <b>16/11</b>.</div></div>
+  </div>
+  <div class="rodape"><div>@auditor_discursivas</div><div class="seta">Arraste →</div></div>
+</div>
+<div class="slide" data-n="02">
+  <div class="faixa-navy"><span>O calendário da FGV</span><span class="n">02 / 07</span></div>
+  <div class="faixa-laranja">Da objetiva definitiva ao fim do recurso</div>
+  <div class="corpo">
+<div class="rod"><span class="dt p">20/10<small>terça</small></span><span class="t"><small>Hoje (previsto)</small><b>Resultado definitivo da objetiva</b></span></div>
+<div class="rod"><span class="dt">12/11<small>quinta</small></span><span class="t"><small>Preliminar</small><b>Nota da discursiva</b></span></div>
+<div class="rod"><span class="dt">13 a 16/11<small>sex → seg</small></span><span class="t"><small>2 dias úteis</small><b>Recurso contra a nota da discursiva</b></span></div>
+<div class="rod"><span class="dt p">08/12<small>terça</small></span><span class="t"><small>Definitivo</small><b>Discursiva definitiva e resultado final</b></span></div>
+<div class="dica"><div class="dica-rot">Fonte</div><div class="dica-txt">Cronograma previsto da FGV (atualizado em 02/09/2026). A banca avisa que as datas <b>podem mudar</b>.</div></div>
+</div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+<div class="slide" data-n="03">
+  <div class="faixa-navy"><span>Quanto vale a discursiva</span><span class="n">03 / 07</span></div>
+  <div class="faixa-laranja">Uma questão, 25 linhas, 20 pontos</div>
+  <div class="corpo">
+<div class="nums">
+  <div class="num"><div class="v">25 <small>linhas</small></div><div class="l">Uma questão de <b>estudo de caso</b>, sem consulta</div></div>
+  <div class="num"><div class="v">20 <small>pts</small></div><div class="l">Nota máxima da discursiva</div></div>
+  <div class="num dest"><div class="v">12 <small>/ 20</small></div><div class="l">Abaixo disso, <b>eliminado</b></div></div>
+  <div class="num"><div class="v">100</div><div class="l">Nota final = <b>objetiva + discursiva</b></div></div>
+</div>
+<div class="txt">E no empate, depois da idade, quem decide é a <b>maior nota na discursiva</b>.</div>
+<div class="dica"><div class="dica-rot">Fonte</div><div class="dica-txt">Edital n.º 01/2025 – TCE/PE, subitens 11.1, 11.1.1, 14.1 e 15.1.</div></div>
+</div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+<div class="slide" data-n="04">
+  <div class="faixa-navy"><span>Quem tem a prova corrigida</span><span class="n">04 / 07</span></div>
+  <div class="faixa-laranja">A discursiva só é corrigida dentro do corte</div>
+  <div class="corpo">
+<div class="txt" style="font-size:32px;margin-bottom:8px">Ampla concorrência, aprovados e classificados na objetiva:</div>
+<div class="rod"><span class="k w">250</span><span class="t"><b>Auditor de CE – Contas Públicas</b></span></div>
+<div class="rod"><span class="k w">80</span><span class="t"><b>Auditor de CE – Tecnologia da Informação</b></span></div>
+<div class="rod"><span class="k w">250</span><span class="t"><b>Analista de CE – Contas Públicas</b></span></div>
+<div class="rod"><span class="k w">150</span><span class="t"><b>Analista de Gestão – Administração</b></span></div>
+<div class="txt" style="font-size:30px;margin-top:14px">Mais <b>todas as pessoas com deficiência</b> aprovadas na objetiva e, para candidatos negros, <b>20% desse número</b> (mínimo de 30 por cargo).</div>
+<div class="dica" style="margin-top:22px;padding-top:26px"><div class="dica-rot">Fonte</div><div class="dica-txt">Edital, subitens 11.4 a 11.4.2.</div></div>
+</div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+<div class="slide" data-n="05">
+  <div class="faixa-navy"><span>O que o edital diz sobre o recurso</span><span class="n">05 / 07</span></div>
+  <div class="faixa-laranja">Cinco regras que derrubam pedidos</div>
+  <div class="corpo">
+<div class="lista">
+  <div><span class="ok">1</span><span class="q"><b>Prazo de 2 dias úteis</b><small>Fora dele, o recurso não é aceito (16.2 e 16.3.8)</small></span></div>
+  <div><span class="ok">2</span><span class="q"><b>Formulário completo</b><small>Campo em branco: nem chega à banca (16.3.2)</small></span></div>
+  <div><span class="ok">3</span><span class="q"><b>Claro, consistente e objetivo</b><small>Recurso inconsistente é indeferido liminarmente (16.3.1)</small></span></div>
+  <div><span class="ok">4</span><span class="q"><b>Sem identificação</b><small>Quem se identifica não tem o recurso conhecido (16.3.9)</small></span></div>
+  <div><span class="ok">5</span><span class="q"><b>Uma chance só</b><small>Não existe revisão do recurso (16.4)</small></span></div>
+</div>
+</div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+<div class="slide" data-n="06">
+  <div class="faixa-navy"><span>Até 16/11</span><span class="n">06 / 07</span></div>
+  <div class="faixa-laranja">Como usar a janela curta</div>
+  <div class="corpo">
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">Agora · <span>a norma do caso</span></div><div class="d">Separe a legislação que o estudo de caso pedia. É ela que fundamenta cada pedido.</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">12/11 · <span>espelho × folha</span></div><div class="d">Para cada critério do espelho, marque a linha da sua resposta que o atende.</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">13/11 · <span>o que recorrer</span></div><div class="d">Só os itens com prova na sua folha. Pedido genérico vira indeferimento.</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">16/11 · <span>envie com folga</span></div><div class="d">Sem se identificar e sem campo em branco. Não deixe para a última hora.</div></div></div>
+<div class="dica" style="margin-top:14px"><div class="dica-rot">Regra</div><div class="dica-txt">Recurso bom não diz <b>“minha resposta estava certa”</b>. Mostra a linha e o critério.</div></div>
+</div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+<div class="slide dark pad" data-n="07">
+  <div style="display:flex;justify-content:space-between"><div class="marca">Auditor Discursivas</div><div class="contador">07 / 07</div></div>
+  <div>
+    <div class="tag" style="margin-bottom:44px;white-space:nowrap">Recurso TCE&#8209;PE<small>viabilidade grátis</small></div>
+    <div class="h1" style="font-size:76px">A nota não veio?<br>São <em>2 dias úteis</em><br>para reagir.</div>
+    <div class="cta" style="margin-top:54px">
+      <div class="a">Manda <b>RECURSO</b> no direct.</div>
+      <div class="b">A análise de viabilidade é gratuita: antes de qualquer contratação, eu te digo se vale recorrer.</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:28px;margin-top:54px">
+      <div class="foto">SW</div>
+      <div><div style="font-family:'Poppins';font-weight:700;font-size:38px;color:#fff">Samuel Wolf</div>
+      <div style="font-size:28px;color:var(--cinza-claro);margin-top:6px">Recursos de provas discursivas</div>
+      <div style="font-size:23px;color:var(--cinza);margin-top:8px;line-height:1.4">Engenheiro pelo ITA · Auditor de Controle Externo do TCE-RJ ·<br>Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</div></div>
+    </div>
+  </div>
+  <div class="rodape"><div>@auditor_discursivas</div><div class="seta">↑ Salvar</div></div>
+</div>
+<div class="story" data-n="st01">
+  <div class="st-marca"><div class="marca">Auditor Discursivas</div><div class="contador">@auditor_discursivas</div></div>
+  <div class="st-in"><div><span class="tag">TCE-PE<small>reaplicação · FGV</small></span></div>
+<div class="st-h">Passou na objetiva do <em style="white-space:nowrap">TCE&#8209;PE</em>?</div>
+<div class="st-p">A nota da discursiva sai em <b>12/11</b> (previsão da FGV). O recurso vai de <b>13/11 a 16/11</b>: só <b>2 dias úteis</b>.</div>
+<div class="st-box"><div class="q">Salve a data: 12/11</div><div class="r">O roteiro do recurso, com as regras do edital, está no feed.</div></div></div>
+</div>
+<div class="story" data-n="st02">
+  <div class="st-marca"><div class="marca">Auditor Discursivas</div><div class="contador">@auditor_discursivas</div></div>
+  <div class="st-in"><div class="st-h">Nota da discursiva <em>não veio</em>?</div>
+<div><span class="kw">RECURSO</span></div>
+<div class="st-p">Manda <b>RECURSO</b> no direct do <b>@auditor_discursivas</b>.</div>
+<div class="st-box"><div class="q">Análise de viabilidade gratuita</div><div class="r">Antes de contratar, eu te digo se vale recorrer.</div></div></div>
+</div>
+</body>
+</html>
