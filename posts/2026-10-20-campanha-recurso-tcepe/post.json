@@ -3,7 +3,7 @@
  "tipo": "carrossel",
  "origem": "Central (campanha de recurso TCE-PE)",
  "primeiro_comentario": "Qual cargo você fez na reaplicação do TCE-PE? Comenta AUDITOR, ANALISTA ou GESTÃO 👇",
- "status": "rascunho no Metricool (aguardando ok do Samuel)",
+ "status": "aguardando_ok",
  "metricool_id": 399892123,
  "stories_publicar_em": [
   "2026-10-20T18:30:00",
@@ -13,5 +13,6 @@
  "stories_metricool": [
   399892183,
   399892220
- ]
+ ],
+ "previa_enviada_em": "2026-10-19T08:03:00 (pela Central)"
 }
