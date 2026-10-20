@@ -8,15 +8,15 @@
  "obs": "Samuel pediu 3-4 slides e novo CTA final (20/10 18h53). Substitui o post de 18h35 (Metricool 401536599), que ele deve apagar no app.",
  "metricool_uuid": "3749757071291076065",
  "ok_em": "2026-10-20T18:56:00",
- "stories": "story_01 TCE-PE calendário, story_02 o que derruba um recurso, story_03 CTA RECURSO",
+ "stories": "story_01 TCE-PE calendário (19h20, publicado), story_02 método do recurso (refeito a pedido do Samuel), story_03 CTA RECURSO",
  "stories_publicar_em": [
   "2026-10-20T19:20:00",
-  "2026-10-20T19:22:00",
-  "2026-10-20T19:24:00"
+  "2026-10-20T19:26:00",
+  "2026-10-20T19:28:00"
  ],
  "stories_metricool": [
   401572569,
-  401572591,
-  401572604
+  401575822,
+  401575844
  ]
 }
