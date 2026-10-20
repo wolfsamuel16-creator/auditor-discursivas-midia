@@ -3,16 +3,17 @@
  "tipo": "carrossel",
  "origem": "Central (campanha de recurso TCE-PE)",
  "primeiro_comentario": "Qual cargo você fez na reaplicação do TCE-PE? Comenta AUDITOR, ANALISTA ou GESTÃO 👇",
- "status": "aguardando_ok",
- "metricool_id": 399892123,
+ "status": "agendado",
+ "metricool_id": 400959116,
  "stories_publicar_em": [
   "2026-10-20T18:30:00",
   "2026-10-20T18:32:00"
  ],
  "stories": "story_01 teaser calendário TCE-PE, story_02 CTA RECURSO no direct",
  "stories_metricool": [
-  399892183,
-  399892220
+  400959152,
+  400959171
  ],
- "previa_enviada_em": "2026-10-19T08:03:00 (pela Central)"
+ "previa_enviada_em": "2026-10-19T08:03:00 (pela Central)",
+ "ok_em": "2026-10-20T07:50:00"
 }
