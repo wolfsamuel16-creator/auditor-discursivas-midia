@@ -1,9 +1,11 @@
 {
- "publicar_em": "2026-10-20T19:15:00",
+ "publicar_em": "2026-10-20T18:59:00",
  "tipo": "carrossel",
  "origem": "Central (campanha Recurso TCE-PE, versão 4 slides)",
  "primeiro_comentario": "Qual cargo você fez na reaplicação do TCE-PE? Comenta AUDITOR, ANALISTA ou GESTÃO 👇",
- "status": "aguardando_ok",
- "metricool_id": null,
- "obs": "Samuel pediu 3-4 slides e novo CTA final (20/10 18h53). Substitui o post de 18h35 (Metricool 401536599), que ele deve apagar no app."
+ "status": "agendado",
+ "metricool_id": 401558981,
+ "obs": "Samuel pediu 3-4 slides e novo CTA final (20/10 18h53). Substitui o post de 18h35 (Metricool 401536599), que ele deve apagar no app.",
+ "metricool_uuid": "3749757071291076065",
+ "ok_em": "2026-10-20T18:56:00"
 }
