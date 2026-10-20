@@ -1,20 +1,21 @@
 {
- "publicar_em": "2026-10-20T18:00:00",
+ "publicar_em": "2026-10-20T18:35:00",
  "tipo": "carrossel",
  "origem": "Central (campanha de recurso TCE-PE)",
  "primeiro_comentario": "Qual cargo você fez na reaplicação do TCE-PE? Comenta AUDITOR, ANALISTA ou GESTÃO 👇",
- "status": "descartado",
- "metricool_id": 400959116,
+ "status": "agendado",
+ "metricool_id": 401536599,
  "stories_publicar_em": [
-  "2026-10-20T18:30:00",
-  "2026-10-20T18:32:00"
+  "2026-10-20T18:45:00",
+  "2026-10-20T18:47:00"
  ],
  "stories": "story_01 teaser calendário TCE-PE, story_02 CTA RECURSO no direct",
  "stories_metricool": [
-  401535059,
-  401535074
+  401536632,
+  401536664
  ],
  "previa_enviada_em": "2026-10-19T08:03:00 (pela Central)",
- "ok_em": "2026-10-20T07:50:00",
- "obs": "Carrossel publicado 18h e excluído pelo Samuel no Instagram às ~18h20 (não gostou da capa). Stories voltados a rascunho às 18h22. Nova capa em teste: 'Não concorda com a nota da sua discursiva? Você ainda tem chance.'"
+ "ok_em": "2026-10-20T18:24:00",
+ "obs": "Carrossel publicado 18h e excluído pelo Samuel no Instagram às ~18h20 (não gostou da capa). Stories voltados a rascunho às 18h22. Nova capa em teste: 'Não concorda com a nota da sua discursiva? Você ainda tem chance.' | 18h24: Samuel pediu republicar o carrossel original; reagendado 18h35, stories 18h45/18h47.",
+ "metricool_uuid": "368917263924937782"
 }
