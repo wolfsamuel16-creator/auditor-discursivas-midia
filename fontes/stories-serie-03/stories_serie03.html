@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Reforço de campanhas 18/10 — stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2A3544;--laranja:#F04E23;--texto:#2B3644;--verde:#00897B;--cinza:#8A929B;--cinza-claro:#B8C2CC;
+--filete:#CFD6DD;--cx-verde:#D9F0EC;--cx-azul:#F4FAFB;--cx-laranja:#FFE7D6;--cx-navy:#E6EAF0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8EBEE;font-family:'Lato',sans-serif;padding:40px;display:flex;flex-direction:column;align-items:center;gap:40px}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#fff;flex-shrink:0}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;flex-shrink:0;background:var(--navy)}
+.pad{padding:84px}
+.dark{background:var(--navy);display:flex;flex-direction:column;justify-content:space-between}
+.marca{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--laranja)}
+.contador{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:2px;color:var(--cinza)}
+.rule{width:120px;height:8px;background:var(--laranja)}
+.eyebrow{font-family:'Poppins';font-weight:600;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza-claro)}
+.h1{font-family:'Poppins';font-weight:800;font-size:96px;line-height:1.04;color:#fff;letter-spacing:-2px}
+.h1 em{font-style:normal;color:var(--laranja)}
+.sub{font-size:34px;line-height:1.45;color:var(--cinza-claro);max-width:880px}
+.sub b{color:#fff}
+.selo{display:flex;gap:14px;flex-wrap:wrap}
+.selo span{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;border:2px solid var(--cinza);border-radius:40px;padding:10px 22px}
+.selo span.on{background:var(--laranja);border-color:var(--laranja)}
+.rodape{display:flex;justify-content:space-between;align-items:flex-end;font-size:24px;letter-spacing:1.5px;color:var(--cinza)}
+.rodape .seta{color:var(--laranja);font-family:'Poppins';font-weight:600}
+.cta{background:var(--laranja);border-radius:16px;padding:34px 40px}
+.cta .a{font-family:'Poppins';font-weight:700;font-size:40px;color:#fff;line-height:1.25}
+.cta .a b{background:#fff;color:var(--laranja);padding:0 14px;border-radius:8px}
+.cta .b{font-size:28px;color:#FFE7D6;margin-top:12px;line-height:1.4}
+.faixa-navy{background:var(--navy);padding:24px 84px;font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;display:flex;justify-content:space-between}
+.faixa-navy .n{color:var(--cinza-claro)}
+.faixa-laranja{background:var(--laranja);padding:28px 84px;font-family:'Poppins';font-weight:700;font-size:46px;line-height:1.15;color:#fff;letter-spacing:-.5px}
+.corpo{padding:60px 84px 0}
+.txt{font-size:38px;line-height:1.45;color:var(--texto)}
+.txt b{color:var(--navy)}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:34px}
+.num{background:var(--cx-navy);border-radius:14px;padding:30px 34px}
+.num .v{font-family:'Poppins';font-weight:800;font-size:66px;line-height:1;color:var(--navy)}
+.num .v small{font-size:34px;font-weight:700}
+.num .l{font-size:28px;line-height:1.35;color:var(--texto);margin-top:10px}
+.num.dest{background:var(--cx-laranja)} .num.dest .v{color:var(--laranja)}
+.dica{margin-top:30px;padding-top:36px;border-top:2px solid var(--filete);display:flex;gap:22px;align-items:flex-start}
+.dica-rot{font-family:'Poppins';font-weight:700;font-size:21px;letter-spacing:2px;color:var(--laranja);text-transform:uppercase;padding-top:6px;white-space:nowrap}
+.dica-txt{font-size:35px;line-height:1.42;color:var(--texto)}
+.dica-txt b{color:var(--navy)}
+.lista div{display:flex;gap:24px;align-items:flex-start;padding:30px 0;border-bottom:1px solid var(--filete)}
+.lista div:last-child{border-bottom:none}
+.lista .ok{font-family:'Poppins';font-weight:800;color:var(--verde);font-size:34px;min-width:40px}
+.lista .q{font-size:35px;line-height:1.38;color:var(--texto)}
+.lista .q b{color:var(--navy)}
+.lista .q small{display:block;font-size:27px;color:var(--cinza);margin-top:4px}
+.rod{display:flex;gap:26px;align-items:flex-start;padding:28px 0;border-bottom:1px solid var(--filete)}
+.rod:last-child{border-bottom:none}
+.rod .k{font-family:'Poppins';font-weight:800;font-size:28px;color:#fff;background:var(--laranja);min-width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rod .k.p{background:var(--navy)}
+.rod .t{font-size:34px;line-height:1.3;color:var(--texto)}
+.rod .t b{color:var(--navy)}
+.rod .t small{display:block;font-family:'Poppins';font-weight:600;font-size:20px;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:4px}
+.folha{background:#FFFDF8;border:2px solid var(--filete);border-radius:14px;padding:40px 44px;font-size:33px;line-height:1.62;color:var(--texto)}
+.folha .r{text-align:right} .folha .c{text-align:center} .folha .i{padding-left:56px}
+.folha .hl{background:var(--cx-laranja);box-shadow:inset 0 -4px 0 var(--laranja);padding:1px 0}
+.folha .g{color:var(--cinza)}
+.bloco{display:flex;gap:24px;align-items:stretch;margin-bottom:20px}
+.bloco .lado{min-width:12px;border-radius:6px;background:var(--laranja)}
+.bloco .c{flex:1;background:var(--cx-azul);border:2px solid var(--filete);border-radius:14px;padding:22px 30px}
+.bloco .c .h{font-family:'Poppins';font-weight:700;font-size:30px;color:var(--navy)}
+.bloco .c .h span{color:var(--laranja)}
+.bloco .c .d{font-size:29px;line-height:1.38;color:var(--texto);margin-top:4px}
+.rod-claro{position:absolute;bottom:0;left:0;right:0;padding:30px 84px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:1.5px;color:var(--cinza)}
+.rod-claro .seta{color:var(--laranja);font-family:'Poppins';font-weight:700}
+.foto{width:132px;height:132px;border-radius:50%;border:5px solid var(--laranja);background:#1c2735 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;font-size:44px;color:var(--laranja)}
+/* stories: 250px livres no topo, 340px na base */
+.st-in{position:absolute;top:250px;bottom:340px;left:84px;right:84px;display:flex;flex-direction:column;justify-content:center;gap:44px}
+.st-h{font-family:'Poppins';font-weight:800;font-size:92px;line-height:1.05;color:#fff;letter-spacing:-2px}
+.st-h em{font-style:normal;color:var(--laranja)}
+.st-p{font-size:48px;line-height:1.45;color:var(--cinza-claro)}
+.st-p b{color:#fff}
+.st-box{background:#fff;border-radius:22px;padding:44px 48px}
+.st-box .q{font-family:'Poppins';font-weight:700;font-size:46px;color:var(--navy);line-height:1.2}
+.st-box .r{font-size:38px;color:var(--texto);margin-top:16px;line-height:1.4}
+.kw{display:inline-block;background:var(--laranja);color:#fff;font-family:'Poppins';font-weight:800;font-size:110px;letter-spacing:4px;border-radius:20px;padding:6px 44px}
+.tag{display:inline-flex;align-items:center;gap:18px;background:var(--laranja);color:#fff;font-family:'Poppins';font-weight:800;font-size:54px;letter-spacing:3px;text-transform:uppercase;border-radius:16px;padding:14px 34px 10px;line-height:1.1}
+.tag small{font-family:'Lato';font-weight:700;font-size:26px;letter-spacing:1px;text-transform:none;color:#FFE7D6;border-left:3px solid #FFB89C;padding-left:18px}
+.st-marca{position:absolute;top:140px;left:84px;right:84px;display:flex;justify-content:space-between}
+
+.passos{background:#fff;border-radius:22px;padding:20px 48px}
+.passos div{display:flex;gap:28px;align-items:center;padding:24px 0;border-bottom:2px solid var(--filete)}
+.passos div:last-child{border-bottom:none}
+.passos .k{font-family:'Poppins';font-weight:800;font-size:34px;color:#fff;background:var(--laranja);min-width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.passos .t{font-size:40px;line-height:1.3;color:var(--texto)}
+.passos .t b{color:var(--navy)}
+.opc{display:flex;gap:28px}
+.opc span{flex:1;text-align:center;font-family:'Poppins';font-weight:800;font-size:58px;letter-spacing:2px;color:#fff;border:4px solid var(--cinza);border-radius:22px;padding:34px 0}
+.opc span.on{background:var(--laranja);border-color:var(--laranja)}
+.chips{display:flex;flex-wrap:wrap;gap:18px}
+.chips span{font-family:'Poppins';font-weight:700;font-size:44px;color:var(--navy);background:#fff;border-radius:16px;padding:14px 30px}
+</style>
+</head>
+<body>
+<div class="story" data-n="st01"><div class="st-marca"><div class="marca">Auditor Discursivas</div><div class="contador">@auditor_discursivas</div></div>
+<div class="st-in"><div><span class="tag">Série semanal<small>Semana 03</small></span></div>
+<div class="st-h">Antes da 1ª linha, <em style="white-space:nowrap">5 passos</em>.</div>
+<div class="passos">
+<div><span class="k">1</span><span class="t">Identifique <b>as perguntas</b>.</span></div>
+<div><span class="k">2</span><span class="t">Identifique <b>o tipo de texto</b>.</span></div>
+<div><span class="k">3</span><span class="t">Conte <b>as linhas</b> e distribua.</span></div>
+<div><span class="k">4</span><span class="t">Um <b>parágrafo</b> por ponto pedido.</span></div>
+<div><span class="k">5</span><span class="t">Só então leia <b>o texto-base</b>.</span></div>
+</div>
+<div class="st-p">Vale para questão, estudo de caso e peça técnica.</div></div>
+</div>
+<div class="story" data-n="st02"><div class="st-marca"><div class="marca">Auditor Discursivas</div><div class="contador">@auditor_discursivas</div></div>
+<div class="st-in"><div class="eyebrow">Responde aí</div>
+<div class="st-h">Na prova, você lê primeiro…</div>
+<div class="opc"><span>O TEXTO</span><span>A PERGUNTA</span></div>
+<div class="st-p">Quem começa pelo texto-base costuma ler o apoio <b>duas vezes</b>, com o relógio correndo.</div>
+<div class="st-box"><div class="q">Comenta TEXTO ou PERGUNTA</div><div class="r">no carrossel de hoje, lá no perfil.</div></div></div>
+</div>
+<div class="story" data-n="st03"><div class="st-marca"><div class="marca">Auditor Discursivas</div><div class="contador">@auditor_discursivas</div></div>
+<div class="st-in"><div class="eyebrow">No texto-base, marque</div>
+<div class="chips"><span>dados</span><span>valores</span><span>normas</span><span>nomes</span><span>datas</span></div>
+<div class="st-h">São os <em>gatilhos</em> de pontuação do espelho.</div>
+<div class="st-p">O roteiro completo está no carrossel de hoje. <b>Salva para o próximo simulado.</b></div>
+<div class="st-box"><div class="q">Já fez a prova e a nota não veio?</div><div class="r">Manda <b>RECURSO</b> no direct. A análise de viabilidade é gratuita.</div></div></div>
+</div>
+</body>
+</html>
