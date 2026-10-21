@@ -4,7 +4,22 @@
  "origem": "Central (stories de apoio da Série 03, a pedido do Samuel em 21/10 18h37)",
  "primeiro_comentario": "",
  "status": "aguardando_ok",
- "stories_publicar_em": ["2026-10-21T19:30:00","2026-10-21T19:32:00","2026-10-21T19:34:00"],
+ "stories_publicar_em": [
+  "2026-10-21T19:30:00",
+  "2026-10-21T19:32:00",
+  "2026-10-21T19:34:00"
+ ],
  "stories": "story_01 roteiro de 5 passos, story_02 TEXTO ou PERGUNTA (comentar no carrossel), story_03 gatilhos do espelho + CTA RECURSO",
- "metricool_id": null
+ "metricool_id": null,
+ "stories_metricool": [
+  402584855,
+  402584874,
+  402584931
+ ],
+ "stories_uuid": [
+  "4809727234432910730",
+  "-2970821108337391390",
+  "-3045484363562532255"
+ ],
+ "previa_enviada_em": "2026-10-21T18:40:00 (pela Central)"
 }
