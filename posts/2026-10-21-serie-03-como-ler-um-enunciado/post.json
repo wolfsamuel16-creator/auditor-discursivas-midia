@@ -3,9 +3,10 @@
  "tipo": "carrossel",
  "origem": "Série Semanal",
  "primeiro_comentario": "Na prova, você lê primeiro o texto-base ou as perguntas? Comenta TEXTO ou PERGUNTA 👇",
- "status": "agendado",
+ "status": "falhou",
  "metricool_id": 399341995,
  "metricool_uuid": "-7006665191329674932",
  "previa_enviada_em": "2026-10-18T15:12:00",
- "ok_em": "2026-10-18T15:20:00"
+ "ok_em": "2026-10-18T15:20:00",
+ "obs": "21/10 18h: Metricool recusou (\"You have reached your Metricool account limit\" — plano gratuito, 20 publicações/mês). Não publicou. Aguardando decisão do Samuel (Chrome / manual / plano pago)."
 }
