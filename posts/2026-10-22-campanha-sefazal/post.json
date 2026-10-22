@@ -1,23 +1,23 @@
 {
- "publicar_em": "2026-10-22T12:00:00",
+ "publicar_em": "2026-10-22T09:42:00",
  "tipo": "carrossel",
  "origem": "Campanha",
  "primeiro_comentario": "📌 Comente SEFAZAL aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
  "status": "agendado",
- "metricool_id": 403104514,
+ "metricool_id": 403107467,
  "stories": [
   "story_01.png",
   "story_02.png",
   "story_03.png"
  ],
  "stories_publicar_em": [
-  "2026-10-22T12:30:00",
-  "2026-10-22T12:32:00",
-  "2026-10-22T12:34:00"
+  "2026-10-22T10:10:00",
+  "2026-10-22T10:12:00",
+  "2026-10-22T10:14:00"
  ],
  "stories_metricool": [
-  403104538,
-  403104601,
-  403104626
+  403107510,
+  403107540,
+  403107590
  ]
 }
