@@ -3,7 +3,7 @@
  "tipo": "carrossel",
  "origem": "Campanha",
  "primeiro_comentario": "📌 Comente SEFAZAL aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
- "status": "agendado",
+ "status": "publicado",
  "metricool_id": 403107467,
  "stories": [
   "story_01.png",
@@ -19,5 +19,6 @@
   403107510,
   403107540,
   403107590
- ]
+ ],
+ "instagram_url": "https://www.instagram.com/p/DezAoOSiA8F/"
 }
