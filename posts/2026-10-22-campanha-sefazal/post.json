@@ -3,8 +3,8 @@
  "tipo": "carrossel",
  "origem": "Campanha",
  "primeiro_comentario": "📌 Comente SEFAZAL aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
- "status": "rascunho no Metricool (aguardando ok do Samuel)",
- "metricool_id": 403088227,
+ "status": "agendado",
+ "metricool_id": 403104514,
  "stories": [
   "story_01.png",
   "story_02.png",
@@ -16,8 +16,8 @@
   "2026-10-22T12:34:00"
  ],
  "stories_metricool": [
-  403090351,
-  403090397,
-  403090433
+  403104538,
+  403104601,
+  403104626
  ]
 }
