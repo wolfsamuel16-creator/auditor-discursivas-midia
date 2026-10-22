@@ -10,69 +10,52 @@ exec(src)  # define CSS, head, capa, conteudo, fecho, story
 
 OUT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else 'out'); OUT.mkdir(parents=True, exist_ok=True)
 KW = 'SEFAZAL'
-T = 8
+T = 6
 
 c = head('Campanha SEFAZ-AL 2026 — carrossel') + capa(1, T,
-    'PDF · Cebraspe',
+    'PDF · 40 páginas',
     'Discursiva da <em style="white-space:nowrap">SEFAZ&#8209;AL</em> 2026',
-    'Auditor Fiscal da Administração Tributária Estadual. <b>Quatro questões de 30 linhas</b>, uma para cada eixo do edital.',
-    ['Prova 10/01/2027', '40 páginas', '6 rodadas com espelho'], KW)
+    'Uma aula completa para o <b>Auditor Fiscal</b>: método, os quatro eixos do edital e <b>6 rodadas inéditas</b> com espelho e resposta linha a linha.',
+    ['40 páginas', '6 rodadas', 'Espelho + resposta'], KW)
 
-c += conteudo(2, T, 'A prova de domingo à tarde', 'Quatro textos, 40 pontos, uma linha de corte', '''
-<div class="nums">
-  <div class="num"><div class="v">4 × 30</div><div class="l">Quatro questões de até 30 linhas · <b>10 pontos</b> cada</div></div>
-  <div class="num"><div class="v">4h30</div><div class="l">Para as <b>120 linhas</b>, à mão</div></div>
-  <div class="num dest"><div class="v">20 <small>/ 40</small></div><div class="l">Abaixo disso, <b>eliminado</b></div></div>
-  <div class="num"><div class="v">~500</div><div class="l">Provas corrigidas para <b>40 vagas</b> imediatas</div></div>
+c += conteudo(2, T, 'Na aula gratuita · 40 páginas', 'O que você recebe no PDF', """
+<div class="lista">
+  <div><span class="ok">✓</span><span class="q"><b>Raio-X do edital</b> e de como o Cebraspe corrige<small>Fórmula da nota, correção dupla, o que zera ou anula</small></span></div>
+  <div><span class="ok">✓</span><span class="q">O que o edital pede em <b>cada um dos quatro eixos</b><small>Os tópicos do edital que mais rendem uma questão de 30 linhas</small></span></div>
+  <div><span class="ok">✓</span><span class="q">O que a banca <b>já cobrou na área fiscal</b><small>SEFAZ-AL 2021, SEFAZ-SE 2021, SEFAZ-AC 2024</small></span></div>
+  <div><span class="ok">✓</span><span class="q"><b>O que está quente</b> para a SEFAZ-AL<small>Split payment, transição do ICMS, fiscalização por dados</small></span></div>
+  <div><span class="ok">✓</span><span class="q"><b>Roteiro de planejamento</b> em cinco passos<small>E a calibragem das 30 linhas por item</small></span></div>
+  <div><span class="ok">✓</span><span class="q">Gestão das <b>4h30</b> e checklist do dia da prova</span></div>
 </div>
-<div class="txt">Cada questão vale o mesmo que <b>dez itens líquidos</b> da objetiva. Três pontos numa resposta bem estruturada costumam vir mais fácil que três itens a mais.</div>
-<div class="dica"><div class="dica-rot">Fonte</div><div class="dica-txt">Edital n.º 1 – SEFAZ/AL, de 24/8/2026 (subitens 7.3, 8.11.6, 9.1, 9.7.6 e 11.1).</div></div>
-''')
+""")
 
-c += conteudo(3, T, 'Uma particularidade rara', 'O edital já diz o eixo de cada questão', '''
-<div class="rod"><span class="k">1</span><span class="t"><small>Questão 1</small><b>Ciência de dados</b> · CRISP-DM, aprendizado de máquina, métricas, BI</span></div>
-<div class="rod"><span class="k">2</span><span class="t"><small>Questão 2</small><b>Auditoria fiscal</b> · SPED, NF-e, EFD, cruzamentos, créditos indevidos</span></div>
-<div class="rod"><span class="k">3</span><span class="t"><small>Questão 3</small><b>Finanças públicas</b> · orçamento, LRF, renúncia de receita, dívida</span></div>
-<div class="rod"><span class="k">4</span><span class="t"><small>Questão 4</small><b>Reforma tributária</b> · IBS, CBS, Comitê Gestor, split payment, transição</span></div>
-<div class="dica"><div class="dica-rot">O recado</div><div class="dica-txt">Em vez de dezenas de disciplinas, você treina <b>quatro conteúdos</b>. Quem treinar com método chega com vantagem enorme.</div></div>
-''')
-
-c += conteudo(4, T, 'Atenção ao calendário', 'Você vai fazer a discursiva sem saber se passou', '''
-<div class="rod"><span class="k p">1</span><span class="t"><small>20/12/2026</small><b>Prova objetiva</b></span></div>
-<div class="rod"><span class="k">2</span><span class="t"><small>10/01/2027 · tarde</small><b>Prova discursiva</b> · três semanas depois</span></div>
-<div class="rod"><span class="k p">3</span><span class="t"><small>05/02/2027</small><b>Resultado final da objetiva</b></span></div>
-<div class="dica"><div class="dica-rot">Na prática</div><div class="dica-txt">Não decida o seu esforço pelo gabarito preliminar. <b>Treine discursiva desde já</b>, em paralelo com a objetiva.</div></div>
-<div class="dica" style="margin-top:20px;border-top:none;padding-top:0"><div class="dica-rot">Fonte</div><div class="dica-txt">Edital n.º 1 – SEFAZ/AL e retificações.</div></div>
-''')
-
-c += conteudo(5, T, 'Prévia da aula gratuita', 'O parágrafo que pontua, em quatro partes', '''
-<div class="bloco"><div class="lado"></div><div class="c"><div class="h">1 · Tópico frasal</div><div class="d">“O crédito relativo ao material de uso e consumo é indevido.”</div></div></div>
-<div class="bloco"><div class="lado"></div><div class="c"><div class="h">2 · Fundamento</div><div class="d">“...pois o art. 33, I, da LC n.º 87/1996 só admite esse crédito a partir de 2033.”</div></div></div>
-<div class="bloco"><div class="lado"></div><div class="c"><div class="h">3 · Aplicação ao caso</div><div class="d">“No caso, a empresa creditou R$ 45 mil de NF-e com CFOP 1.556.”</div></div></div>
-<div class="bloco"><div class="lado"></div><div class="c"><div class="h">4 · Fechamento</div><div class="d">“Assim, o valor deve ser estornado, com multa.”</div></div></div>
-<div class="dica" style="margin-top:14px"><div class="dica-rot">E em dados?</div><div class="dica-txt">O fundamento é o <b>conceito técnico</b>, com o nome técnico, aplicado à SEFAZ.</div></div>
-''')
-
-c += conteudo(6, T, 'As seis rodadas', 'Temas inéditos, um caso por eixo', '''
+c += conteudo(3, T, 'O coração da aula', 'Seis rodadas inéditas, um caso por eixo', """
 <div class="rod"><span class="k">1</span><span class="t"><small>Ciência de dados</small><b>Seleção de contribuintes com aprendizado de máquina</b></span></div>
 <div class="rod"><span class="k">2</span><span class="t"><small>Ciência de dados</small><b>BI e modelagem dimensional da arrecadação</b></span></div>
 <div class="rod"><span class="k">3</span><span class="t"><small>Auditoria fiscal</small><b>Cruzamento NF-e × EFD ICMS/IPI</b></span></div>
 <div class="rod"><span class="k">4</span><span class="t"><small>Finanças públicas</small><b>Renúncia de receita e incentivo de ICMS</b></span></div>
 <div class="rod"><span class="k">5</span><span class="t"><small>Reforma tributária</small><b>Split payment, crédito e apuração assistida</b></span></div>
 <div class="rod"><span class="k">6</span><span class="t"><small>Reforma tributária</small><b>Princípio do destino, transição e Comitê Gestor</b></span></div>
-''')
+<div class="txt" style="font-size:28px;color:var(--cinza);margin-top:14px">Questões no padrão Cebraspe: 30 linhas, 10 pontos, itens com valor.</div>
+""")
 
-c += conteudo(7, T, 'Na aula gratuita · 40 páginas', 'Do edital ao checklist do dia', '''
-<div class="lista">
-  <div><span class="ok">✓</span><span class="q"><b>Raio-X do edital</b> e de como o Cebraspe corrige<small>Fórmula, correção dupla, o que zera ou anula</small></span></div>
-  <div><span class="ok">✓</span><span class="q">O que a banca <b>já cobrou na área fiscal</b><small>SEFAZ-AL 2021, SEFAZ-SE 2021, SEFAZ-AC 2024</small></span></div>
-  <div><span class="ok">✓</span><span class="q"><b>O que está quente</b> para a SEFAZ-AL<small>Split payment, transição do ICMS, Trânsito Inteligente</small></span></div>
-  <div><span class="ok">✓</span><span class="q"><b>6 rodadas</b> com espelho e resposta completa<small>Orientação de solução e proposta definitiva</small></span></div>
-  <div><span class="ok">✓</span><span class="q">Gestão das <b>quatro horas e meia</b> e checklist do dia</span></div>
-</div>
-''')
+c += conteudo(4, T, 'Como cada rodada funciona', 'Você escreve. Depois, a aula corrige.', """
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">1 · Questão inédita</div><div class="d">Leia o enunciado e escreva em <b>60 minutos</b>, cronometrados</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">2 · Orientação de solução</div><div class="d">O esqueleto: linhas por item, tópico frasal e dado do caso</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">3 · Padrão de resposta e espelho</div><div class="d">O que o corretor procura, com <b>conceitos graduados</b> por quesito</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">4 · Resposta definitiva</div><div class="d">O texto pronto, <b>linha a linha</b>, dentro das 30 linhas</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">5 · Armadilhas e dicas</div><div class="d">Os erros mais comuns e o que o enunciado esconde</div></div></div>
+""")
 
-c += fecho(8, T, 'Quatro eixos.<br>Um parágrafo por item.<br><em>Nota acima de 20.</em>', KW,
+c += conteudo(5, T, 'Prévia da aula gratuita', 'O parágrafo que pontua, em quatro partes', """
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">1 · Tópico frasal</div><div class="d">“O crédito relativo ao material de uso e consumo é indevido.”</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">2 · Fundamento</div><div class="d">“...pois o art. 33, I, da LC n.º 87/1996 só admite esse crédito a partir de 2033.”</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">3 · Aplicação ao caso</div><div class="d">“No caso, a empresa creditou R$ 45 mil de NF-e com CFOP 1.556.”</div></div></div>
+<div class="bloco"><div class="lado"></div><div class="c"><div class="h">4 · Fechamento</div><div class="d">“Assim, o valor deve ser estornado, com multa.”</div></div></div>
+<div class="dica" style="margin-top:14px"><div class="dica-rot">E em dados?</div><div class="dica-txt">O fundamento é o <b>conceito técnico</b>, com o nome técnico, aplicado à SEFAZ.</div></div>
+""")
+
+c += fecho(6, T, 'Seis rodadas.<br>Espelho e resposta.<br><em>Grátis no seu direct.</em>', KW,
     'Depois da prova, se a nota não vier como você esperava, me manda <b style="color:#fff">RECURSO</b> no direct. A análise de viabilidade é gratuita.')
 c += '</body>\n</html>\n'
 (OUT / 'carrossel_sefazal.html').write_text(c, encoding='utf-8')
