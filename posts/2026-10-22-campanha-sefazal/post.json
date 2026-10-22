@@ -3,9 +3,21 @@
  "tipo": "carrossel",
  "origem": "Campanha",
  "primeiro_comentario": "📌 Comente SEFAZAL aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
- "status": "aguardando",
- "metricool_id": null,
- "stories": ["story_01.png", "story_02.png", "story_03.png"],
- "stories_publicar_em": ["2026-10-22T12:30:00", "2026-10-22T12:32:00", "2026-10-22T12:34:00"],
- "stories_metricool": []
+ "status": "rascunho no Metricool (aguardando ok do Samuel)",
+ "metricool_id": 403078408,
+ "stories": [
+  "story_01.png",
+  "story_02.png",
+  "story_03.png"
+ ],
+ "stories_publicar_em": [
+  "2026-10-22T12:30:00",
+  "2026-10-22T12:32:00",
+  "2026-10-22T12:34:00"
+ ],
+ "stories_metricool": [
+  403078429,
+  403078479,
+  403078513
+ ]
 }
