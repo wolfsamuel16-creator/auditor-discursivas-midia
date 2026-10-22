@@ -1,20 +1,20 @@
 {
- "publicar_em": "2026-10-21T19:30:00",
+ "publicar_em": "2026-10-22T18:10:00",
  "tipo": "stories",
  "origem": "Central (stories de apoio da Série 03, a pedido do Samuel em 21/10 18h37)",
  "primeiro_comentario": "",
- "status": "vencido_sem_ok",
+ "status": "agendado",
  "stories_publicar_em": [
-  "2026-10-21T19:30:00",
-  "2026-10-21T19:32:00",
-  "2026-10-21T19:34:00"
+  "2026-10-22T18:10:00",
+  "2026-10-22T18:12:00",
+  "2026-10-22T18:14:00"
  ],
  "stories": "story_01 roteiro de 5 passos, story_02 TEXTO ou PERGUNTA (comentar no carrossel), story_03 gatilhos do espelho + CTA RECURSO",
  "metricool_id": null,
  "stories_metricool": [
-  402584855,
-  402584874,
-  402584931
+  403072112,
+  403072148,
+  403072182
  ],
  "stories_uuid": [
   "4809727234432910730",
@@ -22,5 +22,12 @@
   "-3045484363562532255"
  ],
  "previa_enviada_em": "2026-10-21T18:40:00 (pela Central)",
- "vencido_aviso_em": "2026-10-22T08:52:00"
+ "vencido_aviso_em": "2026-10-22T08:52:00",
+ "publicar_em_original": "2026-10-21T19:30:00",
+ "stories_publicar_em_original": [
+  "2026-10-21T19:30:00",
+  "2026-10-21T19:32:00",
+  "2026-10-21T19:34:00"
+ ],
+ "ok_em": "2026-10-22T08:55:00"
 }
