@@ -3,7 +3,7 @@
  "tipo": "stories",
  "origem": "Central (stories de apoio da Série 03, a pedido do Samuel em 21/10 18h37)",
  "primeiro_comentario": "",
- "status": "aguardando_ok",
+ "status": "vencido_sem_ok",
  "stories_publicar_em": [
   "2026-10-21T19:30:00",
   "2026-10-21T19:32:00",
@@ -21,5 +21,6 @@
   "-2970821108337391390",
   "-3045484363562532255"
  ],
- "previa_enviada_em": "2026-10-21T18:40:00 (pela Central)"
+ "previa_enviada_em": "2026-10-21T18:40:00 (pela Central)",
+ "vencido_aviso_em": "2026-10-22T08:52:00"
 }

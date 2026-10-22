@@ -3,6 +3,9 @@
  "tipo": "carrossel",
  "origem": "Série Semanal (fila reposta pela Central em 21/10 — push da tarefa de 19/10 falhou; foto inserida no slide 08)",
  "primeiro_comentario": "Você já recorreu de uma discursiva? Comenta SIM ou NÃO 👇",
- "status": "aguardando",
- "metricool_id": null
+ "status": "aguardando_ok",
+ "metricool_id": 403067362,
+ "uuid": "4767232094164896080",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=4767232094164896080",
+ "previa_enviada_em": "2026-10-22T08:52:00"
 }
