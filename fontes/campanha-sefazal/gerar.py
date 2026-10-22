@@ -61,17 +61,18 @@ c += '</body>\n</html>\n'
 (OUT / 'carrossel_sefazal.html').write_text(c, encoding='utf-8')
 
 st = head('Campanha SEFAZ-AL 2026 — stories')
-st += story(1, '''<div><span class="tag">Aula gratuita<small>SEFAZ-AL 2026</small></span></div>
-<div class="st-h">Vai fazer a discursiva da <em style="white-space:nowrap">SEFAZ&#8209;AL</em>?</div>
-<div class="st-p">Preparei uma aula <b>grátis</b>, em PDF, de <b>40 páginas</b> para o Auditor Fiscal: os <b>quatro eixos</b> do edital, o parágrafo que pontua e <b>6 rodadas</b> com espelho e resposta completa.</div>''')
-st += story(2, '''<div class="st-h">É só mandar no <em>direct</em></div>
+st += story(1, """<div><span class="tag">Aula gratuita<small>SEFAZ-AL 2026</small></span></div>
+<div class="st-h">A aula da discursiva da <em style="white-space:nowrap">SEFAZ&#8209;AL</em> chegou.</div>
+<div class="st-p"><b>40 páginas</b>, grátis, em PDF, para o Auditor Fiscal:</div>
+<div class="st-box"><div class="r" style="margin-top:0;line-height:1.6">✓ Raio-X do edital e da correção<br>✓ Os quatro eixos, um a um<br>✓ Roteiro de planejamento<br>✓ <b>6 rodadas inéditas</b> com espelho<br>✓ Checklist do dia da prova</div></div>""")
+st += story(2, """<div class="eyebrow">Como cada rodada funciona</div>
+<div class="st-h">Você escreve. A aula <em>corrige</em>.</div>
+<div class="st-box"><div class="r" style="margin-top:0;line-height:1.6"><b>1.</b> Questão inédita, 60 min<br><b>2.</b> Orientação de solução<br><b>3.</b> Padrão de resposta e espelho<br><b>4.</b> Resposta definitiva, linha a linha<br><b>5.</b> Armadilhas e dicas</div></div>
+<div class="st-p">Seis rodadas nos quatro eixos: <b>dados, auditoria fiscal, finanças e reforma tributária</b>.</div>""")
+st += story(3, """<div class="st-h">É só mandar no <em>direct</em></div>
 <div><span class="kw">SEFAZAL</span></div>
 <div class="st-p">Manda <b>SEFAZAL</b> numa mensagem para o <b>@auditor_discursivas</b> e a <b>aula gratuita</b> chega na hora.</div>
-<div class="st-box"><div class="q">Prefere comentar?</div><div class="r">Comente <b>SEFAZAL</b> no post da aula da SEFAZ-AL que eu também te mando.</div></div>''')
-st += story(3, '''<div class="eyebrow">Você sabia?</div>
-<div class="st-h">Você faz a discursiva <em>sem saber</em> se passou.</div>
-<div class="st-p">A objetiva é em <b>20/12</b>, a discursiva em <b>10/01</b> e o resultado final da objetiva só sai em <b>05/02</b>. Quem treina discursiva desde já sai na frente.</div>
-<div class="st-box"><div class="q">Mande SEFAZAL no direct</div><div class="r">e receba grátis a aula com as 6 rodadas.</div></div>''')
+<div class="st-box"><div class="q">Prefere comentar?</div><div class="r">Comente <b>SEFAZAL</b> no post da aula da SEFAZ-AL que eu também te mando.</div></div>""")
 st += '</body>\n</html>\n'
 (OUT / 'stories_sefazal.html').write_text(st, encoding='utf-8')
 print('ok')
