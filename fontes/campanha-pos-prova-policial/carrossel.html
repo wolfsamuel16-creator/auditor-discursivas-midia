@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+@font-face{font-family:Lato;font-weight:400;src:url(fonts/Lato-Regular.ttf)}
+@font-face{font-family:Lato;font-weight:700;src:url(fonts/Lato-Bold.ttf)}
+@font-face{font-family:Lato;font-weight:900;src:url(fonts/Lato-Black.ttf)}
+:root{--navy:#2A3544;--lar:#F04E23;--creme:#F6F2EC}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ccc}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Lato;display:flex;flex-direction:column;padding:150px 90px 130px}
+.navy{background:var(--navy);color:#fff}
+.claro{background:var(--creme);color:var(--navy)}
+.top{position:absolute;top:48px;left:90px;right:90px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:3px}
+.top .wm{color:var(--lar)}
+.top .ct{opacity:.6}
+.rod{position:absolute;bottom:48px;left:90px;right:90px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:600;font-size:24px;opacity:.75}
+.rod .sv{color:var(--lar);opacity:1}
+h1{font-family:Poppins;font-weight:800;font-size:96px;line-height:1.05;letter-spacing:-1px}
+h2{font-family:Poppins;font-weight:800;font-size:68px;line-height:1.1}
+em{font-style:normal;color:var(--lar)}
+.chips{display:flex;flex-wrap:wrap;gap:16px;margin:48px 0}
+.chip{font-family:Poppins;font-weight:700;font-size:34px;border:3px solid var(--lar);color:#fff;border-radius:60px;padding:10px 30px}
+p.big{font-size:44px;line-height:1.4}
+p.mid{font-size:38px;line-height:1.45}
+.box{background:var(--lar);color:#fff;border-radius:28px;padding:44px 48px;font-family:Poppins;font-weight:700;font-size:44px;line-height:1.3}
+.box small{display:block;font-family:Lato;font-weight:700;font-size:32px;margin-top:16px;opacity:.95}
+.lista{list-style:none;margin-top:56px}
+.lista li{display:flex;gap:32px;align-items:flex-start;margin-bottom:46px;font-size:42px;line-height:1.35}
+.num{flex:0 0 84px;height:84px;border-radius:50%;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:44px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-left:12px solid var(--lar);border-radius:18px;padding:40px 44px;margin-top:44px;font-size:38px;line-height:1.45}
+.autor{display:flex;align-items:center;gap:34px;margin-top:auto}
+.foto{width:170px;height:170px;border-radius:50%;border:7px solid var(--lar);background:url(foto.jpg) center/cover}
+.autor b{font-family:Poppins;font-weight:800;font-size:44px;display:block}
+.autor span{font-size:30px;opacity:.85}
+.sp{flex:1}
+/* stories */
+.st{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:Lato;display:flex;flex-direction:column;padding:250px 90px 340px;background:var(--navy);color:#fff}
+.st .wm{font-family:Poppins;font-weight:700;font-size:28px;letter-spacing:3px;color:var(--lar);margin-bottom:60px}
+.opt{display:flex;flex-direction:column;gap:30px;margin-top:70px}
+.op{border-radius:26px;padding:38px 44px;font-family:Poppins;font-weight:800;font-size:50px}
+.op.a{background:#fff;color:var(--navy)}
+.op.b{background:var(--lar);color:#fff}
+</style></head><body>
+
+<!-- 1 CAPA -->
+<section class="s navy">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">01 / 04</span></div>
+ <div class="sp"></div>
+ <h1>Fez prova policial <em>hoje?</em> 🚔</h1>
+ <div class="chips"><span class="chip">PC-BA</span><span class="chip">PC-AL</span><span class="chip">PC-MA</span><span class="chip">PC-AP</span></div>
+ <p class="big">E aí, <b>como foi a discursiva?</b></p>
+ <div class="sp"></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Arraste →</span></div>
+</section>
+
+<!-- 2 CONVERSA -->
+<section class="s claro" style="justify-content:center">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">02 / 04</span></div>
+ <h2>Conta aqui nos <em>comentários</em> 👇</h2>
+ <ul class="lista">
+  <li><span class="num">1</span><span>Qual concurso você fez?</span></li>
+  <li><span class="num">2</span><span>Como acha que foi na <b>discursiva</b>?</span></li>
+  <li><span class="num">3</span><span>Que tema ou peça mais pesou?</span></li>
+ </ul>
+ <div class="card">Domingo pesado: objetiva de manhã, discursiva à tarde. Agora é respirar — e entender o que vem pela frente.</div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 3 PONTE -->
+<section class="s claro" style="justify-content:center">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">03 / 04</span></div>
+ <h2>Discursiva é corrigida por <em>espelho</em>.</h2>
+ <p class="mid" style="margin-top:48px">A banca compara a sua resposta com um padrão de correção. Quando a correção <b>não reconhece</b> o que você escreveu, cabe recurso.</p>
+ <div class="card"><b>Ponto recuperado no recurso vale tanto quanto questão acertada na objetiva.</b> Às vezes é ele que separa a lista do corte.</div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 4 CTA -->
+<section class="s navy">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">04 / 04</span></div>
+ <div class="sp"></div>
+ <h2>Acha que vai precisar de <em>alguns pontinhos a mais?</em></h2>
+ <p class="big" style="margin:44px 0 52px">Não hesite em falar comigo.</p>
+ <div class="box">Manda RECURSO no direct.<small>A análise de viabilidade é gratuita.</small></div>
+ <div class="sp"></div>
+ <div class="autor" style="margin-top:0"><div class="foto"></div><div><b>Samuel Wolf</b><span>Recursos de provas discursivas</span></div></div>
+ <div class="rod"><span>@auditor_discursivas</span><span></span></div>
+</section>
+
+<!-- STORY 1 (06/12 19h) -->
+<section class="st">
+ <div class="wm">AUDITOR DISCURSIVAS</div>
+ <h1 style="font-size:104px">Como foi a discursiva <em>hoje?</em></h1>
+ <p class="big" style="margin-top:40px">PC-BA · PC-AL · PC-MA · PC-AP</p>
+ <div class="opt"><div class="op a">💪 Fui bem</div><div class="op b">😬 Vou precisar de recurso</div></div>
+ <p class="mid" style="margin-top:60px">Responde no direct com a sua opção.</p>
+</section>
+
+<!-- STORY 2 (07/12 12h) -->
+<section class="st">
+ <div class="wm">AUDITOR DISCURSIVAS</div>
+ <h1 style="font-size:96px">Prova policial no domingo?</h1>
+ <p class="big" style="margin:50px 0 70px">Se a discursiva pode ter ficado abaixo do que você escreveu, ainda dá tempo de conversar.</p>
+ <div class="box">Manda RECURSO no direct.<small>A análise de viabilidade é gratuita.</small></div>
+ <div class="autor"><div class="foto"></div><div><b>Samuel Wolf</b><span>Recursos de provas discursivas</span></div></div>
+</section>
+</body></html>
