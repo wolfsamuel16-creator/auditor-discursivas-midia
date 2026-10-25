@@ -1,0 +1,13 @@
+{
+ "publicar_em": "2026-12-06T19:00:00",
+ "tipo": "stories",
+ "origem": "Central",
+ "stories_publicar_em": [
+  "2026-12-06T19:00:00"
+ ],
+ "primeiro_comentario": "",
+ "status": "aguardando",
+ "metricool_id": null,
+ "stories_metricool": [],
+ "observacao": "Story enquete em imagem (Fui bem / Vou precisar de recurso — resposta no direct); enquete nativa não é suportada pelo Metricool."
+}
