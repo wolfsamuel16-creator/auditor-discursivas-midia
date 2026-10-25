@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Campanha CGU 2026 (v3, claro com as cores da marca) — carrossel e stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --navy:#2A3544; --texto:#2B3644; --laranja:#F04E23;
+ --azul:#2A3544; --azul-med:#5A6676; --azul-claro:#C3CBD5;
+ --ceu:#FFF4EC; --ceu-2:#E6EAF0; --ceu-3:#FFFAF6; --filete:#DDE2E8; --cinza:#8A929B;
+ --cx-laranja:#FFE7D6; --lar-claro:#F7B79E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#D9DEE4;font-family:'Lato',sans-serif;padding:40px;display:flex;flex-direction:column;align-items:center;gap:40px}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#fff;flex-shrink:0}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;flex-shrink:0}
+.claro{background:linear-gradient(165deg,var(--ceu) 0%,var(--ceu-3) 62%,#fff 100%)}
+.topo{position:absolute;top:0;left:0;right:0;padding:56px 84px 0;display:flex;justify-content:space-between;align-items:center}
+.marca{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--laranja)}
+.contador{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:2px;color:var(--cinza)}
+.rod{position:absolute;bottom:0;left:0;right:0;padding:34px 84px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:1.5px;color:var(--cinza)}
+.rod .seta{color:var(--azul);font-family:'Poppins';font-weight:700}
+.eyebrow{font-family:'Poppins';font-weight:600;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--azul)}
+.rule{width:120px;height:8px;border-radius:4px;background:var(--laranja)}
+.h1{font-family:'Poppins';font-weight:800;font-size:92px;line-height:1.04;color:var(--navy);letter-spacing:-2px}
+.h1 em{font-style:normal;color:var(--azul)}
+.h2{font-family:'Poppins';font-weight:800;font-size:60px;line-height:1.1;color:var(--navy);letter-spacing:-1px}
+.h2 em{font-style:normal;color:var(--azul)}
+.sub{font-size:34px;line-height:1.45;color:var(--texto)}
+.sub b{color:var(--navy)}
+.pills{display:flex;gap:14px;flex-wrap:wrap}
+.pills span{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;color:var(--azul);background:#fff;border:2px solid var(--azul-claro);border-radius:40px;padding:10px 22px}
+.pills span.on{background:var(--azul);border-color:var(--azul);color:#fff}
+.corpo{position:absolute;top:150px;left:84px;right:84px}
+/* capa */
+.capa .corpo{top:170px}
+.pdf{position:absolute;right:84px;top:600px;width:330px;height:430px;transform:rotate(5deg)}
+.pdf .pg{position:absolute;inset:0;background:#fff;border-radius:16px;border:2px solid var(--filete);box-shadow:0 18px 40px rgba(47,111,179,.16)}
+.pdf .pg.b{transform:translate(-22px,16px) rotate(-6deg);background:var(--ceu-2)}
+.pdf .pg.c{transform:translate(-40px,30px) rotate(-11deg);background:var(--ceu)}
+.pdf .face{position:absolute;inset:0;padding:34px 30px;display:flex;flex-direction:column;gap:14px}
+.pdf .face .t{font-family:'Poppins';font-weight:800;font-size:34px;line-height:1.08;color:var(--navy)}
+.pdf .face .t span{color:var(--azul)}
+.pdf .face .l{height:12px;border-radius:6px;background:var(--ceu-2)}
+.pdf .face .l.s{width:62%} .pdf .face .l.m{width:84%}
+.pdf .face .tag{margin-top:auto;align-self:flex-start;font-family:'Poppins';font-weight:700;font-size:20px;letter-spacing:2px;color:#fff;background:var(--laranja);border-radius:8px;padding:6px 14px}
+.capa-txt{width:560px}
+.cta{background:var(--laranja);border-radius:18px;padding:30px 38px}
+.cta .a{font-family:'Poppins';font-weight:700;font-size:38px;color:#fff;line-height:1.25}
+.cta .a b{background:#fff;color:var(--laranja);padding:0 14px;border-radius:8px}
+.cta .b{font-size:27px;color:#FFE7D6;margin-top:10px;line-height:1.4}
+/* listas */
+.itens{margin-top:50px;display:flex;flex-direction:column;gap:22px}
+.item{display:flex;gap:26px;align-items:center;background:#fff;border:2px solid var(--filete);border-radius:16px;padding:30px 32px}
+.item .ic{min-width:58px;height:58px;border-radius:14px;background:var(--ceu-2);color:var(--azul);font-family:'Poppins';font-weight:800;font-size:28px;display:flex;align-items:center;justify-content:center}
+.item .t{font-size:35px;line-height:1.3;color:var(--texto)}
+.item .t b{color:var(--navy)}
+.item.dest{background:var(--ceu);border-color:var(--azul-claro)}
+.item.dest .ic{background:var(--azul);color:#fff}
+.grupo{margin-top:50px}
+.grupo .gh{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid var(--azul);padding-bottom:12px;margin-bottom:8px}
+.grupo .gh .n{font-family:'Poppins';font-weight:700;font-size:30px;color:var(--navy)}
+.grupo .gh .v{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:2px;text-transform:uppercase;color:var(--azul)}
+.rd{display:flex;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid var(--filete)}
+.rd:last-child{border-bottom:none}
+.rd .k{min-width:56px;height:56px;border-radius:50%;background:var(--ceu-2);color:var(--azul);font-family:'Poppins';font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
+.rd .t{font-size:35px;line-height:1.3;color:var(--texto)}
+.rd .t b{color:var(--navy)}
+/* passos */
+.passos{margin-top:40px;position:relative}
+.passos:before{content:'';position:absolute;left:31px;top:30px;bottom:30px;width:4px;background:var(--azul-claro);border-radius:2px}
+.ps{display:flex;gap:30px;align-items:flex-start;padding:24px 0;position:relative}
+.ps .k{min-width:66px;height:66px;border-radius:50%;background:#fff;border:4px solid var(--azul);color:var(--azul);font-family:'Poppins';font-weight:800;font-size:28px;display:flex;align-items:center;justify-content:center}
+.ps.fim .k{background:var(--azul);color:#fff}
+.ps .t{padding-top:6px}
+.ps .t .h{font-family:'Poppins';font-weight:700;font-size:36px;color:var(--navy);line-height:1.2}
+.ps .t .d{font-size:31px;line-height:1.38;color:var(--texto);margin-top:4px}
+.nota{margin-top:40px;background:var(--ceu);border-left:8px solid var(--azul);border-radius:10px;padding:26px 30px;font-size:31px;line-height:1.4;color:var(--texto)}
+.nota b{color:var(--navy)}
+/* prévia */
+.formula{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.formula span{font-family:'Poppins';font-weight:700;font-size:27px;color:var(--navy);background:var(--ceu-2);border-radius:10px;padding:12px 18px}
+.formula i{font-style:normal;font-family:'Poppins';font-weight:800;font-size:28px;color:var(--azul)}
+.cmp{margin-top:44px;border-radius:16px;padding:26px 32px;border:2px solid}
+.cmp .r{font-family:'Poppins';font-weight:700;font-size:22px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
+.cmp .q{font-size:34px;line-height:1.45;color:var(--texto)}
+.cmp.nao{background:#FAFAFB;border-color:#E2E5E9}
+.cmp.nao .r{color:#A0A8B2}
+.cmp.nao .q{color:#8A949F;text-decoration:line-through;text-decoration-color:rgba(240,78,35,.55);text-decoration-thickness:3px}
+.cmp.sim{background:var(--ceu);border-color:var(--azul-claro);margin-top:20px}
+.cmp.sim .r{color:var(--azul)}
+.cmp.sim .q .hl{background:#fff;box-shadow:inset 0 -5px 0 var(--azul-claro);padding:0 2px}
+.fonte{margin-top:30px;font-size:27px;color:var(--cinza);line-height:1.4}
+/* fecho */
+.fecho .corpo{top:170px}
+.autor{display:flex;gap:28px;align-items:center;margin-top:70px}
+.foto{width:150px;height:150px;border-radius:50%;border:6px solid var(--laranja);background:var(--ceu-2) center/cover no-repeat;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Poppins';font-weight:800;font-size:44px;color:var(--azul)}
+.autor .n{font-family:'Poppins';font-weight:800;font-size:44px;color:var(--navy)}
+.autor .p{font-size:28px;color:var(--azul);margin-top:2px;font-family:'Poppins';font-weight:600}
+.cred{font-size:26px;line-height:1.5;color:var(--texto);margin-top:28px}
+.mini{margin-top:26px;font-size:26px;line-height:1.45;color:var(--cinza)}
+.mini b{color:var(--navy)}
+/* stories */
+.st-in{position:absolute;top:250px;bottom:340px;left:80px;right:80px;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.st-marca{position:absolute;top:150px;left:80px;font-family:'Poppins';font-weight:600;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:var(--laranja)}
+.st-h{font-family:'Poppins';font-weight:800;font-size:112px;line-height:1.03;color:var(--navy);letter-spacing:-2px}
+.st-h em{font-style:normal;color:var(--azul)}
+.st-sub{font-size:42px;line-height:1.4;color:var(--texto)}
+.st-sub b{color:var(--navy)}
+.st-box{background:#fff;border:2px solid var(--filete);border-radius:22px;padding:34px 40px;display:flex;flex-direction:column;gap:22px}
+.st-box .li{display:flex;gap:22px;align-items:center;font-size:42px;line-height:1.3;color:var(--texto)}
+.st-box .li b{color:var(--navy)}
+.st-box .li .k{min-width:60px;height:60px;border-radius:14px;background:var(--ceu-2);color:var(--azul);font-family:'Poppins';font-weight:800;font-size:28px;display:flex;align-items:center;justify-content:center}
+.st-cta{background:var(--laranja);border-radius:24px;padding:40px 44px;text-align:center}
+.st-cta .a{font-family:'Poppins';font-weight:700;font-size:48px;color:#fff;line-height:1.25}
+.st-cta .a b{background:#fff;color:var(--laranja);padding:0 18px;border-radius:10px}
+.st-cta .b{font-size:32px;color:#FFE7D6;margin-top:12px;line-height:1.4}
+.palavra{align-self:center;font-family:'Poppins';font-weight:800;font-size:190px;letter-spacing:6px;color:var(--azul);background:#fff;border:4px dashed var(--azul-claro);border-radius:30px;padding:10px 70px;line-height:1.2}
+
+/* paleta da marca: acentos em laranja */
+.eyebrow{color:var(--laranja)}
+.h1 em,.h2 em,.st-h em,.pdf .face .t span{color:var(--laranja)}
+.rod .seta{color:var(--laranja)}
+.pills span{color:var(--navy);border-color:var(--azul-claro)}
+.pills span.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.item .ic,.rd .k,.st-box .li .k{background:var(--ceu-2);color:var(--navy)}
+.item.dest{background:var(--cx-laranja);border-color:var(--lar-claro)}
+.item.dest .ic{background:var(--laranja);color:#fff}
+.grupo .gh{border-bottom-color:var(--navy)}
+.grupo .gh .v{color:var(--laranja)}
+.passos:before{background:var(--lar-claro)}
+.ps .k{border-color:var(--navy);color:var(--navy)}
+.ps.fim .k{background:var(--laranja);border-color:var(--laranja);color:#fff}
+.nota{background:var(--ceu-2);border-left-color:var(--laranja)}
+.formula span{background:var(--ceu-2)}
+.formula i{color:var(--laranja)}
+.cmp.sim{background:var(--cx-laranja);border-color:var(--lar-claro)}
+.cmp.sim .r{color:var(--laranja)}
+.cmp.sim .q .hl{background:#fff;box-shadow:inset 0 -5px 0 var(--laranja)}
+.autor .p{color:var(--laranja)}
+.palavra{color:var(--navy);border-color:var(--laranja);background:#fff}
+.pdf .pg{box-shadow:0 18px 40px rgba(42,53,68,.14)}
+.pdf .pg.b{background:var(--ceu-2)} .pdf .pg.c{background:var(--cx-laranja)}
+.pdf .face .l{background:var(--ceu-2)}
+.claro{background:linear-gradient(165deg,#FFF1E6 0%,#FFF8F2 55%,#fff 100%)}
+.faixa-n{position:absolute;left:0;right:0;bottom:0;height:14px;background:var(--navy)}
+</style>
+</head>
+<body>
+
+<!-- 01 CAPA -->
+<div class="slide claro capa" data-n="01">
+  <div class="topo"><div class="marca">Auditor Discursivas</div><div class="contador">01 / 06</div></div>
+  <div class="corpo">
+    <div class="capa-txt">
+      <div class="eyebrow">Aula gratuita · PDF</div>
+      <div class="rule" style="margin:26px 0 30px"></div>
+      <div class="h1">Discursiva da <em>CGU</em> 2026</div>
+      <div class="sub" style="margin-top:34px">A questão de <b>30 linhas</b> e a situação-problema de <b>60 linhas</b>, do planejamento ao texto definitivo.</div>
+    </div>
+  </div>
+  <div class="pdf">
+    <div class="pg c"></div><div class="pg b"></div>
+    <div class="pg"><div class="face">
+      <div class="t">Discursiva da <span>CGU</span> 2026</div>
+      <div class="l"></div><div class="l m"></div><div class="l s"></div><div class="l m"></div><div class="l"></div><div class="l s"></div>
+      <div class="tag">45 PÁGINAS</div>
+    </div></div>
+  </div>
+  <div style="position:absolute;left:84px;right:84px;top:1080px">
+    <div class="pills"><span class="on">Cebraspe</span><span>AFFC</span><span>Prova 13/12</span></div>
+  </div>
+  <div class="faixa-n"></div><div class="rod"><div>@auditor_discursivas</div><div class="seta">arraste →</div></div>
+</div>
+
+<!-- 02 O QUE TEM NO PDF -->
+<div class="slide" data-n="02">
+  <div class="topo"><div class="marca">Auditor Discursivas</div><div class="contador">02 / 06</div></div>
+  <div class="corpo">
+    <div class="eyebrow">O que você recebe</div>
+    <div class="h2" style="margin-top:18px">45 páginas sobre a <em>sua</em> prova</div>
+    <div class="itens">
+      <div class="item"><div class="ic">1</div><div class="t"><b>Raio-X do edital:</b> formato, nota mínima e como o Cebraspe desconta erros</div></div>
+      <div class="item"><div class="ic">2</div><div class="t"><b>O que a banca já cobrou</b> em discursivas de controle</div></div>
+      <div class="item"><div class="ic">3</div><div class="t"><b>Roteiro de planejamento</b> em cinco passos</div></div>
+      <div class="item"><div class="ic">4</div><div class="t"><b>O parágrafo que pontua</b>, peça por peça</div></div>
+      <div class="item dest"><div class="ic">5</div><div class="t"><b>Seis rodadas completas</b> com espelho e texto definitivo</div></div>
+      <div class="item"><div class="ic">6</div><div class="t"><b>Gestão das 3h30</b> da tarde e checklist do dia</div></div>
+    </div>
+  </div>
+  <div class="faixa-n"></div><div class="rod"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 03 AS 6 RODADAS -->
+<div class="slide" data-n="03">
+  <div class="topo"><div class="marca">Auditor Discursivas</div><div class="contador">03 / 06</div></div>
+  <div class="corpo">
+    <div class="eyebrow">Temas inéditos, padrão Cebraspe</div>
+    <div class="h2" style="margin-top:18px">As <em>seis rodadas</em></div>
+    <div class="grupo">
+      <div class="gh"><div class="n">Questão</div><div class="v">30 linhas · 30 pts</div></div>
+      <div class="rd"><div class="k">1</div><div class="t"><b>Gestão de riscos</b> e as linhas de defesa</div></div>
+      <div class="rd"><div class="k">2</div><div class="t"><b>Evidência de auditoria</b> na era dos dados</div></div>
+      <div class="rd"><div class="k">3</div><div class="t"><b>Controle interno</b> do Executivo federal</div></div>
+    </div>
+    <div class="grupo">
+      <div class="gh"><div class="n">Situação-problema</div><div class="v">60 linhas · 70 pts</div></div>
+      <div class="rd"><div class="k">4</div><div class="t"><b>Convênio de obra:</b> pagamento sem execução</div></div>
+      <div class="rd"><div class="k">5</div><div class="t"><b>Emendas Pix</b> sem rastreabilidade</div></div>
+      <div class="rd"><div class="k">6</div><div class="t"><b>Conluio em pregão</b> e acordo de leniência</div></div>
+    </div>
+  </div>
+  <div class="faixa-n"></div><div class="rod"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 04 COMO CADA RODADA FUNCIONA -->
+<div class="slide" data-n="04">
+  <div class="topo"><div class="marca">Auditor Discursivas</div><div class="contador">04 / 06</div></div>
+  <div class="corpo">
+    <div class="eyebrow">Treino, não leitura</div>
+    <div class="h2" style="margin-top:18px">Como cada <em>rodada</em> funciona</div>
+    <div class="passos">
+      <div class="ps"><div class="k">1</div><div class="t"><div class="h">Enunciado inédito</div><div class="d">Você planeja e escreve antes de virar a página, com cronômetro.</div></div></div>
+      <div class="ps"><div class="k">2</div><div class="t"><div class="h">Esqueleto</div><div class="d">Linhas por item, tópico frasal e fundamento de cada parágrafo.</div></div></div>
+      <div class="ps"><div class="k">3</div><div class="t"><div class="h">Espelho de correção</div><div class="d">Quesitos e conceitos graduados, na lógica do Cebraspe.</div></div></div>
+      <div class="ps fim"><div class="k">4</div><div class="t"><div class="h">Texto definitivo + armadilhas</div><div class="d">Resposta completa e os erros que mais tiram ponto.</div></div></div>
+    </div>
+    <div class="nota">Você <b>se corrige</b> com o espelho e só depois compara com o modelo.</div>
+  </div>
+  <div class="faixa-n"></div><div class="rod"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 05 PRÉVIA -->
+<div class="slide" data-n="05">
+  <div class="topo"><div class="marca">Auditor Discursivas</div><div class="contador">05 / 06</div></div>
+  <div class="corpo">
+    <div class="eyebrow">Prévia da aula</div>
+    <div class="h2" style="margin-top:18px">O parágrafo que <em>pontua</em></div>
+    <div class="formula"><span>Tópico frasal</span><i>+</i><span>Fundamento</span><i>+</i><span>Aplicação ao caso</span><i>+</i><span>Fechamento</span></div>
+    <div class="cmp nao"><div class="r">Assim não pontua</div><div class="q">“No mundo contemporâneo, em que a sociedade exige cada vez mais transparência, é importante discutir o papel das ouvidorias...”</div></div>
+    <div class="cmp sim"><div class="r">Assim pontua</div><div class="q">“As ouvidorias, <span class="hl">nos termos da Lei n.º 13.460/2017</span>, recebem, analisam e encaminham as manifestações dos usuários, entre elas as denúncias.”</div></div>
+    <div class="fonte">O corretor procura o quesito na primeira frase. Na aula, cada rodada aplica essa estrutura.</div>
+  </div>
+  <div class="faixa-n"></div><div class="rod"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 06 FECHO -->
+<div class="slide claro fecho" data-n="06">
+  <div class="topo"><div class="marca">Auditor Discursivas</div><div class="contador">06 / 06</div></div>
+  <div class="corpo">
+    <div class="eyebrow">É de graça</div>
+    <div class="h2" style="margin-top:18px;font-size:72px">Quer a aula no seu <em>direct</em>?</div>
+    <div class="cta" style="margin-top:46px">
+      <div class="a">Comente <b>CGU</b> aqui embaixo</div>
+      <div class="b">ou mande CGU no direct: o PDF é enviado na hora.</div>
+    </div>
+    <div class="autor">
+      <div class="foto">SW</div>
+      <div><div class="n">Samuel Wolf</div><div class="p">Recursos de provas discursivas</div></div>
+    </div>
+    <div class="cred">Engenheiro pelo ITA · Auditor de Controle Externo do TCE-RJ · Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</div>
+    <div class="mini">Salve este post e <b>mande para quem vai fazer a CGU</b>.</div>
+  </div>
+  <div class="faixa-n"></div><div class="rod"><div>@auditor_discursivas</div><div>aula gratuita</div></div>
+</div>
+
+<!-- STORIES -->
+<div class="story claro" data-n="st01">
+  <div class="st-marca">Auditor Discursivas</div>
+  <div class="st-in">
+    <div class="eyebrow" style="font-size:30px">Aula gratuita · PDF</div>
+    <div class="st-h">Discursiva da <em>CGU</em> 2026</div>
+    <div class="st-box">
+      <div class="li"><div class="k">45</div><div>páginas sobre a <b>sua</b> prova</div></div>
+      <div class="li"><div class="k">6</div><div>rodadas com <b>espelho</b> e texto definitivo</div></div>
+      <div class="li"><div class="k">✓</div><div>questão de <b>30</b> e caso de <b>60 linhas</b></div></div>
+    </div>
+    <div class="st-sub">Para quem vai fazer a prova do <b>AFFC</b> em <b>13 de dezembro</b>.</div>
+  </div>
+</div>
+
+<div class="story" data-n="st02" style="background:#fff">
+  <div class="st-marca">Auditor Discursivas</div>
+  <div class="st-in" style="gap:30px">
+    <div class="eyebrow" style="font-size:30px">Prévia da aula</div>
+    <div class="st-h" style="font-size:84px">O parágrafo que <em>pontua</em></div>
+    <div class="cmp nao" style="margin-top:6px"><div class="r" style="font-size:26px">Assim não pontua</div><div class="q" style="font-size:36px">“No mundo contemporâneo, em que a sociedade exige cada vez mais transparência...”</div></div>
+    <div class="cmp sim" style="margin-top:0"><div class="r" style="font-size:26px">Assim pontua</div><div class="q" style="font-size:36px">“As ouvidorias, <span class="hl">nos termos da Lei n.º 13.460/2017</span>, recebem, analisam e encaminham as manifestações dos usuários...”</div></div>
+    <div class="st-sub" style="font-size:38px">Resposta na <b>primeira frase</b>, com norma. A aula treina isso em seis rodadas.</div>
+  </div>
+</div>
+
+<div class="story claro" data-n="st03">
+  <div class="st-marca">Auditor Discursivas</div>
+  <div class="st-in" style="align-items:stretch">
+    <div class="st-h" style="text-align:center;font-size:88px">Quer a aula?<br>Mande no <em>direct</em>:</div>
+    <div class="palavra">CGU</div>
+    <div class="st-cta"><div class="a">O PDF chega <b>na hora</b></div><div class="b">Gratuito · 45 páginas · seis rodadas</div></div>
+    <div class="autor" style="margin-top:10px;justify-content:center">
+      <div class="foto">SW</div>
+      <div><div class="n" style="font-size:40px">Samuel Wolf</div><div class="p">@auditor_discursivas</div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="story claro" data-n="st04">
+  <div class="st-marca">Auditor Discursivas</div>
+  <div class="st-in">
+    <div class="eyebrow" style="font-size:30px">CGU 2026 · AFFC</div>
+    <div class="st-h" style="font-size:104px">Já fez a sua <em>inscrição</em>?</div>
+    <div class="st-box">
+      <div class="li"><div class="k">!</div><div>Inscrições até <b>amanhã, 04/11, às 18h</b></div></div>
+      <div class="li"><div class="k">✓</div><div>Prova em <b>13 de dezembro</b>, com discursiva à tarde</div></div>
+    </div>
+    <div class="st-cta"><div class="a">Mande <b>CGU</b> no direct</div><div class="b">e receba a aula gratuita da discursiva (PDF)</div></div>
+  </div>
+</div>
+</body>
+</html>
