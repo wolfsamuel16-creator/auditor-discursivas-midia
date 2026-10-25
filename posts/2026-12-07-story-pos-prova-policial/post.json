@@ -6,8 +6,11 @@
   "2026-12-07T12:00:00"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": [],
- "observacao": "Story de reforço do post pós-prova policial: manda RECURSO no direct."
+ "stories_metricool": [
+  405912288
+ ],
+ "observacao": "Story de reforço do post pós-prova policial: manda RECURSO no direct.",
+ "ok_em": "2026-10-25T16:24:00"
 }

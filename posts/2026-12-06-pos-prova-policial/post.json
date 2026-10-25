@@ -3,7 +3,8 @@
  "tipo": "carrossel",
  "origem": "Central",
  "primeiro_comentario": "Conta aqui: qual concurso você fez e como foi na discursiva? 👇",
- "status": "aguardando",
- "metricool_id": null,
- "observacao": "Campanha pós-prova policial (PC-BA, PC-AL, PC-MA, PC-AP em 06/12). Aprovado e mandado agendar pelo Samuel em 25/10/2026; ele vai turbinar o post."
+ "status": "agendado",
+ "metricool_id": 405912228,
+ "observacao": "Campanha pós-prova policial (PC-BA, PC-AL, PC-MA, PC-AP em 06/12). Aprovado e mandado agendar pelo Samuel em 25/10/2026; ele vai turbinar o post.",
+ "ok_em": "2026-10-25T16:24:00"
 }

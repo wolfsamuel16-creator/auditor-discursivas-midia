@@ -6,8 +6,11 @@
   "2026-12-06T19:00:00"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": [],
- "observacao": "Story enquete em imagem (Fui bem / Vou precisar de recurso — resposta no direct); enquete nativa não é suportada pelo Metricool."
+ "stories_metricool": [
+  405912264
+ ],
+ "observacao": "Story enquete em imagem (Fui bem / Vou precisar de recurso — resposta no direct); enquete nativa não é suportada pelo Metricool.",
+ "ok_em": "2026-10-25T16:24:00"
 }
