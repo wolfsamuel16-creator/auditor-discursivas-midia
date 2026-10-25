@@ -1,1 +1,16 @@
-{"publicar_em": "2026-11-03T10:00:00", "tipo": "stories", "origem": "Central", "stories_publicar_em": ["2026-11-03T10:00:00"], "primeiro_comentario": "", "status": "aguardando", "metricool_id": null, "stories_metricool": null, "observacao": "Story de prazo de inscrição da CGU (04/11 18h) + CTA mande CGU no direct. Enquete do Instagram não é suportada pelo Metricool: story em imagem."}
+{
+ "publicar_em": "2026-11-03T10:00:00",
+ "tipo": "stories",
+ "origem": "Central",
+ "stories_publicar_em": [
+  "2026-11-03T10:00:00"
+ ],
+ "primeiro_comentario": "",
+ "status": "agendado",
+ "metricool_id": null,
+ "stories_metricool": [
+  405797707
+ ],
+ "observacao": "Story de prazo de inscrição da CGU (04/11 18h) + CTA mande CGU no direct. Enquete do Instagram não é suportada pelo Metricool: story em imagem.",
+ "ok_em": "2026-10-25T13:38:00"
+}

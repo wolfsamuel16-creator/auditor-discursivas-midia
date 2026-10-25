@@ -3,10 +3,23 @@
  "tipo": "carrossel",
  "origem": "Central",
  "primeiro_comentario": "📌 Comente CGU aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
- "status": "aguardando",
- "metricool_id": null,
- "stories": ["story_01.png", "story_02.png", "story_03.png"],
- "stories_publicar_em": ["2026-10-27T10:20:00", "2026-10-27T10:22:00", "2026-10-27T10:24:00"],
- "stories_metricool": null,
- "observacao": "Novo empurrão da aula-isca da CGU (paleta clara, a pedido do Samuel em 25/10). Automações CGU do InfluenciMax (comentários e direct) já existem desde 24/10."
+ "status": "agendado",
+ "metricool_id": 405797610,
+ "stories": [
+  "story_01.png",
+  "story_02.png",
+  "story_03.png"
+ ],
+ "stories_publicar_em": [
+  "2026-10-27T10:20:00",
+  "2026-10-27T10:22:00",
+  "2026-10-27T10:24:00"
+ ],
+ "stories_metricool": [
+  405797636,
+  405797656,
+  405797684
+ ],
+ "observacao": "Novo empurrão da aula-isca da CGU (paleta clara, a pedido do Samuel em 25/10). Automações CGU do InfluenciMax (comentários e direct) já existem desde 24/10.",
+ "ok_em": "2026-10-25T13:38:00"
 }
