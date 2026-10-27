@@ -10,7 +10,12 @@
     "2026-11-05T12:22:00",
     "2026-11-05T12:24:00"
   ],
-  "status": "aguardando",
-  "metricool_id": null,
-  "stories_metricool": []
+  "status": "agendado",
+  "metricool_id": 407649590,
+  "stories_metricool": [
+    407649632,
+    407649655,
+    407649683
+  ],
+  "agendado_em": "2026-10-27T07:26:00-03:00"
 }
