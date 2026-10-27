@@ -3,9 +3,10 @@
   "tipo": "carrossel",
   "origem": "Radar D-15 (reposto pela Central em 27/10)",
   "primeiro_comentario": "📌 Fez a discursiva do TCE-PE? A nota sai em 12/11 e o recurso vai de 13 a 16/11. Manda RECURSO no direct que eu faço a análise de viabilidade gratuita.",
-  "status": "agendado",
-  "metricool_id": 407628889,
+  "status": "descartado",
+  "metricool_id": 407636610,
   "metricool_uuid": "-7758388970997069664",
   "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-7758388970997069664",
-  "agendado_em": "2026-10-27T07:03:00-03:00"
+  "agendado_em": "2026-10-27T07:03:00-03:00",
+  "motivo": "Samuel (27/10): não haverá campanha em 29/10; regra nova D-7/D-1/D. Metricool virou rascunho (id 407636610) — apagar pelo app"
 }
