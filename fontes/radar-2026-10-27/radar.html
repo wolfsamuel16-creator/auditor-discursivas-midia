@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Radar dos Concursos · Semana 27/10/2026</title>
+<!-- Re-render: pasta fonts/ (Poppins/Lato do google/fonts) e foto.jpg (_central/foto-samuel.jpg) ao lado deste arquivo; Playwright, device_scale_factor 2, screenshot de cada section.s e redimensionar para 1080x1350. Cópia + render.py no GitHub: fontes/radar-2026-10-27/ -->
+<style>
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+@font-face{font-family:Lato;font-weight:400;src:url(fonts/Lato-Regular.ttf)}
+@font-face{font-family:Lato;font-weight:700;src:url(fonts/Lato-Bold.ttf)}
+@font-face{font-family:Lato;font-weight:900;src:url(fonts/Lato-Black.ttf)}
+:root{--navy:#2A3544;--lar:#F04E23;--creme:#F6F2EC;--cinza:#5B6573}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ccc}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Lato;display:flex;flex-direction:column;padding:140px 84px 120px}
+.navy{background:var(--navy);color:#fff}
+.claro{background:var(--creme);color:var(--navy)}
+.top{position:absolute;top:48px;left:84px;right:84px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:3px}
+.top .wm{color:var(--lar)}
+.top .ct{opacity:.6}
+.rod{position:absolute;bottom:46px;left:84px;right:84px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:600;font-size:24px}
+.rod span:first-child{opacity:.7}
+.rod .sv{color:var(--lar)}
+.tag{align-self:flex-start;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:26px;letter-spacing:3px;border-radius:12px;padding:10px 24px;margin-bottom:30px}
+.tag.out{background:transparent;border:3px solid var(--lar);color:var(--lar)}
+h1{font-family:Poppins;font-weight:800;font-size:86px;line-height:1.06;letter-spacing:-1px}
+h2{font-family:Poppins;font-weight:800;font-size:64px;line-height:1.08;letter-spacing:-.5px}
+em{font-style:normal;color:var(--lar)}
+.sub{font-size:38px;line-height:1.4;margin-top:34px}
+.chips{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.chip{font-family:Poppins;font-weight:700;font-size:28px;border:3px solid var(--lar);color:#fff;border-radius:60px;padding:8px 26px}
+.org{font-family:Poppins;font-weight:700;font-size:28px;color:var(--cinza);letter-spacing:1px;margin-bottom:14px}
+.dados{list-style:none;margin-top:40px;display:flex;flex-direction:column;gap:22px}
+.dados li{background:#fff;border-radius:18px;padding:24px 30px;font-size:35px;line-height:1.3;display:flex;gap:22px;align-items:baseline}
+.dados li b.k{font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:1px;color:var(--lar);flex:0 0 200px;text-transform:uppercase}
+.disc{margin-top:auto;border-radius:22px;padding:28px 34px;display:flex;gap:26px;align-items:center;font-size:32px;line-height:1.3}
+.disc .q{font-family:Poppins;font-weight:800;font-size:26px;letter-spacing:1px;flex:0 0 auto}
+.disc .r{font-family:Poppins;font-weight:800;font-size:40px;flex:0 0 auto}
+.disc.sim{background:var(--navy);color:#fff}
+.disc.sim .r{color:var(--lar)}
+.disc.talvez{background:#fff;border:3px dashed var(--navy);color:var(--navy)}
+.disc.talvez .r{color:var(--navy)}
+.ag{list-style:none;margin-top:34px;display:flex;flex-direction:column;gap:12px}
+.ag li{display:flex;gap:24px;align-items:center;background:rgba(255,255,255,.07);border-radius:16px;padding:14px 22px;font-size:29px;line-height:1.25}
+.ag li .d{flex:0 0 118px;font-family:Poppins;font-weight:800;font-size:34px;color:var(--lar)}
+.ag li .x{flex:1}
+.ag li .x b{font-family:Poppins;font-weight:700}
+.ag li .dc{flex:0 0 auto;font-family:Poppins;font-weight:700;font-size:20px;letter-spacing:1px;border:2px solid var(--lar);color:var(--lar);border-radius:30px;padding:4px 14px}
+.lista{list-style:none;margin-top:36px}
+.lista li{display:flex;gap:28px;align-items:flex-start;margin-bottom:30px;font-size:35px;line-height:1.35}
+.num{flex:0 0 70px;height:70px;border-radius:50%;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-left:12px solid var(--lar);border-radius:18px;padding:30px 36px;margin-top:auto;font-size:32px;line-height:1.4}
+.box{background:var(--lar);color:#fff;border-radius:28px;padding:40px 44px;font-family:Poppins;font-weight:700;font-size:44px;line-height:1.25}
+.box small{display:block;font-family:Lato;font-weight:700;font-size:32px;margin-top:14px}
+.autor{display:flex;align-items:center;gap:34px;margin-top:auto}
+.foto{flex:0 0 200px;width:200px;height:200px;border-radius:50%;border:8px solid var(--lar);background:url(foto.jpg) center/cover}
+.autor b{font-family:Poppins;font-weight:800;font-size:44px;display:block}
+.autor .t{font-family:Poppins;font-weight:600;font-size:28px;color:var(--lar);display:block;margin:4px 0 10px}
+.autor .c{font-size:25px;line-height:1.4;opacity:.9;display:block}
+.sp{flex:1}
+</style></head><body>
+
+<!-- 01 CAPA -->
+<section class="s navy">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">01 / 10</span></div>
+ <div class="sp"></div>
+ <div class="tag">RADAR DOS CONCURSOS · SEMANA 27/10</div>
+ <h1>SEFAZ-SP adia a prova. E a <em>discursiva</em> vale 120 pontos.</h1>
+ <p class="sub">Mais 5 notícias da semana que mexem no seu calendário — controle, fiscal, policial e tribunais.</p>
+ <div class="chips"><span class="chip">SEFAZ-SP</span><span class="chip">Receita</span><span class="chip">TCE-PE</span><span class="chip">CGU</span><span class="chip">PC-MG</span><span class="chip">TRT-4</span></div>
+ <div class="sp"></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Arraste →</span></div>
+</section>
+
+<!-- 02 SEFAZ-SP -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">02 / 10</span></div>
+ <div class="tag">FISCAL</div>
+ <div class="org">SEFAZ-SP · APOFP · FCC</div>
+ <h2>Prova sai de 13/12 e vai para <em>20/12</em></h2>
+ <ul class="dados">
+  <li><b class="k">Vagas</b><span>60 (20 por área)</span></li>
+  <li><b class="k">Remuneração</b><span>até R$ 11.359,50</span></li>
+  <li><b class="k">Inscrições</b><span>até 03/11 · quem já pagou pode cancelar com devolução até 03/11</span></li>
+  <li><b class="k">Base</b><span>Edital nº 02/2026 (DOE 22/10)</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>1 estudo de caso · 30 linhas · 120 pontos</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 03 RECEITA -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">03 / 10</span></div>
+ <div class="tag">FISCAL</div>
+ <div class="org">RECEITA FEDERAL · AFRFB E ATRFB</div>
+ <h2>Contratação da banca chega à <em>reta final</em></h2>
+ <ul class="dados">
+  <li><b class="k">Vagas</b><span>146 (30 Auditor + 116 Analista)</span></li>
+  <li><b class="k">Inicial</b><span>R$ 29.921,71 (Auditor) · R$ 16.935,99 (Analista)</span></li>
+  <li><b class="k">Andamento</b><span>minuta de dispensa registrada em 20/10</span></li>
+  <li><b class="k">Edital</b><span>previsto para dezembro, sem data oficial</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>2 questões (Auditor) e 1 (Analista), pelo termo de referência</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 04 TCE-PE -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">04 / 10</span></div>
+ <div class="tag">CONTROLE</div>
+ <div class="org">TCE-PE · CARGOS REAPLICADOS · FGV</div>
+ <h2>Objetiva definida. Agora é a <em>discursiva</em>.</h2>
+ <ul class="dados">
+  <li><b class="k">20/10</b><span>resultado definitivo da objetiva + convocação para correção da discursiva</span></li>
+  <li><b class="k">12/11</b><span>resultado preliminar da discursiva</span></li>
+  <li><b class="k">13 a 16/11</b><span>vista da prova e recurso (prazo FGV)</span></li>
+  <li><b class="k">08/12</b><span>resultado final previsto</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>janela de recurso curta: 4 dias</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 05 CGU -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">05 / 10</span></div>
+ <div class="tag">CONTROLE</div>
+ <div class="org">CGU · AUDITOR FEDERAL DE FINANÇAS E CONTROLE · CEBRASPE</div>
+ <h2>Inscrições terminam em <em>04/11</em></h2>
+ <ul class="dados">
+  <li><b class="k">Vagas</b><span>60 + cadastro de reserva</span></li>
+  <li><b class="k">Inicial</b><span>R$ 20.000,00</span></li>
+  <li><b class="k">Prova</b><span>13/12 · discursiva à tarde</span></li>
+  <li><b class="k">Padrão</b><span>15/12 · recurso 16 e 17/12</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>questão de 30 linhas + situação-problema de 60 linhas</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 06 PC-MG -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">06 / 10</span></div>
+ <div class="tag">POLICIAL</div>
+ <div class="org">POLÍCIA CIVIL DE MINAS GERAIS</div>
+ <h2>3 mil vagas anunciadas; <em>FGV</em> entra na disputa</h2>
+ <ul class="dados">
+  <li><b class="k">06/10</b><span>governador anuncia autorização para 3.000 vagas</span></li>
+  <li><b class="k">08/10</b><span>delegada-geral: editais ainda em 2026</span></li>
+  <li><b class="k">20/10</b><span>FGV apresenta proposta para organizar</span></li>
+  <li><b class="k">Banca</b><span>ainda não contratada · cargos a definir</span></li>
+ </ul>
+ <div class="disc talvez"><span class="q">TEM DISCURSIVA?</span><span class="r">A CONFERIR</span><span>depende dos cargos do edital</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 07 TRT-4 -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">07 / 10</span></div>
+ <div class="tag out">TRIBUNAIS</div>
+ <div class="org">TRT-4 (RS) · ANALISTA E TÉCNICO · FCC</div>
+ <h2>Edital aberto: inscrições até <em>25/11</em></h2>
+ <ul class="dados">
+  <li><b class="k">Vagas</b><span>cadastro de reserva em 23 cargos</span></li>
+  <li><b class="k">Inicial</b><span>R$ 16.040,88 (Analista) · R$ 9.776,71 (Técnico)</span></li>
+  <li><b class="k">Prova</b><span>31/01/2027, em Porto Alegre</span></li>
+  <li><b class="k">Formato</b><span>discursiva no mesmo turno da objetiva</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>estudo de caso ou redação · 20 a 30 linhas</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 08 AGENDA -->
+<section class="s navy">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">08 / 10</span></div>
+ <h2>Agenda das próximas <em>3 semanas</em></h2>
+ <ul class="ag">
+  <li><span class="d">27/10</span><span class="x"><b>TCE-SC</b> · resultado definitivo da discursiva (previsto)</span><span class="dc">DISC.</span></li>
+  <li><span class="d">01/11</span><span class="x"><b>PC-MA Delegado</b> · objetiva (discursiva 13/12)</span><span class="dc">DISC.</span></li>
+  <li><span class="d">01/11</span><span class="x"><b>ISS Manaus</b> · objetiva (discursiva 24/01)</span><span class="dc">DISC.</span></li>
+  <li><span class="d">03/11</span><span class="x"><b>SEFAZ-SP</b> · fim das inscrições</span><span class="dc">DISC.</span></li>
+  <li><span class="d">04/11</span><span class="x"><b>CGU</b> · fim das inscrições</span><span class="dc">DISC.</span></li>
+  <li><span class="d">06/11</span><span class="x"><b>TCE-SP</b> · resultado da objetiva · <b>TCE-GO</b> fim das inscrições</span><span class="dc">DISC.</span></li>
+  <li><span class="d">12/11</span><span class="x"><b>TCE-PE</b> · resultado preliminar da discursiva</span><span class="dc">DISC.</span></li>
+  <li><span class="d">13/11</span><span class="x"><b>TCE-PE</b> · abre a janela de recurso (até 16/11)</span><span class="dc">DISC.</span></li>
+  <li><span class="d">17/11</span><span class="x"><b>Câmara dos Deputados</b> · fim das inscrições</span><span class="dc">DISC.</span></li>
+ </ul>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 09 RECURSO -->
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">09 / 10</span></div>
+ <div class="tag">JANELAS DE RECURSO</div>
+ <h2>Nenhuma aberta esta semana. A próxima é a do <em>TCE-PE</em>.</h2>
+ <p class="sub" style="font-size:34px;margin-top:22px">Vale recorrer da discursiva quando:</p>
+ <ul class="lista">
+  <li><span class="num">1</span><span>o espelho pede algo que você <b>escreveu</b>, e a nota não reconheceu;</span></li>
+  <li><span class="num">2</span><span>houve desconto de língua por algo que <b>não é erro</b>;</span></li>
+  <li><span class="num">3</span><span>a diferença para o corte cabe nos pontos em disputa.</span></li>
+ </ul>
+ <div class="card"><b>Próximas janelas:</b> TCE-PE 13 a 16/11 (FGV) · TCE-SP 30/11 e 01/12 (Vunesp) · CGU 16 e 17/12 (padrão preliminar).</div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<!-- 10 CTA -->
+<section class="s navy">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">10 / 10</span></div>
+ <div class="sp"></div>
+ <h2>Saiu sua nota da discursiva e ela <em>não bate</em> com o que você escreveu?</h2>
+ <div class="box" style="margin-top:50px">Manda RECURSO no direct.<small>A análise de viabilidade é gratuita.</small></div>
+ <div class="sp"></div>
+ <div class="autor">
+  <div class="foto"></div>
+  <div><b>Samuel Wolf</b><span class="t">Recursos de provas discursivas</span><span class="c">Engenheiro pelo ITA · Auditor de Controle Externo do TCE-RJ · Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</span></div>
+ </div>
+ <div style="height:40px"></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+</body></html>
