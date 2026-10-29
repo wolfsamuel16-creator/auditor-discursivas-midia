@@ -29,11 +29,11 @@ b,strong{font-weight:700;color:var(--navy)}
 .eyebrow{font-family:Poppins;font-weight:600;font-size:7.6pt;letter-spacing:.28em;text-transform:uppercase;color:var(--lar)}
 h2.sec{font-size:17pt;font-weight:700;margin:2pt 0 10pt;line-height:1.2}
 h2.sec .num{color:var(--lar);margin-right:8pt}
-h3{font-size:12.5pt;font-weight:700;margin:14pt 0 6pt}
+h3{font-size:12.5pt;font-weight:700;margin:14pt 0 6pt;break-after:avoid}
 .lead{font-size:11pt;color:#3a4452}
 table{width:100%;border-collapse:collapse;margin:6pt 0 11pt;font-size:9.4pt;break-inside:auto}
 th{font-family:Poppins;font-weight:600;font-size:8pt;text-align:left;color:#fff;background:var(--navy);padding:6pt 7pt;letter-spacing:.02em}
-td{padding:6pt 7pt;border-bottom:1px solid #e3ddd3;vertical-align:top}
+td{padding:5pt 7pt;border-bottom:1px solid #e3ddd3;vertical-align:top}
 tr{break-inside:avoid}
 tbody tr:nth-child(even) td{background:#faf7f2}
 td.k{font-weight:700;color:var(--navy);width:28%}
@@ -101,7 +101,7 @@ ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
 /* folha */
 .folha{border:1px solid #cfc6b8;border-radius:6pt;background:#fffdf9;padding:6pt 10pt 8pt;margin:6pt 0 6pt;break-inside:avoid}
 .folha .eyebrow{display:block;margin:2pt 0 5pt}
-.ln{display:flex;border-bottom:1px solid #e6ded1;font-size:9.6pt;line-height:1.62}
+.ln{display:flex;border-bottom:1px solid #e6ded1;font-size:9.4pt;line-height:1.45}
 .ln .nr{width:20pt;flex:none;color:#a39b8f;font-family:Poppins;font-size:7.6pt;padding-top:2pt}
 .ln .t{white-space:pre;font-family:Lato}
 .nota{font-size:8.4pt;color:var(--mu);font-style:italic}
@@ -141,13 +141,16 @@ def stat(v, l): return f'<div class="stat"><div class="v">{v}</div><div class="l
 AUTOR = f"""<div class="autor"><div class="foto" style="background-image:url(data:image/jpeg;base64,{FOTO})"></div>
 <div><div class="nm">Samuel Wolf</div><div class="at">@auditor_discursivas</div><ul>
 <li>Auditor de Controle Externo do TCE-RJ</li><li>Engenheiro de Infraestrutura Aeronáutica formado pelo ITA</li>
-<li>Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</li><li>Trabalha com discursivas há mais de 6 anos</li></ul></div></div>"""
+<li>Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</li><li>Trabalha com discursivas há mais de seis anos</li></ul></div></div>"""
 
 def rodada(r):
     soma = sum(v for _, v in r['itens'])
     itens = ''.join(f'<li><span class="i">{i+1}</span><span>{t} <span class="val">[valor: {v} pontos]</span></span></li>' for i, (t, v) in enumerate(r['itens']))
     caso = ''.join(f'<p>{p}</p>' for p in r['caso'])
-    esq = ''.join(f'<tr><td class="k">{a}</td><td>{b}</td></tr>' for a, b in r['esqueleto'])
+    import re as _re
+    _n = [len(wrap_paragrafos([pp])) for pp in r['proposta']]
+    _rows = [(_re.sub(r'\d+ linhas', f'{k} linhas', a2), b2) for (a2, b2), k in zip(r['esqueleto'], _n)] if len(_n) == len(r['esqueleto']) else r['esqueleto']
+    esq = ''.join(f'<tr><td class="k">{a}</td><td>{b}</td></tr>' for a, b in _rows)
     pad = ''.join('<tr><td class="k">{}</td><td><ul>{}</ul></td></tr>'.format(a, ''.join(f'<li>{x}</li>' for x in bs)) for a, bs in r['padrao'])
     esp = ''.join('<tr><td class="q">{}</td><td>{}</td><td>{}</td></tr>'.format(q, ''.join(f'<p class="c">Conceito {c}</p>' for c in cs), f'{v:.2f}'.replace('.', ',')) for q, cs, v in r['espelho'])
     fl, nl = folha(r['proposta'])
@@ -155,8 +158,8 @@ def rodada(r):
     return f"""
 <section class="pb rod-h"><span class="eyebrow">Rodada {r['n']} · Estudo de caso · 30 linhas · {soma} pontos</span>
 <h2><span class="rn">{r['n']}.</span> {r['titulo']}</h2>
-<div class="eixo"><b>Eixo do edital:</b> {r['eixo']}. Caso inédito, elaborado no padrão FCC para treino.</div>
-<div class="enun"><span class="eyebrow">Estudo de caso · inédito · padrão FCC · até 30 linhas · 120 pontos</span>
+<div class="eixo"><b>Eixo do edital:</b> {r['eixo']}. Caso inédito, elaborado para treino.</div>
+<div class="enun"><span class="eyebrow">Estudo de caso · inédito · formato de treino · até 30 linhas · 120 pontos</span>
 {caso}<p>{r['comando']}</p><ol>{itens}</ol>
 <p class="nota" style="margin-top:6pt">Situação hipotética: entes e fatos são fictícios. A distribuição de pontos entre os aspectos é do curso; o edital não a fixa.</p></div>
 <div class="pare">Pare aqui. Planeje e escreva a sua resposta em até 30 linhas, cronometrando cerca de 70 minutos, antes de virar a página. A solução começa na próxima página.</div>
@@ -165,14 +168,13 @@ def rodada(r):
 <table class="esq"><thead><tr><th>Parágrafo</th><th>Palavras-chave do rascunho</th></tr></thead><tbody>{esq}</tbody></table>
 <h3>Padrão de resposta</h3>
 <table><thead><tr><th>Aspecto</th><th>O que a resposta deve conter</th></tr></thead><tbody>{pad}</tbody></table>
-</section>
-<section class="pb"><h3 style="margin-top:0">Espelho de correção (do curso, no modelo de grade da FCC)</h3>
+<h3>Espelho de correção (modelo didático do curso)</h3>
 <table class="esp"><thead><tr><th>Quesito</th><th>O que o corretor procura</th><th>Pontos</th></tr></thead><tbody>{esp}
-<tr class="tot"><td>Nota máxima</td><td>Erros de língua portuguesa, abordagem tangencial e divagação reduzem a nota (edital, itens 9.7 e 9.8)</td><td>{soma:.2f}</td></tr></tbody></table>
-<div class="tri">{tri('t1','Armadilhas do enunciado',r['armadilhas'])}{tri('t2','Erros mais comuns',r['erros'])}{tri('t3','Dicas estratégicas',r['dicas'])}</div>
+<tr class="tot"><td>Nota máxima</td><td>Erros de língua portuguesa, abordagem tangencial e divagação reduzem a nota (edital, itens 9.7 e 9.8)</td><td>{f'{soma:.2f}'.replace('.', ',')}</td></tr></tbody></table>
 </section><section class="pb"><h3 style="margin-top:0">Proposta de redação definitiva · {nl} de 30 linhas</h3>
 {fl}
-<p class="nota">Contagem simulada com cerca de {CPL} caracteres por linha manuscrita. Na sua letra, o número pode variar: treine na folha.</p>
+<p class="nota">Contagem simulada com {CPL} caracteres por linha. Em letra maior (cerca de 60 caracteres), o mesmo texto chega perto de 30 linhas: treine na folha.</p>
+<div class="tri">{tri('t1','Armadilhas do enunciado',r['armadilhas'])}{tri('t2','Erros mais comuns',r['erros'])}{tri('t3','Dicas estratégicas',r['dicas'])}</div>
 </section>"""
 
 def montar():
@@ -192,7 +194,7 @@ def montar():
 
 <section class="pb"><span class="eyebrow">Antes de começar</span><h2 class="sec">Por que fiz esta aula gratuita</h2>
 {AUTOR}
-<p>Eu sou o Samuel. Antes de chegar ao controle externo, passei por concursos da área fiscal, e sei na prática o quanto a discursiva pesa — e o quanto ela assusta. Hoje, além do trabalho de auditor, ajudo concurseiros a escrever melhor na prova, com aulas, correções e recursos contra a nota da discursiva.</p>
+<p>Eu sou o Samuel. Antes de chegar ao controle externo, passei por concursos da área fiscal e sei na prática o quanto a discursiva pesa — e o quanto ela assusta. Hoje, além do trabalho de auditor, ajudo concurseiros a escrever melhor na prova, com aulas, correções e recursos contra a nota da discursiva.</p>
 <p>Fiz esta aula de graça por um motivo simples: quero ajudar. Na SEFAZ-SP, a discursiva vale 120 pontos — o mesmo que a P2 inteira —, elimina quem fizer menos de 48 e é o primeiro critério técnico de desempate. E é um texto só, de 30 linhas: cada parágrafo conta muito.</p>
 <p>Aqui está o mesmo jeito que eu uso para corrigir provas e preparar recursos: olhar o que a banca realmente cobra, planejar antes de escrever e responder exatamente ao comando, com a norma aplicada ao caso e uma solução no fim de cada parágrafo. Nada de fórmula mágica — método e treino.</p>
 <div class="box lr"><span class="eyebrow">Combinado?</span>Leia com calma, faça as rodadas antes de olhar as soluções e, se tiver dúvida ou quiser compartilhar o que achou, me chama no <b>@auditor_discursivas</b>. Bons estudos!</div>
@@ -201,7 +203,7 @@ def montar():
 <section class="pb"><span class="eyebrow">Palavra inicial</span><h2 class="sec">Um caso, várias disciplinas, uma solução</h2>
 <p class="lead">A P3 da SEFAZ-SP é um único estudo de caso interdisciplinar, de até 30 linhas, sobre os Conhecimentos Básicos — o mesmo para as três áreas (Orçamento e Finanças Públicas, Contabilidade Pública e Ciência de Dados e TI). O edital é explícito: a banca avalia a interpretação do caso e a proposta de solução, e a mera citação de lei ou de definição não pontua por si só.</p>
 <p>A aula segue essa lógica. A Parte 1 mostra a prova, o que o edital pede, como a FCC corrige, os temas escolhidos, o roteiro de planejamento e o parágrafo que pontua. A Parte 2 traz cinco rodadas completas, cada uma cruzando duas ou três disciplinas. A Parte 3 fecha com o dia da prova e o checklist.</p>
-<div class="box nv"><span class="eyebrow">Regra de ouro</span>Um parágrafo para cada aspecto do comando, na ordem do enunciado, aberto pelo diagnóstico (tópico frasal), com o fundamento, o fato do caso e — sempre — a <b>solução</b>. Na FCC, a conclusão de cada parágrafo é uma recomendação, não um resumo.</div>
+<div class="box nv"><span class="eyebrow">Regra de ouro</span>Um parágrafo para cada aspecto do comando, na ordem do enunciado, aberto pelo diagnóstico (tópico frasal), com o fundamento, o fato do caso e — sempre — a <b>solução</b>. Neste edital (item 7.4), a conclusão de cada parágrafo deve ser uma recomendação, não um resumo.</div>
 <h3>Sumário</h3>
 <table class="sum"><tbody>
 <tr class="pt"><td colspan="2">Parte 1 · Visão geral da prova</td></tr>
@@ -215,19 +217,19 @@ def montar():
 <tr><td class="n">07</td><td>A estrutura do estudo de caso</td></tr>{sum_rod}
 <tr class="pt"><td colspan="2">Parte 3 · O dia da prova</td></tr>
 <tr><td class="n">08</td><td>A tarde da prova</td></tr>
-<tr><td class="n">09</td><td>Checklist e recurso</td></tr>
+<tr><td class="n">09</td><td>Checklist do dia da prova</td></tr>
 </tbody></table>
 <p class="nota">Fontes: Edital n.º 01/2026 – SEFAZ-SP/APOFP (DOE-SP de 02/10/2026) e Edital n.º 02/2026 de retificação (DOE-SP de 22/10/2026); legislação citada em cada rodada. Os casos e as resoluções desta aula são material do curso e não constituem padrão oficial da banca.</p>
 </section>
 
 <section class="pb"><div class="parte"><span class="eyebrow">Parte 1</span><h2>Visão geral da prova</h2><p>Formato, critérios do edital, correção da FCC, temas, planejamento e parágrafo.</p></div>
 <span class="eyebrow">01</span><h2 class="sec">A prova discursiva da SEFAZ-SP 2026</h2>
-<div class="stats">{stat('1','estudo de caso')}{stat('120','pontos')}{stat('48','nota mínima')}{stat('30','linhas máximas')}{stat('200','corrigidas por área')}</div>
+<div class="stats">{stat('1','estudo de caso')}{stat('120','pontos')}{stat('48','nota mínima')}{stat('30','linhas no máximo')}{stat('200','corrigidas por área')}</div>
 <p>A P3 – Estudo de Caso é aplicada em <b>20 de dezembro de 2026</b>, à tarde, no mesmo período da P2 (data alterada pelo Edital n.º 02/2026; era 13/12). É uma questão interdisciplinar, sobre os Conhecimentos Básicos, avaliada de 0 a 120 pontos, com habilitação a partir de 48 (itens 9.1, 9.2, 9.5 e 9.6).</p>
 <table><thead><tr><th>Ponto do edital</th><th>O que isso significa para você</th></tr></thead><tbody>
-<tr><td class="k">Peso na nota final</td><td>P1 vale 112 pontos, P2 vale 120 e a P3 vale 120: a discursiva é cerca de um terço das provas. A nota final soma P1, P2, P3 e títulos (item 12.1).</td></tr>
-<tr><td class="k">Desempate</td><td>Depois do critério de idade, o primeiro desempate é a maior nota na discursiva (item 13.1, b).</td></tr>
-<tr><td class="k">Quem tem a P3 corrigida</td><td>Só os habilitados nas objetivas e mais bem classificados até o limite do quadro do item 8.3 — 200 por área, respeitados os empates —, além de todos os candidatos com deficiência habilitados.</td></tr>
+<tr><td class="k">Peso na nota final</td><td>A P1 vale 112 pontos, a P2 vale 120 e a P3 vale 120: a discursiva é cerca de um terço das provas. A nota final soma P1, P2, P3 e títulos (item 12.1).</td></tr>
+<tr><td class="k">Desempate</td><td>Depois da preferência ao candidato com 60 anos ou mais, o primeiro critério de desempate é a maior nota na discursiva (item 13.1, b).</td></tr>
+<tr><td class="k">Quem tem a P3 corrigida</td><td>Só os habilitados nas objetivas e mais bem classificados até o limite do quadro do Capítulo VIII — 200 por área, respeitados os empates e o sistema de pontuação diferenciada —, além de todos os candidatos com deficiência habilitados (itens 8.3 e 9.4).</td></tr>
 <tr><td class="k">Limite de 30 linhas</td><td>Deve ser \"rigorosamente observado\", sob pena de perda de pontos (item 9.12). O rascunho não é corrigido (item 9.13).</td></tr>
 <tr><td class="k">Caneta</td><td>Esferográfica de material transparente, tinta preta ou azul, letra legível (item 10.15).</td></tr>
 </tbody></table>
@@ -236,8 +238,8 @@ def montar():
 
 <section class="pb"><span class="eyebrow">02</span><h2 class="sec">O que o edital pede (e o que não pontua)</h2>
 <div class="box nv"><span class="eyebrow">Item 7.4 do edital — o mais importante desta aula</span>Será avaliada a capacidade de <b>interpretação</b> e de <b>proposta de solução</b> ao caso prático. A mera citação de legislação ou de definições específicas não é objeto de valoração por si só.</div>
-<p>Somado aos itens 9.3 (domínio do conteúdo, experiência e adequação às atribuições do cargo) e 9.7 (nota prejudicada por abordagem tangencial, parcial ou diluída em divagações), o recado é claro: <b>quem só define e cita lei perde para quem aplica a lei ao fato e diz o que fazer</b>.</p>
-<table><thead><tr><th>Critério do edital</th><th>Onde você atende</th></tr></thead><tbody>
+<p>Lido com os itens 9.3 (domínio do conteúdo, experiência e adequação às atribuições do cargo) e 9.7 (nota prejudicada por abordagem tangencial, parcial ou diluída em divagações), o recado é claro: <b>quem só define e cita lei perde para quem aplica a lei ao fato e diz o que fazer</b>.</p>
+<table style="font-size:8.6pt"><thead><tr><th>Critério do edital</th><th>Onde você atende</th></tr></thead><tbody>
 <tr><td class="k">Interpretação do caso</td><td>Tópico frasal com o diagnóstico do fato (regular? irregular? viável?), usando os dados do enunciado</td></tr>
 <tr><td class="k">Proposta de solução</td><td>Última frase de cada parágrafo: \"recomenda-se...\", \"deve-se...\"</td></tr>
 <tr><td class="k">Domínio do conteúdo</td><td>Fundamento correto, com o vocabulário técnico da disciplina</td></tr>
@@ -246,7 +248,7 @@ def montar():
 </tbody></table>
 <h3>O conteúdo que alimenta o estudo de caso</h3>
 <p>A P3 sai dos Conhecimentos Básicos (item 9.2), as mesmas dez disciplinas da P1. As quatro de peso 2 na P1 são as candidatas naturais ao caso, e as atribuições do cargo — programação financeira, execução orçamentária, garantias e obrigações do Tesouro, auditoria, despesas de pessoal, política creditícia — indicam o tipo de situação.</p>
-<table><thead><tr><th>Disciplina (P1)</th><th>Questões · peso</th><th>O que mais rende num caso</th></tr></thead><tbody>
+<table style="font-size:8.6pt"><thead><tr><th>Disciplina (P1)</th><th>Questões · peso (item 7.1)</th><th>Temas prováveis num caso</th></tr></thead><tbody>
 <tr><td class="k">Administração Financeira e Orçamentária</td><td>8 · peso 2</td><td>Créditos adicionais, contingenciamento, execução da despesa, restos a pagar, DEA, PPA/LDO/LOA</td></tr>
 <tr><td class="k">Direito Financeiro e Finanças Públicas</td><td>8 · peso 2</td><td>LRF (metas, renúncia, pessoal, fim de mandato), operações de crédito, regra de ouro, dívida, federalismo fiscal</td></tr>
 <tr><td class="k">Contabilidade Geral e Pública</td><td>8 · peso 2</td><td>Enfoques orçamentário e patrimonial, PCASP, DCASP, competência</td></tr>
@@ -255,15 +257,15 @@ def montar():
 <tr><td class="k">Direito Administrativo e Constitucional</td><td>10 + 10 · peso 1</td><td>Lei n.º 14.133/2021, LAI, improbidade; finanças públicas (arts. 163 a 169) e sistema tributário com a EC n.º 132/2023</td></tr>
 <tr><td class="k">Economia · Matemática Financeira e Estatística</td><td>4 + 6 · peso 1</td><td>Avaliação de projetos (VPL, TIR, sensibilidade), efeitos macro sobre receita e dívida</td></tr>
 </tbody></table>
-<p class="nota">Quadro de questões e pesos: Edital n.º 01/2026, item 7.1. Língua Portuguesa (10 questões, peso 1) não entra como conteúdo do caso, mas é avaliada no texto.</p>
+
 </section>
 
 <section class="pb"><span class="eyebrow">03</span><h2 class="sec">Como a FCC corrige o estudo de caso</h2>
 <p>O edital da SEFAZ-SP não publica pesos por quesito. Ele prevê uma <b>grade de correção (máscara de critérios)</b> com a abordagem e os requisitos de resposta definidos pela banca, divulgada junto com a resposta e a nota de cada candidato na vista da prova (item 9.15). Desatender a grade é causa de nota zero (item 9.9.7).</p>
-<div class="box cre"><span class="eyebrow">Como ler isso</span>Na prática, a grade funciona como uma lista do que precisa aparecer em cada aspecto. O corretor procura o elemento; se ele estiver na primeira frase do parágrafo, com o fato do caso, você recebe o ponto mais rápido — e fica mais fácil fundamentar o recurso se ele não vier.</div>
+<div class="box cre"><span class="eyebrow">Como ler isso</span>Na prática, a grade funciona como uma lista do que precisa aparecer em cada aspecto. O corretor procura o elemento; se ele estiver na primeira frase do parágrafo, com o fato do caso, o corretor o localiza com mais facilidade — e fica mais fácil fundamentar o recurso se o ponto não vier.</div>
 <table><thead><tr><th>Etapa</th><th>Regra do edital</th></tr></thead><tbody>
 <tr><td class="k">Resultado preliminar</td><td>Previsto para 03/03/2027 no cronograma retificado (pode mudar)</td></tr>
-<tr><td class="k">Vista da prova</td><td>Concedida a todos no período recursal do resultado preliminar (item 14.7)</td></tr>
+<tr><td class="k">Vista da prova</td><td>No período recursal do resultado preliminar — previsto para 04 e 05/03/2027 —, para os candidatos que realizaram a prova (item 14.7)</td></tr>
 <tr><td class="k">Prazo do recurso</td><td>2 dias úteis, a partir do 1.º dia útil após a publicação, sem efeito suspensivo (item 14.2)</td></tr>
 <tr><td class="k">Forma</td><td>Só pelo site da FCC, com o campo \"Fundamentação\" obrigatório, claro e objetivo, sem juntar documentos (item 14.4) e sem qualquer identificação nas razões (item 14.1.1)</td></tr>
 <tr><td class="k">Quantidade</td><td>Um único recurso por candidato para cada evento; recurso de igual teor é desconsiderado (item 14.14)</td></tr>
@@ -272,17 +274,17 @@ def montar():
 </section>
 
 <section class="pb"><span class="eyebrow">04</span><h2 class="sec">Os temas desta aula</h2>
-<p>Os cinco casos foram escolhidos por três critérios: estão nos Conhecimentos Básicos, cruzam disciplinas como pede o item 7.3 e conversam com o momento — 2026 é o último ano dos mandatos estaduais, a reforma tributária muda a principal receita do Estado, e o edital trouxe Fluência de Dados com peso 2.</p>
+<p>Os cinco casos foram escolhidos por três critérios: estão nos Conhecimentos Básicos, cruzam disciplinas, como pede o item 7.3 e conversam com o momento — 2026 é o último ano dos mandatos estaduais, a reforma tributária muda a principal receita do Estado, e Fluência de Dados tem peso 2 na P1.</p>
 <table><thead><tr><th>Rodada</th><th>Disciplinas cruzadas</th><th>Por que este tema</th></tr></thead><tbody>{temas}</tbody></table>
-<div class="box cre"><span class="eyebrow">Como usar as rodadas</span>Leia só o enunciado, cronometre e escreva antes de olhar o resto. Depois, corrija-se com o espelho: atribua o conceito de cada quesito e compare com a proposta de redação. Os espelhos seguem a lógica de grade da FCC, para treino; a grade real só será conhecida na vista da prova.</div>
+<div class="box cre"><span class="eyebrow">Como usar as rodadas</span>Leia só o enunciado, cronometre e escreva antes de olhar o resto. Depois, corrija-se com o espelho: atribua o conceito de cada quesito e compare com a proposta de redação. Os espelhos são um modelo didático por conceitos, para treino; a grade real da FCC só será conhecida na vista da prova.</div>
 </section>
 
 <section class="pb"><span class="eyebrow">05</span><h2 class="sec">Roteiro de planejamento em cinco passos</h2>
-<p>A prova da tarde divide o tempo entre 40 questões da P2 e o estudo de caso. O roteiro leva cerca de 20 minutos e devolve esse tempo no texto definitivo, sem rasuras e sem linha desperdiçada.</p>
+<p>A prova da tarde divide o tempo entre 40 questões da P2 e o estudo de caso. O roteiro leva cerca de 25 minutos e devolve esse tempo no texto definitivo, sem rasuras e sem linha desperdiçada.</p>
 <div class="passo"><div class="bn">1</div><div><h4>Comando antes do caso</h4>Leia primeiro o que é pedido. Numere os aspectos, sublinhe o verbo (\"analise\", \"proponha\", \"indique\") e circule normas citadas e quantificadores.</div></div>
 <div class="passo"><div class="bn">2</div><div><h4>Tipo de cada aspecto</h4>Conceito, regularidade de um fato, cálculo/interpretação ou recomendação. O tipo decide como o tópico frasal começa.</div></div>
 <div class="passo"><div class="bn">3</div><div><h4>Linhas por aspecto</h4>30 linhas divididas pelo número de aspectos (veja a seção 07). Anote a cota ao lado de cada item no rascunho.</div></div>
-<div class="passo"><div class="bn">4</div><div><h4>Caso marcado</h4>Só agora leia o caso. Marque cada dado (datas, percentuais, valores, \"sem\", \"inclusive\") e ligue-o ao aspecto que ele responde. Dado que você não usou é ponto que você deixou na mesa.</div></div>
+<div class="passo"><div class="bn">4</div><div><h4>Caso marcado</h4>Só agora leia o caso. Marque cada dado (datas, percentuais, valores, \"sem\", \"inclusive\") e ligue-o ao aspecto que ele responde. Dado do caso sem uso costuma ser elemento da grade que ficou de fora.</div></div>
 <div class="passo"><div class="bn">5</div><div><h4>Esqueleto em palavras-chave</h4>Para cada parágrafo: diagnóstico · fundamento · fato · solução. Nada de rascunho integral: 30 linhas passadas a limpo custam tempo que falta na P2.</div></div>
 <h3>Texto técnico × redação escolar</h3>
 <table><thead><tr><th>Critério</th><th>Redação escolar</th><th>Estudo de caso (FCC)</th></tr></thead><tbody>
@@ -324,14 +326,14 @@ def montar():
 <tr><td class="k">5 aspectos</td><td>6 + 6 + 6 + 5 + 5</td><td>28–30</td></tr>
 </tbody></table>
 <p>Escreva perto do limite, mas nunca além dele: o item 9.12 tira pontos de quem passa das 30 linhas. Se o comando der valores diferentes por aspecto, as linhas acompanham os valores.</p>
-<div class="box cre"><span class="eyebrow">E a introdução?</span>Com 30 linhas e quatro aspectos, ela é luxo. Com três aspectos, uma frase de abertura que já dá o diagnóstico (\"As três medidas tratam do fim do mandato, mas apenas parte delas pode ser adotada\") ajuda o corretor e custa duas linhas. Nunca abra com contexto genérico.</div>
+<div class="box cre"><span class="eyebrow">E a introdução?</span>Com 30 linhas e quatro aspectos, ela é luxo. Com três aspectos, uma frase de abertura que já dá o diagnóstico (\"Nenhuma das três propostas pode ser adotada como formulada\") ajuda o corretor e custa duas linhas. Nunca abra com contexto genérico.</div>
 </section>
 
 {rods}
 
 <section class="pb"><div class="parte"><span class="eyebrow">Parte 3</span><h2>O dia da prova</h2><p>Gestão da tarde e conferência final</p></div>
 <span class="eyebrow">08</span><h2 class="sec">A tarde da prova</h2>
-<p>Pela manhã, a P1 tem 80 questões. À tarde, no mesmo período, vêm a P2 (40 questões de peso 3) e a P3. O edital de convocação, previsto para 08/12/2026, confirma horários e local. Vale decidir antes de entrar na sala como dividir a tarde. Uma sugestão:</p>
+<p>Pela manhã, a P1 tem 80 questões. À tarde, no mesmo período, vêm a P2 (40 questões de peso 3) e a P3. O edital de convocação, previsto para 08/12/2026, confirma horários e local. Só é permitido sair do local depois de 3 horas do início da prova (item 10.21, f). Vale decidir antes de entrar na sala como dividir a tarde. Uma sugestão:</p>
 <table><thead><tr><th>Tempo</th><th>Etapa</th></tr></thead><tbody>
 <tr><td class="k">10 min</td><td>Ler o comando e o caso da P3, numerar os aspectos e marcar os dados</td></tr>
 <tr><td class="k">15 min</td><td>Esqueleto em palavras-chave e linhas por parágrafo</td></tr>
@@ -353,11 +355,11 @@ def montar():
 <section class="pb"><span class="eyebrow">09</span><h2 class="sec">Checklist do dia da prova</h2>
 <div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada aspecto tem um parágrafo?</li><li>Aspectos duplos (\"conceito e espécies\", \"requisitos e garantia\") estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com o diagnóstico?</li><li>Cada parágrafo fecha com uma solução?</li></ul></div>
 <div class="t3"><span class="eyebrow">Depois de passar a limpo</span><ul><li>Nada além da linha 30 nem fora do espaço.</li><li>Nenhuma assinatura, nome ou marca.</li><li>Letra legível, caneta preta ou azul.</li><li>Acentos, crases e concordâncias revisados.</li><li>Nenhuma frase copiada do enunciado.</li></ul></div></div>
-<div class="box nv"><span class="eyebrow">Última palavra</span>A diferença entre 48 e 90 pontos raramente está no conhecimento. Está em responder a tudo o que foi perguntado, na ordem em que foi perguntado, aplicando a norma ao fato e dizendo o que fazer. Treine até isso ficar automático.</div>
+<div class="box nv"><span class="eyebrow">Última palavra</span>Boa parte da nota depende de responder a tudo o que foi perguntado, na ordem em que foi perguntado, aplicando a norma ao fato e dizendo o que fazer. Treine até isso ficar automático.</div>
 <h3>Fontes</h3>
 <ul class="fontes">
-<li>SEFAZ-SP. Edital n.º 01/2026, de 1.º/10/2026, Concurso Público para Analista em Planejamento, Orçamento e Finanças Públicas – APOFP (DOE-SP de 02/10/2026), itens 7, 8, 9, 10, 12, 13 e 14.</li>
-<li>SEFAZ-SP. Edital n.º 02/2026, de 21/10/2026, retificação do cronograma (DOE-SP de 22/10/2026): provas em 20/12/2026; resultado preliminar previsto para 03/03/2027 (conferido por fontes secundárias: Gran Cursos, Notícias Concursos, Folha Dirigida/Qconcursos).</li>
+<li>SEFAZ-SP. Edital n.º 01/2026, de 01/10/2026, Concurso Público para Analista em Planejamento, Orçamento e Finanças Públicas – APOFP (DOE-SP de 02/10/2026), itens 7, 8, 9, 10, 12, 13 e 14.</li>
+<li>SEFAZ-SP. Edital n.º 02/2026, de 21/10/2026, retificação do cronograma (DOE-SP de 22/10/2026): provas em 20/12/2026; resultado preliminar previsto para 03/03/2027 (conferido em fonte secundária: Direção Concursos, 22/10/2026).</li>
 <li>Constituição Federal; ADCT; EC n.º 132/2023; LC n.º 101/2000 (LRF); Lei n.º 4.320/1964; Lei n.º 14.133/2021; Lei n.º 12.527/2011 (LAI); Lei n.º 13.709/2018 (LGPD); Código Penal; STF, Tema 483 da repercussão geral; MCASP (STN); IIA, Modelo das Três Linhas (2020).</li>
 </ul>
 <p class="nota">O edital prevalece sobre qualquer resumo, inclusive este. Confira datas e regras no texto oficial e no site da FCC.</p>
@@ -369,7 +371,7 @@ def montar():
 <p>Montei esta aula do mesmo jeito que corrijo uma prova: olhando o que a banca realmente cobra e o que faz um texto ganhar ou perder pontos. Se ela te ajudou a enxergar a P3 da SEFAZ-SP com mais clareza, já valeu.</p>
 <div class="box lr"><span class="eyebrow">Gostou do material?</span>Comenta lá no <b>@auditor_discursivas</b> o que você achou. Parece pouco, mas cada comentário ajuda muito o meu trabalho e faz este material chegar a mais gente que está na mesma luta que você. Por lá eu sempre posto conteúdo sobre discursivas: estrutura, análise de provas e padrões das bancas.</div>
 <p>Eu torço muito por você. Estude com método, treine na folha, cronometre os textos e chegue ao dia 20 de dezembro confiando no que você construiu.</p>
-<div class="cta"><span class="eyebrow">E se a nota não vier como você esperava?</span>Não aceite a nota de cara. Na FCC, a vista da prova — com a grade de correção e a pontuação de cada critério — e o recurso acontecem juntos, em <b>apenas 2 dias úteis</b>. Um recurso bem fundamentado aponta, critério por critério, o que a sua resposta já trazia e não foi pontuado. Com nota mínima de 48 e desempate pela discursiva, isso pode ser a diferença entre a eliminação e a nomeação.<br><br><b>Me chama no direct do @auditor_discursivas</b> que a gente analisa a sua prova juntos e prepara o recurso. A análise de viabilidade é gratuita.</div>
+<div class="cta"><span class="eyebrow">E se a nota não vier como você esperava?</span>Não aceite a nota de cara. Neste concurso, a vista da prova — com a grade de correção e a pontuação — e o recurso acontecem juntos, em <b>apenas 2 dias úteis</b> (previstos para 04 e 05/03/2027 no cronograma retificado). Um recurso bem fundamentado aponta, critério por critério, o que a sua resposta já trazia e não foi pontuado. Com nota mínima de 48 e desempate pela discursiva, isso pode ser a diferença entre a eliminação e a nomeação.<br><br><b>Me chama no direct do @auditor_discursivas</b> que a gente analisa a sua prova juntos e prepara o recurso. A análise de viabilidade é gratuita.</div>
 <p style="margin-top:12pt">Um abraço e boa prova,<br><b>Samuel Wolf</b></p>
 </section>
 </body></html>"""
