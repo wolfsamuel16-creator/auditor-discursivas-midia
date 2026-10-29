@@ -71,7 +71,7 @@ ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
 .parte p{color:#cfd7e1;margin:5pt 0 0}
 .parte .eyebrow{color:#ffb39e}
 /* sumário */
-.sum{width:100%;font-size:10pt}.sum td{border:0;padding:3pt 0}.sum td.n{width:30pt;font-family:Poppins;font-weight:700;color:var(--lar)}
+.sum{width:100%;font-size:9.6pt}.sum td{border:0;padding:2pt 0}.sum td.n{width:30pt;font-family:Poppins;font-weight:700;color:var(--lar)}
 .sum tr.pt td{padding-top:11pt;font-family:Poppins;font-weight:600;font-size:7.6pt;letter-spacing:.24em;color:var(--mu);text-transform:uppercase}
 .sum tbody tr:nth-child(even) td{background:none}
 /* roteiro */
@@ -90,13 +90,15 @@ ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
 .enun p{font-size:10.2pt}
 .enun ol{margin:6pt 0 0;padding-left:0;list-style:none}
 .enun ol li{display:flex;gap:9pt;margin-bottom:5pt}
-.enun ol li .i{font-family:Poppins;font-weight:700;color:var(--lar);flex:none;width:12pt}
+.enun ol li .i{font-family:Poppins;font-weight:700;color:var(--lar);flex:none;width:14pt}
 .enun .val{color:var(--mu);font-size:9pt;white-space:nowrap}
 .pare{background:var(--cre);border-radius:7pt;padding:9pt 12pt;font-size:9.6pt;font-style:italic}
 .esq td.k{width:30%}
 .esp td:last-child{width:11%;text-align:right;font-family:Poppins;font-weight:700;color:var(--navy)}
 .esp td.q{font-weight:700;color:var(--navy);width:28%}
 .esp .c{font-size:8.9pt;margin:0 0 2pt}
+.pad{font-size:8.9pt}.pad li{margin-bottom:2pt}
+.chk{margin:0;padding-left:12pt;font-size:9pt}.chk li{margin-bottom:2pt}
 .tot td{background:var(--cre)!important;font-family:Poppins;font-weight:700;color:var(--navy)}
 /* folha */
 .folha{border:1px solid #cfc6b8;border-radius:6pt;background:#fffdf9;padding:6pt 10pt 8pt;margin:6pt 0 6pt;break-inside:avoid}
@@ -108,7 +110,7 @@ ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
 .ln .t.fim{text-align-last:left}
 .nota{font-size:8.4pt;color:var(--mu);font-style:italic}
 .tri{display:flex;gap:7pt;margin:9pt 0;break-inside:avoid}
-.tri>div{flex:1;border-radius:7pt;padding:8pt 9pt;font-size:8.4pt;line-height:1.4}
+.tri>div{flex:1;border-radius:7pt;padding:7pt 8pt;font-size:8.1pt;line-height:1.35}
 .tri .eyebrow{display:block;margin-bottom:4pt;font-size:6.8pt}
 .tri ul{padding-left:12pt;margin:0}
 .t1{background:#fff3ee}.t2{background:#fbecea}.t3{background:#eaf5ee}
@@ -151,33 +153,36 @@ AUTOR = f"""<div class="autor"><div class="foto" style="background-image:url(dat
 <li>Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</li><li>Trabalha com discursivas há mais de seis anos</li></ul></div></div>"""
 
 def rodada(r):
-    soma = sum(v for _, v in r['itens'])
-    itens = ''.join(f'<li><span class="i">{i+1}</span><span>{t} <span class="val">[valor: {v} pontos]</span></span></li>' for i, (t, v) in enumerate(r['itens']))
+    soma = sum(t for _, t, _ in r['espelho'])
+    L = 'abcdefgh'
+    itens = ''.join(f'<li><span class="i">{L[i]})</span><span>{t}</span></li>' for i, t in enumerate(r['itens']))
     caso = ''.join(f'<p>{p}</p>' for p in r['caso'])
     import re as _re
     _n = [len(wrap_paragrafos([pp])) for pp in r['proposta']]
-    _rows = [(_re.sub(r'\d+ linhas', f'{k} linhas', a2), b2) for (a2, b2), k in zip(r['esqueleto'], _n)] if len(_n) == len(r['esqueleto']) else r['esqueleto']
+    _rows = [(a2.replace('N linhas', f'{k} linhas'), b2) for (a2, b2), k in zip(r['esqueleto'], _n)]
     esq = ''.join(f'<tr><td class="k">{a}</td><td>{b}</td></tr>' for a, b in _rows)
     pad = ''.join('<tr><td class="k">{}</td><td><ul>{}</ul></td></tr>'.format(a, ''.join(f'<li>{x}</li>' for x in bs)) for a, bs in r['padrao'])
-    esp = ''.join('<tr><td class="q">{}</td><td>{}</td><td>{}</td></tr>'.format(q, ''.join(f'<p class="c">Conceito {c}</p>' for c in cs), f'{v:.2f}'.replace('.', ',')) for q, cs, v in r['espelho'])
+    fmt = lambda v: f'{v:.2f}'.replace('.', ',')
+    esp = ''.join('<tr><td class="q">{}</td><td><ul class="chk">{}</ul></td><td>{}</td></tr>'.format(q, ''.join(f'<li>{e} <span class="val">({fmt(x)})</span></li>' for e, x in els), fmt(t)) for q, t, els in r['espelho'])
     fl, nl = folha(r['proposta'])
     tri = lambda cls, tit, xs: f'<div class="{cls}"><span class="eyebrow">{tit}</span><ul>' + ''.join(f'<li>{x}</li>' for x in xs) + '</ul></div>'
     return f"""
 <section class="pb rod-h"><span class="eyebrow">Rodada {r['n']} · Estudo de caso · 30 linhas · {soma} pontos</span>
 <h2><span class="rn">{r['n']}.</span> {r['titulo']}</h2>
-<div class="eixo"><b>Eixo do edital:</b> {r['eixo']}. Caso inédito, elaborado para treino.</div>
-<div class="enun"><span class="eyebrow">Estudo de caso · inédito · formato de treino · até 30 linhas · 120 pontos</span>
+<div class="eixo"><b>Eixo do edital:</b> {r['eixo']}. Caso inédito, no formato das provas recentes da FCC, elaborado para treino.</div>
+<div class="enun"><span class="eyebrow">Estudo de caso · inédito · formato FCC · até 30 linhas · 120 pontos</span>
 {caso}<p>{r['comando']}</p><ol>{itens}</ol>
-<p class="nota" style="margin-top:6pt">Situação hipotética: entes e fatos são fictícios. A distribuição de pontos entre os aspectos é do curso; o edital não a fixa.</p></div>
+<p style="margin-top:6pt"><b>Observação:</b> É obrigatório indicar na resposta a letra correspondente ao item que está sendo respondido.</p>
+<p class="nota">Situação hipotética: entes e fatos são fictícios.</p></div>
 <div class="pare">Pare aqui. Planeje e escreva a sua resposta em até 30 linhas, cronometrando cerca de 70 minutos, antes de virar a página. A solução começa na próxima página.</div>
 </section>
 <section class="pb"><h3 style="margin-top:0">Como montar o esqueleto</h3>
-<table class="esq"><thead><tr><th>Parágrafo</th><th>Palavras-chave do rascunho</th></tr></thead><tbody>{esq}</tbody></table>
-<h3>Padrão de resposta</h3>
-<table><thead><tr><th>Aspecto</th><th>O que a resposta deve conter</th></tr></thead><tbody>{pad}</tbody></table>
-<h3>Espelho de correção (modelo didático do curso)</h3>
-<table class="esp"><thead><tr><th>Quesito</th><th>O que o corretor procura</th><th>Pontos</th></tr></thead><tbody>{esp}
-<tr class="tot"><td>Nota máxima</td><td>Erros de língua portuguesa, abordagem tangencial e divagação reduzem a nota (edital, itens 9.7 e 9.8)</td><td>{f'{soma:.2f}'.replace('.', ',')}</td></tr></tbody></table>
+<table class="esq"><thead><tr><th>Item</th><th>Palavras-chave do rascunho</th></tr></thead><tbody>{esq}</tbody></table>
+<h3>Abordagem esperada (padrão do curso)</h3>
+<table class="pad"><thead><tr><th>Item</th><th>O que a resposta deve conter</th></tr></thead><tbody>{pad}</tbody></table>
+<h3>Grade de correção (modelo didático, por item) · {fmt(soma)} pontos</h3>
+<p class="nota">A nota cai proporcionalmente se a abordagem for tangencial, parcial ou diluída (item 9.7). O aprofundamento gradua a nota de cada requisito, e, nesta grade didática, respostas alternativas corretas também pontuam.</p>
+<table class="esp"><thead><tr><th>Item</th><th>Requisito da resposta (pontos)</th><th>Pontos</th></tr></thead><tbody>{esp}</tbody></table>
 </section><section class="pb"><h3 style="margin-top:0">Proposta de redação definitiva · {nl} de 30 linhas</h3>
 {fl}
 <p class="nota">Contagem simulada com {CPL} caracteres por linha. Em letra maior (cerca de 60 caracteres), o mesmo texto chega perto de 30 linhas: treine na folha.</p>
@@ -194,7 +199,7 @@ def montar():
 <section class="capa"><div class="barra"></div><div class="wm">AUDITOR DISCURSIVAS</div>
 <div class="eyebrow" style="color:#ffb39e;margin-top:30mm">Aula especial · FCC · Temas propostos</div>
 <h1 style="margin-top:6mm">Discursiva da<br><span>SEFAZ-SP</span> 2026</h1>
-<div class="sub">O estudo de caso interdisciplinar de 30 linhas: o que a FCC avalia, planejamento, estrutura do parágrafo e cinco rodadas com temas inéditos, espelho e resposta completa.</div>
+<div class="sub">O estudo de caso interdisciplinar de 30 linhas: o que a FCC avalia, planejamento, estrutura do parágrafo e cinco rodadas com temas inéditos, grade de correção e resposta completa.</div>
 <div class="tag">ANALISTA EM PLANEJAMENTO, ORÇAMENTO E FINANÇAS PÚBLICAS · APOFP</div>
 <div class="data">PROVA EM 20 DE DEZEMBRO DE 2026</div>
 <div class="rod"><span>Banca FCC · SEFAZ-SP 2026 · Edital n.º 01/2026, retificado pelo Edital n.º 02/2026</span><span>@auditor_discursivas</span></div></section>
@@ -209,14 +214,14 @@ def montar():
 
 <section class="pb"><span class="eyebrow">Palavra inicial</span><h2 class="sec">Um caso, várias disciplinas, uma solução</h2>
 <p class="lead">A P3 da SEFAZ-SP é um único estudo de caso interdisciplinar, de até 30 linhas, sobre os Conhecimentos Básicos — o mesmo para as três áreas (Orçamento e Finanças Públicas, Contabilidade Pública e Ciência de Dados e TI). O edital é explícito: a banca avalia a interpretação do caso e a proposta de solução, e a mera citação de lei ou de definição não pontua por si só.</p>
-<p>A aula segue essa lógica. A Parte 1 mostra a prova, o que o edital pede, como a FCC corrige, os temas escolhidos, o roteiro de planejamento e o parágrafo que pontua. A Parte 2 traz cinco rodadas completas, cada uma cruzando duas ou três disciplinas. A Parte 3 fecha com o dia da prova e o checklist.</p>
-<div class="box nv"><span class="eyebrow">Regra de ouro</span>Um parágrafo para cada aspecto do comando, na ordem do enunciado, aberto pelo diagnóstico (tópico frasal), com o fundamento, o fato do caso e — sempre — a <b>solução</b>. Neste edital (item 7.4), a conclusão de cada parágrafo deve ser uma recomendação, não um resumo.</div>
+<p>A aula segue essa lógica. A Parte 1 mostra a prova, o que o edital pede, como a FCC formula e corrige o estudo de caso, os temas escolhidos, o roteiro de planejamento e o parágrafo que pontua. A Parte 2 traz cinco rodadas completas, cada uma cruzando duas ou três disciplinas. A Parte 3 fecha com o dia da prova e o checklist.</p>
+<div class="box nv"><span class="eyebrow">Regra central</span>Um parágrafo para cada item do comando, na ordem do enunciado, aberto pela letra do item e pela resposta direta à pergunta, com o fundamento, o fato do caso e a <b>solução</b>. Neste edital (item 7.4), a proposta de solução é avaliada: sempre que o item permitir, feche o parágrafo com uma recomendação, não com um resumo.</div>
 <h3>Sumário</h3>
 <table class="sum"><tbody>
 <tr class="pt"><td colspan="2">Parte 1 · Visão geral da prova</td></tr>
 <tr><td class="n">01</td><td>A prova discursiva da SEFAZ-SP 2026</td></tr>
 <tr><td class="n">02</td><td>O que o edital pede (e o que não pontua)</td></tr>
-<tr><td class="n">03</td><td>Como a FCC corrige o estudo de caso</td></tr>
+<tr><td class="n">03</td><td>Como a FCC formula e corrige o estudo de caso</td></tr>
 <tr><td class="n">04</td><td>Os temas desta aula</td></tr>
 <tr><td class="n">05</td><td>Roteiro de planejamento em cinco passos</td></tr>
 <tr><td class="n">06</td><td>O parágrafo que pontua na FCC</td></tr>
@@ -246,8 +251,8 @@ def montar():
 <section class="pb"><span class="eyebrow">02</span><h2 class="sec">O que o edital pede (e o que não pontua)</h2>
 <div class="box nv"><span class="eyebrow">Item 7.4 do edital — o mais importante desta aula</span>Será avaliada a capacidade de <b>interpretação</b> e de <b>proposta de solução</b> ao caso prático. A mera citação de legislação ou de definições específicas não é objeto de valoração por si só.</div>
 <p>Lido com os itens 9.3 (domínio do conteúdo, experiência e adequação às atribuições do cargo) e 9.7 (nota prejudicada por abordagem tangencial, parcial ou diluída em divagações), o recado é claro: <b>quem só define e cita lei perde para quem aplica a lei ao fato e diz o que fazer</b>.</p>
-<table style="font-size:8.6pt"><thead><tr><th>Critério do edital</th><th>Onde você atende</th></tr></thead><tbody>
-<tr><td class="k">Interpretação do caso</td><td>Tópico frasal com o diagnóstico do fato (regular? irregular? viável?), usando os dados do enunciado</td></tr>
+<table style="font-size:8.2pt"><thead><tr><th>Critério do edital</th><th>Onde você atende</th></tr></thead><tbody>
+<tr><td class="k">Interpretação do caso</td><td>Resposta direta à pergunta na 1.ª frase (sim? não? regular? viável?), usando os dados do enunciado</td></tr>
 <tr><td class="k">Proposta de solução</td><td>Última frase de cada parágrafo: \"recomenda-se...\", \"deve-se...\"</td></tr>
 <tr><td class="k">Domínio do conteúdo</td><td>Fundamento correto, com o vocabulário técnico da disciplina</td></tr>
 <tr><td class="k">Correção gramatical (item 9.8)</td><td>Períodos curtos, ordem direta, revisão final</td></tr>
@@ -255,104 +260,121 @@ def montar():
 </tbody></table>
 <h3>O conteúdo que alimenta o estudo de caso</h3>
 <p>A P3 sai dos Conhecimentos Básicos (item 9.2), as mesmas dez disciplinas da P1. As quatro de peso 2 na P1 são as candidatas naturais ao caso, e as atribuições do cargo — programação financeira, execução orçamentária, garantias e obrigações do Tesouro, auditoria, despesas de pessoal, política creditícia — indicam o tipo de situação.</p>
-<table style="font-size:8.6pt"><thead><tr><th>Disciplina (P1)</th><th>Questões · peso (item 7.1)</th><th>Temas prováveis num caso</th></tr></thead><tbody>
+<table style="font-size:8.2pt"><thead><tr><th>Disciplina (P1)</th><th>Questões · peso (item 7.1)</th><th>Temas prováveis num caso</th></tr></thead><tbody>
 <tr><td class="k">Administração Financeira e Orçamentária</td><td>8 · peso 2</td><td>Créditos adicionais, contingenciamento, execução da despesa, restos a pagar, DEA, PPA/LDO/LOA</td></tr>
 <tr><td class="k">Direito Financeiro e Finanças Públicas</td><td>8 · peso 2</td><td>LRF (metas, renúncia, pessoal, fim de mandato), operações de crédito, regra de ouro, dívida, federalismo fiscal</td></tr>
 <tr><td class="k">Contabilidade Geral e Pública</td><td>8 · peso 2</td><td>Enfoques orçamentário e patrimonial, PCASP, DCASP, competência</td></tr>
 <tr><td class="k">Fluência de Dados</td><td>8 · peso 2</td><td>Qualidade e governança de dados, LGPD, análise e anomalias, IA</td></tr>
 <tr><td class="k">Administração Geral, Pública e Auditoria</td><td>8 · peso 1</td><td>Três Linhas, COSO, auditoria, políticas públicas, indicadores</td></tr>
 <tr><td class="k">Direito Administrativo e Constitucional</td><td>10 + 10 · peso 1</td><td>Lei n.º 14.133/2021, LAI, improbidade; finanças públicas (arts. 163 a 169) e sistema tributário com a EC n.º 132/2023</td></tr>
+<tr><td class="k">Língua Portuguesa</td><td>10 · peso 1</td><td>Não é tema do caso, mas é avaliada no próprio texto (item 9.8)</td></tr>
 <tr><td class="k">Economia · Matemática Financeira e Estatística</td><td>4 + 6 · peso 1</td><td>Avaliação de projetos (VPL, TIR, sensibilidade), efeitos macro sobre receita e dívida</td></tr>
 </tbody></table>
 
 </section>
 
-<section class="pb"><span class="eyebrow">03</span><h2 class="sec">Como a FCC corrige o estudo de caso</h2>
-<p>O edital da SEFAZ-SP não publica pesos por quesito. Ele prevê uma <b>grade de correção (máscara de critérios)</b> com a abordagem e os requisitos de resposta definidos pela banca, divulgada junto com a resposta e a nota de cada candidato na vista da prova (item 9.15). Desatender a grade é causa de nota zero (item 9.9.7).</p>
-<div class="box cre"><span class="eyebrow">Como ler isso</span>Na prática, a grade funciona como uma lista do que precisa aparecer em cada aspecto. O corretor procura o elemento; se ele estiver na primeira frase do parágrafo, com o fato do caso, o corretor o localiza com mais facilidade — e fica mais fácil fundamentar o recurso se o ponto não vier.</div>
+<section class="pb"><span class="eyebrow">03</span><h2 class="sec">Como a FCC formula e corrige o estudo de caso</h2>
+<p>Não localizamos discursiva anterior na própria SEFAZ-SP: os concursos de APOFP de 2010 (FCC) e 2013 (Vunesp) e os de Agente/Auditor Fiscal de 2009, 2013 e 2025 (FCC) tiveram, pelo que apuramos, só provas objetivas. A referência, portanto, são os estudos de caso recentes da FCC em outros órgãos.</p>
+<h3>O formato do enunciado</h3>
+<table><thead><tr><th>Característica</th><th>Como aparece nas provas da FCC</th></tr></thead><tbody>
+<tr><td class="k">O caso</td><td>Narrativa concreta, com datas, valores, entes e fatos numerados (I, II, III...)</td></tr>
+<tr><td class="k">O comando</td><td>Frase curta de fecho: "Tendo em vista a situação narrada, responda, justificadamente:", "responda, fundamentadamente:", "responda ao que se pede:"</td></tr>
+<tr><td class="k">As perguntas</td><td>Itens com letra (a, b, c...), às vezes com subitens (a.1, a.2). Um mesmo item pode trazer duas ou três perguntas</td></tr>
+<tr><td class="k">Observação frequente</td><td>"É obrigatório indicar na resposta a letra correspondente ao item que está sendo respondido" (SEFAZ-PI 2025)</td></tr>
+<tr><td class="k">Citação de lei</td><td>Às vezes o enunciado dispensa: "não há necessidade de mencionar dispositivo legal" — coerente com o item 7.4 deste edital</td></tr>
+<tr><td class="k">Pontos por item</td><td>Não aparecem no caderno; ficam na grade</td></tr>
+</tbody></table>
+<p class="nota">Base: cadernos de estudo de caso da FCC na SEFAZ-PI 2025 (Auditor Fiscal, Analista do Tesouro, Auditor Governamental e Agente de Tributos), TRF-3 2024 e TJ-MA 2019.</p>
+<h3>A grade de correção</h3>
+<p>O edital prevê uma <b>grade de correção (máscara de critérios)</b> com a abordagem e os requisitos de resposta definidos pela banca, mostrada junto com a resposta e a nota de cada candidato na vista da prova (item 9.15). Desatender a grade é causa de nota zero (item 9.9.7). A FCC não publica essa grade fora da vista.</p>
+<div class="box cre"><span class="eyebrow">Como ler isso</span>Pelos relatos de candidatos e cursos, a grade é organizada por item, com a abordagem esperada e a pontuação de cada um. O corretor procura o requisito dentro do item: resposta direta na primeira frase, com o fato do caso, é achada com mais facilidade — e fica mais fácil fundamentar o recurso se o ponto não vier.</div>
+<div class="tri"><div class="t1"><span class="eyebrow">FCC (estudo de caso)</span><ul><li>Perguntas com letra, resposta por item</li><li>Pontos por item só na grade</li><li>Edital sem fórmula de desconto por erro de língua; exige a norma ortográfica (item 9.8)</li><li>Grade conhecida só na vista da prova</li></ul></div>
+<div class="t3"><span class="eyebrow">Cebraspe (para comparar)</span><ul><li>"Redija um texto... abordando, necessariamente"</li><li>Pontos por aspecto no caderno</li><li>Desconto por erro de língua com fórmula</li><li>Padrão de resposta publicado no site</li></ul></div></div>
+</section>
+<section class="pb"><h3 style="margin-top:0">Vista e recurso neste concurso</h3>
 <table><thead><tr><th>Etapa</th><th>Regra do edital</th></tr></thead><tbody>
 <tr><td class="k">Resultado preliminar</td><td>Previsto para 03/03/2027 no cronograma retificado (pode mudar)</td></tr>
 <tr><td class="k">Vista da prova</td><td>No período recursal do resultado preliminar — previsto para 04 e 05/03/2027 —, para os candidatos que realizaram a prova (item 14.7)</td></tr>
 <tr><td class="k">Prazo do recurso</td><td>2 dias úteis, a partir do 1.º dia útil após a publicação, sem efeito suspensivo (item 14.2)</td></tr>
-<tr><td class="k">Forma</td><td>Só pelo site da FCC, com o campo \"Fundamentação\" obrigatório, claro e objetivo, sem juntar documentos (item 14.4) e sem qualquer identificação nas razões (item 14.1.1)</td></tr>
+<tr><td class="k">Forma</td><td>Só pelo site da FCC, com o campo "Fundamentação" obrigatório, claro e objetivo, sem juntar documentos (item 14.4) e sem qualquer identificação nas razões (item 14.1.1)</td></tr>
 <tr><td class="k">Quantidade</td><td>Um único recurso por candidato para cada evento; recurso de igual teor é desconsiderado (item 14.14)</td></tr>
 </tbody></table>
-<div class="box lr"><span class="eyebrow">Por que isso importa agora</span>Vista e recurso caem na mesma janela curta. Quem chega a ela sabendo como a grade funciona compara sua resposta item por item e escreve a fundamentação no prazo. Guarde esta página.</div>
+<div class="box lr"><span class="eyebrow">Por que isso importa agora</span>Vista e recurso caem na mesma janela curta. Quem chega a ela sabendo como a grade funciona compara sua resposta item por item, aponta onde cada requisito foi atendido e escreve a fundamentação no prazo. Guarde esta página.</div>
 </section>
 
 <section class="pb"><span class="eyebrow">04</span><h2 class="sec">Os temas desta aula</h2>
-<p>Os cinco casos foram escolhidos por três critérios: estão nos Conhecimentos Básicos, cruzam disciplinas, como pede o item 7.3 e conversam com o momento — 2026 é o último ano dos mandatos estaduais, a reforma tributária muda a principal receita do Estado, e Fluência de Dados tem peso 2 na P1.</p>
+<p>Os cinco casos foram escolhidos por três critérios: estão nos Conhecimentos Básicos, cruzam disciplinas, como pede o item 7.3, e conversam com o momento — 2026 é o último ano dos mandatos estaduais, a reforma tributária muda a principal receita do Estado, e Fluência de Dados tem peso 2 na P1.</p>
 <table><thead><tr><th>Rodada</th><th>Disciplinas cruzadas</th><th>Por que este tema</th></tr></thead><tbody>{temas}</tbody></table>
-<div class="box cre"><span class="eyebrow">Como usar as rodadas</span>Leia só o enunciado, cronometre e escreva antes de olhar o resto. Depois, corrija-se com o espelho: atribua o conceito de cada quesito e compare com a proposta de redação. Os espelhos são um modelo didático por conceitos, para treino; a grade real da FCC só será conhecida na vista da prova.</div>
+<div class="box cre"><span class="eyebrow">Como usar as rodadas</span>Leia só o enunciado, cronometre e escreva antes de olhar o resto. Depois, corrija-se com a grade: marque cada requisito que a sua resposta atendeu e compare com a proposta de redação. As grades desta aula são um modelo didático, por item, para treino; a grade real da FCC só será conhecida na vista da prova.</div>
 </section>
 
 <section class="pb"><span class="eyebrow">05</span><h2 class="sec">Roteiro de planejamento em cinco passos</h2>
 <p>A prova da tarde divide o tempo entre 40 questões da P2 e o estudo de caso. O roteiro leva cerca de 25 minutos e devolve esse tempo no texto definitivo, sem rasuras e sem linha desperdiçada.</p>
-<div class="passo"><div class="bn">1</div><div><h4>Comando antes do caso</h4>Leia primeiro o que é pedido. Numere os aspectos, sublinhe o verbo (\"analise\", \"proponha\", \"indique\") e circule normas citadas e quantificadores.</div></div>
-<div class="passo"><div class="bn">2</div><div><h4>Tipo de cada aspecto</h4>Conceito, regularidade de um fato, cálculo/interpretação ou recomendação. O tipo decide como o tópico frasal começa.</div></div>
-<div class="passo"><div class="bn">3</div><div><h4>Linhas por aspecto</h4>30 linhas divididas pelo número de aspectos (veja a seção 07). Anote a cota ao lado de cada item no rascunho.</div></div>
-<div class="passo"><div class="bn">4</div><div><h4>Caso marcado</h4>Só agora leia o caso. Marque cada dado (datas, percentuais, valores, \"sem\", \"inclusive\") e ligue-o ao aspecto que ele responde. Dado do caso sem uso costuma ser elemento da grade que ficou de fora.</div></div>
-<div class="passo"><div class="bn">5</div><div><h4>Esqueleto em palavras-chave</h4>Para cada parágrafo: diagnóstico · fundamento · fato · solução. Nada de rascunho integral: 30 linhas passadas a limpo custam tempo que falta na P2.</div></div>
+<div class="passo"><div class="bn">1</div><div><h4>Perguntas antes do caso</h4>Leia primeiro os itens (a, b, c...). Conte quantas perguntas há dentro de cada um ("pode ser adotada? Em que termos?" são duas) e veja se o enunciado dispensa citar dispositivo legal.</div></div>
+<div class="passo"><div class="bn">2</div><div><h4>Tipo de cada pergunta</h4>Sim ou não, conceito, regularidade de um fato, interpretação de número ou recomendação. O tipo decide como a resposta direta começa.</div></div>
+<div class="passo"><div class="bn">3</div><div><h4>Linhas por item</h4>30 linhas divididas pelo número de itens (veja a seção 07). Anote a cota ao lado de cada letra no rascunho.</div></div>
+<div class="passo"><div class="bn">4</div><div><h4>Caso marcado</h4>Só agora leia o caso. Marque cada dado (datas, percentuais, valores, "sem", "inclusive") e ligue-o ao item que ele responde. Dado do caso sem uso costuma ser requisito da grade que ficou de fora.</div></div>
+<div class="passo"><div class="bn">5</div><div><h4>Esqueleto em palavras-chave</h4>Para cada letra: resposta · fundamento · fato · solução. Nada de rascunho integral: 30 linhas passadas a limpo custam tempo que falta na P2.</div></div>
 <h3>Texto técnico × redação escolar</h3>
 <table><thead><tr><th>Critério</th><th>Redação escolar</th><th>Estudo de caso (FCC)</th></tr></thead><tbody>
 <tr><td class="k">Objetivo</td><td>Defender uma tese</td><td>Interpretar o caso e propor solução</td></tr>
-<tr><td class="k">Abertura</td><td>Longa, com contextualização</td><td>Nenhuma, ou 1–2 linhas com o diagnóstico</td></tr>
+<tr><td class="k">Abertura</td><td>Longa, com contextualização</td><td>Nenhuma: o 1.º parágrafo já começa com "a)"</td></tr>
 <tr><td class="k">Repertório</td><td>Cultural e histórico</td><td>Normas, conceitos e dados do caso</td></tr>
-<tr><td class="k">Estrutura</td><td>Livre</td><td>Um parágrafo por aspecto, na ordem do comando</td></tr>
-<tr><td class="k">Fechamento</td><td>Proposta de intervenção geral</td><td>Solução no fim de cada parágrafo</td></tr>
+<tr><td class="k">Estrutura</td><td>Livre</td><td>Um parágrafo por item, iniciado pela letra, na ordem do comando</td></tr>
+<tr><td class="k">Fechamento</td><td>Proposta de intervenção geral</td><td>Solução no fim do parágrafo, sempre que o item permitir</td></tr>
 </tbody></table>
 </section>
 
 <section class="pb"><span class="eyebrow">06</span><h2 class="sec">O parágrafo que pontua na FCC</h2>
-<p>Se cada parágrafo seguir a mesma sequência, o corretor encontra o quesito na primeira frase e confere o resto em segundos. Na SEFAZ-SP, o quarto passo é o que o item 7.4 manda valorizar.</p>
-<div class="formula">Diagnóstico <span>+</span> Fundamento <span>+</span> Fato do caso <span>+</span> Solução</div>
+<p>Se cada parágrafo seguir a mesma sequência, o corretor encontra o requisito na primeira frase e confere o resto em segundos. Na SEFAZ-SP, o quarto passo é o que o item 7.4 manda valorizar.</p>
+<div class="formula">Letra + resposta direta <span>+</span> Fundamento <span>+</span> Fato do caso <span>+</span> Solução</div>
 <table><thead><tr><th>Parte</th><th>O que é</th><th>Exemplo</th></tr></thead><tbody>
-<tr><td class="k">1. Diagnóstico (tópico frasal)</td><td>Responde ao aspecto já na 1.ª frase</td><td>\"O contrato de reforma das escolas é irregular.\"</td></tr>
+<tr><td class="k">1. Letra + resposta direta</td><td>Responde à pergunta do item já na 1.ª frase</td><td>\"b) A Proposta 2 é irregular.\"</td></tr>
 <tr><td class="k">2. Fundamento</td><td>A norma ou o conceito, aberto por recurso de autoridade</td><td>\"O art. 42 da LRF veda, nos dois últimos quadrimestres do mandato, obrigação com parcelas no exercício seguinte sem caixa.\"</td></tr>
-<tr><td class="k">3. Fato do caso</td><td>O dado do enunciado que se encaixa na norma</td><td>\"Assinado em setembro, com parcelas em 2027 e sem saldo...\"</td></tr>
+<tr><td class="k">3. Fato do caso</td><td>O dado do enunciado que se encaixa na norma</td><td>\"Se firmado em setembro, com parcelas em 2027 e sem saldo...\"</td></tr>
 <tr><td class="k">4. Solução</td><td>O que fazer, em uma frase</td><td>\"...o ajuste deve ser reduzido ao que couber no caixa ou adiado.\"</td></tr>
 </tbody></table>
 <div class="box bad"><span class="eyebrow">Assim não pontua</span>\"A Lei de Responsabilidade Fiscal é um marco da gestão fiscal responsável no Brasil, tendo grande importância para o equilíbrio das contas públicas. O art. 42 trata do fim do mandato.\"</div>
-<div class="box good"><span class="eyebrow">Assim pontua</span>\"O contrato é irregular. O art. 42 da LRF veda, nos dois últimos quadrimestres do mandato, obrigação com parcelas no exercício seguinte sem caixa. Assinado em setembro, com parcelas em 2027 e sem saldo, o ajuste deve ser reduzido ao que couber no caixa ou adiado.\"</div>
+<div class="box good"><span class="eyebrow">Assim pontua</span>\"b) A Proposta 2 é irregular. O art. 42 da LRF veda, nos dois últimos quadrimestres do mandato, obrigação com parcelas no exercício seguinte sem caixa. Se firmado em setembro, com parcelas em 2027 e sem saldo, o ajuste deve ser reduzido ao que couber no caixa ou adiado.\"</div>
 <h3>Como citar normas</h3>
-<ul><li>Primeira menção completa (\"Lei n.º 14.133/2021\"); depois, \"a mesma lei\".</li>
-<li>Artigo só com certeza. Número errado tira mais credibilidade do que número ausente — e, pelo item 7.4, a citação sozinha não dá ponto.</li>
+<ul><li>Primeira menção completa (\"Lei n.º 14.133/2021\"); depois, \"a mesma lei\", desde que nenhuma outra norma tenha sido citada no meio.</li>
+<li>Artigo só com certeza. Número errado tira mais credibilidade do que número ausente — e, pelo item 7.4, a citação sozinha não dá ponto. Se o enunciado dispensar dispositivo legal, cite a regra pelo conteúdo.</li>
 <li>Normas paulistas pelo nome, se souber (\"Constituição do Estado de São Paulo\", \"Lei estadual n.º 10.261/1968\").</li></ul>
-<p><b>Conectivos que organizam:</b> fundamentar — \"Nos termos do...\", \"Conforme o...\"; aplicar ao caso — \"No caso,...\"; propor solução — \"Recomenda-se...\", \"Deve-se...\"; passar ao aspecto seguinte — \"Além disso,...\", \"Quanto ao fato 2,...\", \"Por fim,...\".</p>
+<p><b>Conectivos que organizam:</b> fundamentar — \"Nos termos do...\", \"Conforme o...\"; aplicar ao caso — \"No caso,...\"; propor solução — \"Recomenda-se...\", \"Deve-se...\". Entre os itens, a própria letra faz a transição: dispense \"Além disso\" e \"Por fim\" e gaste a linha com conteúdo.</p>
 </section>
 
 <section class="pb"><div class="parte"><span class="eyebrow">Parte 2</span><h2>O estudo de caso de 30 linhas</h2><p>Uma questão · Conhecimentos Básicos · 120 pontos · até 30 linhas</p></div>
 <span class="eyebrow">07</span><h2 class="sec">A estrutura do estudo de caso</h2>
-<p>O estudo de caso é um texto dissertativo em prosa, que responde aos aspectos do comando aplicados ao caso. Não é peça oficial: não leva cabeçalho, título, vocativo nem assinatura.</p>
-<div class="tri"><div class="t3"><span class="eyebrow">O estudo de caso tem</span><ul><li>Um parágrafo por aspecto, na ordem do comando</li><li>Diagnóstico na 1.ª frase de cada parágrafo</li><li>Fundamento e dado do caso em cada parágrafo</li><li>Solução no fim de cada parágrafo</li><li>Abertura opcional de 1–2 linhas com o diagnóstico geral</li></ul></div>
-<div class="t2"><span class="eyebrow">O estudo de caso não tem</span><ul><li>Título, cabeçalho, vocativo ou assinatura</li><li>Introdução genérica ou conclusão que só repete</li><li>Tópicos, setas ou tabelas</li><li>Cópia do enunciado (item 9.10)</li><li>Seu nome ou qualquer marca (item 9.9.4)</li></ul></div></div>
+<p>O estudo de caso é um texto dissertativo em prosa, que responde às perguntas do comando aplicadas ao caso. Não é peça oficial: não leva cabeçalho, título, vocativo nem assinatura.</p>
+<div class="tri"><div class="t3"><span class="eyebrow">O estudo de caso tem</span><ul><li>Um parágrafo por item, iniciado pela letra (a, b, c...)</li><li>Resposta direta à pergunta na 1.ª frase</li><li>Fundamento e dado do caso em cada parágrafo</li><li>Solução no fim do parágrafo, sempre que o item permitir</li><li>Todas as perguntas de cada item respondidas, na ordem</li></ul></div>
+<div class="t2"><span class="eyebrow">O estudo de caso não tem</span><ul><li>Título, cabeçalho, vocativo ou assinatura</li><li>Introdução ou conclusão (não pontuam)</li><li>Tópicos, setas ou tabelas</li><li>Cópia do enunciado (item 9.10)</li><li>Seu nome ou qualquer marca (item 9.9.4)</li></ul></div></div>
 <h3>Calibragem das 30 linhas</h3>
-<table><thead><tr><th>Comando com</th><th>Linhas por parágrafo</th><th>Total alvo</th></tr></thead><tbody>
-<tr><td class="k">3 aspectos</td><td>(1–2 de abertura) + 9 + 9 + 9</td><td>28–30</td></tr>
-<tr><td class="k">4 aspectos</td><td>7 + 7 + 7 + 7</td><td>28–30</td></tr>
-<tr><td class="k">5 aspectos</td><td>6 + 6 + 6 + 5 + 5</td><td>28–30</td></tr>
+<table><thead><tr><th>Comando com</th><th>Linhas por item</th><th>Total alvo</th></tr></thead><tbody>
+<tr><td class="k">3 itens</td><td>10 + 10 + 9</td><td>27–30</td></tr>
+<tr><td class="k">4 itens</td><td>7 + 7 + 7 + 7</td><td>26–30</td></tr>
+<tr><td class="k">5 itens</td><td>6 + 6 + 6 + 5 + 5</td><td>26–30</td></tr>
 </tbody></table>
-<p>Escreva perto do limite, mas nunca além dele: o item 9.12 tira pontos de quem passa das 30 linhas. Se o comando der valores diferentes por aspecto, as linhas acompanham os valores.</p>
-<div class="box cre"><span class="eyebrow">E a introdução?</span>Com 30 linhas e quatro aspectos, ela é luxo. Com três aspectos, uma frase de abertura que já dá o diagnóstico (\"Nenhuma das três propostas pode ser adotada como formulada\") ajuda o corretor e custa duas linhas. Nunca abra com contexto genérico.</div>
+<p>Escreva perto do limite, mas nunca além dele: o item 9.12 tira pontos de quem passa das 30 linhas. Itens com mais perguntas dentro deles pedem mais linhas.</p>
+<div class="box cre"><span class="eyebrow">Indique a letra</span>Comece cada parágrafo com a letra do item: "a) A Proposta 1 só pode ser adotada...". Na SEFAZ-PI 2025, a FCC exigiu isso expressamente; mesmo quando não for, ajuda o corretor a achar cada requisito da grade e evita que um item pareça "não respondido".</div>
 </section>
 
 {rods}
 
 <section class="pb"><div class="parte"><span class="eyebrow">Parte 3</span><h2>O dia da prova</h2><p>Gestão da tarde e conferência final</p></div>
 <span class="eyebrow">08</span><h2 class="sec">A tarde da prova</h2>
-<p>Pela manhã, a P1 tem 80 questões. À tarde, no mesmo período, vêm a P2 (40 questões de peso 3) e a P3. O edital de convocação, previsto para 08/12/2026, confirma horários e local. Só é permitido sair do local depois de 3 horas do início da prova (item 10.21, f). Vale decidir antes de entrar na sala como dividir a tarde. Uma sugestão:</p>
+<p>Pela manhã, a P1 tem 80 questões. À tarde, no mesmo período de 4 horas, vêm a P2 (40 questões de peso 3) e a P3 (quadro do item 7.1 e item 9.1.1). O edital de convocação, previsto para 08/12/2026, confirma horários e local. Só é permitido sair do local depois de 3 horas do início da prova (item 10.21, f). Vale decidir antes de entrar na sala como dividir a tarde. Uma sugestão:</p>
 <table><thead><tr><th>Tempo</th><th>Etapa</th></tr></thead><tbody>
-<tr><td class="k">10 min</td><td>Ler o comando e o caso da P3, numerar os aspectos e marcar os dados</td></tr>
-<tr><td class="k">15 min</td><td>Esqueleto em palavras-chave e linhas por parágrafo</td></tr>
+<tr><td class="k">10 min</td><td>Ler as perguntas e o caso da P3, contar as perguntas de cada item e marcar os dados</td></tr>
+<tr><td class="k">15 min</td><td>Esqueleto em palavras-chave e linhas por item</td></tr>
 <tr><td class="k">35–40 min</td><td>Texto definitivo</td></tr>
-<tr><td class="k">5–10 min</td><td>Revisão: um parágrafo por aspecto, solução em cada um, acentos, crases, concordância, linha 30</td></tr>
+<tr><td class="k">5–10 min</td><td>Revisão: letra de cada item, todas as perguntas respondidas, solução em cada parágrafo, acentos, crases, concordância, linha 30</td></tr>
 <tr><td class="k">Restante</td><td>P2, com reserva para transcrever o gabarito</td></tr>
 </tbody></table>
 <div class="box lr"><span class="eyebrow">Por onde começar</span>A P3 vale 120 pontos e exige a cabeça mais descansada. Se a ordem for livre, há bom argumento para fazê-la antes da P2. Se preferir aquecer com a objetiva, fixe um horário-limite para parar e começar o caso.</div>
 <h3>Sete erros que custam a vaga</h3>
 <ul><li>Só definir e citar lei, sem aplicar ao caso e sem propor solução (item 7.4).</li>
-<li>Pular um aspecto do comando: cada aspecto é um quesito da grade.</li>
-<li>Abrir com contexto genérico (\"o tema é de grande relevância...\").</li>
+<li>Pular um item ou uma das perguntas dentro dele: cada uma é requisito da grade.</li>
+<li>Abrir com introdução genérica (\"o tema é de grande relevância...\") em vez de responder ao item a.</li>
 <li>Ignorar os números e datas do caso: estão ali para serem usados.</li>
 <li>Copiar trechos do enunciado (item 9.10).</li>
 <li>Passar da 30.ª linha (item 9.12) ou escrever fora do espaço (item 9.9.2).</li>
@@ -360,13 +382,14 @@ def montar():
 </section>
 
 <section class="pb"><span class="eyebrow">09</span><h2 class="sec">Checklist do dia da prova</h2>
-<div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada aspecto tem um parágrafo?</li><li>Aspectos duplos (\"conceito e espécies\", \"requisitos e garantia\") estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com o diagnóstico?</li><li>Cada parágrafo fecha com uma solução?</li></ul></div>
+<div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada item tem um parágrafo, iniciado pela letra?</li><li>Itens com duas ou três perguntas estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com a resposta direta?</li><li>Cada parágrafo fecha com uma solução, quando o item permite?</li></ul></div>
 <div class="t3"><span class="eyebrow">Depois de passar a limpo</span><ul><li>Nada além da linha 30 nem fora do espaço.</li><li>Nenhuma assinatura, nome ou marca.</li><li>Letra legível, caneta preta ou azul.</li><li>Acentos, crases e concordâncias revisados.</li><li>Nenhuma frase copiada do enunciado.</li></ul></div></div>
 <div class="box nv"><span class="eyebrow">Última palavra</span>Boa parte da nota depende de responder a tudo o que foi perguntado, na ordem em que foi perguntado, aplicando a norma ao fato e dizendo o que fazer. Treine até isso ficar automático.</div>
 <h3>Fontes</h3>
 <ul class="fontes">
 <li>SEFAZ-SP. Edital n.º 01/2026, de 01/10/2026, Concurso Público para Analista em Planejamento, Orçamento e Finanças Públicas – APOFP (DOE-SP de 02/10/2026), itens 7, 8, 9, 10, 12, 13 e 14.</li>
 <li>SEFAZ-SP. Edital n.º 02/2026, de 21/10/2026, retificação do cronograma (DOE-SP de 22/10/2026): provas em 20/12/2026; resultado preliminar previsto para 03/03/2027 (conferido em fonte secundária: Direção Concursos, 22/10/2026).</li>
+<li>Cadernos de estudo de caso da FCC: SEFAZ-PI 2025 (Auditor Fiscal, Analista do Tesouro, Auditor Governamental e Agente de Tributos, reproduzidos em voceconcursado.com.br), TRF-3 2024 e TJ-MA 2019 (arquivos.qconcursos.com).</li>
 <li>Constituição Federal; ADCT; EC n.º 132/2023; LC n.º 101/2000 (LRF); Lei n.º 4.320/1964; Lei n.º 14.133/2021; Lei n.º 12.527/2011 (LAI); Lei n.º 13.709/2018 (LGPD); Código Penal; STF, Tema 483 da repercussão geral; MCASP (STN); IIA, Modelo das Três Linhas (2020).</li>
 </ul>
 <p class="nota">O edital prevalece sobre qualquer resumo, inclusive este. Confira datas e regras no texto oficial e no site da FCC.</p>
