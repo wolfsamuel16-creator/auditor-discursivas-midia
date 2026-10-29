@@ -205,7 +205,7 @@ def montar():
 
 <section class="pb"><span class="eyebrow">Antes de começar</span><h2 class="sec">Por que fiz esta aula gratuita</h2>
 {AUTOR}
-<p>Eu sou o Samuel. Antes de chegar ao controle externo, passei por concursos da área fiscal e sei na prática o quanto a discursiva pesa — e o quanto ela assusta. Hoje, além do trabalho de auditor, ajudo concurseiros a escrever melhor na prova, com aulas, correções e recursos contra a nota da discursiva.</p>
+<p>Eu sou o Samuel. Antes de chegar ao controle externo, passei por concursos da área fiscal e sei na prática o quanto a discursiva pesa — e o quanto ela assusta. Hoje, além do trabalho de auditor, ajudo concurseiros a escrever melhor na prova, com aulas e recursos contra a nota da discursiva.</p>
 <p>Fiz esta aula de graça por um motivo simples: quero ajudar. Na SEFAZ-SP, a discursiva vale 120 pontos — o mesmo que a P2 inteira —, elimina quem fizer menos de 48 e é o primeiro critério técnico de desempate. E é um texto só, de 30 linhas: cada parágrafo conta muito.</p>
 <p>Aqui está o mesmo jeito que eu uso para corrigir provas e preparar recursos: olhar o que a banca realmente cobra, planejar antes de escrever e responder exatamente ao comando, com a norma aplicada ao caso e uma solução no fim de cada parágrafo. Nada de fórmula mágica — método e treino.</p>
 <div class="box lr"><span class="eyebrow">Combinado?</span>Leia com calma, faça as rodadas antes de olhar as soluções e, se tiver dúvida ou quiser compartilhar o que achou, me chama no <b>@auditor_discursivas</b>. Bons estudos!</div>
@@ -396,7 +396,7 @@ def montar():
 
 <section class="pb"><span class="eyebrow">Uma palavra final</span><h2 class="sec">Obrigado por ter lido até aqui</h2>
 {AUTOR}
-<p>Eu sou o Samuel. Passei pelos dois lados da discursiva: como candidato, em concursos da área fiscal e de controle, e hoje como auditor que escreve relatórios técnicos todos os dias. Há mais de seis anos ajudo concurseiros a escrever melhor na prova — com aulas, correções e recursos contra a nota da discursiva.</p>
+<p>Eu sou o Samuel. Passei pelos dois lados da discursiva: como candidato, em concursos da área fiscal e de controle, e hoje como auditor que escreve relatórios técnicos todos os dias. Há mais de seis anos ajudo concurseiros a escrever melhor na prova — com aulas e recursos contra a nota da discursiva.</p>
 <p>Montei esta aula do mesmo jeito que corrijo uma prova: olhando o que a banca realmente cobra e o que faz um texto ganhar ou perder pontos. Se ela te ajudou a enxergar a P3 da SEFAZ-SP com mais clareza, já valeu.</p>
 <div class="box lr"><span class="eyebrow">Gostou do material?</span>Comenta lá no <b>@auditor_discursivas</b> o que você achou. Parece pouco, mas cada comentário ajuda muito o meu trabalho e faz este material chegar a mais gente que está na mesma luta que você. Por lá eu sempre posto conteúdo sobre discursivas: estrutura, análise de provas e padrões das bancas.</div>
 <p>Eu torço muito por você. Estude com método, treine na folha, cronometre os textos e chegue ao dia 20 de dezembro confiando no que você construiu.</p>
