@@ -172,7 +172,6 @@ def rodada(r):
 <div class="eixo"><b>Eixo do edital:</b> {r['eixo']}. Caso inédito, no formato das provas recentes da FCC, elaborado para treino.</div>
 <div class="enun"><span class="eyebrow">Estudo de caso · inédito · formato FCC · até 30 linhas · 120 pontos</span>
 {caso}<p>{r['comando']}</p><ol>{itens}</ol>
-<p style="margin-top:6pt"><b>Observação:</b> É obrigatório indicar na resposta a letra correspondente ao item que está sendo respondido.</p>
 <p class="nota">Situação hipotética: entes e fatos são fictícios.</p></div>
 <div class="pare">Pare aqui. Planeje e escreva a sua resposta em até 30 linhas, cronometrando cerca de 70 minutos, antes de virar a página. A solução começa na próxima página.</div>
 </section>
@@ -215,7 +214,7 @@ def montar():
 <section class="pb"><span class="eyebrow">Palavra inicial</span><h2 class="sec">Um caso, várias disciplinas, uma solução</h2>
 <p class="lead">A P3 da SEFAZ-SP é um único estudo de caso interdisciplinar, de até 30 linhas, sobre os Conhecimentos Básicos — o mesmo para as três áreas (Orçamento e Finanças Públicas, Contabilidade Pública e Ciência de Dados e TI). O edital é explícito: a banca avalia a interpretação do caso e a proposta de solução, e a mera citação de lei ou de definição não pontua por si só.</p>
 <p>A aula segue essa lógica. A Parte 1 mostra a prova, o que o edital pede, como a FCC formula e corrige o estudo de caso, os temas escolhidos, o roteiro de planejamento e o parágrafo que pontua. A Parte 2 traz cinco rodadas completas, cada uma cruzando duas ou três disciplinas. A Parte 3 fecha com o dia da prova e o checklist.</p>
-<div class="box nv"><span class="eyebrow">Regra central</span>Um parágrafo para cada item do comando, na ordem do enunciado, aberto pela letra do item e pela resposta direta à pergunta, com o fundamento, o fato do caso e a <b>solução</b>. Neste edital (item 7.4), a proposta de solução é avaliada: sempre que o item permitir, feche o parágrafo com uma recomendação, não com um resumo.</div>
+<div class="box nv"><span class="eyebrow">Regra central</span>Um parágrafo para cada item do comando, na ordem do enunciado, aberto pela resposta direta à pergunta, que já identifica o item, com o fundamento, o fato do caso e a <b>solução</b>. Neste edital (item 7.4), a proposta de solução é avaliada: sempre que o item permitir, feche o parágrafo com uma recomendação, não com um resumo.</div>
 <h3>Sumário</h3>
 <table class="sum"><tbody>
 <tr class="pt"><td colspan="2">Parte 1 · Visão geral da prova</td></tr>
@@ -280,7 +279,7 @@ def montar():
 <tr><td class="k">O caso</td><td>Narrativa concreta, com datas, valores, entes e fatos numerados (I, II, III...)</td></tr>
 <tr><td class="k">O comando</td><td>Frase curta de fecho: "Tendo em vista a situação narrada, responda, justificadamente:", "responda, fundamentadamente:", "responda ao que se pede:"</td></tr>
 <tr><td class="k">As perguntas</td><td>Itens com letra (a, b, c...), às vezes com subitens (a.1, a.2). Um mesmo item pode trazer duas ou três perguntas</td></tr>
-<tr><td class="k">Observação frequente</td><td>"É obrigatório indicar na resposta a letra correspondente ao item que está sendo respondido" (SEFAZ-PI 2025)</td></tr>
+<tr><td class="k">Observação eventual</td><td>Em alguns cadernos, a FCC exigiu a indicação da letra do item na resposta (SEFAZ-PI 2025). Faça isso só se o caderno da SEFAZ-SP pedir; sem essa exigência, a primeira frase de cada parágrafo identifica o item</td></tr>
 <tr><td class="k">Citação de lei</td><td>Às vezes o enunciado dispensa: "não há necessidade de mencionar dispositivo legal" — coerente com o item 7.4 deste edital</td></tr>
 <tr><td class="k">Pontos por item</td><td>Não aparecem no caderno; ficam na grade</td></tr>
 </tbody></table>
@@ -312,41 +311,41 @@ def montar():
 <p>A prova da tarde divide o tempo entre 40 questões da P2 e o estudo de caso. O roteiro leva cerca de 25 minutos e devolve esse tempo no texto definitivo, sem rasuras e sem linha desperdiçada.</p>
 <div class="passo"><div class="bn">1</div><div><h4>Perguntas antes do caso</h4>Leia primeiro os itens (a, b, c...). Conte quantas perguntas há dentro de cada um ("pode ser adotada? Em que termos?" são duas) e veja se o enunciado dispensa citar dispositivo legal.</div></div>
 <div class="passo"><div class="bn">2</div><div><h4>Tipo de cada pergunta</h4>Sim ou não, conceito, regularidade de um fato, interpretação de número ou recomendação. O tipo decide como a resposta direta começa.</div></div>
-<div class="passo"><div class="bn">3</div><div><h4>Linhas por item</h4>30 linhas divididas pelo número de itens (veja a seção 07). Anote a cota ao lado de cada letra no rascunho.</div></div>
+<div class="passo"><div class="bn">3</div><div><h4>Linhas por item</h4>30 linhas divididas pelo número de itens (veja a seção 07). Anote a cota ao lado de cada item no rascunho.</div></div>
 <div class="passo"><div class="bn">4</div><div><h4>Caso marcado</h4>Só agora leia o caso. Marque cada dado (datas, percentuais, valores, "sem", "inclusive") e ligue-o ao item que ele responde. Dado do caso sem uso costuma ser requisito da grade que ficou de fora.</div></div>
-<div class="passo"><div class="bn">5</div><div><h4>Esqueleto em palavras-chave</h4>Para cada letra: resposta · fundamento · fato · solução. Nada de rascunho integral: 30 linhas passadas a limpo custam tempo que falta na P2.</div></div>
+<div class="passo"><div class="bn">5</div><div><h4>Esqueleto em palavras-chave</h4>Para cada item: resposta · fundamento · fato · solução. Nada de rascunho integral: 30 linhas passadas a limpo custam tempo que falta na P2.</div></div>
 <h3>Texto técnico × redação escolar</h3>
 <table><thead><tr><th>Critério</th><th>Redação escolar</th><th>Estudo de caso (FCC)</th></tr></thead><tbody>
 <tr><td class="k">Objetivo</td><td>Defender uma tese</td><td>Interpretar o caso e propor solução</td></tr>
-<tr><td class="k">Abertura</td><td>Longa, com contextualização</td><td>Nenhuma: o 1.º parágrafo já começa com "a)"</td></tr>
+<tr><td class="k">Abertura</td><td>Longa, com contextualização</td><td>Nenhuma: o 1.º parágrafo já responde ao primeiro item</td></tr>
 <tr><td class="k">Repertório</td><td>Cultural e histórico</td><td>Normas, conceitos e dados do caso</td></tr>
-<tr><td class="k">Estrutura</td><td>Livre</td><td>Um parágrafo por item, iniciado pela letra, na ordem do comando</td></tr>
+<tr><td class="k">Estrutura</td><td>Livre</td><td>Um parágrafo por item, na ordem do comando</td></tr>
 <tr><td class="k">Fechamento</td><td>Proposta de intervenção geral</td><td>Solução no fim do parágrafo, sempre que o item permitir</td></tr>
 </tbody></table>
 </section>
 
 <section class="pb"><span class="eyebrow">06</span><h2 class="sec">O parágrafo que pontua na FCC</h2>
 <p>Se cada parágrafo seguir a mesma sequência, o corretor encontra o requisito na primeira frase e confere o resto em segundos. Na SEFAZ-SP, o quarto passo é o que o item 7.4 manda valorizar.</p>
-<div class="formula">Letra + resposta direta <span>+</span> Fundamento <span>+</span> Fato do caso <span>+</span> Solução</div>
+<div class="formula">Resposta direta <span>+</span> Fundamento <span>+</span> Fato do caso <span>+</span> Solução</div>
 <table><thead><tr><th>Parte</th><th>O que é</th><th>Exemplo</th></tr></thead><tbody>
-<tr><td class="k">1. Letra + resposta direta</td><td>Responde à pergunta do item já na 1.ª frase</td><td>\"b) A Proposta 2 é irregular.\"</td></tr>
+<tr><td class="k">1. Resposta direta</td><td>Responde à pergunta do item já na 1.ª frase, retomando o seu objeto</td><td>\"A Proposta 2 é irregular.\"</td></tr>
 <tr><td class="k">2. Fundamento</td><td>A norma ou o conceito, aberto por recurso de autoridade</td><td>\"O art. 42 da LRF veda, nos dois últimos quadrimestres do mandato, obrigação com parcelas no exercício seguinte sem caixa.\"</td></tr>
 <tr><td class="k">3. Fato do caso</td><td>O dado do enunciado que se encaixa na norma</td><td>\"Se firmado em setembro, com parcelas em 2027 e sem saldo...\"</td></tr>
 <tr><td class="k">4. Solução</td><td>O que fazer, em uma frase</td><td>\"...o ajuste deve ser reduzido ao que couber no caixa ou adiado.\"</td></tr>
 </tbody></table>
 <div class="box bad"><span class="eyebrow">Assim não pontua</span>\"A Lei de Responsabilidade Fiscal é um marco da gestão fiscal responsável no Brasil, tendo grande importância para o equilíbrio das contas públicas. O art. 42 trata do fim do mandato.\"</div>
-<div class="box good"><span class="eyebrow">Assim pontua</span>\"b) A Proposta 2 é irregular. O art. 42 da LRF veda, nos dois últimos quadrimestres do mandato, obrigação com parcelas no exercício seguinte sem caixa. Se firmado em setembro, com parcelas em 2027 e sem saldo, o ajuste deve ser reduzido ao que couber no caixa ou adiado.\"</div>
+<div class="box good"><span class="eyebrow">Assim pontua</span>\"A Proposta 2 é irregular. O art. 42 da LRF veda, nos dois últimos quadrimestres do mandato, obrigação com parcelas no exercício seguinte sem caixa. Se firmado em setembro, com parcelas em 2027 e sem saldo, o ajuste deve ser reduzido ao que couber no caixa ou adiado.\"</div>
 <h3>Como citar normas</h3>
 <ul><li>Primeira menção completa (\"Lei n.º 14.133/2021\"); depois, \"a mesma lei\", desde que nenhuma outra norma tenha sido citada no meio.</li>
 <li>Artigo só com certeza. Número errado tira mais credibilidade do que número ausente — e, pelo item 7.4, a citação sozinha não dá ponto. Se o enunciado dispensar dispositivo legal, cite a regra pelo conteúdo.</li>
 <li>Normas paulistas pelo nome, se souber (\"Constituição do Estado de São Paulo\", \"Lei estadual n.º 10.261/1968\").</li></ul>
-<p><b>Conectivos que organizam:</b> fundamentar — \"Nos termos do...\", \"Conforme o...\"; aplicar ao caso — \"No caso,...\"; propor solução — \"Recomenda-se...\", \"Deve-se...\". Entre os itens, a própria letra faz a transição: dispense \"Além disso\" e \"Por fim\" e gaste a linha com conteúdo.</p>
+<p><b>Conectivos que organizam:</b> fundamentar — \"Nos termos do...\", \"Conforme o...\"; aplicar ao caso — \"No caso,...\"; propor solução — \"Recomenda-se...\", \"Deve-se...\". Entre os itens, a primeira frase de cada parágrafo, que retoma o objeto do item, já faz a transição; \"Quanto ao achado 3,...\" é opcional.</p>
 </section>
 
 <section class="pb"><div class="parte"><span class="eyebrow">Parte 2</span><h2>O estudo de caso de 30 linhas</h2><p>Uma questão · Conhecimentos Básicos · 120 pontos · até 30 linhas</p></div>
 <span class="eyebrow">07</span><h2 class="sec">A estrutura do estudo de caso</h2>
 <p>O estudo de caso é um texto dissertativo em prosa, que responde às perguntas do comando aplicadas ao caso. Não é peça oficial: não leva cabeçalho, título, vocativo nem assinatura.</p>
-<div class="tri"><div class="t3"><span class="eyebrow">O estudo de caso tem</span><ul><li>Um parágrafo por item, iniciado pela letra (a, b, c...)</li><li>Resposta direta à pergunta na 1.ª frase</li><li>Fundamento e dado do caso em cada parágrafo</li><li>Solução no fim do parágrafo, sempre que o item permitir</li><li>Todas as perguntas de cada item respondidas, na ordem</li></ul></div>
+<div class="tri"><div class="t3"><span class="eyebrow">O estudo de caso tem</span><ul><li>Um parágrafo por item, na ordem do comando</li><li>Resposta direta à pergunta na 1.ª frase</li><li>Fundamento e dado do caso em cada parágrafo</li><li>Solução no fim do parágrafo, sempre que o item permitir</li><li>Todas as perguntas de cada item respondidas, na ordem</li></ul></div>
 <div class="t2"><span class="eyebrow">O estudo de caso não tem</span><ul><li>Título, cabeçalho, vocativo ou assinatura</li><li>Introdução ou conclusão (não pontuam)</li><li>Tópicos, setas ou tabelas</li><li>Cópia do enunciado (item 9.10)</li><li>Seu nome ou qualquer marca (item 9.9.4)</li></ul></div></div>
 <h3>Calibragem das 30 linhas</h3>
 <table><thead><tr><th>Comando com</th><th>Linhas por item</th><th>Total alvo</th></tr></thead><tbody>
@@ -355,7 +354,7 @@ def montar():
 <tr><td class="k">5 itens</td><td>6 + 6 + 6 + 5 + 5</td><td>26–30</td></tr>
 </tbody></table>
 <p>Escreva perto do limite, mas nunca além dele: o item 9.12 tira pontos de quem passa das 30 linhas. Itens com mais perguntas dentro deles pedem mais linhas.</p>
-<div class="box cre"><span class="eyebrow">Indique a letra</span>Comece cada parágrafo com a letra do item: "a) A Proposta 1 só pode ser adotada...". Na SEFAZ-PI 2025, a FCC exigiu isso expressamente; mesmo quando não for, ajuda o corretor a achar cada requisito da grade e evita que um item pareça "não respondido".</div>
+<div class="box cre"><span class="eyebrow">Sem letras no texto</span>Não escreva \"a)\", \"b)\" no texto definitivo. Faça a primeira frase de cada parágrafo retomar o objeto do item e já responder a ele: \"A Proposta 1 só pode ser adotada...\", \"A Proposta 2 é irregular.\" Assim o corretor acha cada requisito da grade sem marcação extra. Só indique a letra se o caderno exigir expressamente.</div>
 </section>
 
 {rods}
@@ -367,7 +366,7 @@ def montar():
 <tr><td class="k">10 min</td><td>Ler as perguntas e o caso da P3, contar as perguntas de cada item e marcar os dados</td></tr>
 <tr><td class="k">15 min</td><td>Esqueleto em palavras-chave e linhas por item</td></tr>
 <tr><td class="k">35–40 min</td><td>Texto definitivo</td></tr>
-<tr><td class="k">5–10 min</td><td>Revisão: letra de cada item, todas as perguntas respondidas, solução em cada parágrafo, acentos, crases, concordância, linha 30</td></tr>
+<tr><td class="k">5–10 min</td><td>Revisão: um parágrafo por item, todas as perguntas respondidas, solução em cada parágrafo, acentos, crases, concordância, linha 30</td></tr>
 <tr><td class="k">Restante</td><td>P2, com reserva para transcrever o gabarito</td></tr>
 </tbody></table>
 <div class="box lr"><span class="eyebrow">Por onde começar</span>A P3 vale 120 pontos e exige a cabeça mais descansada. Se a ordem for livre, há bom argumento para fazê-la antes da P2. Se preferir aquecer com a objetiva, fixe um horário-limite para parar e começar o caso.</div>
@@ -382,7 +381,7 @@ def montar():
 </section>
 
 <section class="pb"><span class="eyebrow">09</span><h2 class="sec">Checklist do dia da prova</h2>
-<div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada item tem um parágrafo, iniciado pela letra?</li><li>Itens com duas ou três perguntas estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com a resposta direta?</li><li>Cada parágrafo fecha com uma solução, quando o item permite?</li></ul></div>
+<div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada item tem um parágrafo, que abre retomando o item?</li><li>Itens com duas ou três perguntas estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com a resposta direta?</li><li>Cada parágrafo fecha com uma solução, quando o item permite?</li></ul></div>
 <div class="t3"><span class="eyebrow">Depois de passar a limpo</span><ul><li>Nada além da linha 30 nem fora do espaço.</li><li>Nenhuma assinatura, nome ou marca.</li><li>Letra legível, caneta preta ou azul.</li><li>Acentos, crases e concordâncias revisados.</li><li>Nenhuma frase copiada do enunciado.</li></ul></div></div>
 <div class="box nv"><span class="eyebrow">Última palavra</span>Boa parte da nota depende de responder a tudo o que foi perguntado, na ordem em que foi perguntado, aplicando a norma ao fato e dizendo o que fazer. Treine até isso ficar automático.</div>
 <h3>Fontes</h3>

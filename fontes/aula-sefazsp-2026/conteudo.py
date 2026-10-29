@@ -62,14 +62,14 @@ RODADAS = [{'n': 1,
                 ('Espécies: processados (liquidados) e não processados', 10),
                 ('Condição: não processados só até o saldo de caixa de cada fonte (reforçada pelo art. 42 no último ano)', 10),
                 ('Solução: cancelar empenhos não liquidados sem cobertura; priorizar processados', 10)])],
-  'proposta': ['a) A Proposta 1 só pode ser adotada se a limitação não for linear. Pelo art. 9.º da LRF, se a receita puder não comportar as metas, os Poderes e o Ministério Público limitam empenho '
+  'proposta': ['A Proposta 1 só pode ser adotada se a limitação não for linear. Pelo art. 9.º da LRF, se a receita puder não comportar as metas, os Poderes e o Ministério Público limitam empenho '
                'e movimentação financeira nos trinta dias seguintes ao fim do bimestre, pelos critérios da LDO; no caso, logo após o 4.º bimestre. O § 2.º exclui as obrigações constitucionais e '
                'legais e o serviço da dívida: repasses aos municípios, juros e amortizações devem ser preservados, e o corte deve recair sobre despesas discricionárias, recompostas se a receita se '
                'recuperar (§ 1.º).',
-               'b) A Proposta 2 é irregular. O art. 42 da LRF veda ao titular de Poder, nos dois últimos quadrimestres do mandato, contrair obrigação que não possa ser cumprida integralmente dentro '
+               'A Proposta 2 é irregular. O art. 42 da LRF veda ao titular de Poder, nos dois últimos quadrimestres do mandato, contrair obrigação que não possa ser cumprida integralmente dentro '
                'dele ou que tenha parcelas no exercício seguinte sem caixa, computadas as despesas compromissadas até o fim do exercício. Se firmado em setembro, com parcelas em 2027 e sem saldo, o '
                'ajuste deve ser reduzido ao que couber no caixa ou adiado, sob pena de configurar o crime do art. 359-C do Código Penal.',
-               'c) Restos a pagar são as despesas empenhadas e não pagas até 31 de dezembro: processados, se liquidados, ou não processados, se pendentes de liquidação (Lei n.º 4.320/1964, art. 36). '
+               'Restos a pagar são as despesas empenhadas e não pagas até 31 de dezembro: processados, se liquidados, ou não processados, se pendentes de liquidação (Lei n.º 4.320/1964, art. 36). '
                'A Proposta 3 não pode ser adotada como está: os não processados só podem ser inscritos até o saldo de caixa de cada fonte (LRF, arts. 50, I, e 55, III, b), exigência reforçada pelo art. 42 no último ano de mandato. '
                'Recomenda-se cancelar os empenhos não liquidados sem cobertura e priorizar os processados, que já são obrigação do ente.'],
   'armadilhas': ['O enunciado lista repasses aos municípios e dívida de propósito: é exatamente o que o § 2.º do art. 9.º protege.',
@@ -137,15 +137,15 @@ RODADAS = [{'n': 1,
                [('VPL positivo à TMA de 8%: o projeto cria valor no cenário-base', 10),
                 ('Sensibilidade: com demanda 20% menor o VPL fica negativo — risco central', 10),
                 ('Recomendação concreta (revisar demanda, cenários, benefícios sociais)', 10)])],
-  'proposta': ['a) A operação pode ser contratada, cumpridos os requisitos legais. Pelo art. 32 da LRF, o Ministério da Fazenda verifica limites e condições, e exigem-se parecer com a relação '
+  'proposta': ['A operação pode ser contratada, cumpridos os requisitos legais. Pelo art. 32 da LRF, o Ministério da Fazenda verifica limites e condições, e exigem-se parecer com a relação '
                'custo-benefício, autorização em lei, inclusão no orçamento, limites do Senado e, por ser externa, autorização específica do Senado. A garantia da União exige contragarantia '
                'suficiente, que pode vincular receitas próprias e transferências, e adimplência do Estado (LRF, art. 40, § 1.º; CF, art. 167, § 4.º).',
-               'b) Enquanto o projeto não constar do PPA, as obras não podem ser iniciadas. O art. 167, § 1.º, da Constituição veda iniciar investimento que ultrapasse um exercício sem prévia inclusão no plano, '
+               'Enquanto o projeto não constar do PPA, as obras não podem ser iniciadas. O art. 167, § 1.º, da Constituição veda iniciar investimento que ultrapasse um exercício sem prévia inclusão no plano, '
                'sob pena de crime de responsabilidade. Como as obras vão de 2027 a 2031, o Estado deve rever o PPA ou aprovar lei que autorize a inclusão antes de iniciá-las.',
-               'c) A sugestão do assessor deve ser rejeitada. Os recursos da operação estão vinculados ao objeto autorizado e só podem atendê-lo (LRF, art. 8.º, parágrafo único), e a regra de ouro '
+               'A sugestão do assessor deve ser rejeitada. Os recursos da operação estão vinculados ao objeto autorizado e só podem atendê-lo (LRF, art. 8.º, parágrafo único), e a regra de ouro '
                '(CF, art. 167, III) existe justamente para que o endividamento não financie despesa corrente. Os recursos devem ser aplicados nas obras, e a folha deve ser coberta por receitas '
                'correntes ou pela limitação de outras despesas.',
-               'd) O estudo indica viabilidade, mas com risco relevante. O VPL positivo à taxa mínima de atratividade de 8% mostra que o projeto cria valor no cenário-base, mas basta a demanda cair '
+               'O estudo indica viabilidade, mas com risco relevante. O VPL positivo à taxa mínima de atratividade de 8% mostra que o projeto cria valor no cenário-base, mas basta a demanda cair '
                '20% para o VPL ficar negativo. Recomenda-se revisar essa premissa, calcular a demanda de equilíbrio, simular cenários com probabilidades e incluir os benefícios sociais antes da '
                'contratação.'],
   'armadilhas': ['"Externa" e "com garantia da União" acrescentam dois requisitos: autorização específica do Senado e contragarantia.',
@@ -207,15 +207,15 @@ RODADAS = [{'n': 1,
                [('ICMS segue como principal receita própria na transição; a renúncia reduz recursos já', 15),
                 ('Renúncia como gasto tributário: avaliação de custo-benefício e elasticidade da receita', 15),
                 ('Recomendação concreta (apontar vícios, rever a prorrogação, monitorar)', 10)])],
-  'proposta': ['a) O benefício do fato 1 não atende aos requisitos e é irregular. Nos termos do art. 14 da LRF, a renúncia de receita exige estimativa do impacto no exercício e nos dois seguintes, '
+  'proposta': ['O benefício do fato 1 não atende aos requisitos e é irregular. Nos termos do art. 14 da LRF, a renúncia de receita exige estimativa do impacto no exercício e nos dois seguintes, '
                'compatibilidade com a LDO e demonstração de que não afeta as metas fiscais, ou medidas de compensação por aumento de receita. O art. 113 do ADCT também exige estimativa de impacto na '
                'proposição. Além disso, benefício de ICMS depende de deliberação dos Estados e do Distrito Federal, por convênio no Confaz (CF, art. 155, § 2.º, XII, g). No caso, não há estimativa, '
                'compensação nem convênio, o que vicia a renúncia e expõe as metas fiscais.',
-               'b) A projeção do fato 2 não está adequada. O art. 12 da LRF manda considerar os efeitos das alterações na legislação. Pela EC n.º 132/2023, o ICMS será reduzido de 2029 a 2032 e '
+               'A projeção do fato 2 não está adequada. O art. 12 da LRF manda considerar os efeitos das alterações na legislação. Pela EC n.º 132/2023, o ICMS será reduzido de 2029 a 2032 e '
                'extinto em 2033, substituído pelo IBS, compartilhado com os municípios e cobrado no destino. Repetir a média histórica ignora essa transição, que começa em 2029, último ano do anexo, '
                'e atravessa todo o horizonte até 2034. A projeção deve ser refeita com cenários de transição, com a memória e a metodologia de cálculo exigidas para o anexo de metas fiscais (LRF, '
                'art. 4.º, § 2.º, II).',
-               'c) A afirmação do secretário está errada. Até 2032, o ICMS segue como principal receita própria, e a renúncia reduz recursos já nos próximos exercícios. Por ser gasto tributário, a '
+               'A afirmação do secretário está errada. Até 2032, o ICMS segue como principal receita própria, e a renúncia reduz recursos já nos próximos exercícios. Por ser gasto tributário, a '
                'renúncia deve ser avaliada pela relação custo-benefício, considerando a elasticidade da receita em relação à atividade econômica: o benefício só se justifica se o retorno superar o '
                'custo. Recomenda-se apontar os vícios, propor a revisão da prorrogação e monitorar o benefício por indicadores.'],
   'armadilhas': ['"Iniciativa parlamentar" não afasta o art. 14: a LRF vale para a renúncia, venha de quem vier.',
@@ -285,14 +285,14 @@ RODADAS = [{'n': 1,
                [('1.ª linha (gestão): corrige registros, contratações e a lista', 10),
                 ('2.ª linha (riscos e conformidade): alertas permanentes e orientação sobre dados', 10),
                 ('3.ª linha (auditoria interna): avaliação independente, reporta à governança', 10)])],
-  'proposta': ['a) O achado 1 compromete a completude, a unicidade e a consistência dos dados: os cerca de 8% de registros sem CPF ou CNPJ afetam a completude; os empenhos duplicados, a unicidade; e o mesmo número com valores '
+  'proposta': ['O achado 1 compromete a completude, a unicidade e a consistência dos dados: os cerca de 8% de registros sem CPF ou CNPJ afetam a completude; os empenhos duplicados, a unicidade; e o mesmo número com valores '
                'diferentes, a consistência. Por isso, os dados devem ser tratados antes da análise, e os alertas do painel devem ser lidos como indícios a confirmar nos documentos, não como prova.',
-               'b) As contratações do achado 2 não são regulares: indicam fracionamento de despesa. Pela Lei n.º 14.133/2021, o limite da dispensa é aferido pela soma do que a '
+               'As contratações do achado 2 não são regulares: indicam fracionamento de despesa. Pela Lei n.º 14.133/2021, o limite da dispensa é aferido pela soma do que a '
                'unidade gestora gasta no exercício com objetos do mesmo ramo. No caso, as onze contratações, somadas, superam o limite. Essa divisão artificial afasta a licitação; deve-se apurar a '
                'responsabilidade e realizar contratação única, por licitação, prevista no plano de contratações anual.',
-               'c) A publicação só pode ser feita em parte: nome e remuneração podem ser publicados, conforme a LAI e o entendimento do STF. O CPF completo, contudo, excede a finalidade de transparência '
+               'A publicação do achado 3 só pode ser feita em parte: nome e remuneração podem ser publicados, conforme a LAI e o entendimento do STF. O CPF completo, contudo, excede a finalidade de transparência '
                'e fere o princípio da necessidade da LGPD. A lista deve ser publicada com o CPF mascarado ou omitido.',
-               'd) No Modelo das Três Linhas, cada linha tem papel próprio. A gestão, primeira linha, saneia os registros, revê as contratações e ajusta a lista a publicar. A segunda linha, de '
+               'No Modelo das Três Linhas, cada linha tem papel próprio. A gestão, primeira linha, saneia os registros, revê as contratações e ajusta a lista a publicar. A segunda linha, de '
                'riscos, conformidade e proteção de dados, transforma os achados em alertas permanentes e orienta o tratamento de dados pessoais. A auditoria interna, terceira linha, avalia com '
                'independência os controles e se reporta ao órgão de governança.'],
   'armadilhas': ['"Cada uma abaixo do limite" é a isca: o limite é aferido pela soma, não por contratação.',
@@ -353,16 +353,16 @@ RODADAS = [{'n': 1,
               ('d) Providências',
                30,
                [('Correção por ajuste de exercícios anteriores no PL, com nota explicativa', 12), ('Apuração de responsabilidade', 9), ('Controle preventivo de vigência dos contratos', 9)])],
-  'proposta': ['a) A despesa foi irregular, mas os serviços devem ser pagos. O art. 60 da Lei n.º 4.320/1964 veda despesa sem prévio empenho, primeiro estágio da despesa, anterior à liquidação e ao '
+  'proposta': ['A despesa foi irregular, mas os serviços devem ser pagos. O art. 60 da Lei n.º 4.320/1964 veda despesa sem prévio empenho, primeiro estágio da despesa, anterior à liquidação e ao '
                'pagamento: é o empenho que reserva a dotação e cria a obrigação de pagar. Como os serviços foram prestados, porém, a Administração deve indenizá-los para não enriquecer sem causa '
                '(Lei n.º 14.133/2021, art. 149), sem prejuízo da apuração de responsabilidade.',
-               'b) Sim. O pagamento pode ser feito como despesa de exercícios anteriores. O art. 37 da Lei n.º 4.320/1964 admite pagar, à conta de dotação específica, compromissos reconhecidos após o '
+               'O pagamento pode ser feito como despesa de exercícios anteriores. O art. 37 da Lei n.º 4.320/1964 admite pagar, à conta de dotação específica, compromissos reconhecidos após o '
                'encerramento do exercício. Exigem-se o reconhecimento da dívida pela autoridade competente, a comprovação documental do serviço, com preço compatível com o de mercado, e a dotação '
                'própria em 2026, com empenho no elemento de despesa de exercícios anteriores.',
-               'c) Os enfoques orçamentário e patrimonial tratam o caso de forma diferente. No orçamentário, a despesa é de 2026, ano do empenho (art. 35, II). No patrimonial, a variação patrimonial '
+               'Os enfoques orçamentário e patrimonial tratam o caso de forma diferente. No orçamentário, a despesa é de 2026, ano do empenho (art. 35, II). No patrimonial, a variação patrimonial '
                'diminutiva (VPD) e o passivo deveriam ter sido reconhecidos em 2025, pela competência, ainda que sem execução orçamentária. Assim, o Balanço Patrimonial de 2025 subavaliou o passivo, '
                'e a DVP, as VPD, distorcendo o resultado patrimonial do exercício.',
-               'd) Recomenda-se corrigir o erro por ajuste de exercícios anteriores no patrimônio líquido, com nota explicativa sobre a natureza e o valor do erro, apurar a responsabilidade de quem '
+               'Recomenda-se corrigir o erro por ajuste de exercícios anteriores no patrimônio líquido, com nota explicativa sobre a natureza e o valor do erro, apurar a responsabilidade de quem '
                'deu causa à despesa sem empenho e instituir controle de vigência dos contratos, com alerta antes do vencimento.'],
   'armadilhas': ['"Sem necessidade de qualquer outro registro" é a armadilha: a DEA resolve o orçamento, mas não o erro patrimonial de 2025.',
                  'O serviço foi prestado: negar o pagamento seria enriquecimento sem causa.'],
