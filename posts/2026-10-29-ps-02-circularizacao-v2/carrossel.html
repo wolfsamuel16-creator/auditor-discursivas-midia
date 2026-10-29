@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Parágrafo da Semana 02 — Circularização (TCE-MS · Cebraspe) — v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#263445; --laranja:#F4511E; --texto:#2B3644; --verde:#00897B;
+    --cinza:#8A929B; --cinza-claro:#B8C2CC; --filete:#CFD6DD;
+    --cx-verde:#D9F0EC; --cx-azul:#F4FAFB; --cx-laranja:#FFE7D6; --cx-navy:#E6EAF0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E8EBEE;font-family:'Lato',sans-serif;padding:40px;display:flex;flex-direction:column;align-items:center;gap:40px}
+  .slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:#fff;flex-shrink:0}
+  .pad{padding:84px 84px}
+
+  /* capa / fecho */
+  .dark{background:var(--navy);display:flex;flex-direction:column;justify-content:space-between}
+  .marca{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:3px;text-transform:uppercase;color:var(--laranja)}
+  .contador{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:2px;color:var(--cinza)}
+  .rule{width:120px;height:8px;background:var(--laranja)}
+  .eyebrow{font-family:'Poppins',sans-serif;font-weight:600;font-size:24px;letter-spacing:4px;text-transform:uppercase;color:var(--cinza-claro)}
+  .h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:84px;line-height:1.08;color:#fff;letter-spacing:-1.5px}
+  .h1 em{font-style:normal;color:var(--laranja)}
+  .sub{font-size:33px;line-height:1.5;color:var(--cinza-claro);max-width:860px}
+  .selo{display:inline-flex;gap:14px;flex-wrap:wrap}
+  .selo span{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;
+    color:#fff;border:2px solid var(--cinza);border-radius:40px;padding:10px 22px}
+  .selo span.on{background:var(--laranja);border-color:var(--laranja)}
+  .rodape{display:flex;justify-content:space-between;align-items:flex-end;font-size:24px;letter-spacing:1.5px;color:var(--cinza)}
+  .rodape .seta{color:var(--laranja);font-family:'Poppins',sans-serif;font-weight:600}
+
+  /* conteúdo */
+  .faixa-navy{background:var(--navy);padding:24px 84px;font-family:'Poppins',sans-serif;font-weight:600;
+    font-size:22px;letter-spacing:3px;text-transform:uppercase;color:#fff;display:flex;justify-content:space-between}
+  .faixa-navy .n{color:var(--cinza-claro)}
+  .faixa-laranja{background:var(--laranja);padding:28px 84px;font-family:'Poppins',sans-serif;font-weight:700;
+    font-size:44px;line-height:1.15;color:#fff;letter-spacing:-0.5px}
+  .corpo{padding:70px 84px 0}
+  .txt{font-size:40px;line-height:1.45;color:var(--texto)}
+  .txt b{color:var(--navy)}
+
+  .cx{border-radius:14px;padding:40px 46px;margin-bottom:34px}
+  .cx-rot{font-family:'Poppins',sans-serif;font-weight:600;font-size:21px;letter-spacing:2.5px;
+    text-transform:uppercase;margin-bottom:14px}
+  .cx-txt{font-size:38px;line-height:1.45;color:var(--texto)}
+  .cx-txt b{color:var(--navy)}
+  .errado{background:var(--cx-laranja)} .errado .cx-rot{color:var(--laranja)}
+  .certo{background:var(--cx-verde)}   .certo .cx-rot{color:var(--verde)}
+  .neutro{background:var(--cx-navy)}   .neutro .cx-rot{color:var(--navy)}
+
+  .dica{margin-top:30px;padding-top:40px;border-top:2px solid var(--filete);display:flex;gap:22px;align-items:flex-start}
+  .dica-rot{font-family:'Poppins',sans-serif;font-weight:700;font-size:21px;letter-spacing:2px;
+    color:var(--laranja);text-transform:uppercase;padding-top:6px;white-space:nowrap}
+  .dica-txt{font-size:36px;line-height:1.45;color:var(--texto)}
+  .dica-txt b{color:var(--navy)}
+
+  .rod-claro{position:absolute;bottom:0;left:0;right:0;padding:30px 84px;display:flex;justify-content:space-between;
+    font-size:22px;letter-spacing:1.5px;color:var(--cinza)}
+  .rod-claro .seta{color:var(--laranja);font-family:'Poppins',sans-serif;font-weight:700}
+
+  /* enunciado (folha de prova) */
+  .prova{background:var(--cx-azul);border:2px dashed var(--cinza-claro);border-radius:14px;padding:34px 40px;margin-bottom:30px}
+  .prova .fonte{font-family:'Poppins',sans-serif;font-weight:600;font-size:20px;letter-spacing:2px;color:var(--cinza);text-transform:uppercase;margin-bottom:16px}
+  .prova .item{font-size:36px;line-height:1.42;color:var(--texto);padding:22px 0;border-bottom:1px solid var(--filete);display:flex;gap:18px}
+  .prova .item:last-child{border-bottom:none}
+  .prova .item .k{font-family:'Poppins',sans-serif;font-weight:700;color:var(--laranja);min-width:28px}
+  .prova .item .v{margin-left:auto;font-family:'Poppins',sans-serif;font-weight:700;color:var(--navy);white-space:nowrap;padding-left:16px}
+  .prova .item.foco{background:#fff;border-radius:10px;border:3px solid var(--laranja);padding:16px 18px;margin:8px -18px}
+
+  /* escala do espelho */
+  .escala div{display:flex;align-items:center;gap:30px;padding:30px 0;border-bottom:1px solid var(--filete);font-size:36px;color:var(--texto)}
+  .escala div:last-child{border-bottom:none}
+  .escala .nota{font-family:'Poppins',sans-serif;font-weight:800;font-size:52px;min-width:76px;text-align:center;border-radius:10px;padding:2px 0}
+  .escala .n0{color:var(--laranja)} .escala .n4{background:var(--verde);color:#fff}
+
+  /* passos */
+  .passo{display:flex;gap:30px;margin-bottom:52px}
+  .passo .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:30px;color:#fff;background:var(--laranja);
+    min-width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:4px}
+  .passo .rot{font-family:'Poppins',sans-serif;font-weight:600;font-size:21px;letter-spacing:2px;text-transform:uppercase;color:var(--cinza);margin-bottom:8px}
+  .passo .t{font-size:39px;line-height:1.42;color:var(--texto)}
+  .passo .t b{color:var(--navy)}
+
+  /* raio-x do parágrafo */
+  .folha{background:#FFFDF8;border:2px solid var(--filete);border-radius:14px;padding:40px 44px;
+    font-size:35px;line-height:1.58;color:var(--texto);text-indent:52px}
+  .tf{background:var(--cx-laranja);box-shadow:inset 0 -4px 0 var(--laranja);padding:2px 0}
+  .fund{background:var(--cx-verde);box-shadow:inset 0 -4px 0 var(--verde);padding:2px 0}
+  .kw{font-weight:700;color:var(--navy);text-decoration:underline;text-decoration-color:var(--navy);text-decoration-thickness:3px;text-underline-offset:6px}
+  .leg{display:flex;gap:30px;flex-wrap:wrap;margin-top:32px;font-size:26px;color:var(--texto)}
+  .leg span{display:flex;align-items:center;gap:10px}
+  .leg i{display:inline-block;width:30px;height:20px;border-radius:4px}
+
+  /* mapa frase → espelho */
+  .mapa div{display:flex;gap:24px;align-items:flex-start;padding:36px 0;border-bottom:1px solid var(--filete)}
+  .mapa div:last-child{border-bottom:none}
+  .mapa .ok{font-family:'Poppins',sans-serif;font-weight:800;color:var(--verde);font-size:34px;min-width:40px}
+  .mapa .q{font-size:36px;line-height:1.42;color:var(--texto)}
+  .mapa .q b{color:var(--navy)}
+  .mapa .q small{display:block;font-size:28px;color:var(--cinza);margin-top:4px}
+
+  @media print{body{background:none;padding:0;gap:0}.slide{page-break-after:always}}
+
+  .folha{text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-size:34px;line-height:1.62}
+  .folha .kw{text-decoration:none;font-weight:900;hyphens:manual;-webkit-hyphens:manual}
+  .folha .tf{box-shadow:none}
+  .mk{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;color:#fff;background:var(--navy);border-radius:6px;padding:1px 8px;margin-left:6px;vertical-align:super;text-decoration:none;display:inline-block;line-height:1.3;text-indent:0}
+  .caso div{display:flex;gap:26px;padding:26px 0;border-bottom:1px solid var(--filete);font-size:36px;line-height:1.42;color:var(--texto)}
+  .caso div:last-child{border-bottom:none}
+  .caso div b{color:var(--navy)}
+  .caso .ic{font-size:40px;min-width:52px;text-align:center}
+  .caso .fim{background:var(--cx-laranja);border-radius:14px;padding:26px 30px;margin-top:14px;border-bottom:none}
+  .papel{display:flex;gap:28px;align-items:center;border-radius:14px;padding:34px 38px;margin-bottom:26px;border:2px solid var(--filete)}
+  .papel .ic{font-size:60px;min-width:80px;text-align:center}
+  .papel .nome{font-family:'Poppins',sans-serif;font-weight:700;font-size:38px;color:var(--navy)}
+  .papel .fz{font-size:33px;color:var(--texto);margin-top:4px;line-height:1.35}
+  .papel .tag{margin-left:auto;font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;letter-spacing:1.5px;text-transform:uppercase;border-radius:30px;padding:10px 18px;white-space:nowrap}
+  .papel.aud .tag{background:var(--cx-navy);color:var(--navy)}
+  .papel.ben{border:3px solid var(--verde);background:var(--cx-verde)}
+  .papel.ben .tag{background:var(--verde);color:#fff}
+  .escala .rom{font-family:'Poppins',sans-serif;font-weight:800;font-size:30px;min-width:66px;height:52px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+
+<!-- 01 CAPA -->
+<div class="slide dark pad" data-n="01">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="marca">Auditor Discursivas</div><div class="contador">01 / 09</div></div>
+  <div>
+    <div class="eyebrow" style="margin-bottom:30px">Parágrafo da Semana · 02</div>
+    <div class="rule" style="margin-bottom:44px"></div>
+    <div class="h1">Circularização: <em>o que é e como aplicar</em> no mesmo parágrafo.</div>
+    <div class="sub" style="margin-top:40px">Item de 5,25 pontos do TCE-MS 2025: o caso da prova, o padrão oficial e o parágrafo pronto.</div>
+    <div class="selo" style="margin-top:44px"><span class="on">Cebraspe</span><span>TCE-MS · 2025</span><span>Definir</span></div>
+  </div>
+  <div class="rodape"><div>@auditor_discursivas</div><div class="seta">Arraste →</div></div>
+</div>
+
+<!-- 02 O CASO -->
+<div class="slide" data-n="02">
+  <div class="faixa-navy"><span>O enunciado, resumido</span><span class="n">02 / 09</span></div>
+  <div class="faixa-laranja">O caso da prova</div>
+  <div class="corpo" style="padding-top:44px">
+    <div class="caso">
+      <div><span class="ic">🔎</span><span>Uma equipe de auditoria vai à <b>Secretaria Estadual de Educação (SEE)</b> verificar se um programa de livros para bibliotecas escolares, executado em <b>2024</b>, cumpriu a lei.</span></div>
+      <div><span class="ic">📦</span><span>A <b>SEE compra</b> os livros. Uma <b>empresa contratada entrega</b> direto nas escolas.</span></div>
+      <div><span class="ic">📜</span><span>A lei estadual exige a entrega a <b>todas as escolas</b> de uma relação anual.</span></div>
+      <div><span class="ic">⚠️</span><span>Risco alto de pagar por livro não entregue. Por isso, a equipe escolhe a <b>circularização</b>.</span></div>
+      <div class="fim"><span class="ic">💸</span><span>Resultado: só <b>40% das escolas</b> receberam, mas a SEE pagou <b>100%</b>. Prejuízo de <b>R$ 800 mil</b>.</span></div>
+    </div>
+  </div>
+  <div class="rod-claro"><div>Cebraspe · TCE-MS 2025 · Questão 3 (resumo fiel)</div><div class="seta">→</div></div>
+</div>
+
+<!-- 03 QUEM É QUEM -->
+<div class="slide" data-n="03">
+  <div class="faixa-navy"><span>Antes de responder</span><span class="n">03 / 09</span></div>
+  <div class="faixa-laranja">Quem é quem no caso</div>
+  <div class="corpo">
+    <div class="papel aud"><span class="ic">🏛️</span><div><div class="nome">SEE</div><div class="fz">Comprou e pagou os livros</div></div><span class="tag">Auditada</span></div>
+    <div class="papel aud"><span class="ic">🚚</span><div><div class="nome">Empresa contratada</div><div class="fz">Recebeu o pagamento e devia entregar</div></div><span class="tag">Fornecedora</span></div>
+    <div class="papel ben"><span class="ic">🏫</span><div><div class="nome">Escolas</div><div class="fz">Deviam ter recebido os livros</div></div><span class="tag">Beneficiárias</span></div>
+    <div class="dica" style="margin-top:40px">
+      <div class="dica-rot">Guarde</div>
+      <div class="dica-txt">SEE e empresa são justamente quem está sendo checado. Quem pode <b>confirmar a entrega</b> é a escola.</div>
+    </div>
+  </div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 04 O COMANDO -->
+<div class="slide" data-n="04">
+  <div class="faixa-navy"><span>A prova real</span><span class="n">04 / 09</span></div>
+  <div class="faixa-laranja">O que a banca pediu</div>
+  <div class="corpo">
+    <div class="txt" style="margin-bottom:30px">Com base nesse caso, um texto de até <b>20 linhas</b> respondendo a três itens:</div>
+    <div class="prova">
+      <div class="fonte">Cebraspe · TCE-MS · Questão 3</div>
+      <div class="item"><span class="k">1</span><span>a auditoria é financeira, operacional ou de <b>conformidade</b>?</span><span class="v">3,00</span></div>
+      <div class="item foco"><span class="k">2</span><span>em que <b>consiste</b> a circularização e como ela seria <b>aplicada</b> no caso?</span><span class="v">5,25</span></div>
+      <div class="item"><span class="k">3</span><span>condição, critério, causa e efeito do <b>achado</b></span><span class="v">6,00</span></div>
+    </div>
+    <div class="dica">
+      <div class="dica-rot">Repare</div>
+      <div class="dica-txt">O item 2 tem <b>duas perguntas</b>: o conceito e a aplicação. É ele que vamos escrever.</div>
+    </div>
+  </div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 05 O ESPELHO -->
+<div class="slide" data-n="05">
+  <div class="faixa-navy"><span>O padrão oficial · Quesito 2.2</span><span class="n">05 / 09</span></div>
+  <div class="faixa-laranja">4 aspectos. Cada um vale um degrau.</div>
+  <div class="corpo">
+    <div class="escala">
+      <div><span class="rom">i</span><span>A resposta vai <b>direto aos auditores</b></span></div>
+      <div><span class="rom">ii</span><span>A resposta é dada <b>por escrito</b></span></div>
+      <div><span class="rom">iii</span><span>Quem responde é o <b>beneficiário</b> dos recursos, bens ou serviços</span></div>
+      <div><span class="rom">iv</span><span>No caso: a confirmação é pedida <b>às escolas</b> ou a seus representantes</span></div>
+    </div>
+    <div class="dica" style="margin-top:34px">
+      <div class="dica-rot">Leitura</div>
+      <div class="dica-txt">Escala de 0 a 4. Os aspectos i, ii e iii são o <b>conceito</b>. O iv só vem para quem <b>aplica ao caso</b>.</div>
+    </div>
+  </div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 06 DO COMANDO AO TF -->
+<div class="slide" data-n="06">
+  <div class="faixa-navy"><span>Antes de escrever</span><span class="n">06 / 09</span></div>
+  <div class="faixa-laranja">Duas perguntas, duas frases</div>
+  <div class="corpo">
+    <div class="passo"><div class="num">1</div><div><div class="rot">Transforme o comando em pergunta</div>
+      <div class="t">“O que é a circularização?” e “Como ela seria usada <b>neste caso</b>?”</div></div></div>
+    <div class="passo"><div class="num">2</div><div><div class="rot">1ª frase: o conceito</div>
+      <div class="t">Fundamento (ISSAI 4000) + resposta <b>direta</b>, <b>por escrito</b>, do <b>beneficiário</b>. Aspectos i, ii e iii.</div></div></div>
+    <div class="passo"><div class="num">3</div><div><div class="rot">2ª frase: a aplicação</div>
+      <div class="t">Quem confirma? <b>As escolas.</b> O quê? Se receberam os livros <b>em 2024</b>. Aspecto iv.</div></div></div>
+    <div class="dica">
+      <div class="dica-rot">Sem opinião</div>
+      <div class="dica-txt">“Em que consiste” pede conceito. Nada de conclusão parcial: <b>linha economizada</b>.</div>
+    </div>
+  </div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 07 O PARÁGRAFO -->
+<div class="slide" data-n="07">
+  <div class="faixa-navy"><span>Raio-X do parágrafo</span><span class="n">07 / 09</span></div>
+  <div class="faixa-laranja">O parágrafo que leva 4 de 4</div>
+  <div class="corpo" style="padding-top:48px">
+    <div class="folha"><span class="fund">De acordo com a ISSAI 4000,</span> <span class="tf">a circularização, ou confirmação externa, consiste em obter resposta <span class="kw">direta aos auditores</span><span class="mk">i</span>, <span class="kw">por escrito</span><span class="mk">ii</span>, dada pelo <span class="kw">terceiro beneficiário</span><span class="mk">iii</span> dos recursos, bens ou serviços auditados.</span> Assim, no caso em análise, a equipe enviaria correspondência <span class="kw">às escolas da relação anual, ou a seus representantes</span><span class="mk">iv</span>, indagando se receberam os livros do programa em 2024. Dessa forma, as respostas chegariam à equipe sem passar pela SEE nem pela empresa contratada, o que permitiria confrontá-las com o pagamento integral feito à fornecedora.</div>
+    <div class="leg">
+      <span><i style="background:var(--cx-laranja)"></i>Tópico frasal</span>
+      <span><i style="background:var(--cx-verde);box-shadow:inset 0 -4px 0 var(--verde)"></i>Fundamento</span>
+      <span><span class="mk" style="vertical-align:middle;margin:0">i–iv</span>&nbsp;Aspecto do padrão</span>
+    </div>
+  </div>
+  <div class="rod-claro"><div>Modelo elaborado por @auditor_discursivas a partir do padrão oficial</div><div class="seta">→</div></div>
+</div>
+
+<!-- 08 PERDE x PONTUA -->
+<div class="slide" data-n="08">
+  <div class="faixa-navy"><span>O erro mais provável neste item</span><span class="n">08 / 09</span></div>
+  <div class="faixa-laranja">Confirmar com a SEE não é circularizar</div>
+  <div class="corpo">
+    <div class="cx errado">
+      <div class="cx-rot">✗&nbsp; Assim você perde o aspecto iv</div>
+      <div class="cx-txt">“A equipe solicitaria à SEE e à empresa os comprovantes de entrega dos livros.”</div>
+    </div>
+    <div class="cx certo">
+      <div class="cx-rot">✓&nbsp; Assim você pontua</div>
+      <div class="cx-txt">“A equipe indagaria <b>as escolas</b>, que responderiam <b>por escrito</b> e <b>diretamente aos auditores</b>.”</div>
+    </div>
+    <div class="dica">
+      <div class="dica-rot">Regra</div>
+      <div class="dica-txt">Pedir papel a quem pagou ou a quem recebeu o pagamento é examinar documento do auditado. Circularizar é perguntar a <b>quem deveria ter recebido</b>.</div>
+    </div>
+  </div>
+  <div class="rod-claro"><div>@auditor_discursivas</div><div class="seta">→</div></div>
+</div>
+
+<!-- 09 FECHO -->
+<div class="slide dark pad" data-n="09">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="marca">Auditor Discursivas</div><div class="contador">09 / 09</div></div>
+  <div>
+    <div class="rule" style="margin-bottom:40px"></div>
+    <div class="h1" style="font-size:72px">1ª frase: o conceito.<br>2ª frase: o caso.<br><em>Nota cheia.</em></div>
+    <div style="background:var(--laranja);border-radius:14px;padding:36px 40px;margin-top:54px">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:36px;color:#fff;line-height:1.3">Salva para revisar técnicas de auditoria antes da prova.</div>
+      <div style="font-size:29px;color:#FFE7D6;margin-top:16px;line-height:1.45">Já fez a prova e a nota não veio? Manda <b style="color:#fff">RECURSO</b> no direct. A análise de viabilidade é gratuita.</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:28px;margin-top:54px">
+      <div class="foto" style="width:150px;height:150px;flex-shrink:0;border-radius:50%;border:5px solid var(--laranja);background:#1c2735 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:44px;color:var(--laranja)">SW</div>
+      <div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:38px;color:#fff">Samuel Wolf</div>
+        <div style="font-size:26px;color:var(--cinza-claro);margin-top:8px;line-height:1.5">Engenheiro pelo ITA · Auditor de Controle Externo do TCE-RJ<br>Aprovado na SEFAZ-RS e na SEFIN Manaus</div>
+      </div>
+    </div>
+  </div>
+  <div class="rodape"><div>@auditor_discursivas</div><div class="seta">↑ Salvar</div></div>
+</div>
+
+</body>
+</html>
