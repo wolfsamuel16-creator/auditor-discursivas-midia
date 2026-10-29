@@ -319,7 +319,7 @@ def montar():
 <tr><td class="k">Objetivo</td><td>Defender uma tese</td><td>Interpretar o caso e propor solução</td></tr>
 <tr><td class="k">Abertura</td><td>Longa, com contextualização</td><td>Nenhuma: o 1.º parágrafo já responde ao primeiro item</td></tr>
 <tr><td class="k">Repertório</td><td>Cultural e histórico</td><td>Normas, conceitos e dados do caso</td></tr>
-<tr><td class="k">Estrutura</td><td>Livre</td><td>Um parágrafo por item, na ordem do comando</td></tr>
+<tr><td class="k">Estrutura</td><td>Livre</td><td>Um parágrafo por item, na ordem do comando, ligados por conectivos</td></tr>
 <tr><td class="k">Fechamento</td><td>Proposta de intervenção geral</td><td>Solução no fim do parágrafo, sempre que o item permitir</td></tr>
 </tbody></table>
 </section>
@@ -338,8 +338,8 @@ def montar():
 <h3>Como citar normas</h3>
 <ul><li>Primeira menção completa (\"Lei n.º 14.133/2021\"); depois, \"a mesma lei\", desde que nenhuma outra norma tenha sido citada no meio.</li>
 <li>Artigo só com certeza. Número errado tira mais credibilidade do que número ausente — e, pelo item 7.4, a citação sozinha não dá ponto. Se o enunciado dispensar dispositivo legal, cite a regra pelo conteúdo.</li>
-<li>Normas paulistas pelo nome, se souber (\"Constituição do Estado de São Paulo\", \"Lei estadual n.º 10.261/1968\").</li></ul>
-<p><b>Conectivos que organizam:</b> fundamentar — \"Nos termos do...\", \"Conforme o...\"; aplicar ao caso — \"No caso,...\"; propor solução — \"Recomenda-se...\", \"Deve-se...\". Entre os itens, a primeira frase de cada parágrafo, que retoma o objeto do item, já faz a transição; \"Quanto ao achado 3,...\" é opcional.</p>
+</ul>
+<p><b>Conectivos que organizam:</b> fundamentar — \"Nos termos do...\", \"Conforme o...\"; aplicar ao caso — \"No caso,...\"; propor solução — \"Recomenda-se...\", \"Deve-se...\". Entre os itens, abra o parágrafo com um conectivo que retome o item: \"A Proposta 2, por sua vez,...\", \"Quanto ao achado 2,...\", \"Além disso,...\", \"Da mesma forma,...\", \"Já...\", \"Por fim,...\". Sem letras no texto, é o conectivo que mostra ao corretor a mudança de item e dá coesão à resposta.</p>
 </section>
 
 <section class="pb"><div class="parte"><span class="eyebrow">Parte 2</span><h2>O estudo de caso de 30 linhas</h2><p>Uma questão · Conhecimentos Básicos · 120 pontos · até 30 linhas</p></div>
@@ -354,7 +354,7 @@ def montar():
 <tr><td class="k">5 itens</td><td>6 + 6 + 6 + 5 + 5</td><td>26–30</td></tr>
 </tbody></table>
 <p>Escreva perto do limite, mas nunca além dele: o item 9.12 tira pontos de quem passa das 30 linhas. Itens com mais perguntas dentro deles pedem mais linhas.</p>
-<div class="box cre"><span class="eyebrow">Sem letras no texto</span>Não escreva \"a)\", \"b)\" no texto definitivo. Faça a primeira frase de cada parágrafo retomar o objeto do item e já responder a ele: \"A Proposta 1 só pode ser adotada...\", \"A Proposta 2 é irregular.\" Assim o corretor acha cada requisito da grade sem marcação extra. Só indique a letra se o caderno exigir expressamente.</div>
+<div class="box cre"><span class="eyebrow">Sem letras no texto</span>Não escreva \"a)\", \"b)\" no texto definitivo. Ligue os parágrafos com conectivos e faça a primeira frase de cada um retomar o objeto do item e já responder a ele: \"A Proposta 1 só pode ser adotada...\", \"A Proposta 2, por sua vez, é irregular.\", \"Por fim, quanto à Proposta 3,...\". Assim o texto fica coeso, e o corretor acha cada requisito da grade sem marcação extra. Só indique a letra se o caderno exigir expressamente.</div>
 </section>
 
 {rods}
@@ -381,7 +381,7 @@ def montar():
 </section>
 
 <section class="pb"><span class="eyebrow">09</span><h2 class="sec">Checklist do dia da prova</h2>
-<div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada item tem um parágrafo, que abre retomando o item?</li><li>Itens com duas ou três perguntas estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com a resposta direta?</li><li>Cada parágrafo fecha com uma solução, quando o item permite?</li></ul></div>
+<div class="tri"><div class="t1"><span class="eyebrow">Antes de passar a limpo</span><ul><li>Cada item tem um parágrafo, ligado ao anterior por conectivo e retomando o item?</li><li>Itens com duas ou três perguntas estão completos?</li><li>Todos os dados do caso foram usados?</li><li>Cada parágrafo abre com a resposta direta?</li><li>Cada parágrafo fecha com uma solução, quando o item permite?</li></ul></div>
 <div class="t3"><span class="eyebrow">Depois de passar a limpo</span><ul><li>Nada além da linha 30 nem fora do espaço.</li><li>Nenhuma assinatura, nome ou marca.</li><li>Letra legível, caneta preta ou azul.</li><li>Acentos, crases e concordâncias revisados.</li><li>Nenhuma frase copiada do enunciado.</li></ul></div></div>
 <div class="box nv"><span class="eyebrow">Última palavra</span>Boa parte da nota depende de responder a tudo o que foi perguntado, na ordem em que foi perguntado, aplicando a norma ao fato e dizendo o que fazer. Treine até isso ficar automático.</div>
 <h3>Fontes</h3>
