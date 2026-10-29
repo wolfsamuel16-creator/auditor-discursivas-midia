@@ -101,12 +101,14 @@ ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
 /* folha */
 .folha{border:1px solid #cfc6b8;border-radius:6pt;background:#fffdf9;padding:6pt 10pt 8pt;margin:6pt 0 6pt;break-inside:avoid}
 .folha .eyebrow{display:block;margin:2pt 0 5pt}
-.ln{display:flex;border-bottom:1px solid #e6ded1;font-size:9.4pt;line-height:1.45}
+.ln{display:flex;border-bottom:1px solid #e6ded1;font-size:12.6pt;line-height:1.24;letter-spacing:.015em}
 .ln .nr{width:20pt;flex:none;color:#a39b8f;font-family:Poppins;font-size:7.6pt;padding-top:2pt}
-.ln .t{white-space:pre;font-family:Lato}
+.ln .t{flex:1;font-family:Lato;text-align:justify;text-align-last:justify;overflow:hidden;white-space:normal}
+.ln .t.ini{padding-left:2.4em}
+.ln .t.fim{text-align-last:left}
 .nota{font-size:8.4pt;color:var(--mu);font-style:italic}
 .tri{display:flex;gap:7pt;margin:9pt 0;break-inside:avoid}
-.tri>div{flex:1;border-radius:7pt;padding:9pt 10pt;font-size:9pt}
+.tri>div{flex:1;border-radius:7pt;padding:8pt 9pt;font-size:8.4pt;line-height:1.4}
 .tri .eyebrow{display:block;margin-bottom:4pt;font-size:6.8pt}
 .tri ul{padding-left:12pt;margin:0}
 .t1{background:#fff3ee}.t2{background:#fbecea}.t3{background:#eaf5ee}
@@ -119,20 +121,25 @@ ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
 def e(s):  # texto já com <b> permitido
     return s
 
-def wrap_paragrafos(pars):
+def wrap_paragrafos(pars, marcas=False):
     linhas = []
     for p in pars:
         w = textwrap.wrap(p, width=CPL, initial_indent='     ', subsequent_indent='', break_long_words=False, break_on_hyphens=False)
-        linhas += w
+        for j, l in enumerate(w):
+            linhas.append((l.strip(), j == 0, j == len(w) - 1) if marcas else l)
     return linhas
 
 def folha(pars, total=30, rot='TEXTO DEFINITIVO · ESTUDO DE CASO · 30 LINHAS'):
-    ls = wrap_paragrafos(pars)
+    ls = wrap_paragrafos(pars, marcas=True)
     assert len(ls) <= total, f'{len(ls)} linhas > {total}'
     out = [f'<div class="folha"><span class="eyebrow">{rot}</span>']
     for i in range(total):
-        t = H.escape(ls[i]) if i < len(ls) else ''
-        out.append(f'<div class="ln"><span class="nr">{i+1}</span><span class="t">{t}</span></div>')
+        if i < len(ls):
+            t, ini, fim = ls[i]
+            cls = 't' + (' ini' if ini else '') + (' fim' if fim else '')
+            out.append(f'<div class="ln"><span class="nr">{i+1}</span><span class="{cls}">{H.escape(t)}</span></div>')
+        else:
+            out.append(f'<div class="ln"><span class="nr">{i+1}</span><span class="t fim">&nbsp;</span></div>')
     out.append('</div>')
     return '\n'.join(out), len(ls)
 
