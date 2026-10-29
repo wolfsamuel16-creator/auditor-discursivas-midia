@@ -1,10 +1,24 @@
 {
-  "publicar_em": "2026-10-29T17:05:00",
+  "publicar_em": "2026-10-29T17:00:00",
   "tipo": "carrossel+stories",
   "origem": "Central — resultado dos recursos TCE-SC (FGV preliminar × definitivo)",
   "primeiro_comentario": "",
-  "stories_publicar_em": [],
-  "status": "aguardando",
-  "metricool_id": null,
-  "stories_metricool": []
+  "stories_publicar_em": [
+    "2026-10-29T17:02:00",
+    "2026-10-29T17:03:00",
+    "2026-10-29T17:04:00",
+    "2026-10-29T17:05:00",
+    "2026-10-29T17:06:00"
+  ],
+  "status": "agendado",
+  "metricool_id": 410488257,
+  "stories_metricool": [
+    410488530,
+    410488546,
+    410488558,
+    410488577,
+    410488594
+  ],
+  "agendado_em": "2026-10-29T16:54:00-03:00",
+  "observacao": "Publicação imediata pedida pelo Samuel em 29/10/2026 16:52."
 }
