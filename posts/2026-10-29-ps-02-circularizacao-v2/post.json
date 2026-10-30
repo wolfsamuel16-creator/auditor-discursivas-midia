@@ -3,7 +3,7 @@
  "tipo": "carrossel",
  "origem": "Parágrafo da Semana",
  "primeiro_comentario": "Na sua prova, quem você circularizaria: a SEE, a empresa ou as escolas? Comenta aqui 👇",
- "status": "aguardando_data",
+ "status": "descartado",
  "metricool_id": null,
- "obs": "v2 refeita em 29/10/2026 a pedido do Samuel: o PS 02 publicado às 18h (metricool_id 405704889) não trazia o enunciado. Inclui o caso da prova e o slide 'quem é quem'. Data de publicação a definir com o Samuel. | 30/10 Central: status 'aguardando_data' para o Agendador não publicar sozinho sem data; o Samuel decide a data."
+ "obs": "v2 refeita em 29/10/2026 a pedido do Samuel: o PS 02 publicado às 18h (metricool_id 405704889) não trazia o enunciado. Inclui o caso da prova e o slide 'quem é quem'. Data de publicação a definir com o Samuel. | 30/10 Central: status 'aguardando_data' para o Agendador não publicar sozinho sem data; o Samuel decide a data. | 30/10 08h07: descartado a pedido do Samuel (o PS 02 já foi publicado)."
 }
