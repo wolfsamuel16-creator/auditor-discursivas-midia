@@ -31,7 +31,7 @@
   h2{font-family:Poppins,sans-serif;font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;margin:30px 0 4px;display:flex;align-items:center;gap:8px}
   h2::before{content:"";width:18px;height:3px;background:var(--laranja);border-radius:2px}
   .explica{font-size:14px;color:var(--suave);margin-bottom:12px}
-  .aula{width:100%;display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--linha);border-radius:14px;padding:14px 16px;margin-bottom:10px;text-align:left;cursor:pointer;font:inherit;color:inherit;transition:transform .1s,border-color .1s}
+  .aula{width:100%;display:flex;text-decoration:none;align-items:center;gap:14px;background:#fff;border:1px solid var(--linha);border-radius:14px;padding:14px 16px;margin-bottom:10px;text-align:left;cursor:pointer;font:inherit;color:inherit;transition:transform .1s,border-color .1s}
   .aula:hover{border-color:var(--laranja)}
   .aula:active{transform:scale(.99)}
   .aula .txt{flex:1}
@@ -58,46 +58,26 @@
     </ul>
   </section>
 
-  <button class="cta" data-chave="RECURSO" style="width:100%;border:0;cursor:pointer;font:inherit">
+  <a class="cta" href="https://forms.gle/zVCxX76bcE7frtS58" target="_blank" rel="noopener">
     <b>Recebeu a nota da discursiva?</b>
-    <span>Análise de viabilidade gratuita · mande RECURSO no direct</span>
-  </button>
-  <p class="nota">Você só paga se decidir seguir depois da análise.</p>
+    <span>Envie sua prova para a análise de viabilidade gratuita</span>
+  </a>
+  <p class="nota">Você só paga se decidir seguir depois da análise. Prefere conversar? Mande RECURSO no direct do @auditor_discursivas.</p>
 
   <h2>Aulas gratuitas</h2>
-  <p class="explica">Toque no concurso: a palavra é copiada e o seu direct abre. Cole e envie que a aula chega na hora.</p>
+  <p class="explica">Toque no concurso e a aula abre na hora, em PDF.</p>
 
   <div id="aulas">
-    <button class="aula" data-chave="CGU"><div class="txt"><strong>CGU 2026</strong><small>Auditor Federal de Finanças e Controle · Cebraspe</small></div><span class="chave">CGU</span></button>
-    <button class="aula" data-chave="TCDF"><div class="txt"><strong>TCDF 2026</strong><small>Analista · Cebraspe</small></div><span class="chave">TCDF</span></button>
-    <button class="aula" data-chave="TCEMA"><div class="txt"><strong>TCE-MA 2026</strong><small>Auditor Estadual de Controle Externo · Cebraspe</small></div><span class="chave">TCEMA</span></button>
-    <button class="aula" data-chave="SEFAZSP"><div class="txt"><strong>SEFAZ-SP 2026</strong><small>APOFP · FCC</small></div><span class="chave">SEFAZSP</span></button>
-    <button class="aula" data-chave="SEFAZAL"><div class="txt"><strong>SEFAZ-AL 2026</strong><small>Auditor Fiscal · Cebraspe</small></div><span class="chave">SEFAZAL</span></button>
+    <a class="aula" href="aulas/cgu.pdf" target="_blank" rel="noopener"><div class="txt"><strong>CGU 2026</strong><small>Auditor Federal de Finanças e Controle · Cebraspe</small></div><span class="chave">ABRIR PDF</span></a>
+    <a class="aula" href="aulas/tcdf.pdf" target="_blank" rel="noopener"><div class="txt"><strong>TCDF 2026</strong><small>Analista · Cebraspe</small></div><span class="chave">ABRIR PDF</span></a>
+    <a class="aula" href="aulas/tcema.pdf" target="_blank" rel="noopener"><div class="txt"><strong>TCE-MA 2026</strong><small>Auditor Estadual de Controle Externo · Cebraspe</small></div><span class="chave">ABRIR PDF</span></a>
+    <a class="aula" href="aulas/sefazsp.pdf" target="_blank" rel="noopener"><div class="txt"><strong>SEFAZ-SP 2026</strong><small>APOFP · FCC</small></div><span class="chave">ABRIR PDF</span></a>
+    <a class="aula" href="aulas/sefazal.pdf" target="_blank" rel="noopener"><div class="txt"><strong>SEFAZ-AL 2026</strong><small>Auditor Fiscal · Cebraspe</small></div><span class="chave">ABRIR PDF</span></a>
   </div>
 
   <a class="sec" href="https://www.instagram.com/auditor_discursivas/">Acompanhe no Instagram: novas aulas saem lá</a>
 
   <footer>@auditor_discursivas</footer>
 </main>
-<div class="toast" id="toast"></div>
-<script>
-  var DM = "https://ig.me/m/auditor_discursivas";
-  var toast = document.getElementById("toast");
-  function aviso(t){toast.textContent=t;toast.classList.add("on");setTimeout(function(){toast.classList.remove("on")},2600)}
-  function copiar(t){
-    try{ if(navigator.clipboard && navigator.clipboard.writeText){ return navigator.clipboard.writeText(t) } }catch(e){}
-    try{ var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove() }catch(e){}
-    return Promise.resolve();
-  }
-  document.querySelectorAll("[data-chave]").forEach(function(b){
-    b.addEventListener("click",function(){
-      var k=b.getAttribute("data-chave");
-      copiar(k).catch(function(){}).then(function(){
-        aviso("“"+k+"” copiado. Cole no direct e envie.");
-        setTimeout(function(){ window.location.href = DM }, 900);
-      });
-    });
-  });
-</script>
 </body>
 </html>
