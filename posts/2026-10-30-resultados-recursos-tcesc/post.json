@@ -1,1 +1,15 @@
-{"publicar_em": "2026-10-30T16:30:00-03:00", "tipo": "carrossel", "origem": "Central (prova social TCE-SC, prints anonimizados do WhatsApp)", "primeiro_comentario": "Fez discursiva e a nota veio abaixo do que você escreveu? Manda RECURSO no direct. A análise de viabilidade é gratuita.", "status": "aguardando", "metricool_id": null}
+{
+ "publicar_em": "2026-10-30T16:30:00-03:00",
+ "tipo": "carrossel",
+ "origem": "Central (prova social TCE-SC, prints anonimizados do WhatsApp)",
+ "primeiro_comentario": "Fez discursiva e a nota veio abaixo do que você escreveu? Manda RECURSO no direct. A análise de viabilidade é gratuita.",
+ "status": "publicado",
+ "metricool_id": 411591030,
+ "stories_metricool": [
+  411607730,
+  411607754,
+  411607775
+ ],
+ "publicUrl": "https://www.instagram.com/p/DfIVEqVFSdW/",
+ "obs": "Publicado em 30/10 16:25 via Metricool (agendado pela Central); sincronizado pelo Agendador em 31/10."
+}
