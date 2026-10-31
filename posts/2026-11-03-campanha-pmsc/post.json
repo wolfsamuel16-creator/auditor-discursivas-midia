@@ -4,7 +4,7 @@
  "origem": "Central",
  "primeiro_comentario": "📌 Comente PMSC aqui embaixo e a aula chega no seu direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
  "status": "agendado",
- "metricool_id": 412514657,
+ "metricool_id": 412520050,
  "stories": [
   "story_01.png",
   "story_02.png",
@@ -15,11 +15,11 @@
   "2026-11-03T10:22:00",
   "2026-11-03T10:24:00"
  ],
- "observacao": "Aula-isca PM-SC 2026 (Soldado, Instituto AOCP), palavra PMSC (+ PM-SC, PM SC). PDF em docs/aulas/pmsc.pdf. 10h = melhor horário de terça no Metricool; 18h é do Radar dos Concursos. Automações do InfluenciMax pendentes de autorização do Samuel.",
+ "observacao": "Aula-isca PM-SC 2026 (Soldado, Instituto AOCP), palavra PMSC (+ PM-SC, PM SC). PDF em docs/aulas/pmsc.pdf. 10h = melhor horário de terça no Metricool; 18h é do Radar dos Concursos. Automações do InfluenciMax pendentes de autorização do Samuel. v2 de cores (31/10 19h37): capa e 1º story navy, demais creme #F6F2EC.",
  "stories_metricool": [
-  412514668,
-  412514681,
-  412514696
+  412520057,
+  412520062,
+  412520071
  ],
  "ok_em": "2026-10-31T19:23:00"
 }
