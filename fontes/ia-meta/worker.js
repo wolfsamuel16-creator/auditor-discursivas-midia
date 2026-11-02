@@ -20,6 +20,7 @@ const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1313923144139531";   // configuração "API do Instagram (login unificado)"
 const NEGOCIO = "1530179278566154";     // portfólio "Samuel Wolf | Recursos Profissionais"
+const IG_CONHECIDO = "17841472070663168"; // @auditor_discursivas (Configurações do negócio → Contas do Instagram)
 const PAUSA_SEG = 24 * 60 * 60;
 const LOG_MAX = 80;
 
@@ -248,6 +249,7 @@ async function configurarInstagram(userToken, env, base) {
       for (const x of (j.data || [])) if (x.username) ids.push(x.id);
     }
   }
+  if (!ids.includes(IG_CONHECIDO)) ids.push(IG_CONHECIDO);
   for (const id of ids) {
     const u = await (await fetch(`${GRAPH}/${id}?fields=id,username`, { headers: { authorization: "Bearer " + userToken } })).json();
     if (u.username) { out.ig_id = u.id; out.ig_username = u.username; if (u.username.toLowerCase() === "auditor_discursivas") break; }
