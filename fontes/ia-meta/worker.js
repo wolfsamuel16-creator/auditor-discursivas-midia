@@ -15,10 +15,11 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v3 (02/11/2026)";
+const VERSAO = "ia-meta v4 (02/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
-const CONFIG_ID = "1313923144139531";   // configuração "API do Instagram (login unificado)"
+const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
+// (a 1313923144139531, "API do Instagram (login unificado)", deu token de sistema sem a conta — não usar)
 const NEGOCIO = "1530179278566154";     // portfólio "Samuel Wolf | Recursos Profissionais"
 const IG_CONHECIDO = "17841472070663168"; // @auditor_discursivas (Configurações do negócio → Contas do Instagram)
 const PAUSA_SEG = 24 * 60 * 60;
@@ -223,7 +224,13 @@ async function conectar(url, env) {
   tk.searchParams.set("redirect_uri", url.origin + "/retorno"); tk.searchParams.set("code", code);
   const t = await (await fetch(tk)).json();
   if (!t.access_token) { await registrar(env, { t: agora(), tipo: "erro_conectar", etapa: "token", erro: JSON.stringify(t.error || t).slice(0, 300) }); return pagina("Erro ao obter o token", esc(JSON.stringify(t.error || t))); }
-  const userToken = t.access_token;
+  let userToken = t.access_token;
+  // Token de longa duração (60 dias); os tokens de Página tirados dele não expiram.
+  const ll = new URL(GRAPH + "/oauth/access_token");
+  ll.searchParams.set("grant_type", "fb_exchange_token"); ll.searchParams.set("client_id", APP_ID);
+  ll.searchParams.set("client_secret", env.IG_APP_SECRET); ll.searchParams.set("fb_exchange_token", userToken);
+  const lj = await (await fetch(ll)).json();
+  if (lj.access_token) userToken = lj.access_token;
   const contas = await (await fetch(`${GRAPH}/me/accounts?fields=id,name,access_token,instagram_business_account{id,username}&limit=50`, { headers: { authorization: "Bearer " + userToken } })).json();
   const lista = (contas.data || []);
   const pag = lista.find(x => x.instagram_business_account?.username?.toLowerCase() === "auditor_discursivas") || lista.find(x => x.instagram_business_account);
