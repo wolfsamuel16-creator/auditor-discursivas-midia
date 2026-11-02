@@ -39,7 +39,7 @@ def fecho(i, n, h2, p):
             f'<div class="rod"><span>@auditor_discursivas</span><span></span></div></section>')
 
 
-def story(corpo, tom='claro'):
+def story(corpo, tom='navy'):
     return f'<section class="st {tom}"><div class="wm">AUDITOR DISCURSIVAS</div>{corpo}</section>'
 
 
@@ -100,7 +100,7 @@ CAMP = {
           ['Você me manda <b>TCEPE</b>, o cargo e a sua nota de cada item',
            'Faço a <b>análise de viabilidade gratuita</b>: sua resposta × espelho',
            'Se houver fundamento, eu <b>redijo o recurso</b> item por item, dentro do prazo'],
-          'Questão: <b>R$ 350</b> · Peça técnica: <b>R$ 700</b> · Combo questão + peça: <b>R$ 950</b>. A análise de viabilidade é gratuita.'),
+          'Recurso da questão (estudo de caso): <b>R$ 400</b>. A análise de viabilidade é gratuita.'),
     linha(3, 4, '4 dias, com <em>fim de semana</em> no meio',
           [('sex 13/11', 'Abre o recurso', False), ('sáb 14 e dom 15', 'Prazo correndo', False), ('seg 16/11', '<b>Último dia</b>', True)],
           '<b>Quanto antes você mandar, mais tempo para fundamentar.</b> Depois de 16/11, essa correção não se discute mais.'),

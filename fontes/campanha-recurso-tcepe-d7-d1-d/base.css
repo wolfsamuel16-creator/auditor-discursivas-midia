@@ -61,3 +61,5 @@ p.mid{font-size:38px;line-height:1.45}
 .st .box .vg{color:var(--lar)}
 .st.claro .big-n{color:var(--navy)}
 .st.claro .num{background:var(--navy)}
+/* stories em fundo azul (Samuel, 02/11/2026) */
+.st.navy .big-n{color:#fff}
