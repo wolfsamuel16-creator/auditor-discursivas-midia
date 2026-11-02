@@ -54,3 +54,10 @@ p.mid{font-size:38px;line-height:1.45}
 .st.claro{background:var(--creme);color:var(--navy)}
 .st.claro .op.a{background:#fff;color:var(--navy);border:3px solid var(--navy)}
 .s.claro .cred{opacity:1}
+
+/* stories menos laranja (Samuel, 02/11/2026) */
+.st .box{background:#fff;color:var(--navy);border-left:16px solid var(--lar)}
+.st .box small{color:var(--navy);opacity:.9}
+.st .box .vg{color:var(--lar)}
+.st.claro .big-n{color:var(--navy)}
+.st.claro .num{background:var(--navy)}

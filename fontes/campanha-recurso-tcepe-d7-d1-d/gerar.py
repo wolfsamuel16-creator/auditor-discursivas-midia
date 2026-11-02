@@ -3,7 +3,7 @@ import pathlib
 
 CSS = pathlib.Path(__file__).with_name('base.css').read_text(encoding='utf-8')
 ROD = '<div class="rod"><span>@auditor_discursivas</span><span class="sv">{}</span></div>'
-CTA_SMALL = '<span style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>ou mande <b>TCEPE</b> no direct. A análise de viabilidade é gratuita.'
+CTA_SMALL = '<span class="vg" style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>ou mande <b>TCEPE</b> no direct. A análise de viabilidade é gratuita.'
 AUTOR = ('<div class="autor" style="margin-top:0;align-items:center"><div class="foto" style="flex:0 0 190px;width:190px;height:190px"></div>'
          '<div><b>Samuel Wolf</b><span style="display:block;color:var(--lar);opacity:1;font-weight:700;margin:4px 0 14px">Recursos de provas discursivas</span>'
          '<ul class="cred"><li>✔ Engenheiro pelo ITA</li><li>✔ Auditor de Controle Externo do TCE-RJ</li>'
@@ -43,7 +43,7 @@ def story(corpo, tom='claro'):
     return f'<section class="st {tom}"><div class="wm">AUDITOR DISCURSIVAS</div>{corpo}</section>'
 
 
-BOX_ST = '<div class="box">Mande TCEPE no direct.<small><span style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>A análise de viabilidade é gratuita.</small></div>'
+BOX_ST = '<div class="box">Mande TCEPE no direct.<small><span class="vg" style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>A análise de viabilidade é gratuita.</small></div>'
 CHIPS = ['TCE-PE', 'FGV', 'Cargos reaplicados']
 
 CAMP = {
@@ -100,7 +100,7 @@ CAMP = {
           ['Você me manda <b>TCEPE</b>, o cargo e a sua nota de cada item',
            'Faço a <b>análise de viabilidade gratuita</b>: sua resposta × espelho',
            'Se houver fundamento, eu <b>redijo o recurso</b> item por item, dentro do prazo'],
-          'Questão discursiva: <b>R$ 350</b> · Peça técnica: <b>R$ 700</b>. A análise de viabilidade é gratuita.'),
+          'Questão: <b>R$ 350</b> · Peça técnica: <b>R$ 700</b> · Combo questão + peça: <b>R$ 950</b>. A análise de viabilidade é gratuita.'),
     linha(3, 4, '4 dias, com <em>fim de semana</em> no meio',
           [('sex 13/11', 'Abre o recurso', False), ('sáb 14 e dom 15', 'Prazo correndo', False), ('seg 16/11', '<b>Último dia</b>', True)],
           '<b>Quanto antes você mandar, mais tempo para fundamentar.</b> Depois de 16/11, essa correção não se discute mais.'),
