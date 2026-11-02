@@ -5,7 +5,7 @@
 //   CONVERSAS     KV ia-direct-conversas (o mesmo do ia-direct: chave "prompt", contextos, pausas)
 //   META_VERIFY   texto combinado com a Meta na verificação do webhook (variável comum)
 //   IG_APP_SECRET segredo do app na Meta (SECRET — só o Samuel cola)
-//   IG_TOKEN      token de acesso do Instagram (SECRET — só o Samuel cola)
+//   (token: obtido pelo próprio servidor no login /conectar e guardado no KV "meta:auth")
 //   ANTHROPIC_API_KEY  chave da Anthropic (SECRET — só o Samuel cola; só precisa no modo "responder")
 //   MODO          "ouvir" (padrão: só registra e pausa) | "responder" (o Claude responde no direct)
 //   MODELO        opcional (padrão claude-opus-5-5)
@@ -13,9 +13,12 @@
 //
 // Rotas: GET / (status) · GET /meta (verificação) · POST /meta (eventos) ·
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
+//        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v1 (02/11/2026)";
-const GRAPH = "https://graph.instagram.com/v24.0";
+const VERSAO = "ia-meta v2 (02/11/2026)";
+const GRAPH = "https://graph.facebook.com/v24.0";
+const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
+const CONFIG_ID = "1313923144139531";   // configuração "API do Instagram (login unificado)"
 const PAUSA_SEG = 24 * 60 * 60;
 const LOG_MAX = 80;
 
@@ -25,7 +28,21 @@ export default {
     const p = url.pathname.replace(/\/+$/, "") || "/";
 
     if (req.method === "GET" && p === "/") {
-      return json({ versao: VERSAO, modo: env.MODO || "ouvir", segredo_app: !!env.IG_APP_SECRET, token_ig: !!env.IG_TOKEN, chave_anthropic: !!env.ANTHROPIC_API_KEY });
+      const auth = await env.CONVERSAS.get("meta:auth", "json");
+      return json({ versao: VERSAO, modo: env.MODO || "ouvir", segredo_app: !!env.IG_APP_SECRET, conectado: !!(auth && auth.page_token), instagram: auth?.ig_username || null, pagina: auth?.page_name || null, assinatura: auth?.assinatura || null, conectado_em: auth?.em || null, chave_anthropic: !!env.ANTHROPIC_API_KEY });
+    }
+    if (req.method === "GET" && p === "/conectar") {
+      if (!env.IG_APP_SECRET) return html(pagina("Falta um passo", "Antes de conectar, cole o <b>IG_APP_SECRET</b> no Cloudflare (Workers → ia-meta → Settings → Variables and Secrets, tipo Secret)."));
+      const state = crypto.randomUUID();
+      await env.CONVERSAS.put("meta:state:" + state, "1", { expirationTtl: 900 });
+      const u = new URL("https://www.facebook.com/v24.0/dialog/oauth");
+      u.searchParams.set("client_id", APP_ID); u.searchParams.set("config_id", CONFIG_ID);
+      u.searchParams.set("redirect_uri", url.origin + "/retorno"); u.searchParams.set("response_type", "code");
+      u.searchParams.set("override_default_response_type", "true"); u.searchParams.set("state", state);
+      return Response.redirect(u.toString(), 302);
+    }
+    if (req.method === "GET" && p === "/retorno") {
+      return html(await conectar(url, env));
     }
     if (req.method === "GET" && p === "/meta") {
       const mode = url.searchParams.get("hub.mode");
@@ -66,6 +83,7 @@ async function processar(body, env, semSegredo) {
   for (const entry of body.entry || []) {
     const contaId = String(entry.id || "");
     for (const ev of entry.messaging || []) await eventoMensagem(ev, contaId, env, semSegredo);
+    for (const ev of entry.standby || []) await eventoMensagem({ ...ev, _standby: true }, contaId, env, semSegredo);
     for (const ch of entry.changes || []) {
       await registrar(env, { t: agora(), tipo: "change_" + ch.field, de: ch.value?.from?.id || null, media: ch.value?.media?.id || null, len: (ch.value?.text || "").length, sem_segredo: semSegredo || undefined });
     }
@@ -75,7 +93,7 @@ async function processar(body, env, semSegredo) {
 async function eventoMensagem(ev, contaId, env, semSegredo) {
   const m = ev.message || {};
   const sender = String(ev.sender?.id || ""), recipient = String(ev.recipient?.id || "");
-  const base = { t: agora(), conta: contaId, de: sender, para: recipient, sem_segredo: semSegredo || undefined };
+  const base = { t: agora(), conta: contaId, de: sender, para: recipient, standby: ev._standby || undefined, sem_segredo: semSegredo || undefined };
 
   if (ev.read || ev.reaction || ev.postback || ev.referral) {
     await registrar(env, { ...base, tipo: ev.read ? "lida" : ev.reaction ? "reacao" : ev.postback ? "postback" : "referral" });
@@ -107,7 +125,7 @@ async function eventoMensagem(ev, contaId, env, semSegredo) {
     const pausa = await env.CONVERSAS.get("pausa:" + sender);
     const info = { ...base, tipo: "msg_aluno", len: (m.text || "").length, anexo: m.attachments ? m.attachments.map(a => a.type).join(",") : undefined, story: m.reply_to?.story ? true : undefined, pausada: !!pausa };
     await registrar(env, info);
-    if ((env.MODO || "ouvir") === "responder" && !pausa && m.text) await responder(sender, m.text, env);
+    if ((env.MODO || "ouvir") === "responder" && !pausa && m.text && !ev._standby) await responder(sender, m.text, env);
   }
 }
 
@@ -125,7 +143,7 @@ async function responder(alunoId, texto, env) {
   const t = texto.toLowerCase();
   if (/falar com (o )?samuel|falar com (um )?humano|atendente humano/.test(t)) return passarParaSamuel(alunoId, env);
   const prompt = await env.CONVERSAS.get("prompt");
-  if (!prompt || !env.ANTHROPIC_API_KEY || !env.IG_TOKEN) return passarParaSamuel(alunoId, env);
+  if (!prompt || !env.ANTHROPIC_API_KEY) return passarParaSamuel(alunoId, env);
   const histKey = "histig:" + alunoId;
   const hist = (await env.CONVERSAS.get(histKey, "json")) || [];
   const ctxIg = (await env.CONVERSAS.get("contexto:instagram")) || "";
@@ -153,10 +171,11 @@ async function passarParaSamuel(alunoId, env) {
 }
 
 async function enviar(alunoId, texto, env) {
-  if (!env.IG_TOKEN) return null;
+  const auth = await env.CONVERSAS.get("meta:auth", "json");
+  if (!auth?.page_token) return null;
   const r = await fetch(`${GRAPH}/me/messages`, {
     method: "POST",
-    headers: { authorization: "Bearer " + env.IG_TOKEN, "content-type": "application/json" },
+    headers: { authorization: "Bearer " + auth.page_token, "content-type": "application/json" },
     body: JSON.stringify({ recipient: { id: alunoId }, message: { text: texto } }),
   });
   const d = await r.json().catch(() => ({}));
@@ -166,15 +185,46 @@ async function enviar(alunoId, texto, env) {
 }
 
 async function usernameDe(id, env) {
-  if (!env.IG_TOKEN) return null;
+  const auth = await env.CONVERSAS.get("meta:auth", "json");
+  if (!auth?.page_token) return null;
   const k = "user:" + id;
   const c = await env.CONVERSAS.get(k);
   if (c) return c;
-  const r = await fetch(`${GRAPH}/${id}?fields=username`, { headers: { authorization: "Bearer " + env.IG_TOKEN } });
+  const r = await fetch(`${GRAPH}/${id}?fields=username`, { headers: { authorization: "Bearer " + auth.page_token } });
   const d = await r.json().catch(() => ({}));
   if (d.username) { await env.CONVERSAS.put(k, d.username, { expirationTtl: 30 * 86400 }); return d.username; }
   return null;
 }
+
+// ---------- conexão com a Meta (login do Samuel) ----------
+async function conectar(url, env) {
+  const code = url.searchParams.get("code"), state = url.searchParams.get("state");
+  if (url.searchParams.get("error")) return pagina("Conexão cancelada", "A Meta devolveu: " + esc(url.searchParams.get("error_description") || url.searchParams.get("error")));
+  if (!code || !state || !(await env.CONVERSAS.get("meta:state:" + state))) return pagina("Link expirado", "Abra de novo <a href='/conectar'>/conectar</a>.");
+  await env.CONVERSAS.delete("meta:state:" + state);
+  const tk = new URL(GRAPH + "/oauth/access_token");
+  tk.searchParams.set("client_id", APP_ID); tk.searchParams.set("client_secret", env.IG_APP_SECRET);
+  tk.searchParams.set("redirect_uri", url.origin + "/retorno"); tk.searchParams.set("code", code);
+  const t = await (await fetch(tk)).json();
+  if (!t.access_token) { await registrar(env, { t: agora(), tipo: "erro_conectar", etapa: "token", erro: JSON.stringify(t.error || t).slice(0, 300) }); return pagina("Erro ao obter o token", esc(JSON.stringify(t.error || t))); }
+  const userToken = t.access_token;
+  const contas = await (await fetch(`${GRAPH}/me/accounts?fields=id,name,access_token,instagram_business_account{id,username}&limit=50`, { headers: { authorization: "Bearer " + userToken } })).json();
+  const lista = (contas.data || []);
+  const pag = lista.find(x => x.instagram_business_account?.username?.toLowerCase() === "auditor_discursivas") || lista.find(x => x.instagram_business_account);
+  const resumo = lista.map(x => `${esc(x.name)} → ${esc(x.instagram_business_account?.username || "sem Instagram")}`).join("<br>");
+  if (!pag) {
+    await env.CONVERSAS.put("meta:auth", JSON.stringify({ user_token: userToken, em: agora(), sem_pagina: true }));
+    await registrar(env, { t: agora(), tipo: "erro_conectar", etapa: "pagina", qtd: lista.length, erro: JSON.stringify(contas.error || {}).slice(0, 300) });
+    return pagina("Token obtido, mas sem Página com Instagram", "Páginas visíveis: " + (resumo || "nenhuma") + "<br><br>O @auditor_discursivas precisa estar ligado a uma Página do Facebook e essa Página precisa ser escolhida no login.");
+  }
+  const sub = await (await fetch(`${GRAPH}/${pag.id}/subscribed_apps?subscribed_fields=messages,messaging_postbacks,messaging_referral,message_echoes,messaging_handovers,standby`, { method: "POST", headers: { authorization: "Bearer " + pag.access_token } })).json();
+  const auth = { em: agora(), user_token: userToken, page_id: pag.id, page_name: pag.name, page_token: pag.access_token, ig_id: pag.instagram_business_account.id, ig_username: pag.instagram_business_account.username, assinatura: sub.success ? "ok" : JSON.stringify(sub.error || sub).slice(0, 200) };
+  await env.CONVERSAS.put("meta:auth", JSON.stringify(auth));
+  await registrar(env, { t: agora(), tipo: "conectado", ig: auth.ig_username, pagina: auth.page_name, assinatura: auth.assinatura });
+  return pagina("Conectado ✅", `Instagram: <b>@${esc(auth.ig_username)}</b><br>Página: <b>${esc(auth.page_name)}</b><br>Assinatura dos webhooks: <b>${esc(auth.assinatura)}</b><br><br>Pode fechar esta aba e voltar para a Central de Marketing.`);
+}
+function pagina(titulo, corpo) { return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${titulo}</title>${ESTILO}</head><body><h1>${titulo}</h1><p>${corpo}</p></body></html>`; }
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 // ---------- utilitários ----------
 async function assinaturaOk(raw, header, segredo) {
