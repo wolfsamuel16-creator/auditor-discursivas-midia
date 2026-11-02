@@ -19,6 +19,7 @@ const VERSAO = "ia-meta v3 (02/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1313923144139531";   // configuração "API do Instagram (login unificado)"
+const NEGOCIO = "1530179278566154";     // portfólio "Samuel Wolf | Recursos Profissionais"
 const PAUSA_SEG = 24 * 60 * 60;
 const LOG_MAX = 80;
 
@@ -237,6 +238,16 @@ async function configurarInstagram(userToken, env, base) {
   out.escopos = escopos.map(g => g.scope + ":" + (g.target_ids || []).length);
   out.tipo_token = dbg.data?.type || null;
   const ids = [...new Set(escopos.filter(g => /instagram/.test(g.scope)).flatMap(g => g.target_ids || []))];
+  // Sem target_ids: procurar contas do Instagram por outros caminhos.
+  if (!ids.length) {
+    const tentativas = { me: "me?fields=id,name", me_ig: "me/instagram_accounts?fields=id,username", neg_ig: `${NEGOCIO}/instagram_accounts?fields=id,username`, neg_owned: `${NEGOCIO}/owned_instagram_accounts?fields=id,username`, neg_client: `${NEGOCIO}/client_instagram_accounts?fields=id,username`, me_contas: "me/accounts?fields=id,name,instagram_business_account{id,username}" };
+    out.busca = {};
+    for (const [k, path] of Object.entries(tentativas)) {
+      const j = await (await fetch(`${GRAPH}/${path}`, { headers: { authorization: "Bearer " + userToken } })).json();
+      out.busca[k] = j.error ? "erro: " + (j.error.message || "").slice(0, 120) : (j.data ? j.data.map(x => (x.username || x.name || "") + "#" + x.id).join(", ") || "vazio" : (j.name || "") + "#" + (j.id || ""));
+      for (const x of (j.data || [])) if (x.username) ids.push(x.id);
+    }
+  }
   for (const id of ids) {
     const u = await (await fetch(`${GRAPH}/${id}?fields=id,username`, { headers: { authorization: "Bearer " + userToken } })).json();
     if (u.username) { out.ig_id = u.id; out.ig_username = u.username; if (u.username.toLowerCase() === "auditor_discursivas") break; }
