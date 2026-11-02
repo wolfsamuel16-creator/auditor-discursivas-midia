@@ -3,7 +3,7 @@ import pathlib
 
 CSS = pathlib.Path(__file__).with_name('base.css').read_text(encoding='utf-8')
 ROD = '<div class="rod"><span>@auditor_discursivas</span><span class="sv">{}</span></div>'
-CTA_SMALL = 'ou mande <b>TCEPE</b> no direct. A análise de viabilidade é gratuita.'
+CTA_SMALL = '<span style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>ou mande <b>TCEPE</b> no direct. A análise de viabilidade é gratuita.'
 AUTOR = ('<div class="autor" style="margin-top:0;align-items:center"><div class="foto" style="flex:0 0 190px;width:190px;height:190px"></div>'
          '<div><b>Samuel Wolf</b><span style="display:block;color:var(--lar);opacity:1;font-weight:700;margin:4px 0 14px">Recursos de provas discursivas</span>'
          '<ul class="cred"><li>✔ Engenheiro pelo ITA</li><li>✔ Auditor de Controle Externo do TCE-RJ</li>'
@@ -43,7 +43,7 @@ def story(corpo, tom='claro'):
     return f'<section class="st {tom}"><div class="wm">AUDITOR DISCURSIVAS</div>{corpo}</section>'
 
 
-BOX_ST = '<div class="box">Mande TCEPE no direct.<small>A análise de viabilidade é gratuita.</small></div>'
+BOX_ST = '<div class="box">Mande TCEPE no direct.<small><span style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>A análise de viabilidade é gratuita.</small></div>'
 CHIPS = ['TCE-PE', 'FGV', 'Cargos reaplicados']
 
 CAMP = {
@@ -114,7 +114,7 @@ CAMP = {
           '<p class="big" style="margin:30px 0 60px">O prazo termina segunda, 16/11.</p>' + BOX_ST),
     story('<div class="selo">RECURSO TCE-PE</div><p class="big">Faltam</p><div class="big-n">2 dias</div>'
           '<p class="big" style="margin:30px 0 60px">Recurso bom aponta a linha da sua folha que atende ao critério do espelho.</p>' + BOX_ST),
-    story('<div class="selo">RECURSO TCE-PE</div><div class="big-n" style="font-size:200px">Último dia</div>'
+    story('<div class="selo">RECURSO TCE-PE</div><div class="big-n" style="font-size:170px">Último dia</div>'
           '<p class="big" style="margin:30px 0 60px">O recurso da discursiva do TCE-PE termina <b>hoje</b>.</p>' + BOX_ST + AUTOR_ST),
  ]),
 }
