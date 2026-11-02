@@ -49,6 +49,14 @@ export default {
       if (!auth?.user_token) return json({ erro: "sem token: abra /conectar" });
       return json(await configurarInstagram(auth.user_token, env, auth));
     }
+    if (req.method === "GET" && p === "/consulta") {
+      // Consulta de leitura na Graph API com o token guardado (diagnóstico; o token nunca é devolvido).
+      if (!env.META_VERIFY || url.searchParams.get("k") !== env.META_VERIFY) return new Response("forbidden", { status: 403 });
+      const auth = await env.CONVERSAS.get("meta:auth", "json");
+      const q = url.searchParams.get("q") || "me";
+      const r = await fetch(`${GRAPH}/${q}`, { headers: { authorization: "Bearer " + auth.user_token } });
+      return new Response(await r.text(), { status: r.status, headers: { "content-type": "application/json" } });
+    }
     if (req.method === "GET" && p === "/retorno") {
       return html(await conectar(url, env));
     }
