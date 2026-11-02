@@ -56,9 +56,9 @@ CAMP = {
            ('08/12', '<b>Resultado definitivo</b> e resultado final', False)],
           'Não há padrão preliminar com recurso próprio, como no Cebraspe. <b>Você vê a nota e recorre no mesmo prazo curto.</b>'),
     lista(3, 4, 'Use esta semana para <em>adiantar o recurso</em>',
-          ['<b>Reconstrua sua resposta</b> enquanto ainda lembra, item por item',
+          ['Leia no edital as <b>regras do recurso</b>',
            'Liste as <b>normas, artigos e acórdãos</b> que você citou',
-           'Leia no edital as <b>regras do recurso</b>'],
+           'Reserve <b>13 a 16/11</b> na agenda'],
           '<b>Ponto recuperado no recurso vale tanto quanto questão acertada na objetiva.</b>'),
     fecho(4, 4, 'Quer chegar ao dia 13 <em>com o recurso encaminhado?</em>', 'Eu leio a sua resposta contra o espelho e digo se o recurso tem fundamento.'),
  ], stories=[
@@ -68,14 +68,14 @@ CAMP = {
           '<div class="opt"><div class="op a">💪 Fui bem</div><div class="op b">😬 Posso precisar de recurso</div></div>'
           '<p class="mid" style="margin-top:60px">Responda no direct com a sua opção. Se for a segunda, mande <b>TCEPE</b>.</p>'),
     story('<h1 style="font-size:92px">Adiante o recurso <em>nesta semana</em></h1>'
-          '<ul class="lista"><li><span class="num">1</span><span>Reconstrua a resposta</span></li><li><span class="num">2</span><span>Liste as normas citadas</span></li>'
+          '<ul class="lista"><li><span class="num">1</span><span>Leia as regras do recurso</span></li><li><span class="num">2</span><span>Liste as normas citadas</span></li>'
           '<li><span class="num">3</span><span>Reserve 13 a 16/11</span></li></ul><div class="sp"></div>' + BOX_ST + AUTOR_ST),
  ]),
  'd1': dict(slides=[
     capa(1, 4, 'TCE-PE: a nota da discursiva sai <em>amanhã.</em>', ['TCE-PE', 'FGV', 'Recurso 13 a 16/11'],
          'São só 4 dias de prazo. <b>Deixe tudo pronto hoje.</b>'),
     lista(2, 4, 'Checklist para <em>hoje</em>',
-          ['A <b>reconstrução da sua resposta</b>, item por item',
+          ['As <b>regras do recurso</b> no edital, já lidas',
            'As <b>normas e fundamentos</b> que você usou',
            '<b>13 a 16/11</b> reservados na agenda'],
           'Quando a nota sair, compare <b>item por item</b> com o espelho da banca.'),
@@ -88,7 +88,7 @@ CAMP = {
  ], stories=[
     story('<div class="selo">RECURSO DE DISCURSIVA</div><h1 style="font-size:110px">Amanhã sai a nota da discursiva do <em>TCE-PE.</em></h1>'
           '<p class="big" style="margin:50px 0 60px">Recurso: <b>13 a 16/11</b>.</p>' + BOX_ST),
-    story('<h1 style="font-size:96px">Checklist para <em>hoje</em></h1><ul class="lista"><li><span class="num">1</span><span>Resposta reconstruída</span></li>'
+    story('<h1 style="font-size:96px">Checklist para <em>hoje</em></h1><ul class="lista"><li><span class="num">1</span><span>Regras do recurso lidas</span></li>'
           '<li><span class="num">2</span><span>Normas e fundamentos listados</span></li><li><span class="num">3</span><span>13 a 16/11 na agenda</span></li></ul>'),
     story('<h1 style="font-size:92px">Não concordou com a nota? <em>Fala comigo.</em></h1><p class="big" style="margin:50px 0 60px">Eu leio a sua resposta contra o espelho e digo se o recurso tem fundamento.</p>'
           + BOX_ST + AUTOR_ST),
