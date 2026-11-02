@@ -15,7 +15,7 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v4 (02/11/2026)";
+const VERSAO = "ia-meta v4.1 (02/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -57,6 +57,15 @@ export default {
       const q = url.searchParams.get("q") || "me";
       const r = await fetch(`${GRAPH}/${q}`, { headers: { authorization: "Bearer " + auth.user_token } });
       return new Response(await r.text(), { status: r.status, headers: { "content-type": "application/json" } });
+    }
+    if (req.method === "GET" && p === "/assinar") {
+      if (!env.META_VERIFY || url.searchParams.get("k") !== env.META_VERIFY) return new Response("forbidden", { status: 403 });
+      const auth = await env.CONVERSAS.get("meta:auth", "json");
+      if (!auth?.page_id) return json({ erro: "sem Página: abra /conectar" });
+      auth.assinatura = await assinarPagina(auth.page_id, auth.page_token);
+      await env.CONVERSAS.put("meta:auth", JSON.stringify(auth));
+      const atual = await (await fetch(`${GRAPH}/${auth.page_id}/subscribed_apps`, { headers: { authorization: "Bearer " + auth.page_token } })).json();
+      return json({ assinatura: auth.assinatura, apps_assinados: (atual.data || []).map(a => ({ app: a.name, id: a.id, campos: a.subscribed_fields })), erro: atual.error?.message });
     }
     if (req.method === "GET" && p === "/retorno") {
       return html(await conectar(url, env));
@@ -240,8 +249,8 @@ async function conectar(url, env) {
     if (r.ig_id) return pagina("Conectado ✅", `Instagram: <b>@${esc(r.ig_username)}</b> (acesso direto, sem Página)<br>Assinatura dos webhooks: <b>${esc(r.assinatura)}</b><br><br>Pode fechar esta aba e voltar para a Central de Marketing.`);
     return pagina("Token obtido, mas sem conta do Instagram", "Detalhe: " + esc(JSON.stringify(r).slice(0, 600)));
   }
-  const sub = await (await fetch(`${GRAPH}/${pag.id}/subscribed_apps?subscribed_fields=messages,messaging_postbacks,messaging_referral,message_echoes,messaging_handovers,standby`, { method: "POST", headers: { authorization: "Bearer " + pag.access_token } })).json();
-  const auth = { em: agora(), user_token: userToken, page_id: pag.id, page_name: pag.name, page_token: pag.access_token, ig_id: pag.instagram_business_account.id, ig_username: pag.instagram_business_account.username, assinatura: sub.success ? "ok" : JSON.stringify(sub.error || sub).slice(0, 200) };
+  const assin = await assinarPagina(pag.id, pag.access_token);
+  const auth = { em: agora(), user_token: userToken, page_id: pag.id, page_name: pag.name, page_token: pag.access_token, ig_id: pag.instagram_business_account.id, ig_username: pag.instagram_business_account.username, assinatura: assin };
   await env.CONVERSAS.put("meta:auth", JSON.stringify(auth));
   await registrar(env, { t: agora(), tipo: "conectado", ig: auth.ig_username, pagina: auth.page_name, assinatura: auth.assinatura });
   return pagina("Conectado ✅", `Instagram: <b>@${esc(auth.ig_username)}</b><br>Página: <b>${esc(auth.page_name)}</b><br>Assinatura dos webhooks: <b>${esc(auth.assinatura)}</b><br><br>Pode fechar esta aba e voltar para a Central de Marketing.`);
@@ -282,6 +291,17 @@ async function configurarInstagram(userToken, env, base) {
   await registrar(env, { t: agora(), tipo: out.ig_id ? "conectado" : "erro_conectar", ig: out.ig_username || null, assinatura: out.assinatura || null, tipo_token: out.tipo_token, escopos: out.escopos });
   const { user_token, page_token, ...resumo } = out;
   return resumo;
+}
+// Assina a Página no app. Tenta conjuntos de campos do mais completo ao mínimo (a Meta recusa campo inválido).
+async function assinarPagina(pageId, pageToken) {
+  const conjuntos = ["messages,messaging_postbacks,message_echoes,messaging_referrals,messaging_handovers,standby", "messages,messaging_postbacks,message_echoes,standby", "messages,messaging_postbacks,message_echoes", "messages,messaging_postbacks", "messages", "feed"];
+  let ultimo = "";
+  for (const c of conjuntos) {
+    const j = await (await fetch(`${GRAPH}/${pageId}/subscribed_apps?subscribed_fields=${c}`, { method: "POST", headers: { authorization: "Bearer " + pageToken } })).json();
+    if (j.success) return "ok (" + c + ")";
+    ultimo = (j.error?.message || JSON.stringify(j)).slice(0, 160);
+  }
+  return "falhou: " + ultimo;
 }
 function pagina(titulo, corpo) { return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${titulo}</title>${ESTILO}</head><body><h1>${titulo}</h1><p>${corpo}</p></body></html>`; }
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
