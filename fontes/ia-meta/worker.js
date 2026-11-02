@@ -15,7 +15,7 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v2 (02/11/2026)";
+const VERSAO = "ia-meta v3 (02/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1313923144139531";   // configuração "API do Instagram (login unificado)"
@@ -40,6 +40,12 @@ export default {
       u.searchParams.set("redirect_uri", url.origin + "/retorno"); u.searchParams.set("response_type", "code");
       u.searchParams.set("override_default_response_type", "true"); u.searchParams.set("state", state);
       return Response.redirect(u.toString(), 302);
+    }
+    if (req.method === "GET" && p === "/diagnostico") {
+      if (!env.META_VERIFY || url.searchParams.get("k") !== env.META_VERIFY) return new Response("forbidden", { status: 403 });
+      const auth = await env.CONVERSAS.get("meta:auth", "json");
+      if (!auth?.user_token) return json({ erro: "sem token: abra /conectar" });
+      return json(await configurarInstagram(auth.user_token, env, auth));
     }
     if (req.method === "GET" && p === "/retorno") {
       return html(await conectar(url, env));
@@ -173,7 +179,7 @@ async function passarParaSamuel(alunoId, env) {
 async function enviar(alunoId, texto, env) {
   const auth = await env.CONVERSAS.get("meta:auth", "json");
   if (!auth?.page_token) return null;
-  const r = await fetch(`${GRAPH}/me/messages`, {
+  const r = await fetch(auth.envio === "ig" ? `${GRAPH}/${auth.ig_id}/messages` : `${GRAPH}/me/messages`, {
     method: "POST",
     headers: { authorization: "Bearer " + auth.page_token, "content-type": "application/json" },
     body: JSON.stringify({ recipient: { id: alunoId }, message: { text: texto } }),
@@ -213,15 +219,41 @@ async function conectar(url, env) {
   const pag = lista.find(x => x.instagram_business_account?.username?.toLowerCase() === "auditor_discursivas") || lista.find(x => x.instagram_business_account);
   const resumo = lista.map(x => `${esc(x.name)} → ${esc(x.instagram_business_account?.username || "sem Instagram")}`).join("<br>");
   if (!pag) {
-    await env.CONVERSAS.put("meta:auth", JSON.stringify({ user_token: userToken, em: agora(), sem_pagina: true }));
-    await registrar(env, { t: agora(), tipo: "erro_conectar", etapa: "pagina", qtd: lista.length, erro: JSON.stringify(contas.error || {}).slice(0, 300) });
-    return pagina("Token obtido, mas sem Página com Instagram", "Páginas visíveis: " + (resumo || "nenhuma") + "<br><br>O @auditor_discursivas precisa estar ligado a uma Página do Facebook e essa Página precisa ser escolhida no login.");
+    const r = await configurarInstagram(userToken, env, { em: agora(), user_token: userToken });
+    if (r.ig_id) return pagina("Conectado ✅", `Instagram: <b>@${esc(r.ig_username)}</b> (acesso direto, sem Página)<br>Assinatura dos webhooks: <b>${esc(r.assinatura)}</b><br><br>Pode fechar esta aba e voltar para a Central de Marketing.`);
+    return pagina("Token obtido, mas sem conta do Instagram", "Detalhe: " + esc(JSON.stringify(r).slice(0, 600)));
   }
   const sub = await (await fetch(`${GRAPH}/${pag.id}/subscribed_apps?subscribed_fields=messages,messaging_postbacks,messaging_referral,message_echoes,messaging_handovers,standby`, { method: "POST", headers: { authorization: "Bearer " + pag.access_token } })).json();
   const auth = { em: agora(), user_token: userToken, page_id: pag.id, page_name: pag.name, page_token: pag.access_token, ig_id: pag.instagram_business_account.id, ig_username: pag.instagram_business_account.username, assinatura: sub.success ? "ok" : JSON.stringify(sub.error || sub).slice(0, 200) };
   await env.CONVERSAS.put("meta:auth", JSON.stringify(auth));
   await registrar(env, { t: agora(), tipo: "conectado", ig: auth.ig_username, pagina: auth.page_name, assinatura: auth.assinatura });
   return pagina("Conectado ✅", `Instagram: <b>@${esc(auth.ig_username)}</b><br>Página: <b>${esc(auth.page_name)}</b><br>Assinatura dos webhooks: <b>${esc(auth.assinatura)}</b><br><br>Pode fechar esta aba e voltar para a Central de Marketing.`);
+}
+// Login unificado (app novo): o token dá acesso direto à conta do Instagram, sem Página.
+async function configurarInstagram(userToken, env, base) {
+  const out = { ...base };
+  const dbg = await (await fetch(`${GRAPH}/debug_token?input_token=${encodeURIComponent(userToken)}`, { headers: { authorization: `Bearer ${APP_ID}|${env.IG_APP_SECRET}` } })).json();
+  const escopos = dbg.data?.granular_scopes || [];
+  out.escopos = escopos.map(g => g.scope + ":" + (g.target_ids || []).length);
+  out.tipo_token = dbg.data?.type || null;
+  const ids = [...new Set(escopos.filter(g => /instagram/.test(g.scope)).flatMap(g => g.target_ids || []))];
+  for (const id of ids) {
+    const u = await (await fetch(`${GRAPH}/${id}?fields=id,username`, { headers: { authorization: "Bearer " + userToken } })).json();
+    if (u.username) { out.ig_id = u.id; out.ig_username = u.username; if (u.username.toLowerCase() === "auditor_discursivas") break; }
+    else out["erro_" + id] = JSON.stringify(u.error || u).slice(0, 200);
+  }
+  if (out.ig_id) {
+    const sub = await (await fetch(`${GRAPH}/${out.ig_id}/subscribed_apps?subscribed_fields=messages,messaging_postbacks,messaging_referral,comments`, { method: "POST", headers: { authorization: "Bearer " + userToken } })).json();
+    out.assinatura = sub.success ? "ok" : JSON.stringify(sub.error || sub).slice(0, 300);
+    out.page_token = userToken;   // token usado para enviar
+    out.envio = "ig";             // envio por /{ig_id}/messages
+    delete out.sem_pagina;
+  }
+  out.em = agora();
+  await env.CONVERSAS.put("meta:auth", JSON.stringify(out));
+  await registrar(env, { t: agora(), tipo: out.ig_id ? "conectado" : "erro_conectar", ig: out.ig_username || null, assinatura: out.assinatura || null, tipo_token: out.tipo_token, escopos: out.escopos });
+  const { user_token, page_token, ...resumo } = out;
+  return resumo;
 }
 function pagina(titulo, corpo) { return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${titulo}</title>${ESTILO}</head><body><h1>${titulo}</h1><p>${corpo}</p></body></html>`; }
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
