@@ -8,6 +8,7 @@
 //   (token: obtido pelo próprio servidor no login /conectar e guardado no KV "meta:auth")
 //   ANTHROPIC_API_KEY  chave da Anthropic (SECRET — só o Samuel cola; só precisa no modo "responder")
 //   MODO          "ouvir" (padrão: só registra e pausa) | "responder" (o Claude responde no direct)
+//   MODO_COMENTARIOS "sombra" (padrão: registra o que faria) | "responder" (resposta pública + aula no direct)
 //   MODELO        opcional (padrão claude-opus-5-5)
 //   NTFY_TOPICO   tópico do aviso no celular
 //
@@ -15,7 +16,7 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v4.1 (02/11/2026)";
+const VERSAO = "ia-meta v5 (02/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -111,7 +112,8 @@ async function processar(body, env, semSegredo) {
     for (const ev of entry.messaging || []) await eventoMensagem(ev, contaId, env, semSegredo);
     for (const ev of entry.standby || []) await eventoMensagem({ ...ev, _standby: true }, contaId, env, semSegredo);
     for (const ch of entry.changes || []) {
-      await registrar(env, { t: agora(), tipo: "change_" + ch.field, de: ch.value?.from?.id || null, media: ch.value?.media?.id || null, len: (ch.value?.text || "").length, sem_segredo: semSegredo || undefined });
+      if (ch.field === "comments" && ch.value?.id) await eventoComentario(ch.value, env, semSegredo);
+      else await registrar(env, { t: agora(), tipo: "change_" + ch.field, de: ch.value?.from?.id || null, media: ch.value?.media?.id || null, len: (ch.value?.text || "").length, sem_segredo: semSegredo || undefined });
     }
   }
 }
@@ -162,6 +164,36 @@ async function ehHumano(m, env) {
   if (appId == null) return true;
   const lista = (await env.CONVERSAS.get("meta:apps_automacao", "json")) || [];
   return !lista.map(String).includes(String(appId));
+}
+
+// ---------- comentários ----------
+// Campanhas no KV "meta:campanhas": [{ id, nome, palavras: [...], aula, publica, direct }]
+const norm = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+function acharCampanha(texto, campanhas) {
+  const t = " " + norm(texto).replace(/[^A-Z0-9-]+/g, " ") + " ";
+  for (const c of campanhas) for (const w of c.palavras || []) {
+    const k = norm(w).replace(/[^A-Z0-9-]+/g, " ").trim();
+    if (k && t.includes(" " + k + " ")) return c;
+  }
+  return null;
+}
+async function eventoComentario(v, env, semSegredo) {
+  const auth = await env.CONVERSAS.get("meta:auth", "json");
+  const autor = v.from?.id, user = v.from?.username || null;
+  if (auth?.ig_id && autor === auth.ig_id) { await registrar(env, { t: agora(), tipo: "comentario_proprio", media: v.media?.id || null }); return; }
+  const campanhas = (await env.CONVERSAS.get("meta:campanhas", "json")) || [];
+  const c = acharCampanha(v.text, campanhas);
+  const modo = env.MODO_COMENTARIOS || "sombra";
+  const info = { t: agora(), tipo: "comentario", user, media: v.media?.id || null, len: (v.text || "").length, campanha: c?.id || null, modo, sem_segredo: semSegredo || undefined };
+  if (!c) { info.faria = "nada (sem palavra-chave)"; await registrar(env, info); return; }
+  info.faria = "resposta pública + aula " + c.id + " no direct";
+  if (modo === "responder" && auth?.page_token) {
+    // ainda não usar sem aprovação da Meta (resposta privada exige acesso avançado às mensagens)
+    const pub = await fetch(`${GRAPH}/${v.id}/replies`, { method: "POST", headers: { authorization: "Bearer " + auth.page_token, "content-type": "application/json" }, body: JSON.stringify({ message: c.publica || "Te mandei no direct! 📩" }) });
+    const priv = await fetch(`${GRAPH}/${auth.ig_id}/messages`, { method: "POST", headers: { authorization: "Bearer " + auth.page_token, "content-type": "application/json" }, body: JSON.stringify({ recipient: { comment_id: v.id }, message: { text: (c.direct || "Aqui está a sua aula gratuita:") + "\n" + c.aula } }) });
+    info.resultado = `publica ${pub.status} · direct ${priv.status}`;
+  }
+  await registrar(env, info);
 }
 
 // ---------- resposta do Claude (modo "responder") ----------
