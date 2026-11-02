@@ -97,7 +97,7 @@ CAMP = {
     capa(1, 4, 'Não concorda com a nota da sua discursiva do <em>TCE-PE?</em>', ['TCE-PE', 'FGV', 'Recurso 13 a 16/11'],
          '<b>Você ainda tem chance.</b> O recurso vai de 13 a 16/11.'),
     lista(2, 4, 'Como funciona <em>comigo</em>',
-          ['Você me manda <b>TCEPE</b>, o cargo e a sua nota de cada item',
+          ['Você me manda <b>TCEPE</b>, o cargo e a sua nota da discursiva',
            'Faço a <b>análise de viabilidade gratuita</b>: sua resposta × espelho',
            'Se houver fundamento, eu <b>redijo o recurso</b> item por item, dentro do prazo'],
           'Recurso da questão (estudo de caso): <b>R$ 400</b>. A análise de viabilidade é gratuita.'),
