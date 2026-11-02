@@ -2,10 +2,15 @@
  "publicar_em": "2026-11-02T18:00:00",
  "tipo": "stories",
  "origem": "Central",
- "stories_publicar_em": ["2026-11-02T18:00:00"],
+ "stories_publicar_em": [
+  "2026-11-02T18:00:00"
+ ],
  "primeiro_comentario": "",
  "status": "agendado",
  "metricool_id": null,
- "stories_metricool": [],
- "observacao": "Story 'Como funciona o recurso' (3 passos) para o destaque novo 'Como funciona'. Capas dos 5 destaques em fontes/destaques-2026-11-02. Pedido do Samuel em 02/11 ('pode fazer tudo o que você achar correto')."
+ "stories_metricool": [
+  414272121
+ ],
+ "observacao": "Story 'Como funciona o recurso' (3 passos) para o destaque novo 'Como funciona'. Capas dos 5 destaques em fontes/destaques-2026-11-02. Pedido do Samuel em 02/11 ('pode fazer tudo o que você achar correto').",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=8428503361925301035"
 }
