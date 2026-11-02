@@ -100,7 +100,7 @@ CAMP = {
           ['Você me manda <b>TCEPE</b>, o cargo e a sua nota da discursiva',
            'Faço a <b>análise de viabilidade gratuita</b>: sua resposta × espelho',
            'Se houver fundamento, eu <b>redijo o recurso</b> item por item, dentro do prazo'],
-          'Recurso da questão (estudo de caso): <b>R$ 400</b>. A análise de viabilidade é gratuita.'),
+          'A <b>análise de viabilidade é gratuita</b>. Os valores eu passo no direct.'),
     linha(3, 4, '4 dias, com <em>fim de semana</em> no meio',
           [('sex 13/11', 'Abre o recurso', False), ('sáb 14 e dom 15', 'Prazo correndo', False), ('seg 16/11', '<b>Último dia</b>', True)],
           '<b>Quanto antes você mandar, mais tempo para fundamentar.</b> Depois de 16/11, essa correção não se discute mais.'),
