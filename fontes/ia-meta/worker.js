@@ -8,6 +8,7 @@
 //   (token: obtido pelo próprio servidor no login /conectar e guardado no KV "meta:auth")
 //   ANTHROPIC_API_KEY  chave da Anthropic (SECRET — só o Samuel cola; só precisa no modo "responder")
 //   NTFY_TOKEN    token do ntfy.sh (SECRET, tk_...) — a cota diária passa a ser da conta, não do IP compartilhado da Cloudflare
+//   TG_TOKEN      token do bot do Telegram (SECRET) — aviso "falar com Samuel" no celular (TG_CHAT opcional)
 //   MODO          "ouvir" (padrão: só registra e pausa) | "responder" (o Claude responde no direct)
 //   MODO_COMENTARIOS "sombra" (padrão: registra o que faria) | "responder" (resposta pública + aula no direct)
 //   MODELO        opcional (padrão claude-opus-5-5)
@@ -17,7 +18,7 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v5.3 (03/11/2026)";
+const VERSAO = "ia-meta v5.4 (03/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -231,6 +232,7 @@ async function passarParaSamuel(alunoId, env) {
 
 // Aviso no celular (ntfy). Registra o status no log; se o envio JSON falhar, tenta o formato simples.
 async function avisarSamuel(env, alunoId) {
+  await avisarTelegram(env, alunoId);
   if (!env.NTFY_TOPICO) return;
   let st1 = 0, st2 = 0, erro = null;
   try {
@@ -246,6 +248,29 @@ async function avisarSamuel(env, alunoId) {
   } catch (e) { erro = String(e).slice(0, 150); console.log("ntfy erro", erro); }
   await env.CONVERSAS.put("meta:ultimo_aviso", JSON.stringify({ t: agora(), para: alunoId, status: st1, status2: st2, erro }));
   await registrar(env, { t: agora(), tipo: "aviso_ntfy", para: alunoId, status: st1, status2: st2 || undefined, erro: erro || undefined });
+}
+
+// Aviso pelo Telegram (bot do Samuel). TG_TOKEN = token do @BotFather (SECRET). O chat é descoberto
+// sozinho na 1ª vez (o Samuel manda /start ao bot) e guardado em meta:tg_chat; TG_CHAT força um chat fixo.
+async function avisarTelegram(env, alunoId) {
+  if (!env.TG_TOKEN) return;
+  const base = "https://api.telegram.org/bot" + env.TG_TOKEN;
+  let chat = env.TG_CHAT || (await env.CONVERSAS.get("meta:tg_chat"));
+  let st = 0, erro = null;
+  try {
+    if (!chat) {
+      const u = await (await fetch(base + "/getUpdates")).json();
+      const ult = (u.result || []).reverse().find(x => x.message && x.message.chat);
+      if (ult) { chat = String(ult.message.chat.id); await env.CONVERSAS.put("meta:tg_chat", chat); }
+    }
+    if (chat) {
+      const user = await usernameDe(alunoId, env).catch(() => null);
+      const r = await fetch(base + "/sendMessage", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ chat_id: chat, text: "🔔 Aluno quer falar com você" + (user ? " (@" + user + ")" : "") + ".\nAbra o direct do @auditor_discursivas." }) });
+      st = r.status;
+      console.log("telegram", st, (await r.text().catch(() => "")).slice(0, 200));
+    } else erro = "sem chat: mande /start ao bot";
+  } catch (e) { erro = String(e).slice(0, 150); }
+  await env.CONVERSAS.put("meta:ultimo_telegram", JSON.stringify({ t: agora(), para: alunoId, status: st, erro }));
 }
 
 async function enviar(alunoId, texto, env) {
