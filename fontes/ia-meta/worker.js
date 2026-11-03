@@ -7,6 +7,7 @@
 //   IG_APP_SECRET segredo do app na Meta (SECRET — só o Samuel cola)
 //   (token: obtido pelo próprio servidor no login /conectar e guardado no KV "meta:auth")
 //   ANTHROPIC_API_KEY  chave da Anthropic (SECRET — só o Samuel cola; só precisa no modo "responder")
+//   NTFY_TOKEN    token do ntfy.sh (SECRET, tk_...) — a cota diária passa a ser da conta, não do IP compartilhado da Cloudflare
 //   MODO          "ouvir" (padrão: só registra e pausa) | "responder" (o Claude responde no direct)
 //   MODO_COMENTARIOS "sombra" (padrão: registra o que faria) | "responder" (resposta pública + aula no direct)
 //   MODELO        opcional (padrão claude-opus-5-5)
@@ -16,7 +17,7 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v5.2 (03/11/2026)";
+const VERSAO = "ia-meta v5.3 (03/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -233,12 +234,12 @@ async function avisarSamuel(env, alunoId) {
   if (!env.NTFY_TOPICO) return;
   let st1 = 0, st2 = 0, erro = null;
   try {
-    const r = await fetch("https://ntfy.sh/", { method: "POST", headers: { "content-type": "application/json", "user-agent": "ia-meta-auditor/1.0" }, body: JSON.stringify({ topic: env.NTFY_TOPICO, title: "Aluno quer falar com voce", message: "Abra o direct do @auditor_discursivas.", priority: 5 }) });
+    const r = await fetch("https://ntfy.sh/", { method: "POST", headers: { "content-type": "application/json", "user-agent": "ia-meta-auditor/1.0", ...(env.NTFY_TOKEN ? { authorization: "Bearer " + env.NTFY_TOKEN } : {}) }, body: JSON.stringify({ topic: env.NTFY_TOPICO, title: "Aluno quer falar com voce", message: "Abra o direct do @auditor_discursivas.", priority: 5 }) });
     st1 = r.status;
     const b1 = await r.text().catch(() => "");
     console.log("ntfy json", st1, b1.slice(0, 300));
     if (!r.ok) {
-      const r2 = await fetch("https://ntfy.sh/" + env.NTFY_TOPICO, { method: "POST", headers: { "Title": "Aluno quer falar com voce", "Priority": "5", "user-agent": "ia-meta-auditor/1.0" }, body: "Abra o direct do @auditor_discursivas." });
+      const r2 = await fetch("https://ntfy.sh/" + env.NTFY_TOPICO, { method: "POST", headers: { "Title": "Aluno quer falar com voce", "Priority": "5", "user-agent": "ia-meta-auditor/1.0", ...(env.NTFY_TOKEN ? { authorization: "Bearer " + env.NTFY_TOKEN } : {}) }, body: "Abra o direct do @auditor_discursivas." });
       st2 = r2.status;
       console.log("ntfy simples", st2, (await r2.text().catch(() => "")).slice(0, 300));
     }
