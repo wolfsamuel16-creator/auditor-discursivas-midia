@@ -16,9 +16,10 @@
 //
 // Rotas: GET / (status) · GET /meta (verificação) · POST /meta (eventos) ·
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
+//        GET|POST /aviso?k=<META_VERIFY>&u=&m=&o= (webhook do InfluenciMax → Telegram)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
 
-const VERSAO = "ia-meta v5.4 (03/11/2026)";
+const VERSAO = "ia-meta v5.5 (04/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -96,6 +97,33 @@ export default {
       // Callback de exclusão de dados da Meta: confirma e devolve código de acompanhamento.
       const cod = crypto.randomUUID();
       return json({ url: `${url.origin}/exclusao-dados?codigo=${cod}`, confirmation_code: cod });
+    }
+    if (p === "/aviso") {
+      // Webhook do InfluenciMax (bloco "Enviar Webhook" depois do encaminhamento para "Aguardando"):
+      // manda o aviso no Telegram do Samuel. Aceita GET (?u=&m=&o=) ou POST (JSON/form). k = META_VERIFY.
+      if (!env.META_VERIFY || url.searchParams.get("k") !== env.META_VERIFY) return new Response("forbidden", { status: 403 });
+      let corpo = {};
+      if (req.method === "POST") {
+        const raw = await req.text().catch(() => "");
+        try { corpo = JSON.parse(raw); } catch { try { corpo = Object.fromEntries(new URLSearchParams(raw)); } catch { corpo = {}; } }
+      }
+      const achar = (...ch) => { for (const c of ch) { const v = url.searchParams.get(c) ?? buscar(corpo, c); if (v != null && String(v).trim() && !/^\{\{.*\}\}$/.test(String(v).trim())) return String(v).trim(); } return ""; };
+      const user = achar("u", "username", "instagram_username", "ig_username", "user").replace(/^@/, "");
+      const nome = achar("n", "name", "nome", "first_name", "full_name");
+      const msg = achar("m", "message", "mensagem", "last_message", "text");
+      const origem = achar("o", "origem", "automacao", "automation", "automation_name");
+      const chave = "aviso:" + (user || nome || "anon");
+      if (user || nome) {
+        if (await env.CONVERSAS.get(chave)) return json({ ok: true, repetido: true });
+        await env.CONVERSAS.put(chave, "1", { expirationTtl: 600 });
+      }
+      const texto = "🔔 Aluno passado para você no InfluenciMax" + (user ? " — @" + user : "") + (nome ? " (" + nome + ")" : "") + "."
+        + (origem ? "\nAutomação: " + origem : "") + (msg ? "\nÚltima mensagem: " + msg.slice(0, 300) : "")
+        + "\nResponda pelo direct do @auditor_discursivas" + (user ? ": https://ig.me/m/" + user : ".")
+        + "\nFila: https://app.influencimax.com/app/?page=atendimento";
+      const st = await telegramTexto(env, texto);
+      await registrar(env, { t: agora(), tipo: "aviso_influencimax", user: user || undefined, status: st, campos: Object.keys(corpo).slice(0, 20) });
+      return json({ ok: st === 200, telegram: st });
     }
     if (req.method === "GET" && p === "/log") {
       if (!env.META_VERIFY || url.searchParams.get("k") !== env.META_VERIFY) return new Response("forbidden", { status: 403 });
@@ -271,6 +299,28 @@ async function avisarTelegram(env, alunoId) {
     } else erro = "sem chat: mande /start ao bot";
   } catch (e) { erro = String(e).slice(0, 150); }
   await env.CONVERSAS.put("meta:ultimo_telegram", JSON.stringify({ t: agora(), para: alunoId, status: st, erro }));
+}
+
+// Texto livre no Telegram do Samuel (usado pela rota /aviso). Devolve o status HTTP (0 = sem token/chat).
+async function telegramTexto(env, texto) {
+  if (!env.TG_TOKEN) return 0;
+  const base = "https://api.telegram.org/bot" + env.TG_TOKEN;
+  const chat = env.TG_CHAT || (await env.CONVERSAS.get("meta:tg_chat"));
+  if (!chat) return 0;
+  try {
+    const r = await fetch(base + "/sendMessage", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ chat_id: chat, text: texto, disable_web_page_preview: true }) });
+    console.log("telegram aviso", r.status, (await r.text().catch(() => "")).slice(0, 200));
+    await env.CONVERSAS.put("meta:ultimo_telegram", JSON.stringify({ t: agora(), origem: "influencimax", status: r.status }));
+    return r.status;
+  } catch (e) { console.log("telegram aviso erro", String(e).slice(0, 150)); return -1; }
+}
+
+// Procura um campo (em qualquer nível) num objeto vindo de webhook.
+function buscar(o, c, prof = 0) {
+  if (!o || typeof o !== "object" || prof > 4) return null;
+  if (o[c] != null && typeof o[c] !== "object") return o[c];
+  for (const v of Object.values(o)) { const x = buscar(v, c, prof + 1); if (x != null) return x; }
+  return null;
 }
 
 async function enviar(alunoId, texto, env) {
