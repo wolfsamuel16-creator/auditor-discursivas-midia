@@ -3,6 +3,8 @@
   "tipo": "carrossel",
   "origem": "Recurso comentado",
   "primeiro_comentario": "Você teria apontado essa linha no recurso? Comenta SIM ou NÃO 👇",
-  "status": "aguardando",
-  "metricool_id": null
+  "status": "agendado",
+  "metricool_id": 419334326,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-7414131842432482198",
+  "agendado_em": "2026-11-06T16:39:00"
 }

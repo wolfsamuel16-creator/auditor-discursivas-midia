@@ -3,6 +3,8 @@
   "tipo": "carrossel",
   "origem": "Parágrafo da Semana",
   "primeiro_comentario": "Na sua resposta, você teria lembrado do A) governador ou do B) julgado do STF? Comenta a letra 👇",
-  "status": "aguardando",
-  "metricool_id": null
+  "status": "agendado",
+  "metricool_id": 419334343,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=6766384930724856644",
+  "agendado_em": "2026-11-06T16:39:00"
 }
