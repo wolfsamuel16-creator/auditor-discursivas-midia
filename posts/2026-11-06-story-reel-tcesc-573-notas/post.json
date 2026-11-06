@@ -4,14 +4,19 @@
  "origem": "Central — story do post do feed (regra do Samuel 05/11/2026: todo post do feed ganha story)",
  "post_do_feed": "Reel TCE-SC 573 notas (06/11 10h)",
  "stories_publicar_em": [
-  "2026-11-06T10:15:00"
+  "2026-11-06T10:15:00",
+  "2026-11-06T10:57:00",
+  "2026-11-06T10:58:00"
  ],
  "primeiro_comentario": "",
  "status": "agendado",
  "metricool_id": null,
  "stories_metricool": [
-  418114687
+  418114687,
+  418955127,
+  418955175
  ],
  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-5317593342500321952",
- "agendado_em": "2026-11-05T15:56:00"
+ "agendado_em": "2026-11-05T15:56:00",
+ "observacao": "Arte 10h15 (05/11). Vídeo do reel em 2 partes (0–44 s, 44–76,6 s) agendado em 06/11 10h48 a pedido do Samuel ('Faça o 2' / 'Autorizo tudo'); hoje ficou arte → vídeo."
 }
