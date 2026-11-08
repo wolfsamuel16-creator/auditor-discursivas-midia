@@ -7,7 +7,11 @@
   "2026-11-10T15:15:00"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": []
+ "stories_metricool": [
+  421196362
+ ],
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-6464204852996586971",
+ "agendado_em": "2026-11-08T17:38:00"
 }
