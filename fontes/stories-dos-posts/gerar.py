@@ -26,22 +26,22 @@ section{{width:1080px;height:1920px;position:relative;overflow:hidden;font-famil
 .ft{{position:absolute;bottom:200px;left:0;right:0;text-align:center;font-family:L;font-weight:700;font-size:30px;color:#AEB7C4}}
 """
 S=[
- dict(img='c1.png',w=330,h=560,pill='REEL NOVO NO PERFIL',
-  t='573 notas do TCE-SC: <span>antes e depois</span> do recurso',
-  li='<b>›</b> Meus alunos: +1,41 ponto em média<br><b>›</b> Demais candidatos: +1,08<br><b>›</b> Dados oficiais da FGV',
-  a='TCE-PE: nota sai em 12/11. Mande',k='TCEPE',s='no direct · análise de viabilidade gratuita'),
- dict(img='c2.png',w=480,h=480,pill='POST NOVO NO PERFIL',
-  t='Sabia a resposta e a nota veio parcial? Olhe <span>o esqueleto</span>',
-  li='<b>›</b> Um parágrafo por item do comando<br><b>›</b> Tópico frasal · fundamento · conclusão<br><b>›</b> Exemplo com o art. 212 da CF/88',
-  a='Toque no meu perfil e',k='SALVE',s='para revisar antes do próximo simulado'),
- dict(img='c3.png',w=420,h=525,pill='POST NOVO NO PERFIL',
-  t='TCE-GO 2024: a armadilha do <span>“explique como”</span>',
-  li='<b>›</b> Questão inteira de 10 pontos (FGV)<br><b>›</b> As 4 ideias do espelho oficial<br><b>›</b> O parágrafo que pontua, frase a frase',
-  a='Toque no meu perfil e',k='SALVE',s='para treinar as questões de “explique”'),
- dict(img='c4.png',w=420,h=525,pill='POST NOVO NO PERFIL',
-  t='Saiu a nota da discursiva do <span>TCE-PE</span>',
-  li='<b>›</b> Recurso de 13 a 16/11: só 4 dias<br><b>›</b> Análise de viabilidade gratuita<br><b>›</b> Recurso redigido item por item',
-  a='Não concordou? Mande',k='TCEPE',s='no direct · vagas limitadas'),
+ dict(img='c1.png',w=420,h=525,pill='POST NOVO NO PERFIL',
+  t='Resposta certa, sem o artigo: como o recurso <span>pediu</span> os pontos',
+  li='<b>›</b> FCC · SEFAZ-CE 2026 · item b<br><b>›</b> A linha da folha que atende ao espelho<br><b>›</b> Domínio de conteúdo, não de numeração',
+  a='Toque no meu perfil e',k='SALVE',s='para ver como se aponta a linha no recurso'),
+ dict(img='c2.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
+  t='No Cebraspe, a primeira chance de recurso <span>passa rápido</span>',
+  li='<b>›</b> 1ª: contra o padrão preliminar<br><b>›</b> 2ª: contra a correção da sua resposta<br><b>›</b> TCDF e TCE-MA: prova em 22/11',
+  a='Toque no meu perfil e',k='SALVE',s='para não perder o prazo'),
+ dict(img='c3.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
+  t='Recurso de discursiva: <span>experiência</span> aparece no texto',
+  li='<b>›</b> Até IA ajuda, mas não substitui prática<br><b>›</b> Recurso bom aponta a linha da folha<br><b>›</b> Um ponto pode decidir a vaga',
+  a='Nota abaixo do esperado? Mande',k='RECURSO',s='no direct · análise de viabilidade gratuita'),
+ dict(img='c4.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
+  t='TCE-PE: o recurso vai de <span>13 a 16/11</span>',
+  li='<b>›</b> Você manda a prova e o espelho<br><b>›</b> Análise de viabilidade gratuita<br><b>›</b> Recurso item por item, conteúdo e forma',
+  a='Fez TCE-PE? Mande',k='TCEPE',s='no direct · vagas limitadas'),
 ]
 h='<html><head><style>'+CSS+'</style></head><body>'
 for s in S:
