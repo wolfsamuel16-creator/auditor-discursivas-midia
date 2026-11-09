@@ -1,0 +1,11 @@
+[
+ {"pasta":"2026-11-22-collab-tcdf-tcema","concursos":[
+  {"sigla":"TCDF","orgao":"Tribunal de Contas do Distrito Federal","cargos":"Analista Administrativo de Controle Externo","banca":"Cebraspe","momento":"prova","data":"22/11"},
+  {"sigla":"TCE-MA","orgao":"Tribunal de Contas do Estado do Maranhão","cargos":"Analista Estadual de Controle Externo","banca":"Cebraspe","momento":"prova","data":"22/11"}]},
+ {"pasta":"2026-11-26-collab-tcesp","concursos":[
+  {"sigla":"TCE-SP","orgao":"Tribunal de Contas do Estado de São Paulo","cargos":"Auditor de Controle Externo","banca":"Vunesp","momento":"vespera","data":"27/11"}]},
+ {"pasta":"2026-11-29-collab-tcema","concursos":[
+  {"sigla":"TCE-MA","orgao":"Tribunal de Contas do Estado do Maranhão","cargos":"Auditor Estadual de Controle Externo · Técnico","banca":"Cebraspe","momento":"prova","data":"29/11"}]},
+ {"pasta":"2026-12-13-collab-cgu","concursos":[
+  {"sigla":"CGU","orgao":"Controladoria-Geral da União","cargos":"Auditor Federal de Finanças e Controle","banca":"Cebraspe","momento":"prova","data":"13/12"}]}
+]
