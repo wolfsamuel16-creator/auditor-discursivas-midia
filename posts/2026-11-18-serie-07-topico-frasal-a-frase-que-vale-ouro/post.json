@@ -3,6 +3,8 @@
   "tipo": "carrossel",
   "origem": "Série Semanal",
   "primeiro_comentario": "Treino aqui: escreva nos comentários o tópico frasal para o comando \"Defina contas de governo\". Eu comento as respostas 👇",
-  "status": "aguardando",
-  "metricool_id": null
+  "status": "agendado",
+  "metricool_id": 422377553,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-1486162639083779921",
+  "agendado_em": "2026-11-09T17:43:00"
 }
