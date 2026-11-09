@@ -9,7 +9,10 @@
  "stories_publicar_em": [
   "2026-11-29T19:42:00"
  ],
- "status": "aguardando",
- "metricool_id": null,
- "stories_metricool": []
+ "status": "agendado",
+ "metricool_id": 422438855,
+ "stories_metricool": [
+  422438974
+ ],
+ "agendado_em": "2026-11-09T18:42:00"
 }

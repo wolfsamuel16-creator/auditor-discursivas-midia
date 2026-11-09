@@ -8,7 +8,12 @@
   "2026-11-09T19:45:00"
  ],
  "capa_destaque": "capa-comece-aqui.png",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": []
+ "stories_metricool": [
+  422438180,
+  422438210,
+  422438232
+ ],
+ "agendado_em": "2026-11-09T18:42:00"
 }

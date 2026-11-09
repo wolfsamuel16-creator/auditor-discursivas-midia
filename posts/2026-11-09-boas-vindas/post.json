@@ -3,7 +3,9 @@
  "tipo": "carrossel",
  "origem": "Central (post de boas-vindas, pedido do Samuel 09/11/2026 18h34)",
  "primeiro_comentario": "Qual concurso você está fazendo? Conta aqui 👇",
- "status": "aguardando",
- "metricool_id": null,
- "observacao": "Fixar no perfil pelo app (Samuel)."
+ "status": "agendado",
+ "metricool_id": 422438158,
+ "observacao": "Fixar no perfil pelo app (Samuel).",
+ "stories_metricool": [],
+ "agendado_em": "2026-11-09T18:42:00"
 }
