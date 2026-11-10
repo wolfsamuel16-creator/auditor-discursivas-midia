@@ -3,6 +3,8 @@
  "tipo": "reel",
  "origem": "Central: TCE-PE no feed para turbinar (Samuel 10/11 09h50); ocultar da grade depois que o anúncio subir",
  "primeiro_comentario": "📌 Comente TCEPE aqui embaixo e eu te chamo no direct. Não apareceu? Olhe em \"Solicitações de mensagem\".",
- "status": "aguardando",
- "metricool_id": null
+ "status": "agendado",
+ "metricool_id": 423113775,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-8728713173228040230",
+ "agendado_em": "2026-11-10T09:50:00"
 }
