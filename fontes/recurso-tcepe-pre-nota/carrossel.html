@@ -1,0 +1,72 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+@font-face{font-family:Lato;font-weight:400;src:url(fonts/Lato-Regular.ttf)}
+@font-face{font-family:Lato;font-weight:700;src:url(fonts/Lato-Bold.ttf)}
+@font-face{font-family:Lato;font-weight:900;src:url(fonts/Lato-Black.ttf)}
+:root{--navy:#2A3544;--lar:#F04E23;--creme:#F6F2EC}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ccc}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Lato;display:flex;flex-direction:column;padding:150px 90px 130px}
+.navy{background:var(--navy);color:#fff}
+.claro{background:var(--creme);color:var(--navy)}
+.top{position:absolute;top:48px;left:90px;right:90px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:3px}
+.top .wm{color:var(--lar)}
+.top .ct{opacity:.6}
+.rod{position:absolute;bottom:48px;left:90px;right:90px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:600;font-size:24px;opacity:.75}
+.rod .sv{color:var(--lar);opacity:1}
+h1{font-family:Poppins;font-weight:800;font-size:96px;line-height:1.05;letter-spacing:-1px}
+h2{font-family:Poppins;font-weight:800;font-size:68px;line-height:1.1}
+em{font-style:normal;color:var(--lar)}
+.chips{display:flex;flex-wrap:wrap;gap:16px;margin:48px 0}
+.chip{font-family:Poppins;font-weight:700;font-size:34px;border:3px solid var(--lar);color:#fff;border-radius:60px;padding:10px 30px}
+p.big{font-size:44px;line-height:1.4}
+p.mid{font-size:38px;line-height:1.45}
+.box{background:var(--lar);color:#fff;border-radius:28px;padding:44px 48px;font-family:Poppins;font-weight:700;font-size:44px;line-height:1.3}
+.box small{display:block;font-family:Lato;font-weight:700;font-size:32px;margin-top:16px;opacity:.95}
+.lista{list-style:none;margin-top:56px}
+.lista li{display:flex;gap:32px;align-items:flex-start;margin-bottom:46px;font-size:42px;line-height:1.35}
+.num{flex:0 0 84px;height:84px;border-radius:50%;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:44px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-left:12px solid var(--lar);border-radius:18px;padding:40px 44px;margin-top:44px;font-size:38px;line-height:1.45}
+.autor{display:flex;align-items:center;gap:34px;margin-top:auto}
+.foto{width:170px;height:170px;border-radius:50%;border:7px solid var(--lar);background:url(foto.jpg) center/cover}
+.autor b{font-family:Poppins;font-weight:800;font-size:44px;display:block}
+.autor span{font-size:30px;opacity:.85}
+.sp{flex:1}
+/* stories */
+.st{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:Lato;display:flex;flex-direction:column;padding:250px 90px 340px;background:var(--navy);color:#fff}
+.st .wm{font-family:Poppins;font-weight:700;font-size:28px;letter-spacing:3px;color:var(--lar);margin-bottom:60px}
+.opt{display:flex;flex-direction:column;gap:30px;margin-top:70px}
+.op{border-radius:26px;padding:38px 44px;font-family:Poppins;font-weight:800;font-size:50px}
+.op.a{background:#fff;color:var(--navy)}
+.op.b{background:var(--lar);color:#fff}
+
+.selo{align-self:flex-start;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:30px;letter-spacing:3px;border-radius:12px;padding:12px 26px;margin-bottom:40px}
+.tl{display:flex;flex-direction:column;gap:22px;margin-top:52px}
+.ev{display:flex;gap:30px;align-items:center;background:#fff;border-radius:20px;padding:30px 36px;font-size:38px;line-height:1.3}
+.ev .k{flex:0 0 230px;font-family:Poppins;font-weight:800;font-size:44px;color:var(--navy)}
+.ev.d{background:var(--lar);color:#fff}.ev.d .k{color:#fff}
+.cred{list-style:none;font-size:27px;line-height:1.45;opacity:.95}
+.st .selo{font-size:34px;margin-bottom:50px}
+.st .box{font-size:50px}
+.big-n{font-family:Poppins;font-weight:800;font-size:260px;line-height:1.15;margin-top:30px;color:var(--lar)}
+.st.claro{background:var(--creme);color:var(--navy)}
+.st.claro .op.a{background:#fff;color:var(--navy);border:3px solid var(--navy)}
+.s.claro .cred{opacity:1}
+
+/* stories menos laranja (Samuel, 02/11/2026) */
+.st .box{background:#fff;color:var(--navy);border-left:16px solid var(--lar)}
+.st .box small{color:var(--navy);opacity:.9}
+.st .box .vg{color:var(--lar)}
+.st.claro .big-n{color:var(--navy)}
+.st.claro .num{background:var(--navy)}
+/* stories em fundo azul (Samuel, 02/11/2026) */
+.st.navy .big-n{color:#fff}
+.s3 h2{font-size:60px}.s3 .lista li{font-size:38px;margin-bottom:30px}.s3 .num{flex:0 0 74px;height:74px;font-size:38px}.s3 .card{font-size:36px;padding:32px 40px}
+.capa1 .k1{font-family:Poppins;font-weight:800;font-size:150px;line-height:1;letter-spacing:-2px;color:#fff}.capa1 .k2{font-family:Poppins;font-weight:800;font-size:250px;line-height:.95;letter-spacing:-6px;color:var(--lar);margin-top:6px}.capa1 .k3{font-family:Poppins;font-weight:700;font-size:30px;letter-spacing:4px;opacity:.75;margin:26px 0 56px}.capa1 .datas{display:flex;gap:22px}.capa1 .dt{flex:1;border:3px solid rgba(255,255,255,.35);border-radius:22px;padding:26px 30px;display:flex;flex-direction:column;gap:8px}.capa1 .dt.on{background:var(--lar);border-color:var(--lar)}.capa1 .dt .l{font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:2px;opacity:.9}.capa1 .dt .v{font-family:Poppins;font-weight:800;font-size:56px}
+.capa1 .free{margin-top:28px;align-self:flex-start;background:#fff;color:var(--navy);font-family:Poppins;font-weight:700;font-size:34px;letter-spacing:1px;border-radius:16px;padding:18px 30px}.capa1 .free b{color:var(--lar);font-weight:800}
+.s4 h2{font-size:62px}.s4 .lista li{font-size:39px;margin-bottom:34px}.s4 .lista{margin-top:44px}
+.s4.navy .lista li{color:#fff}.s4.navy .card{background:rgba(255,255,255,.08);color:#fff;border-left-color:var(--lar)}.s4.navy .rod{color:#fff}
+.st.capa1 .k2{font-size:230px}
+</style></head><body><section class="s navy capa1"><div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">01 / 05</span></div><div class="sp"></div><div class="selo">PROVA DISCURSIVA</div><div class="k1">RECURSO</div><div class="k2">TCE-PE</div><div class="k3">PERNAMBUCO · FGV · CARGOS REAPLICADOS</div><div class="datas"><div class="dt"><span class="l">NOTA</span><span class="v">qui, 12/11</span></div><div class="dt on"><span class="l">RECURSO · 2 DIAS ÚTEIS</span><span class="v">13 a 16/11</span></div></div><div class="free">✔ ANÁLISE DE VIABILIDADE <b>GRATUITA</b></div><div class="sp"></div><div class="rod"><span>@auditor_discursivas</span><span class="sv">Arraste →</span></div></section><section class="s claro" style="justify-content:center"><div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">02 / 05</span></div><h2>Na FGV, a janela de recurso é <em>uma só.</em></h2><div class="tl"><div class="ev"><span class="k">12/11 qui</span><span><b>Resultado preliminar</b> da discursiva</span></div><div class="ev d"><span class="k">13 a 16/11</span><span><b>Recurso</b> contra a nota (sex e seg)</span></div><div class="ev"><span class="k">08/12</span><span><b>Resultado definitivo</b> e resultado final</span></div></div><div class="card">Você vê a nota e recorre no mesmo prazo curto, <b>sem revisão do recurso: é uma chance só. Não dá para arriscar.</b></div><div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div></section><section class="s claro s3" style="justify-content:center"><div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">03 / 05</span></div><h2>O edital derruba <em>recurso mal feito</em></h2><ul class="lista" style="margin-top:44px"><li><span class="num">1</span><span><b>Formulário completo:</b> campo em branco nem chega à banca <span style="opacity:.6">(16.3.2)</span></span></li><li><span class="num">2</span><span><b>Claro e consistente:</b> pedido inconsistente é indeferido de cara <span style="opacity:.6">(16.3.1)</span></span></li><li><span class="num">3</span><span><b>Sem identificação:</b> quem se identifica não tem o recurso conhecido <span style="opacity:.6">(16.3.9)</span></span></li><li><span class="num">4</span><span><b>Uma chance só:</b> não há revisão do recurso <span style="opacity:.6">(16.4)</span></span></li></ul><div class="card" style="margin-top:10px"><b>Recurso bom não reclama da nota:</b> aponta a linha da sua folha que atende ao critério do espelho. É trabalho de especialista.</div><div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div></section><section class="s navy s4" style="justify-content:center"><div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">04 / 05</span></div><h2>Não arrisque o recurso. <em>Ele pode ser a sua aprovação.</em></h2><ul class="lista"><li><span class="num">1</span><span>Você manda <b>TCEPE</b> no direct</span></li><li><span class="num">2</span><span><b>Análise de viabilidade gratuita:</b> eu comparo a sua resposta com o espelho da FGV e digo se o recurso tem fundamento</span></li><li><span class="num">3</span><span>Se tiver, o seu recurso é <b>redigido por um especialista</b>, dentro das regras do edital e no prazo</span></li></ul><div class="card"><b>Mais de 6 anos fazendo recursos de discursiva</b>, com centenas de recursos deferidos.</div><div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div></section><section class="s claro"><div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">05 / 05</span></div><div class="sp"></div><h2>Faça o seu recurso <em>com um profissional.</em></h2><p class="big" style="margin:44px 0 52px">A análise de viabilidade é <b>gratuita</b>: você só decide depois de saber se vale recorrer.</p><div class="box">Comente TCEPE<small><span class="vg" style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>ou mande <b>TCEPE</b> no direct. A análise de viabilidade é gratuita.</small></div><div class="sp"></div><div class="autor" style="margin-top:0;align-items:center"><div class="foto" style="flex:0 0 190px;width:190px;height:190px"></div><div><b>Samuel Wolf</b><span style="display:block;color:var(--lar);opacity:1;font-weight:700;margin:4px 0 14px">Recursos de provas discursivas</span><ul class="cred"><li>✔ Engenheiro pelo ITA</li><li>✔ Auditor de Controle Externo do TCE-RJ</li><li>✔ Nomeado Auditor Fiscal da SEFAZ-RS</li><li>✔ Nomeado Auditor Fiscal da SEFIN Manaus</li></ul></div></div><div class="rod"><span>@auditor_discursivas</span><span></span></div></section><section class="st navy capa1"><div class="wm">AUDITOR DISCURSIVAS</div><div class="selo">PROVA DISCURSIVA</div><div class="k1">RECURSO</div><div class="k2">TCE-PE</div><div class="k3">FGV · CARGOS REAPLICADOS</div><div class="datas"><div class="dt"><span class="l">NOTA</span><span class="v">qui, 12/11</span></div><div class="dt on"><span class="l">RECURSO</span><span class="v">13 a 16/11</span></div></div><div class="free" style="margin-top:34px">✔ ANÁLISE DE VIABILIDADE <b>GRATUITA</b></div><div class="sp"></div><div class="box">Mande TCEPE no direct.<small><span class="vg" style="display:block;font-weight:900;letter-spacing:2px;margin:4px 0 6px">⏳ VAGAS LIMITADAS PARA O RECURSO</span>Faça o seu recurso com um profissional.</small></div></section></body></html>
