@@ -12,7 +12,12 @@
   "story_01.png"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": []
+ "stories_metricool": [
+  423577644,
+  423577657
+ ],
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-2245609826014181808",
+ "agendado_em": "2026-11-10T16:19:00"
 }
