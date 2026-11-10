@@ -4,8 +4,9 @@
  "canal": "Buzzfy (ig_publish, trial_reel MANUAL)",
  "origem": "Central (Reel com cenas Runway + fala do Samuel, 10/11)",
  "primeiro_comentario": "",
- "status": "agendado",
+ "status": "descartado",
  "observacao": "versão TCE-PE como Reel de teste, só não seguidores; aprovada pelo Samuel em 10/11 09h20",
  "buzzfy_job_id": "0d2d7359-2445-4152-939b-53b561117cd7",
- "agendado_em": "2026-11-10T09:28:00"
+ "agendado_em": "2026-11-10T09:28:00",
+ "motivo": "Samuel 10/11 09h52: mesmo vídeo vai ao feed (posts/2026-11-12-reel-recurso-aprovacao-tcepe-feed) para turbinar; job do Buzzfy cancelado"
 }
