@@ -3,7 +3,9 @@
  "tipo": "reel",
  "origem": "Central (Reel com cenas Runway + fala do Samuel, 10/11)",
  "primeiro_comentario": "A nota da sua discursiva já saiu? Comenta o concurso 👇",
- "status": "aguardando",
- "metricool_id": null,
- "observacao": "versão genérica aprovada pelo Samuel em 10/11 09h20; conteúdo com IA (isAiGenerated)"
+ "status": "agendado",
+ "metricool_id": 423085794,
+ "observacao": "versão genérica aprovada pelo Samuel em 10/11 09h20; conteúdo com IA (isAiGenerated)",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=2473347545407507850",
+ "agendado_em": "2026-11-10T09:25:00"
 }
