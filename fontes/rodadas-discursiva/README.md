@@ -38,3 +38,5 @@ Temas são o plano aprovado; a tarefa pode trocar um tema se o assunto ficar des
 
 ## Palavras-chave e entrega (fixas — não exigem mexer no InfluenciMax a cada semana)
 CONTROLE → auditordiscursivas.com.br/rodadas/controle.pdf · FISCAL → /rodadas/fiscal.pdf · POLICIAL → /rodadas/policial.pdf. Todas as rodadas: auditordiscursivas.com.br (seção "Rodadas de Discursiva").
+InfluenciMax (11/11/2026): comentários em qualquer post — RODADAS · CONTROLE 30771, RODADAS · FISCAL 30775, RODADAS · POLICIAL 30776 (resposta pública + DM com botão do link fixo + IA pós-aula). Direct: a Porta de entrada (26757) já reconhece CONTROLE/FISCAL/POLICIAL e manda o link. fiscal.pdf e policial.pdf são avisos provisórios até a 1.ª rodada de cada trilha.
+Exceção da Rodada 1: anúncio sobe seg 16/11 18h47 (a semana 09–15/11 já estava no teto com o TCE-PE).
