@@ -1,0 +1,108 @@
+@font-face{font-family:'Poppins';font-weight:600;src:url('fonts/Poppins-SemiBold.ttf')}
+@font-face{font-family:'Poppins';font-weight:700;src:url('fonts/Poppins-Bold.ttf')}
+@font-face{font-family:'Poppins';font-weight:800;src:url('fonts/Poppins-ExtraBold.ttf')}
+@font-face{font-family:'Poppins';font-weight:900;src:url('fonts/Poppins-Black.ttf')}
+@font-face{font-family:'Lato';font-weight:400;font-style:normal;src:url('fonts/Lato-Regular.ttf')}
+@font-face{font-family:'Lato';font-weight:400;font-style:italic;src:url('fonts/Lato-Italic.ttf')}
+@font-face{font-family:'Lato';font-weight:700;src:url('fonts/Lato-Bold.ttf')}
+@font-face{font-family:'Lato';font-weight:900;src:url('fonts/Lato-Black.ttf')}
+:root{--navy:#2A3544;--lar:#F04E23;--cre:#F6F2EC;--cre2:#EFE8DD;--tx:#26303d;--mu:#6b7380;--ok:#2f7d4f}
+*{box-sizing:border-box}
+@page{size:A4;margin:22mm 18mm 20mm 18mm}
+body{font-family:Lato;color:var(--tx);font-size:10.4pt;line-height:1.5;margin:0}
+h1,h2,h3,h4{font-family:Poppins;color:var(--navy);margin:0}
+p{margin:0 0 7pt}
+b,strong{font-weight:700;color:var(--navy)}
+.pb{break-before:page}
+.eyebrow{font-family:Poppins;font-weight:600;font-size:7.6pt;letter-spacing:.28em;text-transform:uppercase;color:var(--lar)}
+h2.sec{font-size:17pt;font-weight:700;margin:2pt 0 10pt;line-height:1.2}
+h2.sec .num{color:var(--lar);margin-right:8pt}
+h3{font-size:12.5pt;font-weight:700;margin:14pt 0 6pt;break-after:avoid}
+.lead{font-size:11pt;color:#3a4452}
+table{width:100%;border-collapse:collapse;margin:6pt 0 11pt;font-size:9.4pt;break-inside:auto}
+th{font-family:Poppins;font-weight:600;font-size:8pt;text-align:left;color:#fff;background:var(--navy);padding:6pt 7pt;letter-spacing:.02em}
+td{padding:5pt 7pt;border-bottom:1px solid #e3ddd3;vertical-align:top}
+tr{break-inside:avoid}
+tbody tr:nth-child(even) td{background:#faf7f2}
+td.k{font-weight:700;color:var(--navy);width:28%}
+.box{border-radius:7pt;padding:10pt 13pt;margin:9pt 0 11pt;break-inside:avoid}
+.box .eyebrow{display:block;margin-bottom:4pt}
+.box.cre{background:var(--cre)}
+.box.nv{background:var(--navy);color:#e9edf2}.box.nv b{color:#fff}.box.nv .eyebrow{color:#ffb39e}
+.box.lr{background:#fff3ee;border-left:4pt solid var(--lar)}
+.box.bad{background:#fbecea;border-left:4pt solid #c0392b}
+.box.good{background:#eaf5ee;border-left:4pt solid var(--ok)}
+.stats{display:flex;gap:7pt;margin:8pt 0 12pt}
+.stat{flex:1;background:var(--cre);border-radius:7pt;padding:9pt 6pt;text-align:center}
+.stat .v{font-family:Poppins;font-weight:800;font-size:19pt;color:var(--lar);line-height:1.1}
+.stat .l{font-family:Poppins;font-weight:600;font-size:6.8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+ul{margin:3pt 0 8pt;padding-left:15pt}li{margin-bottom:3pt}
+/* capa */
+.capa{height:253mm;background:var(--navy);color:#fff;border-radius:10pt;padding:26mm 18mm 16mm;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.capa .wm{font-family:Poppins;font-weight:800;color:var(--lar);letter-spacing:.18em;font-size:10pt}
+.capa h1{color:#fff;font-size:38pt;line-height:1.05;font-weight:800;margin:22mm 0 8mm}
+.capa h1 span{color:var(--lar)}
+.capa .sub{font-size:13pt;line-height:1.5;color:#dfe5ec;max-width:150mm}
+.capa .tag{font-family:Poppins;font-weight:600;letter-spacing:.26em;font-size:8.5pt;color:#ffb39e;margin-top:auto}
+.capa .data{font-family:Poppins;font-weight:800;font-size:15pt;letter-spacing:.06em;margin-top:5pt}
+.capa .rod{display:flex;justify-content:space-between;border-top:1px solid #4a5668;padding-top:9pt;margin-top:12mm;font-size:9pt;color:#b9c2cd}
+.capa .barra{position:absolute;right:-30mm;top:-30mm;width:110mm;height:110mm;border-radius:50%;border:16mm solid rgba(240,78,35,.14)}
+/* autor */
+.autor{display:flex;gap:14pt;align-items:center;background:var(--cre);border-radius:9pt;padding:13pt;margin:8pt 0 12pt}
+.foto{width:84pt;height:84pt;border-radius:50%;border:3.5pt solid var(--lar);background-size:cover;background-position:center;flex:none}
+.autor .nm{font-family:Poppins;font-weight:700;font-size:14pt;color:var(--navy)}
+.autor .at{color:var(--lar);font-family:Poppins;font-weight:600;font-size:9pt;margin-bottom:4pt}
+.autor ul{margin:0;padding-left:13pt;font-size:9.5pt}
+/* parte */
+.parte{background:var(--navy);color:#fff;border-radius:9pt;padding:16pt 18pt;margin-bottom:14pt}
+.parte h2{color:#fff;font-size:21pt;font-weight:800}
+.parte p{color:#cfd7e1;margin:5pt 0 0}
+.parte .eyebrow{color:#ffb39e}
+/* sumário */
+.sum{width:100%;font-size:9.6pt}.sum td{border:0;padding:2pt 0}.sum td.n{width:30pt;font-family:Poppins;font-weight:700;color:var(--lar)}
+.sum tr.pt td{padding-top:11pt;font-family:Poppins;font-weight:600;font-size:7.6pt;letter-spacing:.24em;color:var(--mu);text-transform:uppercase}
+.sum tbody tr:nth-child(even) td{background:none}
+/* roteiro */
+.passo{display:flex;gap:11pt;margin:0 0 8pt;break-inside:avoid}
+.passo .bn{flex:none;width:24pt;height:24pt;border-radius:50%;background:var(--lar);color:#fff;font-family:Poppins;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:11pt}
+.passo h4{font-size:10.5pt;margin-bottom:1pt}
+.formula{font-family:Poppins;font-weight:700;color:var(--navy);text-align:center;font-size:12pt;background:var(--cre);border-radius:7pt;padding:10pt;margin:8pt 0}
+.formula span{color:var(--lar)}
+/* rodada */
+.rod-h .eyebrow{font-size:7.2pt}
+.rod-h h2{font-size:19pt;font-weight:800;margin:3pt 0 4pt;line-height:1.15}
+.rod-h .rn{color:var(--lar)}
+.eixo{font-size:9pt;color:var(--mu);margin-bottom:9pt}
+.enun{border:1.4pt solid var(--navy);border-radius:8pt;padding:12pt 14pt;margin:6pt 0 10pt;break-inside:auto}
+.enun .eyebrow{display:block;margin-bottom:6pt}
+.enun p{font-size:10.2pt}
+.enun ol{margin:6pt 0 0;padding-left:0;list-style:none}
+.enun ol li{display:flex;gap:9pt;margin-bottom:5pt}
+.enun ol li .i{font-family:Poppins;font-weight:700;color:var(--lar);flex:none;width:14pt}
+.enun .val{color:var(--mu);font-size:9pt;white-space:nowrap}
+.pare{background:var(--cre);border-radius:7pt;padding:9pt 12pt;font-size:9.6pt;font-style:italic}
+.esq td.k{width:30%}
+.esp td:last-child{width:11%;text-align:right;font-family:Poppins;font-weight:700;color:var(--navy)}
+.esp td.q{font-weight:700;color:var(--navy);width:28%}
+.esp .c{font-size:8.9pt;margin:0 0 2pt}
+.pad{font-size:8.9pt}.pad li{margin-bottom:2pt}
+.chk{margin:0;padding-left:12pt;font-size:9pt}.chk li{margin-bottom:2pt}
+.tot td{background:var(--cre)!important;font-family:Poppins;font-weight:700;color:var(--navy)}
+/* folha */
+.folha{border:1px solid #cfc6b8;border-radius:6pt;background:#fffdf9;padding:6pt 10pt 8pt;margin:6pt 0 6pt;break-inside:avoid}
+.folha .eyebrow{display:block;margin:2pt 0 5pt}
+.ln{display:flex;border-bottom:1px solid #e6ded1;font-size:12.6pt;line-height:1.24;letter-spacing:.015em}
+.ln .nr{width:20pt;flex:none;color:#a39b8f;font-family:Poppins;font-size:7.6pt;padding-top:2pt}
+.ln .t{flex:1;font-family:Lato;text-align:justify;text-align-last:justify;overflow:hidden;white-space:normal}
+.ln .t.ini{padding-left:2.4em}
+.ln .t.fim{text-align-last:left}
+.nota{font-size:8.4pt;color:var(--mu);font-style:italic}
+.tri{display:flex;gap:7pt;margin:9pt 0;break-inside:avoid}
+.tri>div{flex:1;border-radius:7pt;padding:7pt 8pt;font-size:8.1pt;line-height:1.35}
+.tri .eyebrow{display:block;margin-bottom:4pt;font-size:6.8pt}
+.tri ul{padding-left:12pt;margin:0}
+.t1{background:#fff3ee}.t2{background:#fbecea}.t3{background:#eaf5ee}
+.t2 .eyebrow{color:#c0392b}.t3 .eyebrow{color:var(--ok)}
+.fontes{font-size:8.8pt}.fontes li{margin-bottom:4pt;word-break:break-word}
+.cta{background:var(--lar);color:#fff;border-radius:9pt;padding:13pt 16pt;margin-top:10pt}
+.cta b{color:#fff}.cta .eyebrow{color:#fff;opacity:.85;display:block;margin-bottom:3pt}
