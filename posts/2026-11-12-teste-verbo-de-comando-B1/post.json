@@ -8,5 +8,9 @@
  "gancho": "Avaliou sem se posicionar? / É ponto perdido.",
  "corte": "42.15s até o fim (31,4 s): trecho AVALIE + erro mais comum + cartão final",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 425495019,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=1419295060786302659",
+ "agendado_em": "2026-11-12T07:30:00",
+ "shareTrialAutomatically": false
 }

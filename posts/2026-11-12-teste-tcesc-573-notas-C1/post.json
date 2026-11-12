@@ -9,5 +9,9 @@
  "runway_task": "4fcaada8-6781-42de-996c-6cc9cab1c033",
  "abertura": "3,5 s gerados na Runway: folha de prova e caneta vermelha (sem rosto, sem marcas)",
  "isAiGenerated": true,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 425495167,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=1252791100823913066",
+ "agendado_em": "2026-11-12T07:30:00",
+ "shareTrialAutomatically": false
 }
