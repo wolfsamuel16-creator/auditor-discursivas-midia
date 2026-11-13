@@ -1,0 +1,20 @@
+{
+ "publicar_em": "2026-11-17T10:15:00",
+ "tipo": "stories",
+ "origem": "Stories dos posts (regra do Samuel 05/11/2026; vídeo+arte no Reel desde 06/11/2026)",
+ "post_do_feed": "Reel Recurso antes da nota? (Cebraspe) (17/11 10h)",
+ "stories_publicar_em": [
+  "2026-11-17T10:15:00",
+  "2026-11-17T10:25:00",
+  "2026-11-17T10:35:00"
+ ],
+ "ordem_arquivos": [
+  "story_video_01.mp4",
+  "story_video_02.mp4",
+  "story_01.png"
+ ],
+ "primeiro_comentario": "",
+ "status": "aguardando",
+ "metricool_id": null,
+ "stories_metricool": []
+}
