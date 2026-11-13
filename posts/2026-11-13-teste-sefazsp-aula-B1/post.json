@@ -8,5 +8,9 @@
  "gancho": "120 pontos em 30 linhas: / SEFAZ-SP",
  "corte": "0–16,75 s (abertura até 'corrigidas') + 51,95–63,5 s (CTA SEFAZSP) + 70,9–73,4 s (cartão final) = 30,8 s",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 426768635,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-2165720965630638716",
+ "agendado_em": "2026-11-13T07:28:00",
+ "shareTrialAutomatically": false
 }
