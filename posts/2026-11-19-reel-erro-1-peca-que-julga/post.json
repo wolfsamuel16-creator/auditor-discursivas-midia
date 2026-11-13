@@ -2,6 +2,9 @@
  "publicar_em": "2026-11-19T10:00:00",
  "tipo": "reel",
  "origem": "Central (Reels gravados em 13/11) — ERRO Nº 1: a peça que julga",
- "status": "aguardando",
- "observacao": "aprovado pelo Samuel em 13/11 14h05; cena do plenário gerada no Google Flow"
+ "status": "agendado",
+ "observacao": "aprovado pelo Samuel em 13/11 14h05; cena do plenário gerada no Google Flow",
+ "metricool_id": 427219787,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-1675087869716118965",
+ "agendado_em": "2026-11-13T14:06:00"
 }
