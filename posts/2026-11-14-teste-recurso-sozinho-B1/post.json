@@ -8,5 +8,9 @@
  "gancho": "Recurso com o ChatGPT? / Dá, mas não recomendo.",
  "corte": "0,15–7,5 s + 7,8–13,85 s (IA ajuda a montar o texto) + 14,5–23,6 s (não recomendaria) + 59,25–71,6 s (CTA + cartão final) = 34,9 s",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 427891463,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=1326256448527221765",
+ "agendado_em": "2026-11-14T07:29:00",
+ "shareTrialAutomatically": false
 }
