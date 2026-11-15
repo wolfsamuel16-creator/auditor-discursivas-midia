@@ -7,5 +7,18 @@
  "reel_original": "posts/2026-11-13-reel-tcepe-como-funciona",
  "gancho": "Fez TCE-PE? / Recurso em 3 passos.",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 428759556,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-6987277317035766532",
+ "agendado_em": "2026-11-15T07:28:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "235065218897660",
+  "titulo": "Spontaneous (Instrumental)",
+  "artista": "Alex Blue",
+  "audioVolume": 12,
+  "videoVolume": 100,
+  "fonte": "catálogo do Instagram via Metricool"
+ },
+ "observacao": "13h de hoje já ocupado por TRIAL_REEL agendado em 10/11 (TCE-PE); só o horário das 19h30 foi feito."
 }
