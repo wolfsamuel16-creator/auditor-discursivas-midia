@@ -1,1 +1,14 @@
-{"publicar_em": "2026-11-20T18:00:00", "tipo": "carrossel", "origem": "central", "primeiro_comentario": "Qual concurso você vai fazer? Comenta aqui que eu te mando a aula 👇", "status": "aguardando", "metricool_id": null, "story": {"arquivo": "story_01.png", "publicar_em": "2026-11-20T18:15:00"}, "anuncio": "turbinar após publicar: objetivo Mensagens, semelhantes aos seguidores, Brasil, R$ 70 / 5 dias"}
+{
+ "publicar_em": "2026-11-20T18:00:00",
+ "tipo": "carrossel",
+ "origem": "central",
+ "primeiro_comentario": "Qual concurso você vai fazer? Comenta aqui que eu te mando a aula 👇",
+ "status": "agendado",
+ "metricool_id": 430532739,
+ "story": {
+  "arquivo": "story_01.png",
+  "publicar_em": "2026-11-20T18:15:00",
+  "metricool_id": 430532754
+ },
+ "anuncio": "turbinar após publicar: objetivo Mensagens, semelhantes aos seguidores, Brasil, R$ 70 / 5 dias"
+}
