@@ -6,7 +6,27 @@
  "origem": "Reels de teste (diário)",
  "reel_original": "posts/2026-11-12-ps-04-air-contra-a-corrupcao",
  "gancho": "Questão de 10 pontos: / a armadilha do “como”",
- "slides_usados": [1,2,4,5,7,9,10],
+ "slides_usados": [
+  1,
+  2,
+  4,
+  5,
+  7,
+  9,
+  10
+ ],
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 429855501,
+ "uuid": "-7170562009418151844",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-7170562009418151844",
+ "agendado_em": "2026-11-16T07:29:00",
+ "musica": {
+  "audioId": "1392368834824673",
+  "titulo": "Slow It Down (Instrumental)",
+  "artista": "Deuxhyun",
+  "audioVolume": 100,
+  "videoVolume": 0
+ },
+ "shareTrialAutomatically": false
 }

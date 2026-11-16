@@ -9,5 +9,17 @@
  "cortes": "0–13,4 s · 37,2–42,5 s · 47,75–54,3 s · 61,45–70,76 s (34,6 s)",
  "runway_falhou": "sem créditos na Runway em 16/11 (C virou B)",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 429855749,
+ "uuid": "-651814979834395459",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-651814979834395459",
+ "agendado_em": "2026-11-16T07:29:00",
+ "musica": {
+  "audioId": "1852688158814799",
+  "titulo": "Hypnotized (Instrumental)",
+  "artista": "Company Money",
+  "audioVolume": 12,
+  "videoVolume": 100
+ },
+ "shareTrialAutomatically": false
 }
