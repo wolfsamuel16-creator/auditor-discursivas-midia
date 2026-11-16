@@ -26,22 +26,18 @@ section{{width:1080px;height:1920px;position:relative;overflow:hidden;font-famil
 .ft{{position:absolute;bottom:200px;left:0;right:0;text-align:center;font-family:L;font-weight:700;font-size:30px;color:#AEB7C4}}
 """
 S=[
- dict(img='c1.png',w=420,h=525,pill='POST NOVO NO PERFIL',
-  t='Resposta certa, sem o artigo: como o recurso <span>pediu</span> os pontos',
-  li='<b>›</b> FCC · SEFAZ-CE 2026 · item b<br><b>›</b> A linha da folha que atende ao espelho<br><b>›</b> Domínio de conteúdo, não de numeração',
-  a='Toque no meu perfil e',k='SALVE',s='para ver como se aponta a linha no recurso'),
- dict(img='c2.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
-  t='No Cebraspe, a primeira chance de recurso <span>passa rápido</span>',
-  li='<b>›</b> 1ª: contra o padrão preliminar<br><b>›</b> 2ª: contra a correção da sua resposta<br><b>›</b> TCDF e TCE-MA: prova em 22/11',
-  a='Toque no meu perfil e',k='SALVE',s='para não perder o prazo'),
+ dict(img='c1.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
+  t='Quem pontua escreve o que a <span>banca</span> vai pontuar',
+  li='<b>›</b> Engenheiro pelo ITA, auditor no TCE-RJ<br><b>›</b> Aprovado também na SEFAZ-RS e na SEFIN Manaus<br><b>›</b> Não é escrever tudo o que você sabe',
+  a='Toque no meu perfil e',k='SIGA',s='para ver a vida de auditor por dentro'),
+ dict(img='c2.jpg',w=330,h=560,pill='AULA GRATUITA NO PERFIL',
+  t='PM-PE e PC-PE: 12 temas com <span>redação pronta</span>',
+  li='<b>›</b> PM-PE (AOCP): 15 a 20 linhas<br><b>›</b> PC-PE (Cebraspe): até 30 linhas<br><b>›</b> 52 páginas, com passo a passo',
+  a='Comente no reel',k='PERNAMBUCO',s='que o PDF chega no seu direct'),
  dict(img='c3.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
-  t='Recurso de discursiva: <span>experiência</span> aparece no texto',
-  li='<b>›</b> Até IA ajuda, mas não substitui prática<br><b>›</b> Recurso bom aponta a linha da folha<br><b>›</b> Um ponto pode decidir a vaga',
-  a='Nota abaixo do esperado? Mande',k='RECURSO',s='no direct · análise de viabilidade gratuita'),
- dict(img='c4.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
-  t='TCE-PE: o recurso vai de <span>13 a 16/11</span>',
-  li='<b>›</b> Você manda a prova e o espelho<br><b>›</b> Análise de viabilidade gratuita<br><b>›</b> Recurso item por item, conteúdo e forma',
-  a='Fez TCE-PE? Mande',k='TCEPE',s='no direct · vagas limitadas'),
+  t='A nota pode <span>cair</span> por causa do recurso?',
+  li='<b>›</b> Mais de 6 anos de recurso: nunca vi cair<br><b>›</b> Não precisa de texto acadêmico<br><b>›</b> Centenas de casos de aumento de nota',
+  a='Nota baixa? Mande',k='RECURSO',s='no direct · análise de viabilidade gratuita'),
 ]
 h='<html><head><style>'+CSS+'</style></head><body>'
 for s in S:
