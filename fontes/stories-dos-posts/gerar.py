@@ -27,17 +27,9 @@ section{{width:1080px;height:1920px;position:relative;overflow:hidden;font-famil
 """
 S=[
  dict(img='c1.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
-  t='Quem pontua escreve o que a <span>banca</span> vai pontuar',
-  li='<b>›</b> Engenheiro pelo ITA, auditor no TCE-RJ<br><b>›</b> Aprovado também na SEFAZ-RS e na SEFIN Manaus<br><b>›</b> Não é escrever tudo o que você sabe',
-  a='Toque no meu perfil e',k='SIGA',s='para ver a vida de auditor por dentro'),
- dict(img='c2.jpg',w=330,h=560,pill='AULA GRATUITA NO PERFIL',
-  t='PM-PE e PC-PE: 12 temas com <span>redação pronta</span>',
-  li='<b>›</b> PM-PE (AOCP): 15 a 20 linhas<br><b>›</b> PC-PE (Cebraspe): até 30 linhas<br><b>›</b> 52 páginas, com passo a passo',
-  a='Comente no reel',k='PERNAMBUCO',s='que o PDF chega no seu direct'),
- dict(img='c3.jpg',w=330,h=560,pill='REEL NOVO NO PERFIL',
-  t='A nota pode <span>cair</span> por causa do recurso?',
-  li='<b>›</b> Mais de 6 anos de recurso: nunca vi cair<br><b>›</b> Não precisa de texto acadêmico<br><b>›</b> Centenas de casos de aumento de nota',
-  a='Nota baixa? Mande',k='RECURSO',s='no direct · análise de viabilidade gratuita'),
+  t='Estudar não compra felicidade. Mas compra <span>escolha</span>',
+  li='<b>›</b> Estabilidade, liberdade e tempo<br><b>›</b> Novos lugares para conhecer<br><b>›</b> Por isso: continua',
+  a='Assista no meu perfil e',k='COMENTE',s='o que a sua aprovação vai comprar pra você'),
 ]
 h='<html><head><style>'+CSS+'</style></head><body>'
 for s in S:
