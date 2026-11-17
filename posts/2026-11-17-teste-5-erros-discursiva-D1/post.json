@@ -15,5 +15,17 @@
   6
  ],
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 431248098,
+ "uuid": "-4084167173694927396",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-4084167173694927396",
+ "agendado_em": "2026-11-17T07:30:00",
+ "musica": {
+  "audioId": "920231970522157",
+  "titulo": "Open Air",
+  "artista": "Tokay",
+  "audioVolume": 100,
+  "videoVolume": 0
+ },
+ "shareTrialAutomatically": false
 }

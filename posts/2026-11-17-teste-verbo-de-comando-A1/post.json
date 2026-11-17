@@ -8,5 +8,17 @@
  "gancho": "Defina, justifique, avalie: / cada verbo pede algo.",
  "obs": "19h30 colidia com Reel do feed (bastidor ITA) → 20h30",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 431248183,
+ "uuid": "7034411466331211832",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=7034411466331211832",
+ "agendado_em": "2026-11-17T07:30:00",
+ "musica": {
+  "audioId": "2263439694405407",
+  "titulo": "Golden Ascent",
+  "artista": "Afterlight",
+  "audioVolume": 12,
+  "videoVolume": 100
+ },
+ "shareTrialAutomatically": false
 }
