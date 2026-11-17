@@ -1,0 +1,19 @@
+{
+ "publicar_em": "2026-11-17T13:00:00",
+ "tipo": "trial_reel",
+ "tipo_versao": "D",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "reel_original": "posts/2026-11-16-5-erros-discursiva",
+ "gancho": "Sabia o conteúdo? / Perdeu ponto na forma.",
+ "slides_usados": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6
+ ],
+ "isAiGenerated": false,
+ "status": "aguardando"
+}
