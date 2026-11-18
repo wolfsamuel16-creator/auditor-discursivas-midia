@@ -40,3 +40,11 @@ Temas são o plano aprovado; a tarefa pode trocar um tema se o assunto ficar des
 CONTROLE → auditordiscursivas.com.br/rodadas/controle.pdf · FISCAL → /rodadas/fiscal.pdf · POLICIAL → /rodadas/policial.pdf. Todas as rodadas: auditordiscursivas.com.br (seção "Rodadas de Discursiva").
 InfluenciMax (11/11/2026): comentários em qualquer post — RODADAS · CONTROLE 30771, RODADAS · FISCAL 30775, RODADAS · POLICIAL 30776 (resposta pública + DM com botão do link fixo + IA pós-aula). Direct: a Porta de entrada (26757) já reconhece CONTROLE/FISCAL/POLICIAL e manda o link. fiscal.pdf e policial.pdf são avisos provisórios até a 1.ª rodada de cada trilha.
 Exceção da Rodada 1: anúncio sobe seg 16/11 18h47 (a semana 09–15/11 já estava no teto com o TCE-PE).
+
+## Regras vigentes (prevalecem sobre o texto acima)
+- **CTA (16/11/2026):** a Meta rejeitou o anúncio da Rodada 1 por "Comente CONTROLE ... de graça". Nenhuma peça (slides, story, Reel, legenda, 1.º comentário, PDF) usa "Comente <PALAVRA>": o CTA é sempre **"Mande <PALAVRA> no direct"**. A automação de comentários continua ligada. O build_aula.py já usa "mande <PALAVRA> no direct" (ajustado em 18/11/2026).
+- **Anúncio (13/11 e 16/11/2026):** R$ 100 por rodada, divididos em R$ 50 no carrossel (R$ 10/dia × 5) e R$ 50 no Reel (R$ 10/dia × 5); cada um sobe NO DIA da sua publicação, na rodada das 18h47 da tarefa "Anúncios · acompanhamento diário". Teste de canal: Rodada 1 Controle = Gerenciador; Rodada 2 (Fiscal 1) = Turbinar. Depois vale o vencedor registrado na planilha.
+- **Reel da rodada (16/11/2026):** vídeo dos 5 slides (1080×1920, 20–40 s, sem áudio próprio, música do Instagram via Metricool), publicado no dia seguinte ao carrossel às 12h (13h30 se houver outro post de feed/Reel a menos de 3 h), **fora da grade** (showReelOnFeed false), em posts/<data+1>-reel-rodadas-<area>-<n>/; anunciado pelo Gerenciador como publicação existente.
+- **Horário (18/11/2026):** se houver outro post de feed a menos de 3 h das 18h no dia da rodada, o carrossel vai às 19h30 e o story às 19h45 (ex.: Fiscal 1, em 20/11, por causa do carrossel do catálogo de aulas às 18h).
+- Modelo de carrossel com o CTA novo: carrossel/fiscal-1.html (controle-1.html é anterior à regra e ainda tem "Comente").
+- Mini-aulas prontas: areas/controle.py e areas/fiscal.py (base: aulas SEFAZ-SP 2026 e SEFAZ-AL 2026).

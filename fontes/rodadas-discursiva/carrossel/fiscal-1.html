@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Rodadas de Discursiva · Fiscal 1 — carrossel e story</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2A3544;--lar:#F04E23;--cre:#F6F2EC;--cre2:#EFE8DD;--tx:#2B3644;--cinza:#8A929B;--fil:#E3DCD0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#D9DEE4;font-family:'Lato';padding:40px;display:flex;flex-direction:column;align-items:center;gap:40px}
+.slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--cre);flex-shrink:0}
+.story{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--navy);flex-shrink:0}
+.dark{background:var(--navy);color:#fff}
+.topo{position:absolute;top:0;left:0;right:0;padding:56px 84px 0;display:flex;justify-content:space-between;align-items:center}
+.marca{font-family:'Poppins';font-weight:700;font-size:22px;letter-spacing:4px;color:var(--lar)}
+.cont{font-family:'Poppins';font-weight:600;font-size:22px;letter-spacing:2px;color:var(--cinza)}
+.rod{position:absolute;bottom:0;left:0;right:0;padding:34px 84px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:1.5px;color:var(--cinza)}
+.rod b{font-family:'Poppins';color:var(--lar)}
+.corpo{position:absolute;top:150px;left:84px;right:84px}
+.eb{font-family:'Poppins';font-weight:700;font-size:24px;letter-spacing:5px;text-transform:uppercase;color:var(--lar)}
+.h1{font-family:'Poppins';font-weight:800;font-size:96px;line-height:1.02;letter-spacing:-2px;color:var(--navy)}
+.dark .h1,.story .h1{color:#fff}
+.h1 span{color:var(--lar)}
+.h2{font-family:'Poppins';font-weight:800;font-size:62px;line-height:1.1;letter-spacing:-1px;color:var(--navy)}
+.dark .h2{color:#fff}.h2 span{color:var(--lar)}
+.sub{font-size:34px;line-height:1.45;color:var(--tx)}
+.dark .sub{color:#DCE2EA}.sub b{color:var(--navy)}.dark .sub b{color:#fff}
+.selo{display:inline-block;background:var(--lar);color:#fff;font-family:'Poppins';font-weight:900;font-size:60px;letter-spacing:2px;line-height:1;padding:22px 34px;border-radius:18px;transform:rotate(-2deg);box-shadow:0 14px 30px rgba(0,0,0,.25)}
+.selo small{display:block;font-size:26px;letter-spacing:5px;font-weight:700;margin-top:8px;opacity:.95}
+.trilha{display:inline-block;border:3px solid var(--lar);color:#fff;font-family:'Poppins';font-weight:700;font-size:28px;letter-spacing:4px;padding:12px 22px;border-radius:12px}
+.temas{margin-top:34px;display:flex;flex-direction:column;gap:16px}
+.tema{background:rgba(255,255,255,.08);border-left:8px solid var(--lar);border-radius:12px;padding:20px 26px;font-size:32px;line-height:1.3;color:#fff}
+.tema b{font-family:'Poppins';color:#ffb39e;font-size:22px;letter-spacing:3px;display:block}
+.cta{position:absolute;left:84px;right:84px;bottom:110px;background:var(--lar);border-radius:20px;padding:30px 38px}
+.cta .a{font-family:'Poppins';font-weight:800;font-size:42px;color:#fff;line-height:1.2}
+.cta .a b{background:#fff;color:var(--lar);padding:0 14px;border-radius:8px}
+.cta .b{font-size:28px;color:#FFE7D6;margin-top:10px;line-height:1.4}
+.cal{margin-top:46px;display:flex;flex-direction:column;gap:18px}
+.cl{display:flex;gap:26px;align-items:center;background:#fff;border:2px solid var(--fil);border-radius:16px;padding:26px 30px}
+.cl .d{min-width:150px;font-family:'Poppins';font-weight:800;font-size:40px;color:var(--lar)}
+.cl .t{font-size:33px;line-height:1.3;color:var(--tx)}.cl .t b{color:var(--navy);font-family:'Poppins'}
+.cl.on{background:var(--navy);border-color:var(--navy)}.cl.on .t,.cl.on .t b{color:#fff}
+.itens{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.it{display:flex;gap:26px;align-items:flex-start}
+.it .k{min-width:64px;height:64px;border-radius:50%;background:var(--lar);color:#fff;font-family:'Poppins';font-weight:800;font-size:30px;display:flex;align-items:center;justify-content:center}
+.it .t{font-size:34px;line-height:1.35;color:#DCE2EA;padding-top:6px}.it .t b{color:#fff}
+.cmp{margin-top:36px;border-radius:16px;padding:28px 32px;font-size:31px;line-height:1.42}
+.cmp .l{font-family:'Poppins';font-weight:800;font-size:22px;letter-spacing:4px;display:block;margin-bottom:8px}
+.bad{background:#FBECEA;border-left:10px solid #C0392B;color:#5b2a24}.bad .l{color:#C0392B}
+.good{background:#EAF5EE;border-left:10px solid #2F7D4F;color:#1f4a33}.good .l{color:#2F7D4F}
+.dica{margin-top:30px;font-size:30px;line-height:1.4;color:var(--tx)}.dica b{color:var(--lar)}
+.autor{display:flex;gap:34px;align-items:center;margin-top:40px}
+.foto{width:210px;height:210px;border-radius:50%;border:8px solid var(--lar);background:#555 center/cover;flex:none;color:#fff;font-family:'Poppins';font-size:60px;display:flex;align-items:center;justify-content:center}
+.autor .n{font-family:'Poppins';font-weight:800;font-size:44px;color:#fff}
+.autor .r{font-size:26px;color:#ffb39e;margin:4px 0 10px;font-family:'Poppins';font-weight:600}
+.autor ul{list-style:none;font-size:26px;line-height:1.45;color:#DCE2EA}
+.st-in{position:absolute;top:250px;left:84px;right:84px;bottom:340px;display:flex;flex-direction:column;gap:40px}
+.tri{margin-top:34px;display:flex;flex-direction:column;gap:18px}
+.tr{display:flex;gap:24px;background:#fff;border:2px solid var(--fil);border-radius:16px;padding:22px 26px;align-items:flex-start}
+.tr .s{min-width:118px;font-family:'Poppins';font-weight:900;font-size:44px;color:var(--lar);line-height:1.1}
+.tr .t{font-size:29px;line-height:1.35;color:var(--tx)}.tr .t b{color:var(--navy);font-family:'Poppins'}
+</style></head><body>
+
+<!-- 01 CAPA -->
+<div class="slide dark" data-n="01">
+ <div class="topo"><span class="marca">AUDITOR DISCURSIVAS</span><span class="cont">01 / 05</span></div>
+ <div class="corpo" style="top:160px">
+  <div class="selo">AULA GRATUITA · PDF<small>RODADA 1 · TRILHA FISCAL</small></div>
+  <div class="h1" style="margin-top:56px">Rodadas de<br><span>Discursiva</span></div>
+  <div class="sub" style="margin-top:24px">2 casos inéditos da área fiscal, com espelho de correção e <b>texto definitivo pronto</b>.</div>
+  <div class="temas">
+   <div class="tema"><b>TEMA 1</b>Reforma tributária: IBS, CBS e imposto seletivo</div>
+   <div class="tema"><b>TEMA 2</b>Planejamento tributário × evasão (CTN, art. 116)</div>
+  </div>
+ </div>
+ <div class="cta"><div class="a">Mande <b>FISCAL</b> no direct 👇</div><div class="b">e eu te envio o PDF na hora.</div></div>
+ <div class="rod"><span>@auditor_discursivas</span><b>arraste →</b></div>
+</div>
+
+<!-- 02 O QUE É -->
+<div class="slide" data-n="02">
+ <div class="topo"><span class="marca">AUDITOR DISCURSIVAS</span><span class="cont">02 / 05</span></div>
+ <div class="corpo">
+  <div class="eb">Aula grátis · toda semana</div>
+  <div class="h2" style="margin-top:18px">Uma rodada nova<br>por semana, em <span>3 trilhas</span></div>
+  <div class="sub" style="margin-top:22px">Cada rodada traz uma mini-aula de método e <b>dois temas inéditos</b>, com padrão de resposta, espelho e texto definitivo.</div>
+  <div class="cal">
+   <div class="cl on"><div class="d">20/11</div><div class="t"><b>Fiscal</b> · Receita, SEFAZs e fiscos municipais</div></div>
+   <div class="cl"><div class="d">27/11</div><div class="t"><b>Policial</b> · PMs, bombeiros e polícias civis</div></div>
+   <div class="cl"><div class="d">04/12</div><div class="t"><b>Controle</b> · TCU, TCEs, CGU e controladorias</div></div>
+  </div>
+  <div class="dica">Siga o perfil para não perder a <b>próxima rodada</b>.</div>
+ </div>
+ <div class="rod"><span>aula grátis · FISCAL no direct</span><b>→</b></div>
+</div>
+
+<!-- 03 O QUE TEM -->
+<div class="slide dark" data-n="03">
+ <div class="topo"><span class="marca">AUDITOR DISCURSIVAS</span><span class="cont">03 / 05</span></div>
+ <div class="corpo">
+  <div class="eb">O que tem no PDF</div>
+  <div class="h2" style="margin-top:18px">Rodada 1 · <span>Fiscal</span></div>
+  <div class="itens">
+   <div class="it"><div class="k">1</div><div class="t"><b>Mini-aula:</b> como FCC e Cebraspe montam o estudo de caso fiscal e como a correção pontua</div></div>
+   <div class="it"><div class="k">2</div><div class="t"><b>Roteiro em 5 passos</b> e o parágrafo que responde ao caso</div></div>
+   <div class="it"><div class="k">3</div><div class="t"><b>Tema 1:</b> IBS, CBS e imposto seletivo, princípios e o fim da guerra fiscal</div></div>
+   <div class="it"><div class="k">4</div><div class="t"><b>Tema 2:</b> elisão × evasão, CTN art. 116 e o que o STF decidiu</div></div>
+   <div class="it"><div class="k">5</div><div class="t"><b>Espelho de correção</b> e <b>texto definitivo</b> de 30 linhas para cada caso</div></div>
+  </div>
+ </div>
+ <div class="rod"><span>aula grátis · FISCAL no direct</span><b>→</b></div>
+</div>
+
+<!-- 04 PRÉVIA -->
+<div class="slide" data-n="04">
+ <div class="topo"><span class="marca">AUDITOR DISCURSIVAS</span><span class="cont">04 / 05</span></div>
+ <div class="corpo">
+  <div class="eb">Prévia da aula · salve</div>
+  <div class="h2" style="margin-top:18px">Reforma tributária<br>em <span>3 linhas</span></div>
+  <div class="tri">
+   <div class="tr"><div class="s">IBS</div><div class="t"><b>Estados, DF e municípios</b> (CF, art. 156-A). Substitui o <b>ICMS</b> e o <b>ISS</b>. Cobrado no destino, sem benefícios fiscais.</div></div>
+   <div class="tr"><div class="s">CBS</div><div class="t"><b>União</b> (CF, art. 195, V). Substitui o <b>PIS</b> e a <b>Cofins</b>.</div></div>
+   <div class="tr"><div class="s">IS</div><div class="t"><b>União</b> (CF, art. 153, VIII). Bens e serviços prejudiciais à saúde ou ao meio ambiente. O IPI vai a zero, salvo na Zona Franca.</div></div>
+  </div>
+  <div class="dica">Na prova, comece o parágrafo pelo <b>veredito</b> e use os dados do caso.</div>
+ </div>
+ <div class="rod"><span>aula grátis · FISCAL no direct</span><b>→</b></div>
+</div>
+
+<!-- 05 CTA -->
+<div class="slide dark" data-n="05">
+ <div class="topo"><span class="marca">AUDITOR DISCURSIVAS</span><span class="cont">05 / 05</span></div>
+ <div class="corpo">
+  <div class="eb">Receba a aula no seu direct</div>
+  <div class="h2" style="margin-top:18px">Mande <span>FISCAL</span><br>no direct</div>
+  <div class="autor">
+   <div class="foto">SW</div>
+   <div><div class="n">Samuel Wolf</div><div class="r">Discursivas para concursos</div>
+   <ul><li>🎓 Engenheiro pelo ITA</li><li>🏛️ Auditor de Controle Externo do TCE-RJ</li><li>💼 Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</li></ul></div>
+  </div>
+  <div class="sub" style="margin-top:40px">Salve este post e mande para quem estuda para <b>Receita, SEFAZ ou fisco municipal</b>. Na próxima rodada: trilha <b>Policial</b>.</div>
+ </div>
+ <div class="cta"><div class="a">Mande <b>FISCAL</b> no direct 👇</div><div class="b">e eu te envio o PDF na hora. Se não aparecer, olhe em “Solicitações de mensagem”.</div></div>
+ <div class="rod"><span>@auditor_discursivas</span><b>siga para a próxima rodada</b></div>
+</div>
+
+<!-- STORY 1 -->
+<div class="story" data-n="st1">
+ <div class="st-in">
+  <div class="marca" style="font-size:28px">AUDITOR DISCURSIVAS</div>
+  <div class="selo" style="align-self:flex-start;font-size:72px">AULA GRATUITA · PDF<small>RODADA 1 · TRILHA FISCAL</small></div>
+  <div class="h1" style="font-size:110px">Rodadas de<br><span>Discursiva</span></div>
+  <div class="sub" style="color:#DCE2EA;font-size:40px">2 casos inéditos da área fiscal: <b style="color:#fff">reforma tributária e planejamento × evasão</b>, com espelho e texto definitivo.</div>
+  <div class="cta" style="position:static;margin-top:auto"><div class="a" style="font-size:52px">Mande <b>FISCAL</b><br>no direct</div><div class="b" style="font-size:32px">e eu te envio o PDF na hora.</div></div>
+ </div>
+</div>
+</body></html>

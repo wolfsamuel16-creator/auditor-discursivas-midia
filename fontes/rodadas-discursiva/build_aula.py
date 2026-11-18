@@ -72,7 +72,7 @@ add(f'''<section class="pb"><span class="eyebrow">Antes de começar</span><h2 cl
 <tr><td>3</td><td>Corrija-se com o espelho: conceito por quesito, conte os erros e só depois leia o texto definitivo.</td></tr>
 <tr><td>4</td><td>Repita com o Tema 2. Guarde os textos: na próxima rodada da trilha, compare a evolução.</td></tr>
 </tbody></table>
-<div class="box lr"><span class="eyebrow">Quer a próxima rodada?</span>Siga o <b>@auditor_discursivas</b>. A próxima rodada é a da trilha <b>{C.PROXIMA[0]}</b>, em <b>{C.PROXIMA[1]}</b>. Para receber esta trilha de novo, comente ou mande <b>{A_.PALAVRA}</b> no direct.</div>
+<div class="box lr"><span class="eyebrow">Quer a próxima rodada?</span>Siga o <b>@auditor_discursivas</b>. A próxima rodada é a da trilha <b>{C.PROXIMA[0]}</b>, em <b>{C.PROXIMA[1]}</b>. Para receber esta trilha de novo, mande <b>{A_.PALAVRA}</b> no direct.</div>
 </section>''')
 
 # MINI-AULA
@@ -122,7 +122,7 @@ for i, t in enumerate(C.TEMAS, 1):
 add(f'''<section class="pb"><span class="eyebrow">Uma palavra final</span><h2 class="sec">Até a próxima rodada</h2>
 {AUTOR}
 <p>Se você escreveu os dois textos antes de olhar as soluções, já fez a parte mais difícil: treinar como na prova. Compare o seu texto com o espelho com honestidade, quesito por quesito. É assim que o corretor vai ler o seu.</p>
-<div class="box lr"><span class="eyebrow">Gostou?</span>Comenta no <b>@auditor_discursivas</b> o que achou e manda esta rodada para quem estuda com você. A próxima é a da trilha <b>{C.PROXIMA[0]}</b>, em <b>{C.PROXIMA[1]}</b>.</div>
+<div class="box lr"><span class="eyebrow">Gostou?</span>Me conta no direct do <b>@auditor_discursivas</b> o que achou e manda esta rodada para quem estuda com você. A próxima é a da trilha <b>{C.PROXIMA[0]}</b>, em <b>{C.PROXIMA[1]}</b>.</div>
 <div class="cta"><span class="eyebrow">E se a nota da sua discursiva não vier como você esperava?</span>Não aceite a nota de cara. Depois do resultado, a banca abre um prazo curto de recurso, e um recurso bem fundamentado mostra, quesito por quesito, o que o seu texto já trazia e não foi pontuado — e confere a contagem de erros e de linhas.<br><br><b>Mande RECURSO no direct do @auditor_discursivas.</b> A análise de viabilidade é gratuita: você só decide depois de saber se vale recorrer.</div>
 <p style="margin-top:12pt">Um abraço e bons estudos,<br><b>Samuel Wolf</b></p>
 <h3>Fontes</h3><ul class="fontes">{''.join(f'<li>{f}</li>' for f in C.FONTES)}</ul>
