@@ -6,5 +6,13 @@
   "palavra_chave": "FISCAL",
   "primeiro_comentario": "📌 Mande FISCAL no direct que eu te envio a Rodada 1 em PDF. Próxima rodada: Policial, em 27/11.",
   "observacao": "13h30 porque há outro Reel em 21/11 11h",
-  "status": "aguardando"
+  "status": "agendado",
+  "metricool_id": 432660770,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-2131619945214885306",
+  "agendado_em": "2026-11-18T07:51:00",
+  "musica": {
+    "audioId": "544713431841568",
+    "titulo": "Lofi Street",
+    "artista": "bbox"
+  }
 }
