@@ -8,5 +8,15 @@
  "gancho": "Prova Cebraspe? / Recorra contra a régua.",
  "corte": "0-4.8 + 13.65-34.65 + 51.85-59.05 + 76.33-78.3 (35 s)",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 434019186,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-5737556798012110654",
+ "agendado_em": "2026-11-19T07:28:00",
+ "musica": {
+  "audioId": "423124700418880",
+  "titulo": "Good Vibes",
+  "artista": "Giulio Cercato",
+  "audioVolume": 12,
+  "videoVolume": 100
+ }
 }

@@ -7,5 +7,15 @@
  "reel_original": "posts/2026-11-18-serie-07-topico-frasal-a-frase-que-vale-ouro",
  "gancho": "O ponto mora / na primeira frase.",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 434019147,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=8534333747622790693",
+ "agendado_em": "2026-11-19T07:28:00",
+ "musica": {
+  "audioId": "534836465627737",
+  "titulo": "Midnight Dreamer",
+  "artista": "Giulio Cercato",
+  "audioVolume": 100,
+  "videoVolume": 0
+ }
 }
