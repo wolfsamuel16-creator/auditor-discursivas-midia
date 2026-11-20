@@ -7,5 +7,15 @@
  "reel_original": "posts/2026-11-19-ps-05-contas-do-presidente-do-tj",
  "gancho": "Contas do presidente do TJ: / quem julga?",
  "isAiGenerated": false,
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 435374077,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=7397712665837194012",
+ "agendado_em": "2026-11-20T07:30:00",
+ "musica": {
+  "audioId": "1214608611732450",
+  "titulo": "Little Things",
+  "artista": "Giulio Cercato",
+  "audioVolume": 100,
+  "videoVolume": 0
+ }
 }

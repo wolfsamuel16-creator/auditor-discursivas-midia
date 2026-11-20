@@ -9,5 +9,15 @@
  "isAiGenerated": true,
  "runway_falhou": "sem créditos na Runway (20/11) — feito o tipo A",
  "observacao": "19h30 movido para 20h30 (carrossel Rodadas Fiscal às 19h30)",
- "status": "aguardando"
+ "status": "agendado",
+ "metricool_id": 435374282,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=1503898386872092206",
+ "agendado_em": "2026-11-20T07:30:00",
+ "musica": {
+  "audioId": "1057409882044849",
+  "titulo": "Happy Go Lucky",
+  "artista": "Corduroy Egg",
+  "audioVolume": 12,
+  "videoVolume": 100
+ }
 }
