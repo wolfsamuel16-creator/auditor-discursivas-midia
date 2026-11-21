@@ -7,6 +7,17 @@
  "reel_original": "posts/2026-11-18-reel-dia-a-dia-auditor",
  "gancho": "O que foi pago foi executado?",
  "isAiGenerated": true,
- "status": "aguardando",
- "runway_falhou": "sem créditos na Runway (21/11) — feito tipo A"
+ "status": "agendado",
+ "runway_falhou": "sem créditos na Runway (21/11) — feito tipo A",
+ "metricool_id": 436549543,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=5714368863216815971",
+ "agendado_em": "2026-11-21T07:31:00",
+ "musica": {
+  "audioId": "1388161098514399",
+  "titulo": "Happy Days",
+  "artista": "Giulio Cercato",
+  "audioVolume": 12,
+  "videoVolume": 100
+ },
+ "shareTrialAutomatically": false
 }

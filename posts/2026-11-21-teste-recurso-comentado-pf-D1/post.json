@@ -7,6 +7,17 @@
  "reel_original": "posts/2026-11-16-recurso-comentado",
  "gancho": "Quesito veio parcial? Aponte a linha da folha.",
  "isAiGenerated": false,
- "status": "aguardando",
- "slides": "5 slides (4/7/7/7/6 s), 29,8 s, sem áudio próprio"
+ "status": "agendado",
+ "slides": "5 slides (4/7/7/7/6 s), 29,8 s, sem áudio próprio",
+ "metricool_id": 436549087,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=3532479319678732254",
+ "agendado_em": "2026-11-21T07:31:00",
+ "musica": {
+  "audioId": "2477944699150252",
+  "titulo": "Peaceful Piano",
+  "artista": "Dr. Pheel",
+  "audioVolume": 100,
+  "videoVolume": 0
+ },
+ "shareTrialAutomatically": false
 }

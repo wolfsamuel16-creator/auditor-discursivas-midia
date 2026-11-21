@@ -7,6 +7,17 @@
  "reel_original": "posts/2026-11-19-reel-erro-1-peca-que-julga",
  "gancho": "Auditor não julga. Quem julga, então?",
  "isAiGenerated": true,
- "status": "aguardando",
- "corte": "21,36–35,24 + 35,24–49,40 + 72,04–fim (34,7 s)"
+ "status": "agendado",
+ "corte": "21,36–35,24 + 35,24–49,40 + 72,04–fim (34,7 s)",
+ "metricool_id": 436549496,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-3895135379737918472",
+ "agendado_em": "2026-11-21T07:31:00",
+ "musica": {
+  "audioId": "2397710587111621",
+  "titulo": "November",
+  "artista": "Giulio Cercato",
+  "audioVolume": 12,
+  "videoVolume": 100
+ },
+ "shareTrialAutomatically": false
 }
