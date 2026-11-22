@@ -7,6 +7,17 @@
  "reel_original": "posts/2026-11-19-reel-elogio-aluna",
  "gancho": "Rodada grátis de discursiva: / olha o retorno",
  "isAiGenerated": false,
- "status": "aguardando",
- "runway_falhou": "workspace da Runway sem créditos em 22/11 (tipo C planejado; feito A)"
+ "status": "agendado",
+ "runway_falhou": "workspace da Runway sem créditos em 22/11 (tipo C planejado; feito A)",
+ "metricool_id": 437437222,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-4861942971633614138",
+ "agendado_em": "2026-11-22T07:30:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "1481425163477120",
+  "titulo": "Good Thing (Instrumental)",
+  "artista": "Tony Dark Eyes",
+  "audioVolume": 12,
+  "videoVolume": 100
+ }
 }

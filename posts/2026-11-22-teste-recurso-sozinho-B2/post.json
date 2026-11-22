@@ -7,7 +7,18 @@
  "reel_original": "posts/2026-11-12-reel-recurso-sozinho",
  "gancho": "Erros que eu cometia / nos primeiros recursos",
  "isAiGenerated": false,
- "status": "aguardando",
+ "status": "agendado",
  "corte": "33,75–38,95 s (erros nos primeiros recursos) + 39,2–49,6 s (espelho/critério da banca) + 52,55–58,95 s (um ponto: vagas ou CR) + 59,3–71,6 s (CTA + cartão final) = 34,3 s",
- "horario_obs": "19h30 movido para 18h30 (collab no feed às 19h40)"
+ "horario_obs": "19h30 movido para 18h30 (collab no feed às 19h40)",
+ "metricool_id": 437437394,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-7733642387016366686",
+ "agendado_em": "2026-11-22T07:30:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "894998458735932",
+  "titulo": "Habitual",
+  "artista": "Adam Griffith",
+  "audioVolume": 12,
+  "videoVolume": 100
+ }
 }

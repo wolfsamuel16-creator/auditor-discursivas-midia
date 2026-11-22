@@ -7,6 +7,17 @@
  "reel_original": "posts/2026-11-11-serie-06-esqueleto-e-paragrafo-padrao",
  "gancho": "3 peças fixas / do parágrafo que pontua",
  "isAiGenerated": false,
- "status": "aguardando",
- "slides": "5 slides (4/6/6/7/5 s), 26,8 s, sem áudio próprio"
+ "status": "agendado",
+ "slides": "5 slides (4/6/6/7/5 s), 26,8 s, sem áudio próprio",
+ "metricool_id": 437437139,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=5374695669420281503",
+ "agendado_em": "2026-11-22T07:30:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "1891400918224519",
+  "titulo": "Like A Win (Instrumental)",
+  "artista": "Phury",
+  "audioVolume": 100,
+  "videoVolume": 0
+ }
 }
