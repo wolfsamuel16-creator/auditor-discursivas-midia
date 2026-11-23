@@ -18,8 +18,12 @@
 //        GET /privacidade · GET /exclusao-dados · GET /log?k=<META_VERIFY> (últimos eventos, sem conteúdo)
 //        GET|POST /aviso?k=<META_VERIFY>&u=&m=&o= (webhook do InfluenciMax → Telegram)
 //        GET /conectar (Samuel faz login na Meta) → GET /retorno (troca o código pelo token, acha Página e Instagram, assina webhooks)
+//        GET /app (painel em inglês para o App Review: login Meta, Pages, Webhooks, Comments, Messages, Engagement)
+//        v5.6: o painel usa token PRÓPRIO da sessão (KV app:sess:*); NÃO mexe em meta:auth (token do robô).
 
-const VERSAO = "ia-meta v5.5 (04/11/2026)";
+import { painel, painelLogin, painelPagina, guardarEvento, setDeps } from "./painel.js";
+
+const VERSAO = "ia-meta v5.6 (23/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -34,7 +38,10 @@ export default {
     const url = new URL(req.url);
     const p = url.pathname.replace(/\/+$/, "") || "/";
 
-    if (req.method === "GET" && p === "/") {
+    setDeps({ registrar, assinarPagina });
+    if (p === "/app" || p.startsWith("/app/")) return painel(req, url, p, env);
+    if (req.method === "GET" && p === "/" && (req.headers.get("accept") || "").includes("text/html")) return Response.redirect(url.origin + "/app", 302);
+    if (req.method === "GET" && (p === "/" || p === "/status")) {
       const auth = await env.CONVERSAS.get("meta:auth", "json");
       return json({ versao: VERSAO, modo: env.MODO || "ouvir", segredo_app: !!env.IG_APP_SECRET, conectado: !!(auth && auth.page_token), instagram: auth?.ig_username || null, pagina: auth?.page_name || null, assinatura: auth?.assinatura || null, conectado_em: auth?.em || null, chave_anthropic: !!env.ANTHROPIC_API_KEY });
     }
@@ -72,7 +79,8 @@ export default {
       return json({ assinatura: auth.assinatura, apps_assinados: (atual.data || []).map(a => ({ app: a.name, id: a.id, campos: a.subscribed_fields })), erro: atual.error?.message });
     }
     if (req.method === "GET" && p === "/retorno") {
-      return html(await conectar(url, env));
+      const r = await conectar(url, env);
+      return r instanceof Response ? r : html(r);
     }
     if (req.method === "GET" && p === "/meta") {
       const mode = url.searchParams.get("hub.mode");
@@ -136,14 +144,18 @@ export default {
 
 // ---------- eventos ----------
 async function processar(body, env, semSegredo) {
-  if (body.object !== "instagram") { await registrar(env, { t: agora(), tipo: "objeto_" + body.object }); return; }
+  if (body.object !== "instagram") {
+    for (const entry of body.entry || []) for (const ch of entry.changes || []) await guardarEvento(env, { campo: body.object + ":" + ch.field, conta: String(entry.id || ""), de: ch.value?.from?.id || null, user: ch.value?.from?.name || null, texto: ch.value?.message || ch.value?.verb || "", media: ch.value?.post_id || null });
+    await registrar(env, { t: agora(), tipo: "objeto_" + body.object }); return;
+  }
   for (const entry of body.entry || []) {
     const contaId = String(entry.id || "");
     for (const ev of entry.messaging || []) await eventoMensagem(ev, contaId, env, semSegredo);
     for (const ev of entry.standby || []) await eventoMensagem({ ...ev, _standby: true }, contaId, env, semSegredo);
     for (const ch of entry.changes || []) {
       if (ch.field === "comments" && ch.value?.id) await eventoComentario(ch.value, env, semSegredo);
-      else await registrar(env, { t: agora(), tipo: "change_" + ch.field, de: ch.value?.from?.id || null, media: ch.value?.media?.id || null, len: (ch.value?.text || "").length, sem_segredo: semSegredo || undefined });
+      else { await guardarEvento(env, { campo: ch.field, conta: contaId, de: ch.value?.from?.id || null, user: ch.value?.from?.username || null, texto: ch.value?.text || "", media: ch.value?.media?.id || null }); }
+      if (!(ch.field === "comments" && ch.value?.id)) await registrar(env, { t: agora(), tipo: "change_" + ch.field, de: ch.value?.from?.id || null, media: ch.value?.media?.id || null, len: (ch.value?.text || "").length, sem_segredo: semSegredo || undefined });
     }
   }
 }
@@ -162,6 +174,7 @@ async function eventoMensagem(ev, contaId, env, semSegredo) {
     // Mensagem que SAIU do @auditor_discursivas. Pode ser: o Samuel (app do Instagram), o próprio ia-meta ou outro app (InfluenciMax).
     const aluno = recipient;
     const nossa = m.mid ? await env.CONVERSAS.get("enviado:" + m.mid) : null;
+    await guardarEvento(env, { campo: "messages (echo)", conta: contaId, de: contaId, para: recipient, texto: m.text || "", mid: m.mid || null });
     const info = { ...base, tipo: "eco", mid: m.mid ? m.mid.slice(-12) : null, nossa: !!nossa, app_id: m.app_id ?? ev.app_id ?? null, chaves: Object.keys(m).join(","), len: (m.text || "").length, self: m.is_self || undefined };
     if (nossa || m.is_self) { await registrar(env, info); return; }
     // Espera curta: o eco pode chegar antes de o envio ser gravado.
@@ -181,6 +194,7 @@ async function eventoMensagem(ev, contaId, env, semSegredo) {
 
   if (sender && sender !== contaId) {
     const pausa = await env.CONVERSAS.get("pausa:" + sender);
+    await guardarEvento(env, { campo: "messages", conta: contaId, de: sender, user: await usernameDe(sender, env).catch(() => null), texto: m.text || (m.attachments ? "[" + m.attachments.map(a => a.type).join(",") + "]" : ""), mid: m.mid || null });
     const info = { ...base, tipo: "msg_aluno", len: (m.text || "").length, anexo: m.attachments ? m.attachments.map(a => a.type).join(",") : undefined, story: m.reply_to?.story ? true : undefined, pausada: !!pausa };
     await registrar(env, info);
     if ((env.MODO || "ouvir") === "responder" && !pausa && m.text && !ev._standby) await responder(sender, m.text, env);
@@ -210,6 +224,7 @@ function acharCampanha(texto, campanhas) {
 async function eventoComentario(v, env, semSegredo) {
   const auth = await env.CONVERSAS.get("meta:auth", "json");
   const autor = v.from?.id, user = v.from?.username || null;
+  await guardarEvento(env, { campo: "comments", de: autor || null, user, texto: v.text || "", media: v.media?.id || null, comentario: v.id || null });
   if (auth?.ig_id && autor === auth.ig_id) { await registrar(env, { t: agora(), tipo: "comentario_proprio", media: v.media?.id || null }); return; }
   const campanhas = (await env.CONVERSAS.get("meta:campanhas", "json")) || [];
   const c = acharCampanha(v.text, campanhas);
@@ -352,8 +367,10 @@ async function usernameDe(id, env) {
 // ---------- conexão com a Meta (login do Samuel) ----------
 async function conectar(url, env) {
   const code = url.searchParams.get("code"), state = url.searchParams.get("state");
-  if (url.searchParams.get("error")) return pagina("Conexão cancelada", "A Meta devolveu: " + esc(url.searchParams.get("error_description") || url.searchParams.get("error")));
-  if (!code || !state || !(await env.CONVERSAS.get("meta:state:" + state))) return pagina("Link expirado", "Abra de novo <a href='/conectar'>/conectar</a>.");
+  if (url.searchParams.get("error") && !(url.searchParams.get("state") && (await env.CONVERSAS.get("meta:state:" + url.searchParams.get("state"))) === "app")) return pagina("Conexão cancelada", "A Meta devolveu: " + esc(url.searchParams.get("error_description") || url.searchParams.get("error")));
+  const origemState = state ? await env.CONVERSAS.get("meta:state:" + state) : null;
+  if (url.searchParams.get("error") && origemState === "app") return painelPagina("Login cancelled", "<p>Meta returned: " + esc(url.searchParams.get("error_description") || url.searchParams.get("error")) + "</p><p><a class='btn' href='/app'>Back</a></p>");
+  if (!code || !state || !origemState) return pagina("Link expirado", "Abra de novo <a href='/conectar'>/conectar</a>.");
   await env.CONVERSAS.delete("meta:state:" + state);
   const tk = new URL(GRAPH + "/oauth/access_token");
   tk.searchParams.set("client_id", APP_ID); tk.searchParams.set("client_secret", env.IG_APP_SECRET);
@@ -361,6 +378,7 @@ async function conectar(url, env) {
   const t = await (await fetch(tk)).json();
   if (!t.access_token) { await registrar(env, { t: agora(), tipo: "erro_conectar", etapa: "token", erro: JSON.stringify(t.error || t).slice(0, 300) }); return pagina("Erro ao obter o token", esc(JSON.stringify(t.error || t))); }
   let userToken = t.access_token;
+  if (origemState === "app") return painelLogin(userToken, url, env);
   // Token de longa duração (60 dias); os tokens de Página tirados dele não expiram.
   const ll = new URL(GRAPH + "/oauth/access_token");
   ll.searchParams.set("grant_type", "fb_exchange_token"); ll.searchParams.set("client_id", APP_ID);
