@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "isAiGenerated": false,
  "publicar_em": "2026-11-23T18:30:00",
  "tipo_versao": "B",
@@ -10,5 +10,16 @@
  "gancho": "2 recursos no Cebraspe: / você conhece os dois?",
  "runway_falhou": "sem créditos na Runway em 23/11 — feito tipo B",
  "horario_obs": "19h30 movido para 18h30 (Reel em rascunho às 19h30)",
- "cortes": "0–13,4 s + 37,1–54,3 s + cartão final 68,2 s–fim; trecho com datas vencidas (22/11) removido"
+ "cortes": "0–13,4 s + 37,1–54,3 s + cartão final 68,2 s–fim; trecho com datas vencidas (22/11) removido",
+ "metricool_id": 438572937,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=384740041357084763",
+ "agendado_em": "2026-11-23T07:34:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "1834841137494500",
+  "titulo": "Cool",
+  "artista": "LAVLO",
+  "audioVolume": 12,
+  "videoVolume": 100
+ }
 }

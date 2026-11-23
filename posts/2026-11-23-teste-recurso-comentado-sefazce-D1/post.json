@@ -2,10 +2,21 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "isAiGenerated": false,
  "publicar_em": "2026-11-23T13:00:00",
  "tipo_versao": "D",
  "reel_original": "posts/2026-11-09-recurso-comentado",
- "gancho": "Esqueceu o número do artigo? / Veja o recurso."
+ "gancho": "Esqueceu o número do artigo? / Veja o recurso.",
+ "metricool_id": 438572531,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=8506700737927991204",
+ "agendado_em": "2026-11-23T07:34:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "2133049300441390",
+  "titulo": "Matcha Latte",
+  "artista": "Giulio Cercato",
+  "audioVolume": 100,
+  "videoVolume": 0
+ }
 }

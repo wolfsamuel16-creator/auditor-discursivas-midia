@@ -2,10 +2,21 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "isAiGenerated": false,
  "publicar_em": "2026-11-23T16:30:00",
  "tipo_versao": "A",
  "reel_original": "posts/2026-11-21-reel-concurseira-concursado-ep1",
- "gancho": "Respondeu ao tema, / e não ao comando?"
+ "gancho": "Respondeu ao tema, / e não ao comando?",
+ "metricool_id": 438572849,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-6737660263671709435",
+ "agendado_em": "2026-11-23T07:34:00",
+ "shareTrialAutomatically": false,
+ "musica": {
+  "audioId": "1563458398793752",
+  "titulo": "The Best Part",
+  "artista": "LAVLO",
+  "audioVolume": 12,
+  "videoVolume": 100
+ }
 }
