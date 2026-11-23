@@ -102,13 +102,17 @@ export async function painel(req, url, p, env) {
     // v5.7 — diagnóstico do caminho "login pelo Instagram" (token IG_USER_TOKEN guardado pelo Samuel no Cloudflare).
     if (rota.startsWith("ig/")) {
       if (!env.IG_USER_TOKEN) return json({ error: "IG_USER_TOKEN is not configured" });
-      const IG = "https://graph.instagram.com/v24.0/";
-      const ig = async (method, path) => { const r = await fetch(IG + path + (path.includes("?") ? "&" : "?") + "access_token=" + encodeURIComponent(env.IG_USER_TOKEN), { method }); return r.json().catch(() => ({ error: { message: "HTTP " + r.status } })); };
+      const tok = String(env.IG_USER_TOKEN).trim().replace(/^["']|["']$/g, "");
+      // Token do Instagram (IG…) → graph.instagram.com; token do Facebook (EAA…) → graph.facebook.com com o id do Instagram.
+      const ehFb = tok.startsWith("EA");
+      const IG = ehFb ? "https://graph.facebook.com/v24.0/" : "https://graph.instagram.com/v24.0/";
+      const ig = async (method, path) => { const r = await fetch(IG + path + (path.includes("?") ? "&" : "?") + "access_token=" + encodeURIComponent(tok), { method }); return r.json().catch(() => ({ error: { message: "HTTP " + r.status } })); };
       if (rota === "ig/brutos") return json({ brutos: (await env.CONVERSAS.get("app:brutos", "json")) || [] });
       if (rota === "ig/status") {
-        const me = await ig("GET", "me?fields=user_id,username,account_type");
-        const sub = await ig("GET", "me/subscribed_apps");
-        return json({ me, subscribed: sub });
+        const forma = { prefixo: tok.slice(0, 3), tamanho: tok.length, espacos: /\s/.test(String(env.IG_USER_TOKEN)), tipo: ehFb ? "facebook" : "instagram" };
+        const me = await ig("GET", ehFb ? "me?fields=id,name" : "me?fields=user_id,username,account_type");
+        const sub = ehFb ? null : await ig("GET", "me/subscribed_apps");
+        return json({ forma, me, subscribed: sub });
       }
       if (rota === "ig/subscribe" && req.method === "POST") {
         const r = await ig("POST", "me/subscribed_apps?subscribed_fields=messages,messaging_postbacks,messaging_referral,messaging_seen,message_reactions,comments");
