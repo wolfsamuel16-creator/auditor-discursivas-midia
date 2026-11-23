@@ -165,12 +165,12 @@ export async function painel(req, url, p, env) {
       return json(r.success ? { ok: true } : { error: r.error?.message || "error" });
     }
     if (rota === "conversations") {
-      const c = await gget(`${page.id}/conversations?platform=instagram&fields=id,updated_time,participants,messages.limit(1){message,from,created_time}&limit=20`, tk);
+      const c = await gget(`${page.id}/conversations?platform=instagram&fields=id,updated_time,participants&limit=10`, tk);
       return json({ ig_id: page.ig_id, ig_username: page.ig_username, conversations: c.data || [], error: c.error?.message });
     }
     if (rota === "thread") {
       const id = q("id"); if (!conv(id)) return json({ error: "invalid conversation id" });
-      const c = await gget(`${id}?fields=participants,messages.limit(25){id,message,from,to,created_time,attachments}`, tk);
+      const c = await gget(`${id}?fields=participants,messages.limit(15){id,message,from,to,created_time}`, tk);
       return json({ ig_id: page.ig_id, participants: c.participants?.data || [], messages: c.messages?.data || [], error: c.error?.message });
     }
     if (rota === "send" && req.method === "POST") {
