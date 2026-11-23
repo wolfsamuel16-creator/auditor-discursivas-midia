@@ -135,7 +135,16 @@ export async function painel(req, url, p, env) {
       const media = q("media"); if (!idOk(media)) return json({ error: "invalid media id" });
       const info = await gget(`${media}?fields=id,caption,permalink,comments_count,like_count,timestamp`, tk);
       const c = await gget(`${media}/comments?fields=id,text,username,timestamp,hidden,like_count,replies{id,text,username,timestamp,hidden}&limit=50`, tk);
-      return json({ media: info, comments: c.data || [], error: c.error?.message || info.error?.message });
+      // A Meta não lista comentários ocultos: o painel lembra os que ocultou (KV app:ocultos:<media>) e os mostra com "Unhide".
+      const lista = c.data || [];
+      const ocultos = (await env.CONVERSAS.get("app:ocultos:" + media, "json")) || [];
+      for (const id of ocultos) {
+        if (lista.some(x => x.id === id)) continue;
+        const d = await gget(`${id}?fields=id,text,username,timestamp,hidden,like_count`, tk);
+        if (d.id) lista.push({ ...d, hidden: true });
+      }
+      lista.sort((a, b) => String(b.timestamp).localeCompare(String(a.timestamp)));
+      return json({ media: info, comments: lista, error: c.error?.message || info.error?.message });
     }
     if (rota === "comments/create" && req.method === "POST") {
       if (!idOk(corpo.media) || !String(corpo.message || "").trim()) return json({ error: "media and message are required" });
@@ -151,6 +160,12 @@ export async function painel(req, url, p, env) {
     if (rota === "comments/hide" && req.method === "POST") {
       if (!idOk(corpo.comment)) return json({ error: "invalid comment id" });
       const r = await gsend("POST", `${corpo.comment}`, tk, { hide: !!corpo.hide });
+      if (r.success && idOk(corpo.media)) {
+        const k = "app:ocultos:" + corpo.media;
+        const l = ((await env.CONVERSAS.get(k, "json")) || []).filter(x => x !== corpo.comment);
+        if (corpo.hide) l.push(corpo.comment);
+        await env.CONVERSAS.put(k, JSON.stringify(l.slice(-50)), { expirationTtl: 30 * 86400 });
+      }
       return json(r.success ? { ok: true } : { error: r.error?.message || "error" });
     }
     if (rota === "comments/delete" && req.method === "POST") {
@@ -346,7 +361,7 @@ function loadComments(){if(!SEL_MEDIA)return;api("comments?media="+encodeURIComp
  var h="";(d.comments||[]).forEach(function(c){h+=cmHtml(c,false);((c.replies&&c.replies.data)||[]).forEach(function(r){h+=cmHtml(r,true)})});$("cm-list").innerHTML=h||"<p class='muted'>No comments yet.</p>";
  Array.prototype.forEach.call(document.querySelectorAll("#cm-list button"),function(b){b.onclick=function(){var id=b.dataset.id,a=b.dataset.a;
   if(a==="reply"){var t=prompt("Reply text:");if(t)api("comments/reply",{comment:id,message:t}).then(function(r){if(r.ok){toast("Reply published");loadComments()}})}
-  if(a==="hide"||a==="unhide")api("comments/hide",{comment:id,hide:a==="hide"}).then(function(r){if(r.ok){toast(a==="hide"?"Comment hidden":"Comment visible again");loadComments()}});
+  if(a==="hide"||a==="unhide")api("comments/hide",{comment:id,hide:a==="hide",media:SEL_MEDIA}).then(function(r){if(r.ok){toast(a==="hide"?"Comment hidden":"Comment visible again");loadComments()}});
   if(a==="delete")api("comments/delete",{comment:id}).then(function(r){if(r.ok){toast("Comment deleted");loadComments()}})}})})}
 $("cm-add").onclick=function(){var t=$("cm-new").value.trim();if(!t||!SEL_MEDIA)return;api("comments/create",{media:SEL_MEDIA,message:t}).then(function(r){if(r.ok){$("cm-new").value="";toast("Comment published (id "+r.id+")");loadComments()}})};
 $("cm-reload").onclick=loadComments;
