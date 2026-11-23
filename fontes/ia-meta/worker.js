@@ -23,7 +23,7 @@
 
 import { painel, painelLogin, painelPagina, guardarEvento, setDeps } from "./painel.js";
 
-const VERSAO = "ia-meta v5.6 (23/11/2026)";
+const VERSAO = "ia-meta v5.7 (23/11/2026)";
 const GRAPH = "https://graph.facebook.com/v24.0";
 const APP_ID = "2312368952948712";      // app "Auditor Discursivas IA" na Meta
 const CONFIG_ID = "1433066778420394";   // configuração "Pagina + Instagram (usuario)" (token de usuário → token da Página)
@@ -86,16 +86,24 @@ export default {
       const mode = url.searchParams.get("hub.mode");
       const tok = url.searchParams.get("hub.verify_token");
       const ch = url.searchParams.get("hub.challenge");
-      if (mode === "subscribe" && env.META_VERIFY && tok === env.META_VERIFY) return new Response(ch || "", { status: 200 });
+      if (mode === "subscribe" && ((env.META_VERIFY && tok === env.META_VERIFY) || (env.META_VERIFY_IG && tok === env.META_VERIFY_IG))) return new Response(ch || "", { status: 200 });
       return new Response("forbidden", { status: 403 });
     }
     if (req.method === "POST" && p === "/meta") {
       const raw = await req.text();
       if (env.IG_APP_SECRET) {
-        const ok = await assinaturaOk(raw, req.headers.get("x-hub-signature-256"), env.IG_APP_SECRET);
+        const sig = req.headers.get("x-hub-signature-256");
+        // v5.7: webhooks do login pelo Instagram podem vir assinados com a chave secreta do app do Instagram (IG_APP_SECRET_IG).
+        const ok = (await assinaturaOk(raw, sig, env.IG_APP_SECRET)) || (env.IG_APP_SECRET_IG ? await assinaturaOk(raw, sig, env.IG_APP_SECRET_IG) : false);
         if (!ok) { ctx.waitUntil(registrar(env, { t: agora(), tipo: "assinatura_invalida" })); return new Response("bad signature", { status: 401 }); }
       }
       let body; try { body = JSON.parse(raw); } catch { return new Response("bad json", { status: 400 }); }
+      // v5.7: resumo de cada POST recebido (diagnóstico das DMs) — KV app:brutos, últimos 30.
+      ctx.waitUntil((async () => { try {
+        const resumo = { t: agora(), obj: body.object, itens: (body.entry || []).map(e => ({ id: e.id, msg: (e.messaging || []).length, stb: (e.standby || []).length, ch: (e.changes || []).map(c => c.field) })) };
+        const l = (await env.CONVERSAS.get("app:brutos", "json")) || []; l.unshift(resumo);
+        await env.CONVERSAS.put("app:brutos", JSON.stringify(l.slice(0, 30)), { expirationTtl: 7 * 86400 });
+      } catch (e) {} })());
       ctx.waitUntil(processar(body, env, !env.IG_APP_SECRET).catch(e => registrar(env, { t: agora(), tipo: "erro", erro: String(e).slice(0, 200) })));
       return new Response("EVENT_RECEIVED", { status: 200 });
     }

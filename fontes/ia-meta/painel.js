@@ -99,6 +99,25 @@ export async function painel(req, url, p, env) {
       await env.CONVERSAS.put("app:sess:" + sid, JSON.stringify(guardar), { expirationTtl: SESS_TTL });
       return json({ ok: true });
     }
+    // v5.7 — diagnóstico do caminho "login pelo Instagram" (token IG_USER_TOKEN guardado pelo Samuel no Cloudflare).
+    if (rota.startsWith("ig/")) {
+      if (!env.IG_USER_TOKEN) return json({ error: "IG_USER_TOKEN is not configured" });
+      const IG = "https://graph.instagram.com/v24.0/";
+      const ig = async (method, path) => { const r = await fetch(IG + path + (path.includes("?") ? "&" : "?") + "access_token=" + encodeURIComponent(env.IG_USER_TOKEN), { method }); return r.json().catch(() => ({ error: { message: "HTTP " + r.status } })); };
+      if (rota === "ig/brutos") return json({ brutos: (await env.CONVERSAS.get("app:brutos", "json")) || [] });
+      if (rota === "ig/status") {
+        const me = await ig("GET", "me?fields=user_id,username,account_type");
+        const sub = await ig("GET", "me/subscribed_apps");
+        return json({ me, subscribed: sub });
+      }
+      if (rota === "ig/subscribe" && req.method === "POST") {
+        const r = await ig("POST", "me/subscribed_apps?subscribed_fields=messages,messaging_postbacks,messaging_referral,messaging_seen,message_reactions,comments");
+        await registrar(env, { t: agora(), tipo: "ig_assinar", ok: !!r.success, erro: r.error?.message || null });
+        const sub = await ig("GET", "me/subscribed_apps");
+        return json({ result: r, subscribed: sub });
+      }
+      return json({ error: "unknown ig route" });
+    }
     if (!page) return json({ error: "No Facebook Page was shared with the app. Sign in again and select your Page." });
     const tk = page.token;
     const igIds = [page.id, page.ig_id].filter(Boolean);
