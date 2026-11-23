@@ -128,7 +128,7 @@ export async function painel(req, url, p, env) {
     }
     if (!page.ig_id) return json({ error: "This Page has no Instagram professional account linked." });
     if (rota === "media") {
-      const m = await gget(`${page.ig_id}/media?fields=id,caption,media_type,media_product_type,thumbnail_url,media_url,permalink,timestamp,comments_count,like_count&limit=12`, tk);
+      const m = await gget(`${page.ig_id}/media?fields=id,caption,media_type,media_product_type,thumbnail_url,media_url,permalink,timestamp,comments_count,like_count&limit=30`, tk);
       return json({ media: m.data || [], error: m.error?.message });
     }
     if (rota === "comments") {
