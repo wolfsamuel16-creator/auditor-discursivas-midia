@@ -1,0 +1,21 @@
+{
+ "publicar_em": "2026-12-01T10:15:00",
+ "tipo": "stories",
+ "origem": "Stories dos posts (regra do Samuel 05/11/2026; vídeo+arte no Reel desde 06/11/2026)",
+ "post_do_feed": "Reel 3 dúvidas sobre prova discursiva, rodada 2 (01/12 10h)",
+ "stories_publicar_em": [
+  "2026-12-01T10:15:00",
+  "2026-12-01T10:25:00",
+  "2026-12-01T10:35:00"
+ ],
+ "ordem_arquivos": [
+  "story_video_01.mp4",
+  "story_video_02.mp4",
+  "story_01.png"
+ ],
+ "primeiro_comentario": "",
+ "status": "aguardando",
+ "metricool_id": null,
+ "stories_metricool": [],
+ "observacao": "vídeo 91,6 s cortado em 48,2 s (silêncio)"
+}
