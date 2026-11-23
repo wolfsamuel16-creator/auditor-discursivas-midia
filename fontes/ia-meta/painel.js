@@ -167,7 +167,10 @@ export async function painel(req, url, p, env) {
     if (rota === "conversations") {
       // Caixa grande: a Meta recusa a lista completa ("reduce the amount of data"). Tenta a lista curta;
       // se falhar, monta pelas pessoas que mandaram DM recentemente (eventos do webhook) usando user_id.
-      const c = await gget(`${page.id}/conversations?platform=instagram&fields=id,updated_time&limit=5`, tk);
+      // A lista geral demora ~25 s e falha nesta caixa: depois de uma falha, pula por 30 min.
+      const pular = await env.CONVERSAS.get("app:conv_lista_falha");
+      const c = pular ? { data: [] } : await gget(`${page.id}/conversations?platform=instagram&fields=id,updated_time&limit=5`, tk);
+      if (c.error) await env.CONVERSAS.put("app:conv_lista_falha", "1", { expirationTtl: 1800 });
       let lista = c.data || [];
       if (lista.length) {
         await Promise.all(lista.map(async x => { const d = await gget(`${x.id}?fields=participants`, tk); x.participants = d.participants; }));
@@ -181,7 +184,7 @@ export async function painel(req, url, p, env) {
         if (x && !jaTem.has(x.id)) { lista.push(x); jaTem.add(x.id); }
       }
       lista.sort((a, b) => String(b.updated_time).localeCompare(String(a.updated_time)));
-      return json({ ig_id: page.ig_id, ig_username: page.ig_username, conversations: lista, error: lista.length ? undefined : c.error?.message });
+      return json({ ig_id: page.ig_id, ig_username: page.ig_username, conversations: lista });
     }
     if (rota === "thread") {
       const id = q("id"); if (!conv(id)) return json({ error: "invalid conversation id" });
@@ -348,7 +351,7 @@ function loadComments(){if(!SEL_MEDIA)return;api("comments?media="+encodeURIComp
 $("cm-add").onclick=function(){var t=$("cm-new").value.trim();if(!t||!SEL_MEDIA)return;api("comments/create",{media:SEL_MEDIA,message:t}).then(function(r){if(r.ok){$("cm-new").value="";toast("Comment published (id "+r.id+")");loadComments()}})};
 $("cm-reload").onclick=loadComments;
 function peerOf(c){var me=(ME&&ME.pages||[]).filter(function(x){return x.id===ME.sel})[0];var mine=me?me.ig_username:"";var ps=(c.participants&&c.participants.data)||c||[];return ps.filter(function(p){return p.username!==mine})[0]||ps[0]||{}}
-function loadConvs(quiet){api("conversations").then(function(d){var cs=d.conversations||[];$("ms-list").innerHTML=cs.length?cs.map(function(c){var p=peerOf(c);var last=(c.messages&&c.messages.data&&c.messages.data[0])||{};return"<div class='conv"+(c.id===SEL_CONV?" sel":"")+"' data-id='"+e(c.id)+"' data-peer='"+e(p.id)+"' data-user='"+e(p.username)+"' title='Open this conversation'><b>@"+e(p.username||p.id)+"</b><br><span class='muted'>"+e((last.message||"").slice(0,50))+"</span><br><span class='muted' style='font-size:11.5px'>"+dt(c.updated_time)+"</span></div>"}).join(""):"<p class='muted' style='padding:12px'>No conversations.</p>";
+function loadConvs(quiet){api("conversations").then(function(d){var cs=d.conversations||[];$("ms-list").innerHTML=cs.length?cs.map(function(c){var p=peerOf(c);var last=(c.messages&&c.messages.data&&c.messages.data[0])||{};return"<div class='conv"+(c.id===SEL_CONV?" sel":"")+"' data-id='"+e(c.id)+"' data-peer='"+e(p.id)+"' data-user='"+e(p.username)+"' title='Open this conversation'><b>@"+e(p.username||p.id)+"</b><br><span class='muted'>"+e((last.message||"").slice(0,50))+"</span><br><span class='muted' style='font-size:11.5px'>"+dt(c.updated_time)+"</span></div>"}).join(""):"<p class='muted' style='padding:12px'>No recent conversations. When someone sends a Direct message to the account, the conversation appears here.</p>";
  Array.prototype.forEach.call(document.querySelectorAll(".conv"),function(x){x.onclick=function(){SEL_CONV=x.dataset.id;SEL_PEER=x.dataset.peer;$("ms-title").textContent="Conversation with @"+x.dataset.user;$("ms-text").disabled=false;$("ms-send").disabled=false;loadConvs(true);loadThread()}})})}
 function loadThread(quiet){var id=SEL_CONV;api("thread?id="+encodeURIComponent(id)).then(function(d){if(id!==SEL_CONV)return;var th=$("ms-thread");var atBottom=th.scrollHeight-th.scrollTop-th.clientHeight<40;
  th.innerHTML=(d.messages||[]).slice().reverse().map(function(m){var out=m.from&&m.from.id===d.ig_id;return"<div class='msg "+(out?"out":"in")+"'><b>@"+e(m.from&&m.from.username)+"</b><br>"+e(m.message||(m.attachments?"[attachment]":""))+"<small>"+dt(m.created_time)+(out?" · sent":" · received")+"</small></div>"}).join("");
