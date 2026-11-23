@@ -191,12 +191,18 @@ export async function painel(req, url, p, env) {
         await Promise.all(lista.map(async x => { const d = await gget(`${x.id}?fields=participants`, tk); x.participants = d.participants; }));
       }
       const evs = (await env.CONVERSAS.get("app:eventos", "json")) || [];
-      const ids = [...new Set(evs.filter(e => e.campo === "messages" && e.de).map(e => e.de))].slice(0, 8);
+      // Quem mandou DM ou comentou recentemente (o id do comentário é o mesmo IGSID do direct).
+      const ids = [...new Set(evs.filter(e => (e.campo === "messages" || e.campo === "comments") && e.de && e.de !== page.ig_id).map(e => e.de))].slice(0, 8);
       const jaTem = new Set(lista.map(x => x.id));
       for (const id of ids) {
-        const d = await gget(`${page.id}/conversations?platform=instagram&user_id=${encodeURIComponent(id)}&fields=id,updated_time,participants`, tk);
-        const x = d.data && d.data[0];
-        if (x && !jaTem.has(x.id)) { lista.push(x); jaTem.add(x.id); }
+        const ck = "app:conv:" + page.id + ":" + id;
+        let x = await env.CONVERSAS.get(ck, "json");
+        if (!x) {
+          const d = await gget(`${page.id}/conversations?platform=instagram&user_id=${encodeURIComponent(id)}&fields=id,updated_time,participants`, tk);
+          x = (d.data && d.data[0]) || { nenhuma: true };
+          await env.CONVERSAS.put(ck, JSON.stringify(x), { expirationTtl: 600 });
+        }
+        if (x && x.id && !jaTem.has(x.id)) { lista.push(x); jaTem.add(x.id); }
       }
       lista.sort((a, b) => String(b.updated_time).localeCompare(String(a.updated_time)));
       return json({ ig_id: page.ig_id, ig_username: page.ig_username, conversations: lista });
