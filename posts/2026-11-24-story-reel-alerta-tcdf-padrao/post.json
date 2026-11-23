@@ -12,8 +12,13 @@
   "story_01.png"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": [],
- "observacao": "sequência empurrada de 12h15 para 12h30 (stories das rodadas às 12h20–12h24)"
+ "stories_metricool": [
+  439309526,
+  439309549
+ ],
+ "observacao": "sequência empurrada de 12h15 para 12h30 (stories das rodadas às 12h20–12h24)",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-6090064061769625970",
+ "agendado_em": "2026-11-23T16:27:00"
 }

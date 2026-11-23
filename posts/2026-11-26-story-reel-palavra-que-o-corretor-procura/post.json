@@ -14,8 +14,14 @@
   "story_01.png"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": [],
- "observacao": "vídeo 75 s cortado em 33,0 s (silêncio)"
+ "stories_metricool": [
+  439309583,
+  439309637,
+  439309665
+ ],
+ "observacao": "vídeo 75 s cortado em 33,0 s (silêncio)",
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=1244208776006943580",
+ "agendado_em": "2026-11-23T16:27:00"
 }
