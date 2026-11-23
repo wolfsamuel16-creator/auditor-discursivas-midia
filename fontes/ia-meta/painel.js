@@ -165,8 +165,23 @@ export async function painel(req, url, p, env) {
       return json(r.success ? { ok: true } : { error: r.error?.message || "error" });
     }
     if (rota === "conversations") {
-      const c = await gget(`${page.id}/conversations?platform=instagram&fields=id,updated_time,participants&limit=10`, tk);
-      return json({ ig_id: page.ig_id, ig_username: page.ig_username, conversations: c.data || [], error: c.error?.message });
+      // Caixa grande: a Meta recusa a lista completa ("reduce the amount of data"). Tenta a lista curta;
+      // se falhar, monta pelas pessoas que mandaram DM recentemente (eventos do webhook) usando user_id.
+      const c = await gget(`${page.id}/conversations?platform=instagram&fields=id,updated_time&limit=5`, tk);
+      let lista = c.data || [];
+      if (lista.length) {
+        await Promise.all(lista.map(async x => { const d = await gget(`${x.id}?fields=participants`, tk); x.participants = d.participants; }));
+      }
+      const evs = (await env.CONVERSAS.get("app:eventos", "json")) || [];
+      const ids = [...new Set(evs.filter(e => e.campo === "messages" && e.de).map(e => e.de))].slice(0, 8);
+      const jaTem = new Set(lista.map(x => x.id));
+      for (const id of ids) {
+        const d = await gget(`${page.id}/conversations?platform=instagram&user_id=${encodeURIComponent(id)}&fields=id,updated_time,participants`, tk);
+        const x = d.data && d.data[0];
+        if (x && !jaTem.has(x.id)) { lista.push(x); jaTem.add(x.id); }
+      }
+      lista.sort((a, b) => String(b.updated_time).localeCompare(String(a.updated_time)));
+      return json({ ig_id: page.ig_id, ig_username: page.ig_username, conversations: lista, error: lista.length ? undefined : c.error?.message });
     }
     if (rota === "thread") {
       const id = q("id"); if (!conv(id)) return json({ error: "invalid conversation id" });
