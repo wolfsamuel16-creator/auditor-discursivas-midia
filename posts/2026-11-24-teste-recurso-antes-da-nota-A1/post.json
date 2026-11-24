@@ -1,0 +1,42 @@
+{
+  "tipo": "trial_reel",
+  "canal": "Metricool (TRIAL_REEL)",
+  "origem": "Reels de teste (diário)",
+  "status": "aguardando",
+  "isAiGenerated": false,
+  "publicar_em": "2026-11-24T16:30:00",
+  "tipo_versao": "A",
+  "reel_original": "posts/2026-11-17-reel-recurso-antes-da-nota",
+  "gancho": "Dá pra recorrer / antes da nota sair?",
+  "runway_falhou": "sem créditos na Runway (24/11) — feito como tipo A",
+  "montagem": {
+    "trechos": [
+      [
+        28.28,
+        34.8
+      ],
+      [
+        0.0,
+        4.95
+      ],
+      [
+        13.8,
+        27.0
+      ],
+      [
+        35.05,
+        44.4
+      ],
+      [
+        51.9,
+        59.25
+      ],
+      [
+        76.45,
+        78.83
+      ]
+    ],
+    "duracao": 43.83,
+    "enquadramento": "punch-in alternado 112/118/108/115/120% ancorado no topo (títulos queimados inteiros), cartão final sem zoom; gancho no peito"
+  }
+}

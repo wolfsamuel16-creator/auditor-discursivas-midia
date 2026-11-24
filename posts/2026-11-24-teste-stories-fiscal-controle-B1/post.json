@@ -1,0 +1,34 @@
+{
+  "tipo": "trial_reel",
+  "canal": "Metricool (TRIAL_REEL)",
+  "origem": "Reels de teste (diário)",
+  "status": "aguardando",
+  "isAiGenerated": false,
+  "publicar_em": "2026-11-24T18:30:00",
+  "tipo_versao": "B",
+  "reel_original": "posts/2026-11-19-teste-stories-fiscal-controle-A1",
+  "gancho": "Fiscal arrecada. / Controle fiscaliza.",
+  "observacao": "19h30 colidia com o Reel 'Estudar não compra felicidade' → movido para 18h30",
+  "montagem": {
+    "trechos": [
+      [
+        26.9,
+        30.7
+      ],
+      [
+        30.7,
+        37.55
+      ],
+      [
+        37.8,
+        47.5
+      ],
+      [
+        47.6,
+        50.1
+      ]
+    ],
+    "duracao": 22.87,
+    "enquadramento": "punch-in alternado 110/108/110% ancorado no topo (caixinha da pergunta inteira), cartão final sem zoom; gancho no peito"
+  }
+}

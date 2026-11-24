@@ -1,0 +1,27 @@
+{
+  "tipo": "trial_reel",
+  "canal": "Metricool (TRIAL_REEL)",
+  "origem": "Reels de teste (diário)",
+  "status": "aguardando",
+  "isAiGenerated": false,
+  "publicar_em": "2026-11-24T13:00:00",
+  "tipo_versao": "D",
+  "reel_original": "posts/2026-11-05-ps-03-parecer-previo-x-julgamento",
+  "gancho": "Parecer prévio × / julgamento?",
+  "montagem": {
+    "trechos": [
+      "gancho 2,5 s",
+      "slide_08 inteiro 4,5 s",
+      "slide_08 aproximação 112% 3,5 s",
+      "slide_03 5 s",
+      "slide_04 5,5 s",
+      "slide_06 inteiro 4 s",
+      "slide_06 aproximação 112% 4,5 s",
+      "slide_07 5 s",
+      "slide_09 5,5 s",
+      "slide_10 (CTA) 4,5 s"
+    ],
+    "duracao": 41.8,
+    "enquadramento": "fundo navy, slides centralizados com zoom lento 100→104%, capa, slide 02 e 05 fora; sem áudio"
+  }
+}
