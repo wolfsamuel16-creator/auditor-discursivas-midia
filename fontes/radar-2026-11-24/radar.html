@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Radar dos Concursos · Semana 24/11/2026</title>
+<style>
+@font-face{font-family:Poppins;font-weight:600;src:url(fonts/Poppins-SemiBold.ttf)}
+@font-face{font-family:Poppins;font-weight:700;src:url(fonts/Poppins-Bold.ttf)}
+@font-face{font-family:Poppins;font-weight:800;src:url(fonts/Poppins-ExtraBold.ttf)}
+@font-face{font-family:Lato;font-weight:400;src:url(fonts/Lato-Regular.ttf)}
+@font-face{font-family:Lato;font-weight:700;src:url(fonts/Lato-Bold.ttf)}
+@font-face{font-family:Lato;font-weight:900;src:url(fonts/Lato-Black.ttf)}
+:root{--navy:#2A3544;--lar:#F04E23;--creme:#F6F2EC;--cinza:#5B6573}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#ccc}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Lato;display:flex;flex-direction:column;padding:140px 84px 120px}
+.navy{background:var(--navy);color:#fff}
+.claro{background:var(--creme);color:var(--navy)}
+.top{position:absolute;top:48px;left:84px;right:84px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:3px}
+.top .wm{color:var(--lar)}
+.top .ct{opacity:.6}
+.rod{position:absolute;bottom:46px;left:84px;right:84px;display:flex;justify-content:space-between;font-family:Poppins;font-weight:600;font-size:24px}
+.rod span:first-child{opacity:.7}
+.rod .sv{color:var(--lar)}
+.tag{align-self:flex-start;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:26px;letter-spacing:3px;border-radius:12px;padding:10px 24px;margin-bottom:30px}
+h1{font-family:Poppins;font-weight:800;font-size:86px;line-height:1.06;letter-spacing:-1px}
+h2{font-family:Poppins;font-weight:800;font-size:64px;line-height:1.08;letter-spacing:-.5px}
+em{font-style:normal;color:var(--lar)}
+.sub{font-size:38px;line-height:1.4;margin-top:34px}
+.chips{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.chip{font-family:Poppins;font-weight:700;font-size:28px;border:3px solid var(--lar);color:#fff;border-radius:60px;padding:8px 26px}
+.org{font-family:Poppins;font-weight:700;font-size:28px;color:var(--cinza);letter-spacing:1px;margin-bottom:14px}
+.dados{list-style:none;margin-top:40px;display:flex;flex-direction:column;gap:22px}
+.dados li{background:#fff;border-radius:18px;padding:24px 30px;font-size:35px;line-height:1.3;display:flex;gap:22px;align-items:baseline}
+.dados li b.k{font-family:Poppins;font-weight:700;font-size:24px;letter-spacing:1px;color:var(--lar);flex:0 0 200px;text-transform:uppercase}
+.disc{margin-top:auto;border-radius:22px;padding:28px 34px;display:flex;gap:26px;align-items:center;font-size:32px;line-height:1.3}
+.disc .q{font-family:Poppins;font-weight:800;font-size:26px;letter-spacing:1px;flex:0 0 auto}
+.disc .r{font-family:Poppins;font-weight:800;font-size:40px;flex:0 0 auto}
+.disc.sim{background:var(--navy);color:#fff}
+.disc.sim .r{color:var(--lar)}
+.ag{list-style:none;margin-top:34px;display:flex;flex-direction:column;gap:12px}
+.ag li{display:flex;gap:24px;align-items:center;background:#fff;border-radius:16px;padding:14px 22px;font-size:29px;line-height:1.25}
+.ag li .d{flex:0 0 118px;font-family:Poppins;font-weight:800;font-size:34px;color:var(--lar)}
+.ag li .x{flex:1}
+.ag li .x b{font-family:Poppins;font-weight:700}
+.ag li .dc{flex:0 0 auto;font-family:Poppins;font-weight:700;font-size:20px;letter-spacing:1px;border:2px solid var(--lar);color:var(--lar);border-radius:30px;padding:4px 14px}
+.lista{list-style:none;margin-top:36px}
+.lista li{display:flex;gap:28px;align-items:flex-start;margin-bottom:30px;font-size:35px;line-height:1.35}
+.num{flex:0 0 70px;height:70px;border-radius:50%;background:var(--lar);color:#fff;font-family:Poppins;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-left:12px solid var(--lar);border-radius:18px;padding:30px 36px;margin-top:auto;font-size:32px;line-height:1.4}
+.box{background:var(--lar);color:#fff;border-radius:28px;padding:40px 44px;font-family:Poppins;font-weight:700;font-size:44px;line-height:1.25}
+.box small{display:block;font-family:Lato;font-weight:700;font-size:32px;margin-top:14px}
+.autor{display:flex;align-items:center;gap:34px;margin-top:auto}
+.foto{flex:0 0 200px;width:200px;height:200px;border-radius:50%;border:8px solid var(--lar);background:url(foto.jpg) center/cover}
+.autor b{font-family:Poppins;font-weight:800;font-size:44px;display:block}
+.autor .t{font-family:Poppins;font-weight:600;font-size:28px;color:var(--lar);display:block;margin:4px 0 10px}
+.autor .c{font-size:25px;line-height:1.4;opacity:.9;display:block}
+.sp{flex:1}
+.disc.prev{background:#fff;color:var(--navy);border:4px solid var(--navy)}
+.disc.prev .r{color:var(--lar)}
+.mini li{font-size:31px;padding:20px 26px}
+.mini li b.k{flex:0 0 150px}
+</style></head><body>
+<section class="s navy">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">01 / 10</span></div>
+ <div class="sp"></div>
+ <div class="tag">RADAR DOS CONCURSOS · SEMANA 24/11</div>
+ <h1>O <em>Bacen</em> escolheu a FGV. A <em>PC-TO</em> fechou com o Cebraspe.</h1>
+ <p class="sub">E o Maranhão abriu 20 vagas de Auditor com 2 estudos de caso. O padrão do TCDF sai em 24/11.</p>
+ <div class="chips"><span class="chip">TCDF</span><span class="chip">TCE-MA</span><span class="chip">STC-MA</span><span class="chip">Banco Central</span><span class="chip">Receita Federal</span><span class="chip">PC-TO</span><span class="chip">Provas de 06/12</span></div>
+ <div class="sp"></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Arraste →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">02 / 10</span></div>
+ <div class="tag">CONTROLE</div>
+ <div class="org">TCDF · ANALISTA ADM. DE CE · CEBRASPE</div>
+ <h2>Padrão preliminar em <em>24/11</em>, a partir das 19h</h2>
+ <ul class="dados">
+ <li><b class="k">Prova</b><span>22/11 · objetiva e discursiva</span></li>
+ <li><b class="k">Recurso</b><span>25/11 (10h) a 02/12 (18h)</span></li>
+ <li><b class="k">TCE-MA</b><span>Analista: prova em 22/11 · Auditor e Técnico: 29/11</span></li>
+ <li><b class="k">Nota</b><span>resultado provisório previsto para 13/01/2027</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>questão de 20 l + peça "Informação" de 50 l</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">03 / 10</span></div>
+ <div class="tag">CONTROLE · EDITAL PUBLICADO</div>
+ <div class="org">CONCURSO UNIFICADO MA · AUDITOR DA STC · FCC</div>
+ <h2><em>20 vagas</em> de Auditor e inicial de R$ 14.950,78</h2>
+ <ul class="dados">
+ <li><b class="k">Vagas</b><span>14 Área Geral · 3 TI · 3 Engenharia</span></li>
+ <li><b class="k">Inscrições</b><span>14/12 a 29/01/2027 · R$ 250</span></li>
+ <li><b class="k">Prova</b><span>04/04/2027</span></li>
+ <li><b class="k">No total</b><span>2.317 vagas no Edital 1</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>2 estudos de caso de até 30 l · 10 pontos cada</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">04 / 10</span></div>
+ <div class="tag">BANCOS · BANCA DEFINIDA</div>
+ <div class="org">BANCO CENTRAL · AUDITOR, TÉCNICO E PROCURADOR</div>
+ <h2>A <em>FGV</em> vai organizar o concurso do Bacen</h2>
+ <ul class="dados">
+ <li><b class="k">Anúncio</b><span>18/11, pelo próprio Bacen</span></li>
+ <li><b class="k">Vagas</b><span>170 (100 Auditor · 50 Técnico · 20 Procurador)</span></li>
+ <li><b class="k">Inicial</b><span>R$ 20.000,00 (Auditor)</span></li>
+ <li><b class="k">Edital</b><span>até 30/12 (FAQ do Bacen)</span></li>
+ </ul>
+ <div class="disc prev"><span class="q">TEM DISCURSIVA?</span><span class="r">PROVÁVEL</span><span>em 2024: dissertação + situação-problema</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">05 / 10</span></div>
+ <div class="tag">FISCAL</div>
+ <div class="org">RECEITA FEDERAL · AUDITOR-FISCAL E ANALISTA-TRIBUTÁRIO</div>
+ <h2>A banca <em>ainda não</em> foi contratada</h2>
+ <ul class="dados">
+ <li><b class="k">Vagas</b><span>146 (30 Auditor + 116 Analista)</span></li>
+ <li><b class="k">Edital</b><span>previsto para dezembro</span></li>
+ <li><b class="k">Prazo legal</b><span>até 03/01/2027</span></li>
+ <li><b class="k">Prova</b><span>estimada para fev–mar/2027</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>2 questões para Auditor · 1 para Analista</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">06 / 10</span></div>
+ <div class="tag">POLICIAL · BANCA CONTRATADA</div>
+ <div class="org">PC-TO · DELEGADO, INVESTIGADOR E PERITO</div>
+ <h2><em>Cebraspe</em> contratado e 452 vagas previstas</h2>
+ <ul class="dados">
+ <li><b class="k">Contrato</b><span>assinado em 16/11 (DOE-TO)</span></li>
+ <li><b class="k">Vagas</b><span>323 Investigador · 69 Delegado · 60 Perito (previsão)</span></li>
+ <li><b class="k">Edital</b><span>anunciado para "até 18 dias"</span></li>
+ <li><b class="k">Inicial</b><span>Delegado ~R$ 21,9 mil (previsto)</span></li>
+ </ul>
+ <div class="disc prev"><span class="q">TEM DISCURSIVA?</span><span class="r">PREVISTA</span><span>Delegado: questões + peça · Inv.: redação</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">07 / 10</span></div>
+ <div class="tag">POLICIAL · PROVA EM 06/12</div>
+ <h2><em>5 provas policiais</em> com discursiva no mesmo domingo</h2>
+ <ul class="dados mini">
+ <li><b class="k">PC-BA</b><span>750 vagas · AOCP · Delegado: 2 estudos de caso + peça</span></li>
+ <li><b class="k">PC-AL</b><span>Agente e Escrivão · Cebraspe · texto de até 30 l</span></li>
+ <li><b class="k">PC-MA</b><span>Investigador · Cebraspe · redação de até 30 l</span></li>
+ <li><b class="k">PC-AP</b><span>Delegado e Investigador · Cesgranrio</span></li>
+ <li><b class="k">PM-PI</b><span>Soldado · FCC · texto de 20 a 30 l</span></li>
+ </ul>
+ <div class="disc sim"><span class="q">TEM DISCURSIVA?</span><span class="r">SIM</span><span>em todas, no mesmo dia da objetiva</span></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">08 / 10</span></div>
+ <h2>Agenda das próximas <em>3 semanas</em></h2>
+ <ul class="ag">
+ <li><span class="d">24/11</span><span class="x"><b>TCDF</b> · padrão preliminar (19h)</span><span class="dc">DISC.</span></li>
+ <li><span class="d">25/11</span><span class="x"><b>TCDF</b> · recurso do padrão até 02/12 · <b>PM-ES</b> · nota da redação</span><span class="dc">DISC.</span></li>
+ <li><span class="d">27/11</span><span class="x"><b>TCE-SP</b> · nota da escrita · <b>PC-MA</b> (Delegado) · convocação para a discursiva</span><span class="dc">DISC.</span></li>
+ <li><span class="d">29/11</span><span class="x"><b>TCE-MA</b> (Auditor e Técnico) · provas</span><span class="dc">DISC.</span></li>
+ <li><span class="d">06/12</span><span class="x"><b>PC-BA</b>, <b>PC-AL</b>, <b>PC-MA</b> (Inv.), <b>PC-AP</b> e <b>PM-PI</b> · provas</span><span class="dc">DISC.</span></li>
+ <li><span class="d">08/12</span><span class="x"><b>PC-MA</b> (Investigador) · padrão preliminar</span><span class="dc">DISC.</span></li>
+ <li><span class="d">13/12</span><span class="x"><b>CGU</b>, <b>PC-MA</b> (Delegado) e <b>PM-SC</b> · provas</span><span class="dc">DISC.</span></li>
+ </ul>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">09 / 10</span></div>
+ <div class="tag">JANELAS DE RECURSO</div>
+ <h2>TCDF: recurso contra o padrão de <em>25/11 a 02/12</em>.</h2>
+ <p class="sub" style="font-size:34px;margin-top:22px">No Cebraspe, o padrão preliminar tem recurso próprio. Vale recorrer quando:</p>
+ <ul class="lista">
+ <li><span class="num">1</span><span>há resposta <b>correta</b> que o padrão não previu;</span></li>
+ <li><span class="num">2</span><span>o padrão traz erro técnico ou norma <b>desatualizada</b>;</span></li>
+ <li><span class="num">3</span><span>um item do comando ficou <b>sem</b> aspecto no padrão.</span></li>
+ </ul>
+ <div class="card"><b>Próximas janelas:</b> PM-ES 26 e 27/11 (redação) · TCE-SP 30/11 e 01/12 (Vunesp) · TCE-MA Analista 25 e 26/11 (previsto).</div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+<section class="s claro">
+ <div class="top"><span class="wm">AUDITOR DISCURSIVAS</span><span class="ct">10 / 10</span></div>
+ <div class="sp"></div>
+ <h2>Resumo: <em>Bacen</em> com FGV, <em>PC-TO</em> com Cebraspe, padrão do TCDF em 24/11.</h2>
+ <div class="box" style="margin-top:46px">Siga @auditor_discursivas: toda terça, as datas que mexem na sua discursiva.<small>Salve e manda para quem vai fazer TCDF, CGU ou as provas de 06/12.</small></div>
+ <div class="sp"></div>
+ <div class="autor">
+ <div class="foto"></div>
+ <div><b>Samuel Wolf</b><span class="t">Recursos de provas discursivas</span><span class="c">Engenheiro pelo ITA · Auditor de Controle Externo do TCE-RJ · Nomeado Auditor Fiscal da SEFAZ-RS e da SEFIN Manaus</span></div>
+ </div>
+ <p style="font-size:28px;margin-top:30px;line-height:1.35">Saiu sua nota da discursiva? Manda <b style="color:var(--lar)">RECURSO</b> no direct — a análise de viabilidade é gratuita.</p>
+ <div style="height:30px"></div>
+ <div class="rod"><span>@auditor_discursivas</span><span class="sv">Salvar →</span></div>
+</section>
+
+</body></html>
