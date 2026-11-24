@@ -3,6 +3,8 @@
  "tipo": "carrossel",
  "origem": "Radar dos Concursos",
  "primeiro_comentario": "Fez TCDF ou TCE-MA? O padrão preliminar do TCDF sai em 24/11, às 19h, e o recurso vai de 25/11 a 02/12. Compare sua resposta item por item com o padrão. Ficou em dúvida? Manda RECURSO no direct.",
- "status": "aguardando",
- "metricool_id": null
+ "status": "agendado",
+ "metricool_id": 440187549,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-3958977568728596433",
+ "agendado_em": "2026-11-24"
 }

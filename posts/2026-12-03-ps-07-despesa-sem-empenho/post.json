@@ -3,6 +3,8 @@
  "tipo": "carrossel",
  "origem": "Parágrafo da Semana",
  "primeiro_comentario": "Na prova, você lembraria da liquidação entre o empenho e o pagamento? A) Sim B) Teria esquecido. Comenta a letra 👇",
- "status": "aguardando",
- "metricool_id": null
+ "status": "agendado",
+ "metricool_id": 440193268,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-8125236870757924294",
+ "agendado_em": "2026-11-24"
 }
