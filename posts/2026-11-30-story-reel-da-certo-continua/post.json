@@ -4,15 +4,18 @@
  "origem": "Stories dos posts (regra do Samuel 05/11/2026; vídeo+arte no Reel desde 06/11/2026)",
  "post_do_feed": "Reel Dá certo. Continua. (30/11 19h30) — vídeo do reel via Drive (32 s, parte única)",
  "stories_publicar_em": [
-  "2026-11-30T19:45:00",
   "2026-11-30T19:55:00"
  ],
  "ordem_arquivos": [
-  "story_video_01 (Drive 1135dhdGrDF4lfV6zSKJ9tbb1Umq8eRO9)",
   "story_01.png"
  ],
  "primeiro_comentario": "",
- "status": "aguardando",
+ "status": "agendado",
  "metricool_id": null,
- "stories_metricool": []
+ "stories_metricool": [
+  440777073
+ ],
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=5887698930292507424",
+ "agendado_em": "2026-11-24T16:21:00",
+ "pendente": "Só a arte agendada (19h55). Vídeo do reel pendente: não está na fila do GitHub e o Drive não é público; a próxima execução tenta de novo quando posts/2026-11-30-reel-da-certo-continua/reel.mp4 existir."
 }
