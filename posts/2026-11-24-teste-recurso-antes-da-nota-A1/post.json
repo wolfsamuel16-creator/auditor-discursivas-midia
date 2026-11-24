@@ -2,7 +2,7 @@
   "tipo": "trial_reel",
   "canal": "Metricool (TRIAL_REEL)",
   "origem": "Reels de teste (diário)",
-  "status": "aguardando",
+  "status": "agendado",
   "isAiGenerated": false,
   "publicar_em": "2026-11-24T16:30:00",
   "tipo_versao": "A",
@@ -38,5 +38,9 @@
     ],
     "duracao": 43.83,
     "enquadramento": "punch-in alternado 112/118/108/115/120% ancorado no topo (títulos queimados inteiros), cartão final sem zoom; gancho no peito"
-  }
+  },
+  "metricool_id": 440077903,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=6256896665842565965",
+  "agendado_em": "2026-11-24T07:40:00",
+  "shareTrialAutomatically": false
 }

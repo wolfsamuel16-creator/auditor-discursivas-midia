@@ -2,7 +2,7 @@
   "tipo": "trial_reel",
   "canal": "Metricool (TRIAL_REEL)",
   "origem": "Reels de teste (diário)",
-  "status": "aguardando",
+  "status": "agendado",
   "isAiGenerated": false,
   "publicar_em": "2026-11-24T18:30:00",
   "tipo_versao": "B",
@@ -30,5 +30,9 @@
     ],
     "duracao": 22.87,
     "enquadramento": "punch-in alternado 110/108/110% ancorado no topo (caixinha da pergunta inteira), cartão final sem zoom; gancho no peito"
-  }
+  },
+  "metricool_id": 440077937,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=3370470884548166134",
+  "agendado_em": "2026-11-24T07:40:00",
+  "shareTrialAutomatically": false
 }

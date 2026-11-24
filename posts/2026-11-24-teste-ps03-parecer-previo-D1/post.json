@@ -2,7 +2,7 @@
   "tipo": "trial_reel",
   "canal": "Metricool (TRIAL_REEL)",
   "origem": "Reels de teste (diário)",
-  "status": "aguardando",
+  "status": "agendado",
   "isAiGenerated": false,
   "publicar_em": "2026-11-24T13:00:00",
   "tipo_versao": "D",
@@ -23,5 +23,9 @@
     ],
     "duracao": 41.8,
     "enquadramento": "fundo navy, slides centralizados com zoom lento 100→104%, capa, slide 02 e 05 fora; sem áudio"
-  }
+  },
+  "metricool_id": 440077867,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=629652663421976957",
+  "agendado_em": "2026-11-24T07:40:00",
+  "shareTrialAutomatically": false
 }
