@@ -3,5 +3,8 @@
   "tipo": "story",
   "origem": "Rodadas de Discursiva",
   "palavra_chave": "POLICIAL",
-  "status": "aguardando"
+  "status": "agendado",
+  "metricool_id": 441542542,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=7270185354601385456",
+  "agendado_em": "2026-11-25T07:45:00"
 }

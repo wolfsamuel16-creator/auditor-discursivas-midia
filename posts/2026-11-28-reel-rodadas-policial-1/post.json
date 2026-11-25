@@ -5,5 +5,13 @@
   "origem": "Rodadas de Discursiva (Reel do anúncio, fora da grade)",
   "palavra_chave": "POLICIAL",
   "primeiro_comentario": "📌 Mande POLICIAL no direct que eu te envio a Rodada 1 em PDF. Próxima rodada: Controle, em 04/12.",
-  "status": "aguardando"
+  "status": "agendado",
+  "metricool_id": 441542779,
+  "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-6529309286651313987",
+  "agendado_em": "2026-11-25T07:45:00",
+  "musica": {
+    "audioId": "2477944699150252",
+    "titulo": "Peaceful Piano",
+    "artista": "Dr. Pheel"
+  }
 }
