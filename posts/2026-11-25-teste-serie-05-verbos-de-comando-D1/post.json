@@ -11,6 +11,10 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
- "isAiGenerated": false
+ "status": "agendado",
+ "isAiGenerated": false,
+ "metricool_id": 441529274,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-4192674888790964",
+ "agendado_em": "2026-11-25T07:34:00",
+ "shareTrialAutomatically": false
 }
