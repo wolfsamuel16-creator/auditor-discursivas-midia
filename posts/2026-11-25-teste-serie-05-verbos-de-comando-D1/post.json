@@ -1,0 +1,16 @@
+{
+ "publicar_em": "2026-11-25T13:00:00",
+ "tipo_versao": "D",
+ "reel_original": "posts/2026-11-04-serie-05-verbos-de-comando",
+ "gancho": "6 verbos de comando: / 6 respostas diferentes",
+ "montagem": {
+  "trechos": "quadro do gancho 2,5 s → slide 03 inteiro → slide 03 coluna esquerda (zoom 135%) → slide 03 coluna direita (zoom 135%) → slide 04 → slide 02 → slide 05 (CTA); capa fora",
+  "duracao": 32.7,
+  "enquadramento": "slides centralizados em fundo navy, zoom lento 100→104%, xfade 0,3 s, sem áudio"
+ },
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "isAiGenerated": false
+}

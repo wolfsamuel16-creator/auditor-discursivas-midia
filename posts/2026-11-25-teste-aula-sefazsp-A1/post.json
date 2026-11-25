@@ -1,0 +1,42 @@
+{
+ "publicar_em": "2026-11-25T19:30:00",
+ "tipo_versao": "A",
+ "reel_original": "posts/2026-10-31-reel-aula-sefazsp",
+ "gancho": "SEFAZ-SP: 5 temas inéditos / com texto definitivo",
+ "runway_falhou": "sem créditos na Runway (25/11)",
+ "montagem": {
+  "trechos": [
+   [
+    48.07,
+    52.97
+   ],
+   [
+    12.45,
+    16.65
+   ],
+   [
+    16.67,
+    24.95
+   ],
+   [
+    35.6,
+    45.47
+   ],
+   [
+    52.97,
+    66.0
+   ],
+   [
+    71.15,
+    73.4
+   ]
+  ],
+  "duracao": 42.6,
+  "enquadramento": "punch-in 114%/110%/116%/112%/108% alternando posição; título e painéis queimados inteiros; cartão final original"
+ },
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "isAiGenerated": false
+}

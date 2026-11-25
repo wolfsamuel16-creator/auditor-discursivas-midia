@@ -1,0 +1,29 @@
+{
+ "publicar_em": "2026-11-25T16:30:00",
+ "tipo_versao": "B",
+ "reel_original": "posts/2026-11-06-reel-tcesc-573-notas",
+ "gancho": "Recurso não é sorte: / 31% × 22%",
+ "montagem": {
+  "trechos": [
+   [
+    34.62,
+    43.85
+   ],
+   [
+    24.05,
+    34.48
+   ],
+   [
+    44.4,
+    54.9
+   ]
+  ],
+  "duracao": 32.7,
+  "enquadramento": "punch-in 114%/110%/116% com posições diferentes; gráficos e legendas queimados inteiros; cartão final novo (CTA RECURSO, sem o CTA vencido do TCE-PE)"
+ },
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "isAiGenerated": false
+}
