@@ -47,4 +47,6 @@ Exceção da Rodada 1: anúncio sobe seg 16/11 18h47 (a semana 09–15/11 já es
 - **Reel da rodada (16/11/2026):** vídeo dos 5 slides (1080×1920, 20–40 s, sem áudio próprio, música do Instagram via Metricool), publicado no dia seguinte ao carrossel às 12h (13h30 se houver outro post de feed/Reel a menos de 3 h), **fora da grade** (showReelOnFeed false), em posts/<data+1>-reel-rodadas-<area>-<n>/; anunciado pelo Gerenciador como publicação existente.
 - **Horário (18/11/2026):** se houver outro post de feed a menos de 3 h das 18h no dia da rodada, o carrossel vai às 19h30 e o story às 19h45 (ex.: Fiscal 1, em 20/11, por causa do carrossel do catálogo de aulas às 18h).
 - Modelo de carrossel com o CTA novo: carrossel/fiscal-1.html (controle-1.html é anterior à regra e ainda tem "Comente").
-- Mini-aulas prontas: areas/controle.py e areas/fiscal.py (base: aulas SEFAZ-SP 2026 e SEFAZ-AL 2026).
+- Mini-aulas prontas: areas/controle.py, areas/fiscal.py (base: aulas SEFAZ-SP 2026 e SEFAZ-AL 2026) e areas/policial.py (base: aula PM-SC 2026; criada em 25/11/2026).
+- Policial 1 (27/11/2026): Tema 1 recortado para "Desafios para a efetividade das medidas protetivas de urgência" (a aula PM-SC já tinha o papel da PM na violência doméstica; incorpora Lei 14.994/2024 e Lei 15.125/2025). Carrossel às 21h (story 21h15) porque 27/11 já tinha carrossel às 18h e Reel às 19h30 — quando 19h30 também estiver ocupado, usar o próximo horário livre à noite.
+- Modelo de carrossel mais recente: carrossel/policial-1.html.
