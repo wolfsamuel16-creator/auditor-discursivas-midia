@@ -1,0 +1,45 @@
+{
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "publicar_em": "2026-11-26T16:30:00",
+ "tipo_versao": "A",
+ "reel_original": "posts/2026-11-24-reel-duvidas-recurso-rodada-1",
+ "gancho": "3 dúvidas sobre recurso: / a nota pode cair?",
+ "isAiGenerated": true,
+ "montagem": {
+  "trechos": [
+   [
+    103.85,
+    117.05
+   ],
+   [
+    5.48,
+    18.85
+   ],
+   [
+    37.95,
+    41.5
+   ],
+   [
+    46.9,
+    54.1
+   ],
+   [
+    54.1,
+    67.45
+   ],
+   [
+    118.8,
+    122.3
+   ],
+   [
+    139.0,
+    141.5
+   ]
+  ],
+  "duracao": 56.75,
+  "enquadramento": "punch-in alternado 114/110/118/112/116/110% com posições diferentes; cartão final 100%; legendas queimadas inteiras"
+ }
+}

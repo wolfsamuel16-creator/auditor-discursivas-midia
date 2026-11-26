@@ -1,0 +1,16 @@
+{
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "publicar_em": "2026-11-26T13:00:00",
+ "tipo_versao": "D",
+ "reel_original": "posts/2026-11-25-recurso-comentado",
+ "gancho": "“Não houve prejuízo”? / O recurso rebateu.",
+ "isAiGenerated": false,
+ "montagem": {
+  "trechos": "quadro do gancho 2,5 s → slide 03 inteiro 5 s → slide 03 aproximação 110–113% na folha 4 s → slide 02 6 s → slide 04 7 s → slide 04 aproximação 110–113% no destaque 3,8 s → slide 05 (CTA) 5,5 s; capa fora",
+  "duracao": 32.0,
+  "enquadramento": "fundo navy, slide centralizado com zoom lento 100→104%, xfade 0,3 s, rodapé @auditor_discursivas"
+ }
+}
