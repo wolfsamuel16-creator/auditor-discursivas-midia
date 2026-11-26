@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "publicar_em": "2026-11-26T17:30:00",
  "tipo_versao": "A",
  "reel_original": "posts/2026-11-19-reel-erro-1-peca-que-julga",
@@ -39,5 +39,9 @@
   ],
   "duracao": 53.95,
   "enquadramento": "punch-in alternado 114/110/116/112/110% com posições diferentes, sem a cena de IA do original; cartão final 100%"
- }
+ },
+ "metricool_id": 442917134,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=5011371975631195335",
+ "agendado_em": "2026-11-26T07:33:00",
+ "shareTrialAutomatically": false
 }

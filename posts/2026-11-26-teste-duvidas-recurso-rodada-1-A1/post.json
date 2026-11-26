@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "publicar_em": "2026-11-26T16:30:00",
  "tipo_versao": "A",
  "reel_original": "posts/2026-11-24-reel-duvidas-recurso-rodada-1",
@@ -41,5 +41,9 @@
   ],
   "duracao": 56.75,
   "enquadramento": "punch-in alternado 114/110/118/112/116/110% com posições diferentes; cartão final 100%; legendas queimadas inteiras"
- }
+ },
+ "metricool_id": 442917084,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=3808074296876484031",
+ "agendado_em": "2026-11-26T07:33:00",
+ "shareTrialAutomatically": false
 }
