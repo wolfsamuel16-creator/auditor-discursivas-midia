@@ -1,0 +1,37 @@
+{
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "isAiGenerated": false,
+ "publicar_em": "2026-11-27T16:30:00",
+ "tipo_versao": "B",
+ "reel_original": "posts/2026-11-18-reel-dia-a-dia-auditor",
+ "gancho": "Sua formação tem lugar / no Tribunal de Contas",
+ "montagem": {
+  "trechos": [
+   [
+    47.35,
+    52.24
+   ],
+   [
+    4.85,
+    16.8
+   ],
+   [
+    52.24,
+    61.45
+   ],
+   [
+    61.55,
+    66.15
+   ],
+   [
+    66.17,
+    68.67
+   ]
+  ],
+  "duracao": 33.2,
+  "enquadramento": "punch-in alternado 115/110/118/112%; sem a cena de obra do original; cartão final 100%"
+ }
+}

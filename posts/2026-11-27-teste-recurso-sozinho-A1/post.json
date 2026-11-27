@@ -1,0 +1,42 @@
+{
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "isAiGenerated": false,
+ "publicar_em": "2026-11-27T15:00:00",
+ "tipo_versao": "A",
+ "reel_original": "posts/2026-11-12-reel-recurso-sozinho",
+ "gancho": "Um ponto pode valer a vaga. / Recorrer sozinho?",
+ "montagem": {
+  "trechos": [
+   [
+    49.85,
+    58.95
+   ],
+   [
+    0.2,
+    7.5
+   ],
+   [
+    14.5,
+    23.55
+   ],
+   [
+    39.3,
+    49.55
+   ],
+   [
+    59.35,
+    69.6
+   ],
+   [
+    69.63,
+    72.22
+   ]
+  ],
+  "duracao": 48.6,
+  "enquadramento": "punch-in alternado 116/110/118/112/114% com posições diferentes; cartão final 100%; legendas queimadas do original mantidas inteiras"
+ },
+ "observacao": "19h30 movido para 15h: Reel 19h30, carrossel 18h e carrossel 21h no feed"
+}
