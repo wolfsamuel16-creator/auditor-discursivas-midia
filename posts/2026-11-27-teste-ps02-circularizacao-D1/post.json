@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "isAiGenerated": false,
  "publicar_em": "2026-11-27T13:00:00",
  "tipo_versao": "D",
@@ -22,5 +22,9 @@
   "duracao": 38.4,
   "enquadramento": "slides centralizados em fundo navy, zoom lento 100→104%, xfade 0,3s; capa e slide 02 fora; sem áudio"
  },
- "runway_falhou": "1 crédito na Runway (27/11) — sem tipo C"
+ "runway_falhou": "1 crédito na Runway (27/11) — sem tipo C",
+ "metricool_id": 444180397,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=8826479269066326284",
+ "agendado_em": "2026-11-27T07:32:00",
+ "shareTrialAutomatically": false
 }

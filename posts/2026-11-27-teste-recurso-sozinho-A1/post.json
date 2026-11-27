@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "isAiGenerated": false,
  "publicar_em": "2026-11-27T15:00:00",
  "tipo_versao": "A",
@@ -38,5 +38,9 @@
   "duracao": 48.6,
   "enquadramento": "punch-in alternado 116/110/118/112/114% com posições diferentes; cartão final 100%; legendas queimadas do original mantidas inteiras"
  },
- "observacao": "19h30 movido para 15h: Reel 19h30, carrossel 18h e carrossel 21h no feed"
+ "observacao": "19h30 movido para 15h: Reel 19h30, carrossel 18h e carrossel 21h no feed",
+ "metricool_id": 444180430,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-9184566999742002739",
+ "agendado_em": "2026-11-27T07:32:00",
+ "shareTrialAutomatically": false
 }
