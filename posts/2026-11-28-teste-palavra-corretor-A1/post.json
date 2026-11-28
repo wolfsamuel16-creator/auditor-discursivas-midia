@@ -1,0 +1,41 @@
+{
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "publicar_em": "2026-11-28T16:30:00",
+ "tipo_versao": "A",
+ "reel_original": "posts/2026-11-26-reel-palavra-que-o-corretor-procura",
+ "gancho": "Ideia certa, nota baixa? / Faltou o termo.",
+ "montagem": {
+  "trechos": [
+   [
+    60.45,
+    67.3
+   ],
+   [
+    23.65,
+    28.45
+   ],
+   [
+    28.7,
+    47.17
+   ],
+   [
+    47.5,
+    60.18
+   ],
+   [
+    67.52,
+    72.4
+   ],
+   [
+    72.4,
+    75.05
+   ]
+  ],
+  "duracao": 50.45,
+  "enquadramento": "abre pela frase 'Acertar a ideia não basta' (fim do original); punch-in alternado 118%/108%/114%/110%/116%; cartão final 100%; legendas queimadas inteiras"
+ },
+ "isAiGenerated": false
+}

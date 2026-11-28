@@ -1,0 +1,38 @@
+{
+ "tipo": "trial_reel",
+ "canal": "Metricool (TRIAL_REEL)",
+ "origem": "Reels de teste (diário)",
+ "status": "aguardando",
+ "publicar_em": "2026-11-28T18:30:00",
+ "tipo_versao": "B",
+ "reel_original": "posts/2026-11-05-reel-verbo-de-comando",
+ "gancho": "1 verbo diz / o que a banca procura.",
+ "montagem": {
+  "trechos": [
+   [
+    9.05,
+    22.39
+   ],
+   [
+    22.55,
+    25.62
+   ],
+   [
+    25.78,
+    31.15
+   ],
+   [
+    66.55,
+    71.0
+   ],
+   [
+    71.0,
+    73.5
+   ]
+  ],
+  "duracao": 28.85,
+  "enquadramento": "corte curto (sublinhar o verbo + Defina/Justifique); punch-in 115%/110%/118%/112%; cartão final 100%; títulos queimados inteiros"
+ },
+ "isAiGenerated": false,
+ "observacao": "19h30 colidia com o Reel do feed (Concurseira × Concursado ep. 2) → 18h30"
+}
