@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "publicar_em": "2026-11-28T16:30:00",
  "tipo_versao": "A",
  "reel_original": "posts/2026-11-26-reel-palavra-que-o-corretor-procura",
@@ -37,5 +37,9 @@
   "duracao": 50.45,
   "enquadramento": "abre pela frase 'Acertar a ideia não basta' (fim do original); punch-in alternado 118%/108%/114%/110%/116%; cartão final 100%; legendas queimadas inteiras"
  },
- "isAiGenerated": false
+ "isAiGenerated": false,
+ "metricool_id": 445316981,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=631150115279948379",
+ "agendado_em": "2026-11-28T07:33:00",
+ "shareTrialAutomatically": false
 }

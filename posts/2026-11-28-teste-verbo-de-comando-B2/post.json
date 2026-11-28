@@ -2,7 +2,7 @@
  "tipo": "trial_reel",
  "canal": "Metricool (TRIAL_REEL)",
  "origem": "Reels de teste (diário)",
- "status": "aguardando",
+ "status": "agendado",
  "publicar_em": "2026-11-28T18:30:00",
  "tipo_versao": "B",
  "reel_original": "posts/2026-11-05-reel-verbo-de-comando",
@@ -34,5 +34,9 @@
   "enquadramento": "corte curto (sublinhar o verbo + Defina/Justifique); punch-in 115%/110%/118%/112%; cartão final 100%; títulos queimados inteiros"
  },
  "isAiGenerated": false,
- "observacao": "19h30 colidia com o Reel do feed (Concurseira × Concursado ep. 2) → 18h30"
+ "observacao": "19h30 colidia com o Reel do feed (Concurseira × Concursado ep. 2) → 18h30",
+ "metricool_id": 445316996,
+ "plannerUrl": "https://app.metricool.com/planner/calendar?blogId=7469898&openWithPostUuid=-7208229703614181608",
+ "agendado_em": "2026-11-28T07:33:00",
+ "shareTrialAutomatically": false
 }
